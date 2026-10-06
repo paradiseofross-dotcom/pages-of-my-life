@@ -1,273 +1,2279 @@
 <!DOCTYPE html>
 <html lang="ml">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover">
+
 <title>ഓർമ്മകൾ | Paradise of Ross</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js')</script>
-<style>
-:root{
-  --bg:#f3f1ec; --ink:#1d2a2e; --muted:#5b6a6e; --line:#d3d8d4; --accent:#1f6f78; --paper:#fbfaf7; --petal:#d98ca0; --glow1:rgba(31,111,120,.16); --glow2:rgba(217,140,160,.2);
-  --shadow:0 10px 30px rgba(29,42,46,.08);
-  box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){--bg:#101918;--ink:#e6ece9;--muted:#9fb0ac;--line:#2d3f3d;--accent:#6fc3c9;--paper:#182321;--petal:#e3a3b3;--glow1:rgba(111,195,201,.12);--glow2:rgba(227,163,179,.1);--shadow:0 10px 30px rgba(0,0,0,.35)}
-}
-:root[data-theme="dark"]{--bg:#101918;--ink:#e6ece9;--muted:#9fb0ac;--line:#2d3f3d;--accent:#6fc3c9;--paper:#182321;--petal:#e3a3b3;--glow1:rgba(111,195,201,.12);--glow2:rgba(227,163,179,.1);--shadow:0 10px 30px rgba(0,0,0,.35)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:5rem}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Serif Malayalam","Manjari","Kartika",Georgia,serif;line-height:1.95;font-size:1.0625rem;overflow-x:hidden;animation:pagein .6s ease-out both;transition:opacity .35s ease}
-body.leaving{opacity:0}
-@keyframes pagein{from{opacity:0}to{opacity:1}}
-p{margin:0 0 1rem}
-a{color:var(--accent)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
-/* background */
-.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.blob{position:absolute;width:44rem;height:44rem;border-radius:50%;filter:blur(40px)}
-.b1{top:-14rem;left:-12rem;background:radial-gradient(circle,var(--glow1),transparent 65%);animation:drift 26s ease-in-out infinite alternate}
-.b2{bottom:-16rem;right:-14rem;background:radial-gradient(circle,var(--glow2),transparent 65%);animation:drift 32s ease-in-out infinite alternate-reverse}
-@keyframes drift{to{transform:translate3d(6rem,4rem,0) scale(1.15)}}
-.petal{position:absolute;top:0;background:var(--petal);border-radius:80% 0 80% 0;opacity:0;animation:fall linear infinite}
-@keyframes fall{0%{transform:translate3d(0,-3rem,0) rotate(0);opacity:0}10%{opacity:.4}90%{opacity:.3}100%{transform:translate3d(var(--dx),105vh,0) rotate(400deg);opacity:0}}
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
 
-/* header */
-.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
-.bar{max-width:60rem;margin:0 auto;padding:.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brand{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.45rem;font-weight:700;letter-spacing:.01em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:.55rem}
-.dot{width:.7rem;height:.9rem;background:var(--petal);border-radius:80% 0 80% 0;transform:rotate(-20deg)}
-.music{display:flex;align-items:center;gap:.6rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:inherit;font-size:.9rem;line-height:1.4;padding:.4rem 1rem;border-radius:2rem;cursor:pointer;transition:border-color .2s,color .2s}
-.music:hover{border-color:var(--accent)}
-.music[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
-.eq{display:flex;align-items:flex-end;gap:2px;height:.8rem}
-.eq i{width:2px;height:30%;background:currentColor;border-radius:1px}
-.music[aria-pressed="true"] .eq i{animation:eq 1s ease-in-out infinite}
-.music[aria-pressed="true"] .eq i:nth-child(2){animation-delay:-.4s}
-.music[aria-pressed="true"] .eq i:nth-child(3){animation-delay:-.7s}
-@keyframes eq{0%,100%{height:25%}50%{height:100%}}
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
 
-/* layout */
-main{position:relative;z-index:1;max-width:60rem;margin:0 auto;padding:4.5rem 1.5rem 0}
-.eyebrow{font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:.5rem}
-h1{font-size:clamp(2.2rem,7vw,3.6rem);line-height:1.5;margin:0 0 1rem;font-weight:700}
-h1 span{background:linear-gradient(100deg,var(--accent),var(--petal));-webkit-background-clip:text;background-clip:text;color:transparent}
-.intro{font-size:1.15rem;line-height:2;color:var(--muted);max-width:42rem;margin-bottom:2.5rem}
-.list{display:grid;gap:1.2rem}
-.story{display:block;text-decoration:none;color:inherit;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:1.6rem 1.75rem;transition:transform .25s,box-shadow .25s,border-color .25s}
-.story:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--accent)}
-.num{font-family:"Cormorant Garamond",Georgia,serif;font-size:2rem;color:var(--petal);font-weight:700;line-height:1}
-.story h2{margin:.4rem 0 .5rem;font-size:1.45rem;line-height:1.6;font-weight:700}
-.story p{margin:0;color:var(--muted);line-height:1.9}
-.read-more{display:inline-block;margin-top:.8rem;color:var(--accent);font-weight:700;transition:transform .25s}
-.story:hover .read-more{transform:translateX(6px)}
-.back{display:inline-block;margin-top:2.5rem;color:var(--accent);text-decoration:none;font-weight:700;transition:transform .2s}
-.back:hover{transform:translateX(-4px)}
-footer{position:relative;z-index:1;max-width:60rem;margin:4rem auto 0;padding:1.5rem 1.5rem 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem;text-align:center}
-
-/* motion */
-@keyframes enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.eyebrow{animation:enter 1.2s ease-out both}
-h1{animation:enter 1.4s ease-out .15s both}
-.intro{animation:enter 1.4s ease-out .4s both}
-.js .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease-out,transform 1s ease-out}
-.js .reveal.in{opacity:1;transform:none}
-.list .reveal:nth-child(2){transition-delay:.12s}
-.list .reveal:nth-child(3){transition-delay:.24s}
-.list .reveal:nth-child(4){transition-delay:.36s}
-@media (prefers-reduced-motion:reduce){
-  body{animation:none;transition:none}
-  .petal,.blob,.eq i{animation:none!important}.petal{display:none}
-  .eyebrow,h1,.intro{animation:none!important}
-  .js .reveal{opacity:1;transform:none;transition:none}
-  html{scroll-behavior:auto}
-}
-</style>
-</head>
-<body>
-<div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div id="petals"></div></div>
-
-<header class="site">
-  <div class="bar">
-    <a class="brand" href="../index.html"><span class="dot"></span>Paradise of Ross</a>
-    <button class="music" id="music" type="button" aria-pressed="false"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="mlabel">Play music</span></button>
-  </div>
-</header>
-
-<main>
-  <div class="eyebrow">Paradise of Ross</div>
-  <h1><span>ഓർമ്മകൾ</span></h1>
-  <p class="intro">
-    കാലം കടന്നുപോയിട്ടും മനസ്സിൽ മായാതെ നിൽക്കുന്ന ചില മനുഷ്യരും സ്ഥലങ്ങളും നിമിഷങ്ങളുമാണ് ഈ താളുകളിൽ.
-    ഓരോ കഥയും ഒരു കാലത്തിലേക്കുള്ള ചെറിയൊരു തിരിച്ചുപോക്കാണ്.
-  </p>
-
-  <div class="list">
-
-    <!-- STORY 1 -->
-    <a class="story reveal" href="thekke-veedu.html">
-      <div class="num">01</div>
-      <h2>തെക്കേ വീട്</h2>
-      <p>
-        ഒരിക്കൽ നമ്മുടേതായിരുന്ന ഒരു വീട്, അവിടെ പിരിച്ചും കളിച്ചും വളർന്ന കുറെ മനുഷ്യർ —
-        കാലം മായ്ക്കാത്ത ചില സ്നേഹമുള്ള ഓർമ്മകൾ.
-      </p>
-      <span class="read-more">ഓർമ്മയിലേക്ക് →</span>
-    </a>
-
-    <!-- STORY 2 -->
-    <a class="story reveal" href="manu-mathew.html">
-      <div class="num">02</div>
-      <h2>മനു മാത്യുവിന്റെ ഓർമ്മ</h2>
-      <p>
-        മനു പറഞ്ഞുപോയ ഒരു കഥയും, വർഷങ്ങൾക്കിപ്പുറം മനസ്സിൽ വീണ്ടും തെളിഞ്ഞുനിൽക്കുന്ന ഒരു ഓർമ്മയും.
-      </p>
-      <span class="read-more">ഓർമ്മയിലേക്ക് →</span>
-    </a>
-
-    <!-- STORY 3 -->
-<a class="story reveal" href="Vazhailayil.html">
-    <div class="num">03</div>
-
-    <h2>വാഴയിലയിൽ പൊതിഞ്ഞ ബാല്യം</h2>
-
-    <p>
-        ഒരു ഇഡ്ഡലി, സാമ്പാർ, ചായ — പിന്നെ തുറന്നുവന്ന
-        ബാല്യത്തിന്റെ മണവും രുചിയും സ്നേഹവും നിറഞ്ഞ
-        കുറെ പഴയ ഓർമ്മകൾ.
-    </p>
-
-    <span class="read-more">ഓർമ്മയിലേക്ക് →</span>
-</a>
-        
-
-  </div>
-
-  <a class="back" href="../index.html#memories">← ഓർമ്മകളുടെ പ്രധാന താളിലേക്ക്</a>
-</main>
-
-<footer>സ്നേഹത്തോടെ, <strong>Abraham Clancy Ross</strong></footer>
+<link
+href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+rel="stylesheet">
 
 <script>
-(function(){
-  function lget(k){try{return localStorage.getItem(k)}catch(e){return null}}
-  function lput(k,v){try{localStorage.setItem(k,v)}catch(e){}}
-  function sget(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
-  function sput(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
-  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* fade out when leaving to another page */
-  document.addEventListener('click',function(e){
-    var a=e.target.closest&&e.target.closest('a[href]');
-    if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||a.target==='_blank'||reduce)return;
-    var h=a.getAttribute('href');
-    if(!h||h.charAt(0)==='#'||/^(https?:|mailto:|tel:)/.test(h))return;
-    e.preventDefault();
-    document.body.classList.add('leaving');
-    setTimeout(function(){location.href=a.href;},350);
-  });
-  window.addEventListener('pageshow',function(){document.body.classList.remove('leaving');});
-
-  /* petals */
-  var pe=document.getElementById('petals');
-  for(var i=0;i<16;i++){
-    var p=document.createElement('span'), z=.55+Math.random()*.5;
-    p.className='petal';
-    p.style.left=(Math.random()*100)+'%';
-    p.style.width=z+'rem'; p.style.height=(z*1.25)+'rem';
-    p.style.animationDuration=(16+Math.random()*14)+'s';
-    p.style.animationDelay=(-Math.random()*30)+'s';
-    p.style.setProperty('--dx',(Math.random()*160-80)+'px');
-    pe.appendChild(p);
-  }
-
-  /* scroll reveal */
-  var items=document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-    },{threshold:.15});
-    items.forEach(function(el){io.observe(el);});
-  }else{items.forEach(function(el){el.classList.add('in');});}
-
-  /* soft piano: remembers on/off and the place in the tune across pages */
-  var btn=document.getElementById('music'), lab=document.getElementById('mlabel');
-  var ctx=null, master=null, timer=null, next=0, on=false;
-  var step=Math.floor((parseInt(sget('rossStep'),10)||0)/8)*8;
-  var chords=[[48,55,60,64,67],[45,52,57,60,64],[41,48,57,60,65],[43,50,59,62,67]];
-  var arp=[0,2,3,2,4,3,2,1], mel=[72,74,76,79,81,79,76,74], STEP=0.75;
-  function ui(){
-    var live=on&&ctx&&ctx.state==='running';
-    btn.setAttribute('aria-pressed',live?'true':'false');
-    lab.textContent=live?'Pause music':'Play music';
-  }
-  function setup(){
-    var C=window.AudioContext||window.webkitAudioContext; if(!C)return false;
-    ctx=new C(); master=ctx.createGain(); master.gain.value=0;
-    var conv=ctx.createConvolver(), len=ctx.sampleRate*3, buf=ctx.createBuffer(2,len,ctx.sampleRate);
-    for(var ch=0;ch<2;ch++){var d=buf.getChannelData(ch);for(var i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.5);}
-    conv.buffer=buf;
-    var wet=ctx.createGain(); wet.gain.value=.5; var dry=ctx.createGain(); dry.gain.value=.7;
-    master.connect(dry); dry.connect(ctx.destination); master.connect(conv); conv.connect(wet); wet.connect(ctx.destination);
-    ctx.onstatechange=ui;
-    return true;
-  }
-  function note(m,t,v){
-    var f=440*Math.pow(2,(m-69)/12), lp=ctx.createBiquadFilter();
-    lp.type='lowpass'; lp.frequency.value=2200; lp.connect(master);
-    [[1,1],[2,.35],[3,.1]].forEach(function(p,i){
-      var o=ctx.createOscillator(), g=ctx.createGain(), d=3.8/(1+i*.7);
-      o.type='sine'; o.frequency.value=f*p[0];
-      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(v*p[1],t+.04);
-      g.gain.exponentialRampToValueAtTime(.0005,t+d);
-      o.connect(g); g.connect(lp); o.start(t); o.stop(t+d+.1);
-    });
-  }
-  function schedule(){
-    while(next<ctx.currentTime+1.5){
-      var bar=Math.floor(step/8)%4, pos=step%8, ch=chords[bar];
-      note(ch[arp[pos]],next,.16);
-      if(pos===0)note(ch[0]-12,next,.2);
-      if(pos%4===0&&Math.random()<.7)note(mel[Math.floor(Math.random()*mel.length)],next+STEP*.5,.08);
-      next+=STEP; step++;
-    }
-    sput('rossStep',step);
-  }
-  function play(){
-    if(!ctx&&!setup())return;
-    on=true; lput('rossMusic','on');
-    var r=ctx.resume(); if(r&&r.catch)r.catch(function(){});
-    if(!timer){
-      master.gain.cancelScheduledValues(ctx.currentTime);
-      master.gain.linearRampToValueAtTime(.9,ctx.currentTime+2);
-      next=ctx.currentTime+.1; schedule();
-      timer=setInterval(schedule,250);
-    }
-    ui();
-  }
-  function stop(){
-    on=false; lput('rossMusic','off');
-    clearInterval(timer); timer=null;
-    master.gain.cancelScheduledValues(ctx.currentTime);
-    master.gain.linearRampToValueAtTime(0,ctx.currentTime+1);
-    ui();
-  }
-  btn.addEventListener('click',function(){
-    if(on&&ctx&&ctx.state==='running')stop(); else play();
-  });
-  function first(e){
-    if(e.target.closest&&e.target.closest('#music'))return;
-    if(lget('rossMusic')==='off')return;
-    if(on&&ctx&&ctx.state==='running')return;
-    play();
-  }
-  ['pointerdown','keydown','touchstart'].forEach(function(ev){document.addEventListener(ev,first,{passive:true});});
-  if(lget('rossMusic')==='on')play();
-})();
+document.documentElement.classList.add('js');
 </script>
+
+
+<style>
+
+:root{
+    --bg:#101918;
+    --ink:#e6ece9;
+    --muted:#9fb0ac;
+    --line:#2d3f3d;
+    --accent:#6fc3c9;
+    --paper:#182321;
+    --petal:#e3a3b3;
+
+    --glow1:rgba(111,195,201,.12);
+    --glow2:rgba(227,163,179,.10);
+
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+
+    box-sizing:border-box;
+    padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+
+*{
+    box-sizing:border-box;
+}
+
+
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:5rem;
+}
+
+
+body{
+    margin:0;
+
+    background:var(--bg);
+    color:var(--ink);
+
+    font-family:
+        "Noto Serif Malayalam",
+        "Manjari",
+        "Kartika",
+        Georgia,
+        serif;
+
+    line-height:1.95;
+    font-size:1.0625rem;
+
+    overflow-x:hidden;
+
+    animation:pagein .6s ease-out both;
+
+    transition:opacity .35s ease;
+}
+
+
+body.leaving{
+    opacity:0;
+}
+
+
+@keyframes pagein{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+p{
+    margin:0 0 1rem;
+}
+
+
+a{
+    color:var(--accent);
+}
+
+
+:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+
+.blob{
+    position:absolute;
+    width:44rem;
+    height:44rem;
+    border-radius:50%;
+    filter:blur(40px);
+}
+
+
+.b1{
+    top:-14rem;
+    left:-12rem;
+
+    background:
+        radial-gradient(
+            circle,
+            var(--glow1),
+            transparent 65%
+        );
+
+    animation:
+        drift 26s ease-in-out infinite alternate;
+}
+
+
+.b2{
+    bottom:-16rem;
+    right:-14rem;
+
+    background:
+        radial-gradient(
+            circle,
+            var(--glow2),
+            transparent 65%
+        );
+
+    animation:
+        drift 32s ease-in-out infinite alternate-reverse;
+}
+
+
+@keyframes drift{
+
+    to{
+        transform:
+            translate3d(6rem,4rem,0)
+            scale(1.15);
+    }
+
+}
+
+
+.petal{
+    position:absolute;
+    top:0;
+
+    background:var(--petal);
+
+    border-radius:80% 0 80% 0;
+
+    opacity:0;
+
+    animation:
+        fall linear infinite;
+}
+
+
+@keyframes fall{
+
+    0%{
+        transform:
+            translate3d(0,-3rem,0)
+            rotate(0);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:.4;
+    }
+
+    90%{
+        opacity:.3;
+    }
+
+    100%{
+        transform:
+            translate3d(var(--dx),105vh,0)
+            rotate(400deg);
+
+        opacity:0;
+    }
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.site{
+
+    position:sticky;
+
+    top:env(safe-area-inset-top,0px);
+
+    z-index:5;
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    background:
+        color-mix(
+            in srgb,
+            var(--bg) 78%,
+            transparent
+        );
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+
+.bar{
+
+    max-width:60rem;
+
+    margin:0 auto;
+
+    padding:.7rem 1.5rem;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:1rem;
+}
+
+
+.brand{
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size:1.45rem;
+
+    font-weight:700;
+
+    letter-spacing:.01em;
+
+    color:var(--ink);
+
+    text-decoration:none;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.55rem;
+
+    white-space:nowrap;
+}
+
+
+.dot{
+
+    width:.7rem;
+    height:.9rem;
+
+    background:var(--petal);
+
+    border-radius:80% 0 80% 0;
+
+    transform:rotate(-20deg);
+}
+
+
+/* HEADER BUTTONS */
+
+.header-buttons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.6rem;
+}
+
+
+/* MUSIC BUTTON */
+
+.music{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.6rem;
+
+    border:
+        1px solid var(--line);
+
+    background:var(--paper);
+
+    color:var(--ink);
+
+    font:inherit;
+
+    font-size:.9rem;
+
+    line-height:1.4;
+
+    padding:.4rem 1rem;
+
+    border-radius:2rem;
+
+    cursor:pointer;
+
+    transition:
+        border-color .2s,
+        color .2s,
+        background .2s;
+}
+
+
+.music:hover{
+
+    border-color:
+        var(--accent);
+
+}
+
+
+.music[aria-pressed="true"]{
+
+    border-color:
+        var(--accent);
+
+    color:
+        var(--accent);
+
+}
+
+
+/* HOME BUTTON */
+
+.home{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:
+        1px solid var(--line);
+
+    background:var(--paper);
+
+    color:var(--ink);
+
+    font-family:
+        "Noto Serif Malayalam",
+        sans-serif;
+
+    font-size:.9rem;
+
+    line-height:1.4;
+
+    padding:.4rem 1rem;
+
+    border-radius:2rem;
+
+    text-decoration:none;
+
+    white-space:nowrap;
+
+    transition:
+        border-color .2s,
+        color .2s,
+        background .2s;
+}
+
+
+.home:hover{
+
+    border-color:
+        var(--accent);
+
+    color:
+        var(--accent);
+
+}
+
+
+/* EQUALIZER */
+
+.eq{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:2px;
+
+    height:.8rem;
+}
+
+
+.eq i{
+
+    width:2px;
+
+    height:30%;
+
+    background:currentColor;
+
+    border-radius:1px;
+}
+
+
+.music[aria-pressed="true"] .eq i{
+
+    animation:
+        eq 1s ease-in-out infinite;
+}
+
+
+.music[aria-pressed="true"]
+.eq i:nth-child(2){
+
+    animation-delay:-.4s;
+}
+
+
+.music[aria-pressed="true"]
+.eq i:nth-child(3){
+
+    animation-delay:-.7s;
+}
+
+
+@keyframes eq{
+
+    0%,100%{
+        height:25%;
+    }
+
+    50%{
+        height:100%;
+    }
+
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main{
+
+    position:relative;
+
+    z-index:1;
+
+    max-width:60rem;
+
+    margin:0 auto;
+
+    padding:
+        4.5rem
+        1.5rem
+        0;
+}
+
+
+.eyebrow{
+
+    font-size:.85rem;
+
+    letter-spacing:.14em;
+
+    text-transform:uppercase;
+
+    color:var(--accent);
+
+    font-weight:700;
+
+    margin-bottom:.5rem;
+
+}
+
+
+h1{
+
+    font-size:
+        clamp(
+            2.2rem,
+            7vw,
+            3.6rem
+        );
+
+    line-height:1.5;
+
+    margin:0 0 1rem;
+
+    font-weight:700;
+
+}
+
+
+h1 span{
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--accent),
+            var(--petal)
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+}
+
+
+.intro{
+
+    font-size:1.15rem;
+
+    line-height:2;
+
+    color:var(--muted);
+
+    max-width:42rem;
+
+    margin-bottom:2.5rem;
+}
+
+
+/* =====================================================
+   MEMORY CARDS
+===================================================== */
+
+.list{
+
+    display:grid;
+
+    gap:1.2rem;
+}
+
+
+.story{
+
+    display:block;
+
+    text-decoration:none;
+
+    color:inherit;
+
+    background:var(--paper);
+
+    border:
+        1px solid var(--line);
+
+    border-left:
+        4px solid var(--accent);
+
+    border-radius:12px;
+
+    padding:
+        1.6rem
+        1.75rem;
+
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        border-color .25s;
+}
+
+
+.story:hover{
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--shadow);
+
+    border-color:
+        var(--accent);
+}
+
+
+.num{
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size:2rem;
+
+    color:var(--petal);
+
+    font-weight:700;
+
+    line-height:1;
+}
+
+
+.story h2{
+
+    margin:
+        .4rem
+        0
+        .5rem;
+
+    font-size:1.45rem;
+
+    line-height:1.6;
+
+    font-weight:700;
+}
+
+
+.story p{
+
+    margin:0;
+
+    color:var(--muted);
+
+    line-height:1.9;
+}
+
+
+.read-more{
+
+    display:inline-block;
+
+    margin-top:.8rem;
+
+    color:var(--accent);
+
+    font-weight:700;
+
+    transition:
+        transform .25s;
+}
+
+
+.story:hover .read-more{
+
+    transform:
+        translateX(6px);
+}
+
+
+/* BACK LINK */
+
+.back{
+
+    display:inline-block;
+
+    margin-top:2.5rem;
+
+    color:var(--accent);
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:
+        transform .2s;
+}
+
+
+.back:hover{
+
+    transform:
+        translateX(-4px);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    position:relative;
+
+    z-index:1;
+
+    max-width:60rem;
+
+    margin:
+        4rem
+        auto
+        0;
+
+    padding:
+        1.5rem
+        1.5rem
+        3rem;
+
+    border-top:
+        1px solid var(--line);
+
+    color:var(--muted);
+
+    font-size:.95rem;
+
+    text-align:center;
+}
+
+
+/* =====================================================
+   MOTION
+===================================================== */
+
+@keyframes enter{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(18px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+    }
+
+}
+
+
+.eyebrow{
+
+    animation:
+        enter
+        1.2s
+        ease-out
+        both;
+}
+
+
+h1{
+
+    animation:
+        enter
+        1.4s
+        ease-out
+        .15s
+        both;
+}
+
+
+.intro{
+
+    animation:
+        enter
+        1.4s
+        ease-out
+        .4s
+        both;
+}
+
+
+.js .reveal{
+
+    opacity:0;
+
+    transform:
+        translateY(24px);
+
+    transition:
+        opacity 1s ease-out,
+        transform 1s ease-out;
+}
+
+
+.js .reveal.in{
+
+    opacity:1;
+
+    transform:none;
+}
+
+
+.list .reveal:nth-child(2){
+
+    transition-delay:.12s;
+}
+
+
+.list .reveal:nth-child(3){
+
+    transition-delay:.24s;
+}
+
+
+.list .reveal:nth-child(4){
+
+    transition-delay:.36s;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width:650px){
+
+    .bar{
+
+        padding:
+            .65rem
+            .8rem;
+
+        gap:.5rem;
+    }
+
+
+    .brand{
+
+        font-size:1.1rem;
+    }
+
+
+    .header-buttons{
+
+        gap:.35rem;
+    }
+
+
+    .music{
+
+        padding:
+            .35rem
+            .65rem;
+
+        font-size:.75rem;
+    }
+
+
+    .home{
+
+        padding:
+            .35rem
+            .65rem;
+
+        font-size:.75rem;
+    }
+
+
+    .music .eq{
+
+        display:none;
+    }
+
+
+    main{
+
+        padding:
+            3.5rem
+            1rem
+            0;
+    }
+
+
+    .story{
+
+        padding:
+            1.35rem
+            1.25rem;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    body{
+
+        animation:none;
+
+        transition:none;
+    }
+
+
+    .petal,
+    .blob,
+    .eq i{
+
+        animation:none!important;
+    }
+
+
+    .petal{
+
+        display:none;
+    }
+
+
+    .eyebrow,
+    h1,
+    .intro{
+
+        animation:none!important;
+    }
+
+
+    .js .reveal{
+
+        opacity:1;
+
+        transform:none;
+
+        transition:none;
+    }
+
+
+    html{
+
+        scroll-behavior:auto;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div class="bg" aria-hidden="true">
+
+    <div class="blob b1"></div>
+
+    <div class="blob b2"></div>
+
+    <div id="petals"></div>
+
+</div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site">
+
+    <div class="bar">
+
+
+        <!-- BRAND -->
+
+        <a
+            class="brand"
+            href="../index.html"
+        >
+
+            <span class="dot"></span>
+
+            Paradise of Ross
+
+        </a>
+
+
+        <!-- BUTTONS -->
+
+        <div class="header-buttons">
+
+
+            <!-- MUSIC -->
+
+            <button
+                class="music"
+                id="music"
+                type="button"
+                aria-pressed="false"
+            >
+
+                <span
+                    class="eq"
+                    aria-hidden="true"
+                >
+
+                    <i></i>
+                    <i></i>
+                    <i></i>
+
+                </span>
+
+
+                <span id="mlabel">
+                    Play music
+                </span>
+
+            </button>
+
+
+            <!-- HOME -->
+
+            <a
+                class="home"
+                href="../index.html"
+            >
+                മുഖ്യപേജ്
+            </a>
+
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+    <div class="eyebrow">
+        Paradise of Ross
+    </div>
+
+
+    <h1>
+        <span>ഓർമ്മകൾ</span>
+    </h1>
+
+
+    <p class="intro">
+
+        കാലം കടന്നുപോയിട്ടും മനസ്സിൽ മായാതെ
+        നിൽക്കുന്ന ചില മനുഷ്യരും സ്ഥലങ്ങളും
+        നിമിഷങ്ങളുമാണ് ഈ താളുകളിൽ.
+
+        ഓരോ കഥയും ഒരു കാലത്തിലേക്കുള്ള
+        ചെറിയൊരു തിരിച്ചുപോക്കാണ്.
+
+    </p>
+
+
+
+    <!-- =================================================
+         MEMORY LIST
+    ================================================= -->
+
+    <div class="list">
+
+
+        <!-- STORY 01 -->
+
+        <a
+            class="story reveal"
+            href="thekke-veedu.html"
+        >
+
+            <div class="num">
+                01
+            </div>
+
+
+            <h2>
+                തെക്കേ വീട്
+            </h2>
+
+
+            <p>
+
+                ഒരിക്കൽ നമ്മുടേതായിരുന്ന ഒരു വീട്,
+                അവിടെ പിരിച്ചും കളിച്ചും വളർന്ന
+                കുറെ മനുഷ്യർ —
+
+                കാലം മായ്ക്കാത്ത ചില
+                സ്നേഹമുള്ള ഓർമ്മകൾ.
+
+            </p>
+
+
+            <span class="read-more">
+                ഓർമ്മയിലേക്ക് →
+            </span>
+
+        </a>
+
+
+
+        <!-- STORY 02 -->
+
+        <a
+            class="story reveal"
+            href="manu-mathew.html"
+        >
+
+            <div class="num">
+                02
+            </div>
+
+
+            <h2>
+                മനു മാത്യുവിന്റെ ഓർമ്മ
+            </h2>
+
+
+            <p>
+
+                മനു പറഞ്ഞുപോയ ഒരു കഥയും,
+                വർഷങ്ങൾക്കിപ്പുറം മനസ്സിൽ
+                വീണ്ടും തെളിഞ്ഞുനിൽക്കുന്ന
+                ഒരു ഓർമ്മയും.
+
+            </p>
+
+
+            <span class="read-more">
+                ഓർമ്മയിലേക്ക് →
+            </span>
+
+        </a>
+
+
+
+        <!-- STORY 03 -->
+
+        <a
+            class="story reveal"
+            href="Vazhailayil.html"
+        >
+
+            <div class="num">
+                03
+            </div>
+
+
+            <h2>
+                വാഴയിലയിൽ പൊതിഞ്ഞ ബാല്യം
+            </h2>
+
+
+            <p>
+
+                ഒരു ഇഡ്ഡലി, സാമ്പാർ, ചായ —
+                പിന്നെ തുറന്നുവന്ന
+
+                ബാല്യത്തിന്റെ മണവും രുചിയും
+                സ്നേഹവും നിറഞ്ഞ
+                കുറെ പഴയ ഓർമ്മകൾ.
+
+            </p>
+
+
+            <span class="read-more">
+                ഓർമ്മയിലേക്ക് →
+            </span>
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- BACK -->
+
+    <a
+        class="back"
+        href="../index.html#memories"
+    >
+        ← ഓർമ്മകളുടെ പ്രധാന താളിലേക്ക്
+    </a>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    സ്നേഹത്തോടെ,
+    <strong>Abraham Clancy Ross</strong>
+
+</footer>
+
+
+
+<!-- =====================================================
+     MUSIC SCRIPT
+===================================================== -->
+
+<script>
+
+(function(){
+
+
+    /* =================================================
+       STORAGE
+    ================================================= */
+
+    function getLocal(key){
+
+        try{
+
+            return localStorage.getItem(key);
+
+        }catch(e){
+
+            return null;
+
+        }
+
+    }
+
+
+    function setLocal(key,value){
+
+        try{
+
+            localStorage.setItem(
+                key,
+                value
+            );
+
+        }catch(e){}
+
+    }
+
+
+    function getSession(key){
+
+        try{
+
+            return sessionStorage.getItem(key);
+
+        }catch(e){
+
+            return null;
+
+        }
+
+    }
+
+
+    function setSession(key,value){
+
+        try{
+
+            sessionStorage.setItem(
+                key,
+                value
+            );
+
+        }catch(e){}
+
+    }
+
+
+
+    /* =================================================
+       REDUCED MOTION
+    ================================================= */
+
+    var reduce =
+        window.matchMedia &&
+        matchMedia(
+            '(prefers-reduced-motion: reduce)'
+        ).matches;
+
+
+
+    /* =================================================
+       PAGE FADE
+    ================================================= */
+
+    document.addEventListener(
+        'click',
+        function(e){
+
+            var a =
+                e.target.closest &&
+                e.target.closest('a[href]');
+
+
+            if(
+                !a ||
+                e.defaultPrevented ||
+                e.metaKey ||
+                e.ctrlKey ||
+                e.shiftKey ||
+                a.target === '_blank' ||
+                reduce
+            ){
+
+                return;
+
+            }
+
+
+            var h =
+                a.getAttribute('href');
+
+
+            if(
+                !h ||
+                h.charAt(0) === '#' ||
+                /^(https?:|mailto:|tel:)/.test(h)
+            ){
+
+                return;
+
+            }
+
+
+            e.preventDefault();
+
+
+            document.body.classList.add(
+                'leaving'
+            );
+
+
+            setTimeout(
+                function(){
+
+                    location.href =
+                        a.href;
+
+                },
+                350
+            );
+
+        }
+    );
+
+
+    window.addEventListener(
+        'pageshow',
+        function(){
+
+            document.body.classList.remove(
+                'leaving'
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       FALLING PETALS
+    ================================================= */
+
+    var petals =
+        document.getElementById(
+            'petals'
+        );
+
+
+    for(
+        var i = 0;
+        i < 16;
+        i++
+    ){
+
+        var p =
+            document.createElement('span');
+
+
+        var size =
+            .55 +
+            Math.random() * .5;
+
+
+        p.className =
+            'petal';
+
+
+        p.style.left =
+            Math.random() * 100 + '%';
+
+
+        p.style.width =
+            size + 'rem';
+
+
+        p.style.height =
+            size * 1.25 + 'rem';
+
+
+        p.style.animationDuration =
+            16 +
+            Math.random() * 14 +
+            's';
+
+
+        p.style.animationDelay =
+            -Math.random() * 30 +
+            's';
+
+
+        p.style.setProperty(
+            '--dx',
+            Math.random() * 160 - 80 + 'px'
+        );
+
+
+        petals.appendChild(p);
+
+    }
+
+
+
+    /* =================================================
+       SCROLL REVEAL
+    ================================================= */
+
+    var items =
+        document.querySelectorAll(
+            '.reveal'
+        );
+
+
+    if(
+        'IntersectionObserver'
+        in window
+    ){
+
+        var observer =
+            new IntersectionObserver(
+                function(entries){
+
+                    entries.forEach(
+                        function(entry){
+
+                            if(
+                                entry.isIntersecting
+                            ){
+
+                                entry.target.classList.add(
+                                    'in'
+                                );
+
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold:.15
+                }
+            );
+
+
+        items.forEach(
+            function(el){
+
+                observer.observe(el);
+
+            }
+        );
+
+    }else{
+
+        items.forEach(
+            function(el){
+
+                el.classList.add('in');
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       PIANO MUSIC
+    ================================================= */
+
+    var button =
+        document.getElementById(
+            'music'
+        );
+
+
+    var label =
+        document.getElementById(
+            'mlabel'
+        );
+
+
+    var audioContext =
+        null;
+
+
+    var master =
+        null;
+
+
+    var timer =
+        null;
+
+
+    var nextTime =
+        0;
+
+
+    var playing =
+        false;
+
+
+    var step =
+        Math.floor(
+            (
+                parseInt(
+                    getSession('rossStep'),
+                    10
+                ) || 0
+            ) / 8
+        ) * 8;
+
+
+
+    /* =================================================
+       CHORDS
+    ================================================= */
+
+    var chords = [
+
+        [48,55,60,64,67],
+
+        [45,52,57,60,64],
+
+        [41,48,57,60,65],
+
+        [43,50,59,62,67]
+
+    ];
+
+
+    /* =================================================
+       ARPEGGIO
+    ================================================= */
+
+    var arpeggio = [
+
+        0,2,3,2,
+        4,3,2,1
+
+    ];
+
+
+    /* =================================================
+       MELODY
+    ================================================= */
+
+    var melody = [
+
+        72,74,76,79,
+        81,79,76,74
+
+    ];
+
+
+    var STEP =
+        0.75;
+
+
+
+    /* =================================================
+       UPDATE BUTTON
+    ================================================= */
+
+    function updateButton(){
+
+        var live =
+            playing &&
+            audioContext &&
+            audioContext.state === 'running';
+
+
+        button.setAttribute(
+            'aria-pressed',
+            live ? 'true' : 'false'
+        );
+
+
+        label.textContent =
+            live
+            ? 'Pause music'
+            : 'Play music';
+
+    }
+
+
+
+    /* =================================================
+       CREATE AUDIO
+    ================================================= */
+
+    function setupAudio(){
+
+        var AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+
+        if(!AudioContext){
+
+            alert(
+                'Your browser does not support Web Audio.'
+            );
+
+            return false;
+
+        }
+
+
+        audioContext =
+            new AudioContext();
+
+
+        master =
+            audioContext.createGain();
+
+
+        master.gain.value =
+            0;
+
+
+
+        /* ==============================
+           REVERB
+        ============================== */
+
+        var convolver =
+            audioContext.createConvolver();
+
+
+        var length =
+            audioContext.sampleRate * 3;
+
+
+        var impulse =
+            audioContext.createBuffer(
+                2,
+                length,
+                audioContext.sampleRate
+            );
+
+
+        for(
+            var channel = 0;
+            channel < 2;
+            channel++
+        ){
+
+            var data =
+                impulse.getChannelData(
+                    channel
+                );
+
+
+            for(
+                var i = 0;
+                i < length;
+                i++
+            ){
+
+                data[i] =
+                    (
+                        Math.random() * 2 - 1
+                    )
+                    *
+                    Math.pow(
+                        1 - i / length,
+                        2.5
+                    );
+
+            }
+
+        }
+
+
+        convolver.buffer =
+            impulse;
+
+
+
+        var wet =
+            audioContext.createGain();
+
+
+        var dry =
+            audioContext.createGain();
+
+
+        wet.gain.value =
+            .5;
+
+
+        dry.gain.value =
+            .7;
+
+
+        master.connect(dry);
+
+        dry.connect(
+            audioContext.destination
+        );
+
+
+        master.connect(
+            convolver
+        );
+
+
+        convolver.connect(wet);
+
+        wet.connect(
+            audioContext.destination
+        );
+
+
+        audioContext.onstatechange =
+            updateButton;
+
+
+        return true;
+
+    }
+
+
+
+    /* =================================================
+       PLAY PIANO NOTE
+    ================================================= */
+
+    function playNote(
+        midi,
+        time,
+        volume
+    ){
+
+        var frequency =
+            440 *
+            Math.pow(
+                2,
+                (midi - 69) / 12
+            );
+
+
+        var filter =
+            audioContext.createBiquadFilter();
+
+
+        filter.type =
+            'lowpass';
+
+
+        filter.frequency.value =
+            2200;
+
+
+        filter.connect(
+            master
+        );
+
+
+        var harmonics = [
+
+            [1,1],
+
+            [2,.35],
+
+            [3,.1]
+
+        ];
+
+
+        harmonics.forEach(
+            function(part,index){
+
+                var oscillator =
+                    audioContext.createOscillator();
+
+
+                var gain =
+                    audioContext.createGain();
+
+
+                var duration =
+                    3.8 /
+                    (1 + index * .7);
+
+
+                oscillator.type =
+                    'sine';
+
+
+                oscillator.frequency.value =
+                    frequency *
+                    part[0];
+
+
+                gain.gain.setValueAtTime(
+                    0,
+                    time
+                );
+
+
+                gain.gain.linearRampToValueAtTime(
+                    volume *
+                    part[1],
+                    time + .04
+                );
+
+
+                gain.gain.exponentialRampToValueAtTime(
+                    .0005,
+                    time + duration
+                );
+
+
+                oscillator.connect(gain);
+
+
+                gain.connect(filter);
+
+
+                oscillator.start(time);
+
+
+                oscillator.stop(
+                    time +
+                    duration +
+                    .1
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       SCHEDULE MUSIC
+    ================================================= */
+
+    function scheduleMusic(){
+
+        if(!audioContext){
+
+            return;
+
+        }
+
+
+        while(
+            nextTime <
+            audioContext.currentTime + 1.5
+        ){
+
+            var bar =
+                Math.floor(
+                    step / 8
+                ) % 4;
+
+
+            var position =
+                step % 8;
+
+
+            var chord =
+                chords[bar];
+
+
+            /* ARPEGGIO */
+
+            playNote(
+
+                chord[
+                    arpeggio[position]
+                ],
+
+                nextTime,
+
+                .16
+
+            );
+
+
+            /* BASS */
+
+            if(
+                position === 0
+            ){
+
+                playNote(
+
+                    chord[0] - 12,
+
+                    nextTime,
+
+                    .20
+
+                );
+
+            }
+
+
+            /* MELODY */
+
+            if(
+                position % 4 === 0 &&
+                Math.random() < .7
+            ){
+
+                var note =
+                    melody[
+                        Math.floor(
+                            Math.random() *
+                            melody.length
+                        )
+                    ];
+
+
+                playNote(
+
+                    note,
+
+                    nextTime +
+                    STEP * .5,
+
+                    .08
+
+                );
+
+            }
+
+
+            nextTime +=
+                STEP;
+
+
+            step++;
+
+        }
+
+
+        setSession(
+            'rossStep',
+            step
+        );
+
+    }
+
+
+
+    /* =================================================
+       START MUSIC
+    ================================================= */
+
+    async function startMusic(){
+
+        if(!audioContext){
+
+            if(!setupAudio()){
+
+                return;
+
+            }
+
+        }
+
+
+        try{
+
+            await audioContext.resume();
+
+        }catch(e){
+
+            return;
+
+        }
+
+
+        playing =
+            true;
+
+
+        setLocal(
+            'rossMusic',
+            'on'
+        );
+
+
+        if(!timer){
+
+            master.gain.cancelScheduledValues(
+                audioContext.currentTime
+            );
+
+
+            master.gain.linearRampToValueAtTime(
+
+                .9,
+
+                audioContext.currentTime + 2
+
+            );
+
+
+            nextTime =
+                audioContext.currentTime + .1;
+
+
+            scheduleMusic();
+
+
+            timer =
+                setInterval(
+                    scheduleMusic,
+                    250
+                );
+
+        }
+
+
+        updateButton();
+
+    }
+
+
+
+    /* =================================================
+       STOP MUSIC
+    ================================================= */
+
+    function stopMusic(){
+
+        if(!audioContext){
+
+            return;
+
+        }
+
+
+        playing =
+            false;
+
+
+        setLocal(
+            'rossMusic',
+            'off'
+        );
+
+
+        clearInterval(
+            timer
+        );
+
+
+        timer =
+            null;
+
+
+        master.gain.cancelScheduledValues(
+            audioContext.currentTime
+        );
+
+
+        master.gain.linearRampToValueAtTime(
+
+            0,
+
+            audioContext.currentTime + 1
+
+        );
+
+
+        updateButton();
+
+    }
+
+
+
+    /* =================================================
+       MUSIC BUTTON
+    ================================================= */
+
+    button.addEventListener(
+        'click',
+        function(){
+
+            if(
+                playing &&
+                audioContext &&
+                audioContext.state === 'running'
+            ){
+
+                stopMusic();
+
+            }else{
+
+                startMusic();
+
+            }
+
+        }
+    );
+
+
+
+    /* =================================================
+       START MUSIC AFTER FIRST USER INTERACTION
+    ================================================= */
+
+    function firstInteraction(event){
+
+        if(
+            event.target.closest &&
+            event.target.closest('#music')
+        ){
+
+            return;
+
+        }
+
+
+        if(
+            getLocal('rossMusic') === 'off'
+        ){
+
+            return;
+
+        }
+
+
+        if(
+            playing &&
+            audioContext &&
+            audioContext.state === 'running'
+        ){
+
+            return;
+
+        }
+
+
+        startMusic();
+
+    }
+
+
+
+    [
+        'pointerdown',
+        'keydown',
+        'touchstart'
+    ].forEach(
+        function(eventName){
+
+            document.addEventListener(
+                eventName,
+                firstInteraction,
+                {
+                    passive:true,
+                    once:true
+                }
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       RESTORE MUSIC PREFERENCE
+    ================================================= */
+
+    if(
+        getLocal('rossMusic') === 'on'
+    ){
+
+        /*
+         * Browser autoplay policy may prevent
+         * immediate audio playback.
+         *
+         * The first user interaction will
+         * start the music.
+         */
+
+        updateButton();
+
+    }else{
+
+        updateButton();
+
+    }
+
+
+})();
+
+</script>
+
+
 </body>
+
 </html>
