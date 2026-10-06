@@ -4,15 +4,21 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>നന്ദി | Paradise of Ross</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
 
 <link
-href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700;800;900&family=Noto+Serif+Malayalam:wght@400;600;700;900&display=swap"
+href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700;800;900&family=Noto+Serif+Malayalam:wght@400;500;600;700;900&display=swap"
 rel="stylesheet">
 
 
@@ -23,8 +29,9 @@ rel="stylesheet">
 ========================================================= */
 
 :root {
+
     --bg: #0b1817;
-    --bg2: #101f1c;
+    --bg2: #102522;
 
     --card: #162a27;
 
@@ -49,16 +56,20 @@ rel="stylesheet">
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
+
     margin: 0;
 
     min-height: 100vh;
 
     background:
+
         radial-gradient(
             circle at 10% 20%,
             rgba(62, 132, 130, .12),
@@ -79,10 +90,15 @@ body {
         "Noto Serif Malayalam",
         serif;
 
+    font-size: 1.05rem;
+
     line-height: 1.9;
 
     -webkit-font-smoothing: antialiased;
+
+    overflow-x: hidden;
 }
+
 
 a {
     color: inherit;
@@ -110,6 +126,9 @@ a {
         rgba(11, 24, 23, .88);
 
     backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
         blur(10px);
 
     position: relative;
@@ -144,45 +163,54 @@ a {
 
 .brand {
 
-    text-decoration: none;
-
-    color: var(--white);
+    color:
+        var(--white);
 
     font-family:
         "Noto Serif Malayalam",
         serif;
 
-    font-size: 18px;
+    font-size:
+        18px;
 
-    font-weight: 600;
+    font-weight:
+        600;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 }
 
 
 .brand::before {
 
-    content: "◈";
+    content:
+        "◈";
 
-    color: var(--pink);
+    color:
+        var(--pink);
 
-    margin-right: 9px;
+    margin-right:
+        9px;
 
-    font-size: 13px;
+    font-size:
+        13px;
 }
 
 
 /* =========================================================
-   RIGHT SIDE CONTROLS
+   HEADER CONTROLS
 ========================================================= */
 
 .header-controls {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 18px;
+    gap:
+        12px;
 }
 
 
@@ -192,27 +220,43 @@ a {
 
 .music {
 
-    border:
-        1px solid
-        var(--border);
+    display:
+        inline-flex;
 
-    border-radius: 999px;
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     padding:
         6px 15px;
 
-    color: var(--soft);
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        999px;
+
+    color:
+        var(--muted);
 
     background:
         transparent;
 
     font-family:
-        "Noto Sans Malayalam",
+        "Anek Malayalam",
         sans-serif;
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    cursor: pointer;
+    cursor:
+        pointer;
+
+    white-space:
+        nowrap;
 
     transition:
         border-color .25s ease,
@@ -228,6 +272,9 @@ a {
 
     color:
         var(--cyan);
+
+    background:
+        rgba(114,216,223,.04);
 }
 
 
@@ -256,32 +303,63 @@ a {
 
 
 /* =========================================================
-   HOME
+   HOME BUTTON
 ========================================================= */
 
 .home {
 
-    text-decoration: none;
+    display:
+        inline-flex;
 
-    color: var(--muted);
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        6px 15px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        999px;
+
+    color:
+        var(--muted);
+
+    background:
+        transparent;
 
     font-family:
-        "Noto Sans Malayalam",
+        "Anek Malayalam",
         sans-serif;
 
-    font-size: 14px;
+    font-size:
+        13px;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 
     transition:
-        color .3s ease;
+        border-color .25s ease,
+        color .25s ease,
+        background .25s ease;
 }
 
 
 .home:hover {
 
+    border-color:
+        var(--cyan);
+
     color:
         var(--cyan);
+
+    background:
+        rgba(114,216,223,.04);
 }
 
 
@@ -297,7 +375,8 @@ main {
             calc(100% - 40px)
         );
 
-    margin: auto;
+    margin:
+        auto;
 
     padding:
         90px 0
@@ -306,7 +385,7 @@ main {
 
 
 /* =========================================================
-   INTRO
+   HERO
 ========================================================= */
 
 .eyebrow {
@@ -315,7 +394,7 @@ main {
         var(--cyan);
 
     font-family:
-        "Noto Sans Malayalam",
+        "Anek Malayalam",
         sans-serif;
 
     font-size:
@@ -332,13 +411,23 @@ main {
 }
 
 
+/*
+   IMPORTANT:
+   Increased line-height and padding prevent
+   Malayalam characters from being clipped.
+*/
+
 h1 {
 
     margin:
         0;
 
+    padding:
+        .08em 0 .14em;
+
     font-family:
-        "Noto Sans Malayalam",
+        "Anek Malayalam",
+        "Noto Serif Malayalam",
         sans-serif;
 
     font-size:
@@ -349,7 +438,7 @@ h1 {
         );
 
     line-height:
-        1.05;
+        1.35;
 
     font-weight:
         700;
@@ -373,17 +462,24 @@ h1 {
 }
 
 
+/* =========================================================
+   INTRO
+========================================================= */
+
 .intro {
 
     max-width:
         680px;
 
     margin:
-        32px 0
-        70px;
+        30px 0 65px;
 
     color:
         var(--muted);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
 
     font-size:
         17px;
@@ -394,25 +490,32 @@ h1 {
 
 
 /* =========================================================
-   THANKS CARD
+   STORY CARD
 ========================================================= */
 
-.thanks-card {
+.story-card {
 
-    position: relative;
+    position:
+        relative;
 
-    display: block;
+    display:
+        block;
 
     padding:
         34px 38px
         32px;
 
+    margin-bottom:
+        24px;
+
     background:
+
         linear-gradient(
             135deg,
             rgba(255,255,255,.025),
             rgba(255,255,255,.005)
         ),
+
         var(--card);
 
     border:
@@ -432,9 +535,6 @@ h1 {
     color:
         inherit;
 
-    margin-bottom:
-        24px;
-
     transition:
         transform .35s ease,
         border-color .35s ease,
@@ -442,7 +542,7 @@ h1 {
 }
 
 
-.thanks-card:hover {
+.story-card:hover {
 
     transform:
         translateY(-5px);
@@ -451,8 +551,12 @@ h1 {
         rgba(114,216,223,.65);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,.28),
-        0 0 35px rgba(114,216,223,.05);
+
+        0 20px 60px
+        rgba(0,0,0,.28),
+
+        0 0 35px
+        rgba(114,216,223,.05);
 }
 
 
@@ -462,12 +566,12 @@ h1 {
 
 .number {
 
-    font-family:
-        "Noto Sans Malayalam",
-        sans-serif;
-
     color:
         var(--pink);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
 
     font-size:
         15px;
@@ -487,14 +591,17 @@ h1 {
    CARD TITLE
 ========================================================= */
 
-.thanks-card h2 {
+.story-card h2 {
 
     margin:
-        0 0
-        14px;
+        0 0 14px;
+
+    color:
+        var(--white);
 
     font-family:
-        "Noto Sans Malayalam",
+        "Anek Malayalam",
+        "Noto Serif Malayalam",
         sans-serif;
 
     font-size:
@@ -504,11 +611,8 @@ h1 {
             2.35rem
         );
 
-    color:
-        var(--white);
-
     line-height:
-        1.35;
+        1.4;
 
     font-weight:
         700;
@@ -519,11 +623,10 @@ h1 {
    CARD DESCRIPTION
 ========================================================= */
 
-.thanks-card p {
+.story-card p {
 
     margin:
-        0 0
-        22px;
+        0 0 22px;
 
     color:
         var(--muted);
@@ -541,10 +644,10 @@ h1 {
 
 
 /* =========================================================
-   READ LINK
+   READ MORE
 ========================================================= */
 
-.read {
+.read-more {
 
     display:
         inline-block;
@@ -553,7 +656,7 @@ h1 {
         var(--cyan);
 
     font-family:
-        "Noto Sans Malayalam",
+        "Anek Malayalam",
         sans-serif;
 
     font-size:
@@ -567,7 +670,7 @@ h1 {
 }
 
 
-.thanks-card:hover .read {
+.story-card:hover .read-more {
 
     transform:
         translateX(6px);
@@ -592,6 +695,10 @@ h1 {
 
     color:
         #849994;
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
 
     font-size:
         14px;
@@ -628,7 +735,7 @@ footer {
         #657873;
 
     font-family:
-        "Noto Sans Malayalam",
+        "Anek Malayalam",
         sans-serif;
 
     font-size:
@@ -658,7 +765,7 @@ footer {
             calc(100% - 28px);
 
         gap:
-            10px;
+            8px;
     }
 
 
@@ -672,24 +779,18 @@ footer {
     .header-controls {
 
         gap:
-            8px;
+            6px;
     }
 
 
-    .music {
+    .music,
+    .home {
 
         padding:
-            6px 11px;
+            6px 10px;
 
         font-size:
             11px;
-    }
-
-
-    .home {
-
-        font-size:
-            12px;
     }
 
 
@@ -704,10 +805,21 @@ footer {
     }
 
 
+    /*
+       Extra vertical room for Malayalam
+       on mobile screens.
+    */
+
     h1 {
 
         font-size:
             3.2rem;
+
+        line-height:
+            1.35;
+
+        padding:
+            .08em 0 .16em;
     }
 
 
@@ -716,12 +828,15 @@ footer {
         font-size:
             16px;
 
+        line-height:
+            1.85;
+
         margin-bottom:
             48px;
     }
 
 
-    .thanks-card {
+    .story-card {
 
         padding:
             28px 26px
@@ -732,17 +847,17 @@ footer {
     }
 
 
-    .thanks-card h2 {
+    .story-card h2 {
 
         font-size:
             1.8rem;
 
         line-height:
-            1.4;
+            1.45;
     }
 
 
-    .thanks-card p {
+    .story-card p {
 
         font-size:
             16px;
@@ -761,14 +876,17 @@ footer {
 @media (prefers-reduced-motion: reduce) {
 
     html {
+
         scroll-behavior:
             auto;
     }
 
-    .thanks-card,
-    .read,
+
+    .story-card,
+    .read-more,
     .music,
     .home {
+
         transition:
             none;
     }
@@ -807,7 +925,7 @@ footer {
         <div class="header-controls">
 
 
-            <!-- MUSIC -->
+            <!-- PLAY MUSIC -->
 
             <button
                 class="music"
@@ -819,7 +937,7 @@ footer {
             </button>
 
 
-            <!-- HOME -->
+            <!-- MUKHYAPAGE -->
 
             <a
                 href="../index.html"
@@ -827,7 +945,6 @@ footer {
             >
                 മുഖ്യപേജ്
             </a>
-
 
         </div>
 
@@ -844,36 +961,40 @@ footer {
 <main>
 
 
-    <!-- INTRO -->
+    <!-- HERO -->
 
-    <div class="eyebrow">
-        PARADISE OF ROSS
-    </div>
+    <section>
 
-
-    <h1>
-        നന്ദി
-    </h1>
+        <div class="eyebrow">
+            PARADISE OF ROSS
+        </div>
 
 
-    <p class="intro">
+        <h1>
+            നന്ദി
+        </h1>
 
-        ചില നിമിഷങ്ങൾ നമ്മൾ അനുഭവിക്കുന്നു.
-        ചിലത് ഓർമ്മയായി മാറുന്നു.
-        ചില ഓർമ്മകൾക്ക് പിന്നിൽ
-        നന്ദി പറയേണ്ട മനുഷ്യരുണ്ടാകും.
 
-    </p>
+        <p class="intro">
+
+            ചില നിമിഷങ്ങൾ നമ്മൾ അനുഭവിക്കുന്നു.
+            ചിലത് ഓർമ്മയായി മാറുന്നു.
+            ചില ഓർമ്മകൾക്ക് പിന്നിൽ നിന്നി
+            പറയേണ്ട മനുഷ്യരുണ്ട്.
+
+        </p>
+
+    </section>
 
 
 
     <!-- ===================================================
-         THANK YOU STORY
+         STORY
     =================================================== -->
 
     <a
+        class="story-card"
         href="onam_thanks.html"
-        class="thanks-card"
     >
 
         <div class="number">
@@ -888,17 +1009,17 @@ footer {
 
         <p>
 
-            തുടർച്ചയായ നാലാം വർഷവും
-            തിരുവോണാമുറ്റമായി തുറന്ന മുറ്റത്തിനും,
-            ഒരുമിച്ചുകൂടിയ എല്ലാവർക്കും,
-            ഈ വർഷത്തെ ഓണാഘോഷത്തെ
+            തുടങ്ങിയത് നാളുകൾ വര്ഷവും
+            തിരുവോണമായിരുന്നു.
+            ഒരിച്ചുകൂടിയ എല്ലാവർക്കും,
+            ഈ വർഷത്തെ ഓണക്കാലത്തെ
             മനോഹരമാക്കിയ ഓരോരുത്തർക്കുമുള്ള
             സ്നേഹവും നന്ദിയും.
 
         </p>
 
 
-        <span class="read">
+        <span class="read-more">
             നന്ദിയിലേക്ക് →
         </span>
 
@@ -912,9 +1033,9 @@ footer {
 
     <div class="note">
 
-        ചില നന്ദികൾ ഒരു വാക്കിൽ തീരില്ല.
-        അതുകൊണ്ടാണ് ചില ഓർമ്മകൾ
-        കഥകളായി സൂക്ഷിക്കുന്നത്.
+        ചില നിമിഷങ്ങൾ ഒരു വാക്കിൽ തീരില്ല.
+        അതുകൊണ്ടാണ് ചില ഓർമ്മകൾ കഥകളായി
+        സൂക്ഷിക്കുന്നത്.
 
     </div>
 
@@ -937,55 +1058,162 @@ footer {
 
 <!-- =======================================================
      PIANO MUSIC
-     
-     Same generated piano system used
-     on the Paradise of Ross first screen.
 ======================================================= -->
 
 <script>
 
-(function(){
+(function () {
+
 
     const btn =
         document.getElementById("music");
 
 
-    let ctx = null;
+    let ctx =
+        null;
 
-    let master = null;
 
-    let timer = null;
+    let master =
+        null;
 
-    let step = 0;
 
-    let next = 0;
+    let timer =
+        null;
 
-    let playing = false;
+
+    let step =
+        0;
+
+
+    let next =
+        0;
+
+
+    let playing =
+        false;
 
 
     /* =====================================================
-       SAME PIANO CHORD PROGRESSION
+       MUSIC STATE
+    ===================================================== */
+
+    function getMusicState() {
+
+        try {
+
+            return localStorage.getItem(
+                "rossMusic"
+            );
+
+        } catch (e) {
+
+            return null;
+
+        }
+
+    }
+
+
+    function setMusicState(value) {
+
+        try {
+
+            localStorage.setItem(
+                "rossMusic",
+                value
+            );
+
+        } catch (e) {}
+
+    }
+
+
+    /* =====================================================
+       TUNE POSITION
+    ===================================================== */
+
+    function getStep() {
+
+        try {
+
+            return parseInt(
+                sessionStorage.getItem(
+                    "rossStep"
+                ),
+                10
+            ) || 0;
+
+        } catch (e) {
+
+            return 0;
+
+        }
+
+    }
+
+
+    function setStep(value) {
+
+        try {
+
+            sessionStorage.setItem(
+                "rossStep",
+                value
+            );
+
+        } catch (e) {}
+
+    }
+
+
+    step =
+        Math.floor(
+            getStep() / 8
+        ) * 8;
+
+
+
+    /* =====================================================
+       CHORDS
     ===================================================== */
 
     const chords = [
 
-        [48,55,60,64,67],
+        [48, 55, 60, 64, 67],
 
-        [45,52,57,60,64],
+        [45, 52, 57, 60, 64],
 
-        [41,48,57,60,65],
+        [41, 48, 57, 60, 65],
 
-        [43,50,59,62,67]
+        [43, 50, 59, 62, 67]
 
     ];
 
 
-    const arp =
-        [0,2,3,2,4,3,2,1];
+    /* =====================================================
+       ARPEGGIO
+    ===================================================== */
+
+    const arp = [
+
+        0, 2, 3, 2,
+
+        4, 3, 2, 1
+
+    ];
 
 
-    const melody =
-        [72,74,76,79,81,79,76,74];
+    /* =====================================================
+       MELODY
+    ===================================================== */
+
+    const melody = [
+
+        72, 74, 76, 79,
+
+        81, 79, 76, 74
+
+    ];
 
 
     const STEP =
@@ -994,23 +1222,25 @@ footer {
 
 
     /* =====================================================
-       CREATE AUDIO CONTEXT
+       AUDIO SETUP
     ===================================================== */
 
-    function setupAudio(){
+    function setupAudio() {
+
 
         const AudioContext =
             window.AudioContext ||
             window.webkitAudioContext;
 
 
-        if(!AudioContext){
+        if (!AudioContext) {
 
             alert(
                 "Your browser does not support Web Audio."
             );
 
             return false;
+
         }
 
 
@@ -1024,7 +1254,6 @@ footer {
 
         master.gain.value =
             0;
-
 
 
         /* =================================================
@@ -1047,11 +1276,11 @@ footer {
             );
 
 
-        for(
+        for (
             let channel = 0;
             channel < 2;
             channel++
-        ){
+        ) {
 
             const data =
                 impulse.getChannelData(
@@ -1059,15 +1288,20 @@ footer {
                 );
 
 
-            for(
+            for (
                 let i = 0;
                 i < length;
                 i++
-            ){
+            ) {
 
                 data[i] =
-                    (Math.random() * 2 - 1)
+
+                    (
+                        Math.random() * 2 - 1
+                    )
+
                     *
+
                     Math.pow(
                         1 - i / length,
                         2.5
@@ -1086,22 +1320,17 @@ footer {
             ctx.createGain();
 
 
-        wet.gain.value =
-            .5;
-
-
         const dry =
             ctx.createGain();
 
 
+        wet.gain.value =
+            0.5;
+
+
         dry.gain.value =
-            .7;
+            0.7;
 
-
-
-        /* =================================================
-           AUDIO ROUTING
-        ================================================= */
 
         master.connect(
             dry
@@ -1129,22 +1358,26 @@ footer {
 
 
         return true;
+
     }
 
 
 
     /* =====================================================
-       PLAY ONE PIANO NOTE
+       PIANO NOTE
     ===================================================== */
 
     function playNote(
         midi,
         time,
         volume
-    ){
+    ) {
+
 
         const frequency =
+
             440 *
+
             Math.pow(
                 2,
                 (midi - 69) / 12
@@ -1180,7 +1413,11 @@ footer {
 
 
         harmonics.forEach(
-            function(part, index){
+            function (
+                part,
+                index
+            ) {
+
 
                 const oscillator =
                     ctx.createOscillator();
@@ -1191,7 +1428,9 @@ footer {
 
 
                 const duration =
+
                     3.8 /
+
                     (1 + index * .7);
 
 
@@ -1200,7 +1439,9 @@ footer {
 
 
                 oscillator.frequency.value =
+
                     frequency *
+
                     part[0];
 
 
@@ -1211,15 +1452,22 @@ footer {
 
 
                 gain.gain.linearRampToValueAtTime(
+
                     volume *
+
                     part[1],
+
                     time + .04
+
                 );
 
 
                 gain.gain.exponentialRampToValueAtTime(
+
                     .0005,
+
                     time + duration
+
                 );
 
 
@@ -1239,9 +1487,13 @@ footer {
 
 
                 oscillator.stop(
+
                     time +
+
                     duration +
+
                     .1
+
                 );
 
             }
@@ -1252,17 +1504,27 @@ footer {
 
 
     /* =====================================================
-       SCHEDULE PIANO
+       SCHEDULE
     ===================================================== */
 
-    function schedule(){
+    function schedule() {
 
-        while(
+
+        if (!ctx) {
+            return;
+        }
+
+
+        while (
+
             next <
             ctx.currentTime + 1.5
-        ){
+
+        ) {
+
 
             const bar =
+
                 Math.floor(
                     step / 8
                 ) % 4;
@@ -1276,11 +1538,10 @@ footer {
                 chords[bar];
 
 
-            /* ---------------------------------------------
-               ARPEGGIO
-            --------------------------------------------- */
+            /* ARPEGGIO */
 
             playNote(
+
                 chord[
                     arp[position]
                 ],
@@ -1288,55 +1549,61 @@ footer {
                 next,
 
                 .16
+
             );
 
 
-            /* ---------------------------------------------
-               BASS
-            --------------------------------------------- */
+            /* BASS */
 
-            if(
+            if (
                 position === 0
-            ){
+            ) {
 
                 playNote(
+
                     chord[0] - 12,
 
                     next,
 
                     .20
+
                 );
 
             }
 
 
-            /* ---------------------------------------------
-               MELODY
-            --------------------------------------------- */
+            /* MELODY */
 
-            if(
-                position % 4 === 0
-                &&
+            if (
+
+                position % 4 === 0 &&
+
                 Math.random() < .7
-            ){
 
-                const randomMelody =
+            ) {
+
+                const note =
+
                     melody[
+
                         Math.floor(
-                            Math.random()
-                            *
+
+                            Math.random() *
                             melody.length
+
                         )
+
                     ];
 
 
                 playNote(
-                    randomMelody,
 
-                    next +
-                    STEP * .5,
+                    note,
+
+                    next + STEP * .5,
 
                     .08
+
                 );
 
             }
@@ -1350,6 +1617,11 @@ footer {
 
         }
 
+
+        setStep(
+            step
+        );
+
     }
 
 
@@ -1358,25 +1630,38 @@ footer {
        START MUSIC
     ===================================================== */
 
-    async function startMusic(){
+    async function startMusic() {
 
-        if(!ctx){
 
-            if(
-                !setupAudio()
-            ){
+        if (!ctx) {
+
+            if (!setupAudio()) {
 
                 return;
+
             }
 
         }
 
 
-        await ctx.resume();
+        try {
+
+            await ctx.resume();
+
+        } catch (e) {
+
+            return;
+
+        }
 
 
         playing =
             true;
+
+
+        setMusicState(
+            "on"
+        );
 
 
         master.gain
@@ -1387,8 +1672,11 @@ footer {
 
         master.gain
             .linearRampToValueAtTime(
+
                 .9,
+
                 ctx.currentTime + 2.5
+
             );
 
 
@@ -1399,11 +1687,15 @@ footer {
         schedule();
 
 
-        timer =
-            setInterval(
-                schedule,
-                250
-            );
+        if (!timer) {
+
+            timer =
+                setInterval(
+                    schedule,
+                    250
+                );
+
+        }
 
 
         btn.textContent =
@@ -1423,13 +1715,13 @@ footer {
        STOP MUSIC
     ===================================================== */
 
-    function stopMusic(){
+    function stopMusic() {
 
-        if(
-            !ctx
-        ){
+
+        if (!ctx) {
 
             return;
+
         }
 
 
@@ -1437,9 +1729,18 @@ footer {
             false;
 
 
+        setMusicState(
+            "off"
+        );
+
+
         clearInterval(
             timer
         );
+
+
+        timer =
+            null;
 
 
         master.gain
@@ -1450,8 +1751,11 @@ footer {
 
         master.gain
             .linearRampToValueAtTime(
+
                 0,
+
                 ctx.currentTime + 1
+
             );
 
 
@@ -1474,15 +1778,22 @@ footer {
 
     btn.addEventListener(
         "click",
-        function(){
+        function () {
 
-            if(
-                playing
-            ){
+
+            if (
+
+                playing &&
+
+                ctx &&
+
+                ctx.state === "running"
+
+            ) {
 
                 stopMusic();
 
-            }else{
+            } else {
 
                 startMusic();
 
@@ -1490,6 +1801,106 @@ footer {
 
         }
     );
+
+
+
+    /* =====================================================
+       FIRST USER INTERACTION
+    ===================================================== */
+
+    function firstInteraction(event) {
+
+
+        if (
+
+            event.target.closest &&
+
+            event.target.closest("#music")
+
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+
+            getMusicState() === "off"
+
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+
+            playing &&
+
+            ctx &&
+
+            ctx.state === "running"
+
+        ) {
+
+            return;
+
+        }
+
+
+        startMusic();
+
+    }
+
+
+    [
+        "pointerdown",
+        "keydown",
+        "touchstart"
+    ].forEach(
+
+        function (eventName) {
+
+            document.addEventListener(
+
+                eventName,
+
+                firstInteraction,
+
+                {
+                    passive: true,
+                    once: true
+                }
+
+            );
+
+        }
+
+    );
+
+
+    /* =====================================================
+       RESTORE MUSIC PREFERENCE
+    ===================================================== */
+
+    if (
+        getMusicState() === "on"
+    ) {
+
+        /*
+         * Browser autoplay restrictions
+         * require user interaction.
+         *
+         * The first interaction with the
+         * page will start the music.
+         */
+
+        btn.textContent =
+            "Play music";
+
+    }
 
 
 })();
