@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paradise of Ross (റോസിന്റെ പറുദീസ) — സ്നേഹത്തോടെ എഴുതിയ കുറിപ്പുകൾ</title>
+<meta name="description" content="പഠിച്ചതും ചിന്തിച്ചതും സ്നേഹത്തോടെ പങ്കുവെക്കുന്ന കുറിപ്പുകളുടെ വളരുന്ന ശേഖരം.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f1ec; --ink:#1d2a2e; --muted:#5b6a6e; --line:#c9cfcc; --accent:#1f6f78; --paper:#fbfaf7; --petal:#d98ca0;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#14201f;--ink:#e6ece9;--muted:#9fb0ac;--line:#2d3f3d;--accent:#6fc3c9;--paper:#1a2827;--petal:#e3a3b3}
+}
+:root[data-theme="dark"]{--bg:#14201f;--ink:#e6ece9;--muted:#9fb0ac;--line:#2d3f3d;--accent:#6fc3c9;--paper:#1a2827;--petal:#e3a3b3}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Serif Malayalam","Manjari","Kartika",Georgia,serif;line-height:1.95;font-size:1.0625rem}
+.wrap{max-width:46rem;margin:0 auto;padding:4rem 1.5rem 3rem}
+h1{font-size:clamp(2.2rem,7vw,3.4rem);line-height:1.4;margin:0 0 1.25rem;font-weight:700}
+h2{font-size:1.35rem;line-height:1.6;margin:3rem 0 .75rem;font-weight:700}
+p{margin:0 0 1rem;max-width:40rem}
+.lead{font-size:1.2rem;color:var(--muted);max-width:36rem}
+.sheet{background:var(--paper);border-left:4px solid var(--accent);padding:1.25rem 1.5rem;margin-top:2rem}
+.sheet p:last-child{margin:0}
+ul{padding:0;margin:0;list-style:none}
+li{padding:.9rem 0;border-top:1px solid var(--line)}
+li:last-child{border-bottom:1px solid var(--line)}
+li strong{display:block}
+li span{color:var(--muted)}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn{display:inline-block;margin-top:1rem;padding:.6rem 1.3rem;background:var(--accent);color:var(--bg);text-decoration:none;font-weight:700;border-radius:3px}
+footer{margin-top:4rem;padding-top:1.25rem;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+
+
+.wrap{position:relative;z-index:1}
+.petals{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.petal{position:absolute;top:0;background:var(--petal);border-radius:80% 0 80% 0;opacity:0;animation:fall linear infinite}
+@keyframes fall{0%{transform:translate3d(0,-3rem,0) rotate(0);opacity:0}10%{opacity:.4}90%{opacity:.3}100%{transform:translate3d(var(--dx),105vh,0) rotate(400deg);opacity:0}}
+@keyframes enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+h1{animation:enter 1.6s ease-out both}
+.lead{animation:enter 1.6s ease-out .5s both}
+.sheet{animation:enter 1.6s ease-out 1s both}
+.music{position:fixed;z-index:3;right:1rem;top:calc(1rem + env(safe-area-inset-top,0px));border:1px solid var(--line);background:var(--paper);color:var(--ink);font:inherit;font-size:.95rem;line-height:1.4;padding:.55rem 1.1rem;border-radius:2rem;cursor:pointer}
+.music[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.music:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.petals{display:none}h1,.lead,.sheet{animation:none}}
+</style>
+</head>
+<body>
+<div class="petals" id="petals" aria-hidden="true"></div>
+<button class="music" id="music" type="button" aria-pressed="false">Play music</button>
+<main class="wrap">
+  <h1>Paradise of Ross</h1>
+  <p class="lead">റോസിന്റെ പറുദീസ: എന്റെ മനസ്സിൽ വിരിഞ്ഞ ചിന്തകൾക്കും, ഞാൻ പഠിച്ച പാഠങ്ങൾക്കും, ഹൃദയത്തോട് ചേർത്തുവെച്ച ഓർമ്മകൾക്കുമായി ഒരു ചെറിയ സ്വർഗ്ഗം.</p>
+
+  <div class="sheet">
+    <p>ഒരു തോട്ടത്തിൽ പൂക്കൾ വിരിയുന്നതുപോലെയാണ് എനിക്ക് ഓരോ കുറിപ്പും. ഒരു ദിവസം കടലാസിൽ കുറിച്ചിട്ട ചെറിയ വരികൾ ഇന്ന് ഈ പറുദീസയിൽ ഒരു കുടുംബമായി ഒത്തുചേരുന്നു. ഇനി എഴുതാനിരിക്കുന്നവയ്ക്കും ഇവിടെ ഒരിടം കാത്തിരിക്കുന്നു.</p>
+  </div>
+
+  <h2>Paradise of Ross-ന്റെ കഥ</h2>
+  <p>മനസ്സിലുള്ളത് സംസാരത്തിലൂടെ വാക്കുകളാക്കാൻ എനിക്ക് പലപ്പോഴും കഴിയാറില്ല. പക്ഷേ സാങ്കേതികവിദ്യ വളർന്നതോടെ, ഞാൻ ചിന്തിക്കുന്നത് എഴുത്തിലൂടെ വാക്കുകളാക്കി മാറ്റാൻ എനിക്ക് കഴിയുന്നു. പഠിക്കുന്നതെല്ലാം സ്വന്തം വാക്കുകളിൽ എഴുതി സൂക്ഷിച്ചുവെക്കും, ആവശ്യമുള്ളപ്പോൾ അവ വീണ്ടും തിരികെയെടുത്ത് വായിക്കും. ഓരോ കുറിപ്പും ഞാൻ ഒരു ചുവട് മുന്നോട്ട് വെച്ചതിന്റെ അടയാളമാണ്.</p>
+  <p>ഈ കുറിപ്പുകൾ നിങ്ങളോടും പങ്കുവെക്കണമെന്ന് ഞാൻ ആഗ്രഹിച്ചു. ഇതിൽ ഏതെങ്കിലുമൊന്ന് നിങ്ങളുടെ പഠനത്തിനോ ഒരു സംശയം തീർക്കാനോ ഒരു ചെറിയ ആശ്വാസത്തിനോ ഉപകരിച്ചാൽ, എനിക്കതിൽ കൂടുതൽ സന്തോഷം വേറെയില്ല.</p>
+
+  <h2>ഇവിടെ നിങ്ങളെ കാത്തിരിക്കുന്നത്</h2>
+  <ul>
+    <li><strong>എഴുതിവെച്ച കുറിപ്പുകൾ</strong><span>ഞാൻ സ്നേഹത്തോടെ പഠിച്ച്, ലളിതമായ ഭാഷയിൽ ഒരുക്കിയ വിഷയങ്ങൾ.</span></li>
+    <li><strong>ഇനി വരാനിരിക്കുന്നവ</strong><span>ഓരോ പുതിയ കുറിപ്പും പൂർത്തിയാകുമ്പോൾ ഇവിടെ എത്തും. ഈ ഇടം എന്നോടൊപ്പം വളരുകയാണ്.</span></li>
+    <li><strong>വീണ്ടും വീണ്ടും മിനുക്കിയവ</strong><span>പുതിയ അറിവ് കിട്ടുമ്പോൾ പഴയ കുറിപ്പുകളിലേക്ക് ഞാൻ തിരിച്ചുചെല്ലും; അവയും എനിക്ക് പ്രിയപ്പെട്ടതാണല്ലോ.</span></li>
+  </ul>
+
+  <h2>മെല്ലെ വായിക്കാം</h2>
+  <p>തിരക്കില്ല. ഈ പറുദീസയിൽ നിങ്ങൾക്കായി ഒരു ഇരിപ്പിടമുണ്ട്. ഒരു ചായയുമായി ഇരിക്കാം, ഇഷ്ടമുള്ള വിഷയം തുറന്ന് ആദ്യം മുതൽ അവസാനം വരെ വായിക്കാം. ഓരോ കുറിപ്പും ഒറ്റയിരിപ്പിൽ തീരുന്നത്ര ചെറുതാണ്. എപ്പോൾ വേണമെങ്കിലും തിരിച്ചുവരാം, വാതിൽ എപ്പോഴും തുറന്നിരിക്കും, നിങ്ങളെ സ്വാഗതം ചെയ്യാൻ ഞാൻ ഇവിടെത്തന്നെയുണ്ടാകും.</p>
+  <a class="btn" href="#browse">കുറിപ്പുകളിലേക്ക് വരൂ</a>
+
+  <h2 id="browse">കുറിപ്പുകൾ</h2>
+  <p>ഓരോ വിഷയവും ഇവിടെ ഓരോന്നായി ചേർക്കപ്പെടും. വീണ്ടും വരൂ, പുതിയതെന്തെങ്കിലും കാത്തിരിക്കും.</p>
+
+
+  <footer>Paradise of Ross-ലേക്ക് സ്വാഗതം. സ്നേഹത്തോടെ, <strong>Abraham Clancy Ross</strong>. അവസാനം പുതുക്കിയത്: 6 ഒക്ടോബർ 2026.</footer>
+</main>
+<script>
+(function(){
+  var pe=document.getElementById('petals');
+  for(var i=0;i<16;i++){
+    var p=document.createElement('span'), z=.55+Math.random()*.5;
+    p.className='petal';
+    p.style.left=(Math.random()*100)+'%';
+    p.style.width=z+'rem'; p.style.height=(z*1.25)+'rem';
+    p.style.animationDuration=(16+Math.random()*14)+'s';
+    p.style.animationDelay=(-Math.random()*30)+'s';
+    p.style.setProperty('--dx',(Math.random()*160-80)+'px');
+    pe.appendChild(p);
+  }
+
+  var btn=document.getElementById('music'), ctx=null, master=null, timer=null, step=0, next=0, on=false, started=false;
+  var chords=[[48,55,60,64,67],[45,52,57,60,64],[41,48,57,60,65],[43,50,59,62,67]];
+  var arp=[0,2,3,2,4,3,2,1], mel=[72,74,76,79,81,79,76,74], STEP=0.75;
+  function setup(){
+    var C=window.AudioContext||window.webkitAudioContext; if(!C)return false;
+    ctx=new C(); master=ctx.createGain(); master.gain.value=0;
+    var conv=ctx.createConvolver(), len=ctx.sampleRate*3, buf=ctx.createBuffer(2,len,ctx.sampleRate);
+    for(var ch=0;ch<2;ch++){var d=buf.getChannelData(ch);for(var i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.5);}
+    conv.buffer=buf;
+    var wet=ctx.createGain(); wet.gain.value=.5; var dry=ctx.createGain(); dry.gain.value=.7;
+    master.connect(dry); dry.connect(ctx.destination); master.connect(conv); conv.connect(wet); wet.connect(ctx.destination);
+    return true;
+  }
+  function note(m,t,v){
+    var f=440*Math.pow(2,(m-69)/12), lp=ctx.createBiquadFilter();
+    lp.type='lowpass'; lp.frequency.value=2200; lp.connect(master);
+    [[1,1],[2,.35],[3,.1]].forEach(function(p,i){
+      var o=ctx.createOscillator(), g=ctx.createGain(), d=3.8/(1+i*.7);
+      o.type='sine'; o.frequency.value=f*p[0];
+      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(v*p[1],t+.04);
+      g.gain.exponentialRampToValueAtTime(.0005,t+d);
+      o.connect(g); g.connect(lp); o.start(t); o.stop(t+d+.1);
+    });
+  }
+  function schedule(){
+    while(next<ctx.currentTime+1.5){
+      var bar=Math.floor(step/8)%4, pos=step%8, ch=chords[bar];
+      note(ch[arp[pos]],next,.16);
+      if(pos===0)note(ch[0]-12,next,.2);
+      if(pos%4===0&&Math.random()<.7)note(mel[Math.floor(Math.random()*mel.length)],next+STEP*.5,.08);
+      next+=STEP; step++;
+    }
+  }
+  function start(){
+    if(!ctx&&!setup())return;
+    ctx.resume(); on=true; started=true;
+    master.gain.cancelScheduledValues(ctx.currentTime);
+    master.gain.linearRampToValueAtTime(.9,ctx.currentTime+2.5);
+    next=ctx.currentTime+.1; schedule();
+    timer=setInterval(schedule,250);
+    btn.textContent='Pause music'; btn.setAttribute('aria-pressed','true');
+  }
+  function stop(){
+    on=false; clearInterval(timer);
+    master.gain.cancelScheduledValues(ctx.currentTime);
+    master.gain.linearRampToValueAtTime(0,ctx.currentTime+1);
+    btn.textContent='Play music'; btn.setAttribute('aria-pressed','false');
+  }
+  btn.addEventListener('click',function(){on?stop():start();});
+  function first(e){
+    if(started||(e.target.closest&&e.target.closest('#music')))return;
+    start();
+  }
+  ['pointerdown','keydown','touchstart'].forEach(function(ev){document.addEventListener(ev,first,{once:false,passive:true});});
+})();
+</script>
+</body>
+</html>
