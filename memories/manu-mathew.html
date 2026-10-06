@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ml"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>പെരുമ്പാമ്പ് — ഒരു മഴയാത്ര</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:#06141a;color:#eee;font-family:'Noto Serif Malayalam',Georgia,serif}
+canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+#vg{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 58%,rgba(0,0,0,.5))}
+#pg{position:fixed;left:0;top:0;height:3px;width:0;background:#f2c744;z-index:6}
+section{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:12vh 6vw 14vh;max-width:780px}
+section:first-of-type{justify-content:center}
+section[data-s="0"],section[data-s="1"]{--panel:rgba(5,18,24,.86);--ink:#f2f7f0;--accent:#f2c744}
+section[data-s="2"]{--panel:rgba(26,20,38,.87);--ink:#f7f2ff;--accent:#f2c744}
+section[data-s="3"]{--panel:rgba(247,245,236,.91);--ink:#13171a;--accent:#86281a}
+section[data-s="4"]{--panel:rgba(30,25,38,.88);--ink:#f7f3ea;--accent:#f2c744}
+section[data-s="5"]{--panel:rgba(238,246,240,.91);--ink:#0b1c14;--accent:#1b5535}
+.pn{background:var(--panel);color:var(--ink);padding:26px 28px;border-radius:16px;border:1px solid rgba(255,255,255,.08);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);box-shadow:0 18px 50px rgba(0,0,0,.25)}
+h1{font-size:clamp(2.4rem,9vw,5rem);line-height:1.25;margin:0 0 .5em;font-weight:700;animation:ti 3.2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes ti{from{opacity:0;filter:blur(14px);letter-spacing:.12em;transform:scale(1.06)}}
+h2{font-size:clamp(1.3rem,4vw,2rem);margin:0 0 .8em;color:var(--accent);font-weight:700}
+p{font-size:clamp(1.05rem,3.2vw,1.3rem);line-height:1.95;margin:.2em 0}
+.l{opacity:0;transform:translateY(18px);filter:blur(6px);transition:opacity 1.4s,transform 1.4s,filter 1.4s}
+.l.on{opacity:1;transform:none;filter:none}
+.q{font-weight:700;font-size:clamp(1.2rem,3.8vw,1.6rem);border-left:3px solid var(--accent);padding-left:14px;margin:1em 0}
+.hint{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;z-index:3;font-size:.9rem;color:#fff;text-shadow:0 1px 6px #000;animation:b 2s infinite;pointer-events:none}
+@keyframes b{50%{transform:translateY(6px)}}
+#snd{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:7;font:inherit;font-size:.9rem;padding:8px 14px;border-radius:20px;border:1px solid #fff;background:rgba(0,0,0,.72);color:#fff;cursor:pointer}
+#snd:focus-visible{outline:3px solid #f2c744}
+@media (prefers-reduced-motion:reduce){.hint,h1{animation:none}.l{transition:none}}
+</style></head><body data-s="0">
+<canvas id="c"></canvas><div id="vg"></div><div id="pg"></div>
+<button id="snd" aria-pressed="false">🔇 ശബ്ദം ഓൺ ചെയ്യൂ</button>
+<div class="hint" id="h">താഴേക്ക് സ്ക്രോൾ ചെയ്യൂ ↓</div>
+<section data-k="0" class="c" data-s="0"><div class="pn">
+<h1 class="l">പെരുമ്പാമ്പ്<br>ഒരു മഴയാത്ര</h1>
+<p class="l">മനു പറഞ്ഞ കഥ. ഓർമ്മയിൽ ഒരു സിനിമയായി മാറിയത്.</p>
+</div></section>
+
+<section data-k="1" data-s="0"><div class="pn">
+<h2 class="l">മനു മത്തായിയും മഴയിൽ വന്ന പെരുമ്പാമ്പും</h2>
+<p class="l">മനു മത്തായി എനിക്ക് എന്നും കുറച്ച് പ്രത്യേകതയുള്ള ഒരു സുഹൃത്തായിരുന്നു.</p>
+<p class="l">ഞങ്ങളുടെ കൂട്ടത്തിൽ നിന്ന് ഒരാൾ സിനിമയിലേക്ക് പോയി, ഒരു നല്ല സംവിധായകനായി മറ്റൊരു തലത്തിലേക്ക് എത്തുമെങ്കിൽ അത് മനു ആയിരിക്കുമെന്ന് കോളേജ് കാലത്ത് തന്നെ എനിക്ക് വലിയ പ്രതീക്ഷയുണ്ടായിരുന്നു.</p>
+<p class="l">മനു എന്റെ കോളേജിലെ ജൂനിയറായിരുന്നു. പക്ഷേ കോളേജിൽ നേരിട്ട് പരിചയപ്പെടുന്നതിന് മുമ്പുതന്നെ മനുവിനെക്കുറിച്ച് എനിക്ക് അറിയാമായിരുന്നു. എന്റെ സുഹൃത്തായ നിർമ്മലിന്റെ ആദ്യത്തെ കസിനായിരുന്നു മനു.</p>
+<p class="l">കോളേജിൽ മനുവിനെ അടുത്തറിഞ്ഞപ്പോഴാണ് ആ പ്രതീക്ഷയ്ക്ക് പിന്നിലെ കാരണം കൂടുതൽ വ്യക്തമായത്.</p>
+<p class="l">യൂത്ത് ഫെസ്റ്റിവലുകളിലെ സ്കിറ്റുകളിലും നാടകങ്ങളിലും മനു സജീവമായിരുന്നു. സംസ്ഥാനതലത്തിലും ദേശീയതലത്തിലും വരെ അവാർഡുകൾ നേടിയിരുന്നു.</p>
+<p class="l">അഭിനയിക്കാനുള്ള കഴിവ് മാത്രമല്ല, ഒരു സംഭവത്തെ ശ്രദ്ധിച്ച് അതിലെ രസകരമായ ഭാഗം കണ്ടെത്താനും, അതിനെ മറ്റുള്ളവരുടെ മുന്നിൽ അവതരിപ്പിക്കാനും മനുവിന് ഒരു പ്രത്യേക കഴിവുണ്ടായിരുന്നു.</p>
+<p class="l">ഒരു സാധാരണ സംഭവം മനു പറയുമ്പോൾ അതിൽ ഒരു ചെറിയ ട്വിസ്റ്റ് ഉണ്ടാകും.</p>
+<p class="l">ഒരു ഗൗരവമുള്ള സംഭാഷണത്തിനിടയിൽ പെട്ടെന്ന് ഒരു തമാശ.</p>
+<p class="l">മറ്റുള്ളവർ ശ്രദ്ധിക്കാതെ കടന്നുപോകുന്ന ഒരു ചെറിയ സംഭവത്തിൽ നിന്ന് ഒരു കഥാപാത്രം.</p>
+<p class="l">അന്ന് അതൊന്നും വലിയ പേരുകളിട്ട് ഞാൻ വിശകലനം ചെയ്തിരുന്നില്ല.</p>
+<p class="l">പക്ഷേ ഇന്ന് തിരിഞ്ഞുനോക്കുമ്പോൾ മനസ്സിലാകുന്നു—അവന്റെ ഉള്ളിൽ അന്നേ ഒരു കഥാകാരനും സംവിധായകനുമുണ്ടായിരുന്നു.</p>
+<p class="l">അതുകൊണ്ടുതന്നെ ഒരിക്കൽ മനു സിനിമയിൽ എത്തുമെന്ന് എനിക്ക് വലിയ പ്രതീക്ഷയുണ്ടായിരുന്നു.</p>
+<p class="l">പക്ഷേ ജീവിതം നമ്മൾ കരുതുന്ന തിരക്കഥ അനുസരിച്ചല്ലല്ലോ മുന്നോട്ട് പോകുന്നത്.</p>
+<p class="l">ചില കാരണങ്ങളാൽ മനു സിനിമാരംഗത്തേക്ക് എത്തിയില്ല.</p>
+<p class="l">അത് കഴിവിന്റെ കുറവുകൊണ്ടായിരുന്നില്ല.</p>
+<p class="l">ജീവിതം മനുവിനെ മറ്റൊരു വഴിയിലേക്ക് കൊണ്ടുപോയി.</p>
+<p class="l">ഇന്ന് മനു വയനാട്ടിലാണ് താമസിക്കുന്നത്.</p>
+</div></section>
+<section data-k="2" data-s="0"><div class="pn">
+<h2 class="l">വർഷങ്ങൾ കടന്നുപോയി</h2>
+<p class="l">കോളേജ് കഴിഞ്ഞു.</p>
+<p class="l">ഞങ്ങൾ ഓരോരുത്തരും ഓരോ വഴികളിലേക്ക് പോയി.</p>
+<p class="l">നേരിൽ കാണുന്ന അവസരങ്ങൾ കുറഞ്ഞു.</p>
+<p class="l">പക്ഷേ സൗഹൃദം അങ്ങനെ മുറിഞ്ഞുപോയില്ല.</p>
+<p class="l">ഇടയ്ക്കിടെ ഫോൺ വിളികൾ ഉണ്ടായിരുന്നു.</p>
+<p class="l">യാത്രകളെക്കുറിച്ച് സംസാരിക്കും.</p>
+<p class="l">പഴയ സംഭവങ്ങൾ ഓർക്കും.</p>
+<p class="l">ഒരുമിച്ച് പറഞ്ഞ ഡയലോഗുകൾ വീണ്ടും പറഞ്ഞ് ചിരിക്കും.</p>
+<p class="l">ചിലപ്പോൾ പ്രത്യേകിച്ച് ഒരു വിഷയവുമുണ്ടാകില്ല.</p>
+<p class="l">ഫോൺ എടുത്താൽ സംസാരിച്ചുകൊണ്ടിരിക്കും.</p>
+<p class="l">ഒരു വിഷയം മറ്റൊന്നിലേക്ക് മാറും.</p>
+<p class="l">അവസാനം എന്തിനെക്കുറിച്ചാണ് തുടങ്ങിയതെന്ന് പോലും മറന്നുപോകും.</p>
+<p class="l">അതാണ് മനുവുമായുള്ള സംഭാഷണങ്ങളുടെ പ്രത്യേകത.</p>
+</div></section>
+<section data-k="3" data-s="0"><div class="pn">
+<h2 class="l">ആ അസാധാരണമായ പ്രഭാത ഫോൺകോൾ</h2>
+<p class="l">ഒരു ദിവസം രാവിലെ മനുവിന്റെ ഫോൺ വന്നു.</p>
+<p class="l">രാവിലെ തന്നെ മനു വിളിക്കുന്നത് പതിവില്ലാത്ത കാര്യമായിരുന്നു.</p>
+<p class="l">ഞാൻ അന്ന് കിടക്കുകയായിരുന്നു.</p>
+<p class="l">ഫോൺ എടുത്ത ഉടനെ ചോദിച്ചു:</p>
+<p class="l q">“എന്താടോ, രാവിലെ തന്നെ?”</p>
+<p class="l">“എവിടെയാ?”</p>
+<p class="l">“ഞാൻ വീട്ടിലാ... കിടക്കുവാ. എന്താ?”</p>
+<p class="l">“വയനാട്ടിലേക്ക് വരാറില്ലേ?”</p>
+<p class="l">“എന്തിന്?”</p>
+<p class="l">“ഈ ആഴ്ച തന്നെ വാ. ബസിൽ കയറി വന്നാൽ മതി.”</p>
+<p class="l">“അത്ര അത്യാവശ്യമാണോ?”</p>
+<p class="l">“അത്യാവശ്യമൊന്നുമില്ല. വാ. കുറച്ച് നേരം ഇരിക്കാം. കുറച്ച് കാര്യങ്ങളൊക്കെ സംസാരിക്കാനുണ്ട്.”</p>
+<p class="l">അവന്റെ ശബ്ദത്തിൽ എന്തോ പറയാനുള്ളതുപോലെ തോന്നി.</p>
+<p class="l">“ഇപ്പോൾ എവിടെയാ?”</p>
+<p class="l">“ഇവിടെ തന്നെയുണ്ട്. ഇപ്പോൾ ചന്തയിലേക്ക് ഇറങ്ങുകയാണ്.”</p>
+<p class="l">“എന്തിനാ?”</p>
+<p class="l">“കുറച്ച് സാധനം വാങ്ങാൻ.”</p>
+<p class="l">ഒരു ചെറിയ ഇടവേള.</p>
+<p class="l">പിന്നെ വളരെ സ്വാഭാവികമായി മനു പറഞ്ഞു:</p>
+<p class="l q">“കുറച്ച് ഓന്തിറച്ചി വേണം.”</p>
+<p class="l">“എന്ത്?”</p>
+<p class="l">“ഓന്തിറച്ചി!”</p>
+<p class="l">അപ്പോഴാണ് കാര്യം മനസ്സിലായത്.</p>
+<p class="l">രാവിലെ തന്നെ എന്നെ കളിയാക്കാൻ വിളിച്ചതാണ്.</p>
+<p class="l">ഞാൻ ചിരിച്ചു.</p>
+<p class="l q">“എന്താടോ, ഇതൊക്കെ...”</p>
+<p class="l">അവനും ചിരിച്ചു.</p>
+<p class="l">മനുവിന്റെ ആ സ്വഭാവം അന്നും മാറിയിരുന്നില്ല.</p>
+<p class="l">ഒരു സംഭാഷണം വളരെ ഗൗരവമായി പോകാൻ തുടങ്ങിയാൽ അതിന്റെ നടുവിൽ ഒരു ചെറിയ തമാശയിട്ട് അന്തരീക്ഷം തന്നെ മാറ്റിക്കളയും.</p>
+<p class="l">കുറച്ച് കഴിഞ്ഞ് മനു പറഞ്ഞു:</p>
+<p class="l">“അയച്ച ആ ഓർമ്മക്കുറിപ്പ് കിട്ടിയിട്ടുണ്ട്.”</p>
+<p class="l">“കിട്ടിയോ?”</p>
+<p class="l">“ആ... വായിച്ചു.”</p>
+<p class="l">“എങ്ങനെയുണ്ട്?”</p>
+<p class="l">“സൂപ്പർ ആണ്.”</p>
+<p class="l">ഒരു ചെറിയ ഇടവേള.</p>
+<p class="l">പിന്നെ പതിവ് മനു ശൈലിയിൽ:</p>
+<p class="l q">“ഓന്തിറച്ചി കലക്കി!”</p>
+<p class="l">ഞാൻ ചിരിച്ചു.</p>
+<p class="l">“ഇതെന്തിനാ ഓന്തിറച്ചിയുമായി കൂട്ടുന്നത്?”</p>
+<p class="l">“അത് അങ്ങനെയാ...”</p>
+<p class="l">പിന്നെ അവൻ കുറച്ച് ഗൗരവമായി:</p>
+<p class="l">“ഇനിയും എഴുതണം.”</p>
+<p class="l">“എന്തൊക്കെ?”</p>
+<p class="l">“നമ്മുടെ യാത്രകളൊക്കെ എഴുതണം.”</p>
+<p class="l">“പയനിയർ ടവർ കഥകളൊക്കെ ഉണ്ടല്ലോ... അതൊക്കെ.”</p>
+<p class="l">“ഓർമ്മ വരുന്ന ചെറിയ സംഭവങ്ങളൊക്കെ എഴുതിവെക്കണം. അതൊക്കെ വായിക്കാൻ രസമാണ്.”</p>
+<p class="l">അവൻ വെറുതെ പ്രോത്സാഹിപ്പിക്കുന്നതല്ലെന്ന് എനിക്ക് മനസ്സിലായി.</p>
+<p class="l">അവൻ ശരിക്കും വായിച്ചിരുന്നു.</p>
+<p class="l">ഓർമ്മകളിൽ നിന്ന് കഥ കണ്ടെത്താൻ അവന് അറിയാമായിരുന്നു.</p>
+<p class="l">അങ്ങനെയിരിക്കെയാണ് പെട്ടെന്ന് മനു പറഞ്ഞത്:</p>
+<p class="l q">“ഒരിക്കൽ പറഞ്ഞ ഒരു പെരുമ്പാമ്പിന്റെ കഥയില്ലേ...”</p>
+<p class="l">ഞാൻ ഒന്ന് നിശ്ശബ്ദനായി.</p>
+<p class="l">“ഏത് പെരുമ്പാമ്പ്?”</p>
+<p class="l">“അത്... മഴയിൽ ഒക്കെ വരുന്ന പെരുമ്പാമ്പ്.”</p>
+<p class="l">“ഞാനാണോ പറഞ്ഞത്?”</p>
+<p class="l">“ആ... പറഞ്ഞിട്ടുണ്ട്.”</p>
+<p class="l">“എനിക്ക് ഓർമ്മയില്ലല്ലോ.”</p>
+<p class="l">“ഓർമ്മയില്ലേ?”</p>
+<p class="l">“ഇല്ല.”</p>
+<p class="l">“ശരി, ഒന്ന് ആലോചിക്ക്.”</p>
+<p class="l">ഞാൻ ആലോചിച്ചു.</p>
+<p class="l">ഒന്നും കിട്ടിയില്ല.</p>
+<p class="l">മനു വീണ്ടും പറഞ്ഞു:</p>
+<p class="l">“അതിന്റെ കഥ എഴുതിക്കൂടെ?”</p>
+<p class="l">ഞാൻ ചിരിച്ചുകൊണ്ട് പറഞ്ഞു:</p>
+<p class="l">“എന്തെഴുതാൻ? കഥ തന്നെ ഓർമ്മയില്ല.”</p>
+<p class="l">“ഞാൻ പറഞ്ഞുതരാം...”</p>
+<p class="l">അങ്ങനെ മനു ആ പെരുമ്പാമ്പിന്റെ കഥ പറയാൻ തുടങ്ങി.</p>
+</div></section>
+<section data-k="4" data-s="0"><div class="pn">
+<h2 class="l">പെരുമ്പാമ്പ് — ഒരു മഴയാത്ര</h2>
+<p class="l">മനു പറഞ്ഞ കഥയുടെ അടിസ്ഥാനരേഖ വളരെ ലളിതമായിരുന്നു.</p>
+<p class="l">ഒരു പെരുമ്പാമ്പ്.</p>
+<p class="l">കനത്ത മഴ.</p>
+<p class="l">വെള്ളത്തിന്റെ ഒഴുക്കിൽപ്പെട്ട് അതിന്റെ സ്വാഭാവിക ആവാസവ്യവസ്ഥയിൽ നിന്ന് അകന്നുപോകുന്നു.</p>
+<p class="l">ഒടുവിൽ മനുഷ്യരുടെ ലോകത്ത് എത്തിപ്പെടുന്നു.</p>
+<p class="l">റെയിൽവേ സ്റ്റേഷൻ.</p>
+<p class="l">വലിയ വെളിച്ചങ്ങൾ.</p>
+<p class="l">മനുഷ്യരുടെ ശബ്ദം.</p>
+<p class="l">ഭക്ഷണം കിട്ടാത്ത അവസ്ഥ.</p>
+<p class="l">അവസാനം ആളുകൾ അതിനെ പിടിക്കുന്നു.</p>
+<p class="l">അത്രയായിരുന്നു മനു പറഞ്ഞത്.</p>
+<p class="l">പക്ഷേ ആ കഥ അന്ന് എന്റെ മനസ്സിൽ പ്രത്യേകിച്ച് ഒന്നും തെളിയിച്ചില്ല.</p>
+<p class="l">ഒരു ചെറിയ കഥ കേട്ടതുപോലെ മാത്രമാണ് തോന്നിയത്.</p>
+<p class="l">എന്നാൽ എന്തുകൊണ്ടോ ആ കഥ മനസ്സിൽ നിന്ന് പോയതുമില്ല.</p>
+<p class="l">മനു പറഞ്ഞ വാക്കുകൾ ഇടയ്ക്കിടെ ഓർമ്മ വരും.</p>
+<p class="l">പെരുമ്പാമ്പ്.</p>
+<p class="l">കനത്ത മഴ.</p>
+<p class="l">വെള്ളപ്പാച്ചിൽ.</p>
+<p class="l">കാട്ടിൽ നിന്ന് അകന്നുപോകുന്ന ഒരു ജീവി.</p>
+<p class="l">മനുഷ്യരുടെ ലോകത്ത് എത്തിപ്പെടുന്നത്.</p>
+<p class="l">റെയിൽവേ സ്റ്റേഷൻ.</p>
+<p class="l">അവസാനം പിടിക്കപ്പെടുന്നത്.</p>
+<p class="l">കഥ കേട്ടപ്പോൾ ഒന്നും മനസ്സിലാകാതെ പോയെങ്കിലും, അത് എവിടെയോ മനസ്സിന്റെ ആഴത്തിൽ കിടന്നിരുന്നു.</p>
+</div></section>
+
+<section data-k="5" data-s="1"><div class="pn">
+<h2 class="l">മഴ</h2>
+<p class="l">ഇവിടെ നിന്നാണ് എന്റെ മനസ്സിലെ സിനിമ തുടങ്ങുന്നത്.</p>
+<p class="l">ഇത് മനുവിന്റെ യഥാർത്ഥ കഥയല്ല.</p>
+<p class="l">മനു പറഞ്ഞ ആ ചെറിയ കഥയിൽ നിന്ന് എന്റെ മനസ്സിൽ ഞാൻ കാണുന്ന ഒരു സാങ്കൽപ്പിക സിനിമ.</p>
+<p class="l">രാത്രി.</p>
+<p class="l">ആകാശം കറുത്തിരിക്കുന്നു.</p>
+<p class="l">മലകൾ മുഴുവൻ മേഘത്തിനുള്ളിൽ മറഞ്ഞിരിക്കുന്നു.</p>
+<p class="l">ആദ്യം ചെറിയ മഴ. ഇലകളിൽ വീഴുന്ന തുള്ളികളുടെ ശബ്ദം മാത്രം.</p>
+<p class="l">പിന്നെ മഴ ശക്തമാകുന്നു. കാറ്റ് മരങ്ങളെ ഉലയ്ക്കുന്നു.</p>
+<p class="l">മഴയുടെ ശബ്ദം കാട്ടിലെ മറ്റെല്ലാ ശബ്ദങ്ങളെയും പതുക്കെ വിഴുങ്ങുന്നു.</p>
+<p class="l">പിന്നെ— ആകാശം പൊട്ടിത്തുറന്നതുപോലെ മഴ.</p>
+<p class="l">വെള്ളം പാറകളിലൂടെ കുത്തിയൊഴുകുന്നു.</p>
+<p class="l">ചെറിയ നീർച്ചാലുകൾ പെട്ടെന്ന് വലിയ ഒഴുക്കുകളായി മാറുന്നു.</p>
+<p class="l">മണ്ണ് ഇളകുന്നു. വേരുകൾ പുറത്തുവരുന്നു. ചില്ലകൾ ഒടിഞ്ഞുവീഴുന്നു.</p>
+<p class="l">അത്തരം ഒരു രാത്രിയിൽ ഒരു പെരുമ്പാമ്പ് അതിന്റെ പരിചിതമായ ഇരുട്ടിൽ ചുരുണ്ടുകിടക്കുകയാണ്.</p>
+<p class="l">മഴ അതിന് പുതുമയല്ല. കാട് അതിന്റെ വീടാണ്.</p>
+<p class="l">നനഞ്ഞ മണ്ണിന്റെ ഗന്ധം പരിചിതമാണ്. ഇലകളുടെ തണുപ്പ് പരിചിതമാണ്. ഇരുട്ട് പോലും ഒരു സുരക്ഷയാണ്.</p>
+<p class="l">പക്ഷേ ആ രാത്രിയിലെ മഴ വ്യത്യസ്തമാണ്.</p>
+<p class="l">വെള്ളം പതുക്കെ അതിന്റെ താവളത്തിലേക്ക് കയറുന്നു.</p>
+<p class="l">പെരുമ്പാമ്പ് തല ഉയർത്തുന്നു. ചുറ്റും വെള്ളം.</p>
+<p class="l">അത് മുന്നോട്ട് നീങ്ങുന്നു. പക്ഷേ എവിടേക്കാണ് പോകേണ്ടതെന്ന് അതിന് തന്നെ അറിയില്ല.</p>
+<p class="l">പെട്ടെന്ന്— ഒരു വലിയ വെള്ളപ്പാച്ചിൽ.</p>
+<p class="l">അതിന്റെ ശരീരം വെള്ളത്തിൽ നിന്ന് പൊങ്ങിപ്പോകുന്നു. ഒരു പാറയിൽ ഇടിക്കുന്നു. വീണ്ടും വെള്ളത്തിലേക്ക്.</p>
+<p class="l">ചുറ്റും ചുഴികൾ. ഒടിഞ്ഞ ചില്ലകൾ. ഇലകൾ. ചെളി.</p>
+<p class="l">വെള്ളത്തിന്റെ ശക്തിക്ക് മുന്നിൽ അതിന് ഒന്നും ചെയ്യാനാവുന്നില്ല.</p>
+<p class="l">അത് ഒഴുക്കിനൊപ്പം പോകുന്നു.</p>
+<p class="l">മല പിന്നിലാകുന്നു. കാട് പിന്നിലാകുന്നു. പരിചിതമായ ഗന്ധങ്ങൾ പിന്നിലാകുന്നു.</p>
+</div></section>
+<section data-k="6" data-s="2"><div class="pn">
+<h2 class="l">നഗരത്തിന്റെ ആദ്യ വെളിച്ചം</h2>
+<p class="l">മഴ പതുക്കെ കുറയുന്നു. പെരുമ്പാമ്പ് തല ഉയർത്തുന്നു.</p>
+<p class="l">അത് എത്തിയത് മറ്റൊരു ലോകത്താണ്.</p>
+<p class="l">കാട് കാണുന്നില്ല. പകരം— റോഡ്. വാഹനങ്ങൾ. കെട്ടിടങ്ങൾ. വെളിച്ചങ്ങൾ.</p>
+<p class="l">അത് പതുക്കെ റോഡിന്റെ അരികിലൂടെ നീങ്ങുന്നു.</p>
+<p class="l">ഒരു വാഹനം വേഗത്തിൽ കടന്നുപോകുന്നു.</p>
+<p class="l">അതിന്റെ ഹെഡ്‌ലൈറ്റ് പാമ്പിന്റെ ശരീരത്തിലൂടെ ഒരു വെള്ളവാളുപോലെ മുറിച്ചുകടക്കുന്നു.</p>
+<p class="l">പാമ്പ് നിശ്ചലമാകുന്നു. വെളിച്ചം മാറുന്നു. വീണ്ടും ഇരുട്ട്.</p>
+<p class="l">അടുത്ത നിമിഷം മറ്റൊരു വാഹനം. വീണ്ടും വെളിച്ചം. വീണ്ടും ശബ്ദം.</p>
+<p class="l">ഹോൺ. ബ്രേക്ക്. എഞ്ചിൻ. മനുഷ്യരുടെ വിളികൾ.</p>
+<p class="l">കാട്ടിലെ നിശ്ശബ്ദതയ്ക്ക് പകരം ഇവിടെ എല്ലാം ശബ്ദമാണ്.</p>
+<p class="l">പെരുമ്പാമ്പ് പതുക്കെ മുന്നോട്ട് നീങ്ങുന്നു.</p>
+<p class="l">അത് ഒരു ഇരുണ്ട ഇടം അന്വേഷിക്കുകയാണ്.</p>
+<p class="l">പരിചിതമായ ഒരു ഗന്ധം തേടുകയാണ്.</p>
+<p class="l">പക്ഷേ ഒന്നും കിട്ടുന്നില്ല.</p>
+</div></section>
+<section data-k="7" data-s="3"><div class="pn">
+<h2 class="l">റെയിൽവേ സ്റ്റേഷൻ</h2>
+<p class="l">അങ്ങനെ നീങ്ങി നീങ്ങി അത് ഒരു റെയിൽവേ സ്റ്റേഷന്റെ സമീപത്ത് എത്തുന്നു.</p>
+<p class="l">അവിടെ വെളിച്ചം മാത്രം. വലിയ വെളിച്ചം. തിളങ്ങുന്ന വെളിച്ചം.</p>
+<p class="l">ഒളിക്കാൻ ഒരു ഇരുണ്ട ഇടം പോലും ഇല്ലാത്തത്ര വെളിച്ചം.</p>
+<p class="l">ദൂരെയായി ഒരു തീവണ്ടിയുടെ ഹോൺ. പിന്നെ ഇരുമ്പ് ചക്രങ്ങളുടെ ഗർജ്ജനം.</p>
+<p class="l">തീവണ്ടി പാഞ്ഞുപോകുന്നു. മുഴുവൻ ശരീരവും വിറയ്ക്കുന്ന തരത്തിലുള്ള ശബ്ദം.</p>
+<p class="l">പെരുമ്പാമ്പ് തല ഉയർത്തുന്നു. തീവണ്ടി അകലുന്നു. വീണ്ടും ആളുകളുടെ ശബ്ദം.</p>
+<p class="l">ആർക്കും അതിന്റെ ഭയം മനസ്സിലാകുന്നില്ല.</p>
+<p class="l">അത് പതുക്കെ ഒരു മതിലിന്റെ അരികിലേക്ക് നീങ്ങുന്നു.</p>
+<p class="l">വിശപ്പുണ്ട്. പക്ഷേ ഇരയില്ല.</p>
+<p class="l">കാട്ടിൽ ഗന്ധം പിന്തുടർന്ന് കണ്ടെത്തിയിരുന്ന ഭക്ഷണം ഇവിടെ എവിടെ?</p>
+<p class="l">അത് വീണ്ടും നീങ്ങുന്നു. ഒരു ഇരുണ്ട ഇടം തേടി. ഒരു സുരക്ഷിതമായ ഇടം തേടി.</p>
+<p class="l">പക്ഷേ മനുഷ്യരുടെ ലോകത്ത് അതിന് സ്വന്തമായി ഒരു ഇടമില്ല.</p>
+</div></section>
+<section data-k="8" data-s="4"><div class="pn">
+<h2 class="l">വളയം</h2>
+<p class="l">പെട്ടെന്ന് ഒരാൾ അത് കാണുന്നു. അയാൾ നിൽക്കുന്നു. പിന്നെ മറ്റൊരാൾ.</p>
+<p class="l">“പാമ്പ്!”</p>
+<p class="l">ഒരു വിളി. അത് കേട്ട് ആളുകൾ തിരിഞ്ഞുനോക്കുന്നു.</p>
+<p class="l">മൊബൈൽ ഫോണുകൾ പുറത്തുവരുന്നു.</p>
+<p class="l">കുറച്ച് പേർ പിന്നോട്ട് മാറുന്നു. ചിലർ അടുത്തേക്ക് വരുന്നു.</p>
+<p class="l">ഒരു ചെറിയ കൂട്ടം. പിന്നെ വലിയൊരു കൂട്ടം.</p>
+<p class="l">പെരുമ്പാമ്പ് തല ഉയർത്തുന്നു.</p>
+<p class="l">മുന്നിൽ മനുഷ്യർ. പിന്നിൽ മനുഷ്യർ. ഇടത് വശത്ത് മനുഷ്യർ. വലത് വശത്തും.</p>
+<p class="l">അത് ഒരു വശത്തേക്ക് നീങ്ങുന്നു. ആളുകൾ മാറിനിൽക്കുന്നു. മറ്റൊരു വശത്തേക്ക്. അവിടെയും ആളുകൾ.</p>
+<p class="l">ക്യാമറകളുടെ ഫ്ലാഷ്. മൊബൈൽ ഫോണുകളുടെ വെളിച്ചം. മനുഷ്യരുടെ ശബ്ദം.</p>
+<p class="l">പാമ്പിന്റെ ശരീരം കൂടുതൽ ചുരുങ്ങുന്നു. അത് രക്ഷപ്പെടാൻ ശ്രമിക്കുന്നു. പക്ഷേ അതിന് പോകാൻ വഴിയില്ല.</p>
+<p class="l">ഒരു നിമിഷം— അത് തല ഉയർത്തി നിശ്ചലമായി നിൽക്കുന്നു.</p>
+<p class="l">ആ കണ്ണുകളിൽ ഒരു കാട് മുഴുവൻ ഒളിച്ചിരിക്കുന്നതുപോലെ.</p>
+<p class="l">നനഞ്ഞ മണ്ണ്. മരങ്ങളുടെ ഇരുട്ട്. മഴയുടെ ഗന്ധം. ഒറ്റപ്പെട്ട ഒരു ലോകം.</p>
+<p class="l">പക്ഷേ ഇപ്പോൾ അതിന് ചുറ്റും മനുഷ്യർ മാത്രം.</p>
+<p class="l">ഒടുവിൽ— അത് പിടിക്കപ്പെടുന്നു.</p>
+</div></section>
+<section data-k="9" data-s="4"><div class="pn">
+<h2 class="l">ഒരു പെരുമ്പാമ്പിൽ നിന്ന് മനുവിലേക്ക്</h2>
+<p class="l">മനു ആ കഥ പറഞ്ഞുതീർന്നപ്പോൾ, അതിലെ ഒരു രംഗവും അന്ന് എന്റെ മനസ്സിൽ വ്യക്തമായി തെളിഞ്ഞിരുന്നില്ല.</p>
+<p class="l">എന്നാൽ എന്തുകൊണ്ടോ ആ കഥ അവിടെ അവസാനിച്ചില്ല.</p>
+<p class="l">മനു പറഞ്ഞ വാക്കുകൾ മനസ്സിൽ എവിടെയോ കിടന്നു.</p>
+<p class="l">പെരുമ്പാമ്പ്.</p>
+<p class="l">മഴ.</p>
+<p class="l">വെള്ളപ്പാച്ചിൽ.</p>
+<p class="l">കാട്ടിൽ നിന്ന് അകന്നുപോകുന്ന ഒരു ജീവി.</p>
+<p class="l">അപരിചിതമായ വെളിച്ചങ്ങളും ശബ്ദങ്ങളും നിറഞ്ഞ ലോകം.</p>
+<p class="l">റെയിൽവേ സ്റ്റേഷൻ.</p>
+<p class="l">വിശപ്പ്.</p>
+<p class="l">ഒടുവിൽ മനുഷ്യരുടെ വളയത്തിനുള്ളിൽ കുടുങ്ങിപ്പോകുന്ന ആ ജീവി.</p>
+<p class="l">പിന്നീട് ഒരു രാത്രി, ആ കഥ വീണ്ടും മനസ്സിലേക്ക് വന്നു.</p>
+<p class="l">അന്ന് മനു പറഞ്ഞ ഓരോ വാക്കും പതുക്കെ ഒരു പഴയ ഫിലിം റീൽ അഴിയുന്നതുപോലെ മുന്നിലേക്ക് വരാൻ തുടങ്ങി.</p>
+<p class="l">ആദ്യം ഒരു ചെറിയ രംഗം.</p>
+<p class="l">പിന്നെ മറ്റൊന്ന്.</p>
+<p class="l">പിന്നെ മറ്റൊന്ന്.</p>
+<p class="l">മഴ.</p>
+<p class="l">വെള്ളത്തിൽ ഒഴുകിപ്പോകുന്ന പെരുമ്പാമ്പ്.</p>
+<p class="l">കാട്ടിൽ നിന്ന് അകന്നുപോകുന്ന അതിന്റെ യാത്ര.</p>
+<p class="l">അപരിചിതമായ നഗരത്തിന്റെ വെളിച്ചങ്ങൾ.</p>
+<p class="l">തീവണ്ടിയുടെ ശബ്ദം.</p>
+<p class="l">വിശപ്പും ആശയക്കുഴപ്പവും.</p>
+<p class="l">അവസാനം അതിനെ ചുറ്റിനിൽക്കുന്ന മനുഷ്യർ.</p>
+<p class="l">ഒന്നിനുപിറകെ മറ്റൊന്ന്.</p>
+<p class="l">ഒരു പഴയ ഫിലിം റോൾ പതുക്കെ അഴിയുന്നതുപോലെ.</p>
+<p class="l">അപ്പോഴാണ് ആ കഥ എനിക്ക് മറ്റൊരു അർത്ഥത്തിൽ തോന്നിയത്.</p>
+<p class="l q">ആ പെരുമ്പാമ്പിൽ എനിക്ക് മനുവിനെ കാണാൻ തുടങ്ങി.</p>
+<p class="l">ഒരിക്കൽ ഞങ്ങളുടെ കൂട്ടത്തിൽ നിന്ന് സിനിമയിലേക്ക് പോകുമെന്ന് എല്ലാവരും പ്രതീക്ഷിച്ചിരുന്ന ആ ജൂനിയർ.</p>
+<p class="l">വേദികളിൽ സ്കിറ്റുകളും നാടകങ്ങളും അവതരിപ്പിച്ച് സംസ്ഥാനതലത്തിലും ദേശീയതലത്തിലും വരെ സമ്മാനങ്ങൾ നേടിയിരുന്ന കലാകാരൻ.</p>
+<p class="l">ഒരു സാധാരണ സംഭവത്തെ പോലും കഥയാക്കാനുള്ള കഴിവുണ്ടായിരുന്ന ഒരാൾ.</p>
+<p class="l">പക്ഷേ ജീവിതം മറ്റൊരു വഴിയാണ് തിരഞ്ഞെടുത്തത്.</p>
+<p class="l">സിനിമയുടെ ലോകത്തേക്ക് എത്തേണ്ടിയിരുന്ന ഒരാൾ ഇന്ന് വയനാട്ടിലെ സ്വന്തം ലോകത്താണ്.</p>
+<p class="l">അപ്പോൾ മനസ്സിൽ വന്നത് ഒരു ചെറിയ ചിന്ത:</p>
+<p class="l q">“മനൂ, ആ പെരുമ്പാമ്പ് ഒരുപക്ഷേ മനു തന്നെയല്ലേ?”</p>
+<p class="l">മലകളിൽ നിന്ന് താഴേക്ക് ഒഴുകി നഗരത്തിലെ വെളിച്ചങ്ങളിലും ശബ്ദങ്ങളിലും കുടുങ്ങിപ്പോയ ഒരു ജീവിയെപ്പോലെ, ഒരിക്കൽ മറ്റൊരു ലോകത്തേക്ക് പോകേണ്ടിയിരുന്ന മനു ഇപ്പോൾ സ്വന്തം ലോകത്ത് തന്നെ തുടരുന്നു.</p>
+<p class="l">അതുകൊണ്ട് മനസ്സിൽ ഞാൻ പറയുന്നത്:</p>
+<p class="l q">“മനൂ, ഇനി താഴേക്ക് ഇറങ്ങിവരണ്ട. നിനക്ക് ചേരുന്ന കാട്ടിൽ തന്നെ ഇരുന്നോളൂ.”</p>
+<p class="l">ഞങ്ങൾ ഇവിടെ താഴെ നമ്മുടെ വഴികൾ അന്വേഷിച്ചുകൊണ്ടിരിക്കാം.</p>
+</div></section>
+<section data-k="10" data-s="5"><div class="pn">
+<h2 class="l">അവസാന ഫ്രെയിം</h2>
+<p class="l">ഈ കഥ ഒരു ആനിമേഷൻ സിനിമയായിരുന്നെങ്കിൽ, അവസാന രംഗം വളരെ നിശ്ശബ്ദമായിരിക്കും.</p>
+<p class="l">കനത്ത മഴ കഴിഞ്ഞ ഒരു പ്രഭാതം.</p>
+<p class="l">ഇലകളിൽ ഇപ്പോഴും വെള്ളത്തുള്ളികൾ.</p>
+<p class="l">മരങ്ങൾക്കിടയിൽ മൂടൽമഞ്ഞ്.</p>
+<p class="l">നനഞ്ഞ മണ്ണിലൂടെ ഒരു പെരുമ്പാമ്പ് പതുക്കെ നീങ്ങുന്നു.</p>
+<p class="l">ക്യാമറ അതിന്റെ കൂടെ സഞ്ചരിക്കുന്നു.</p>
+<p class="l">അത് ഒരു വലിയ മരത്തിന്റെ വേരുകൾക്കിടയിലേക്ക് പതുക്കെ അപ്രത്യക്ഷമാകുന്നു.</p>
+<p class="l">ക്യാമറ പിന്നിലേക്ക് നീങ്ങുന്നു.</p>
+<p class="l">അകലെയായി നഗരത്തിന്റെ മങ്ങിയ വെളിച്ചങ്ങൾ.</p>
+<p class="l">മുന്നിൽ കാട്.</p>
+<p class="l">പിന്നിൽ നഗരം.</p>
+<p class="l">പെരുമ്പാമ്പ് കാട്ടിലേക്ക് മറയുന്നു.</p>
+<p class="l">ക്യാമറ പതുക്കെ മുകളിലേക്ക് ഉയരുന്നു.</p>
+<p class="l">മഴ നനഞ്ഞ കാട്.</p>
+<p class="l">മൂടൽമഞ്ഞിൽ മറഞ്ഞ മലകൾ.</p>
+<p class="l">താഴെ എവിടെയോ മനുഷ്യരുടെ ലോകം.</p>
+<p class="l">അവിടെ എവിടെയോ നമ്മളെപ്പോലുള്ള സാധാരണ പാമ്പുകൾ ഇപ്പോഴും സ്വന്തം വഴികൾ അന്വേഷിച്ചുകൊണ്ടിരിക്കുന്നു.</p>
+<p class="l">മുകളിലെ കാട്ടിൽ—</p>
+<p class="l">സ്വന്തം ലോകം കണ്ടെത്തിയ ഒരു പെരുമ്പാമ്പ്.</p>
+<p class="l q">Fade out.</p>
+<p class="l">മനു ഒരു ദിവസം വളരെ സാധാരണമായി പറഞ്ഞ ആ ചെറിയ കഥ, അന്ന് കേൾക്കുമ്പോൾ മനസ്സിൽ പതിഞ്ഞില്ലെങ്കിലും, പിന്നീട് എന്റെ ഉള്ളിൽ മറ്റൊരു രൂപത്തിൽ വളർന്നു.</p>
+<p class="l">ഒരു സംഭാഷണത്തിൽ പറഞ്ഞുപോയ ഏതാനും വാക്കുകൾ മാത്രം.</p>
+<p class="l">പക്ഷേ അവ മനസ്സിൽ എവിടെയോ കിടന്നു.</p>
+<p class="l">കാലം കഴിഞ്ഞപ്പോൾ അതിലെ രംഗങ്ങൾ ഒന്നൊന്നായി തെളിഞ്ഞുവന്നു.</p>
+<p class="l">ഒരു പഴയ ഫിലിം റോൾ പോലെ.</p>
+<p class="l">ഒടുവിൽ ആ കഥയിലെ പെരുമ്പാമ്പിനെയും മനുവിനെയും വേർതിരിച്ച് കാണാൻ കഴിയാത്ത ഒരു നിമിഷം വന്നു.</p>
+<p class="l">അവിടെയാണ് ആ കഥ ഒരു കഥയല്ലാതായത്.</p>
+<p class="l">അത് മനുവിനെക്കുറിച്ചുള്ള എന്റെ സ്വന്തം ഒരു സിനിമയായി മാറി.</p>
+<p class="l">കോളേജിലെ വേദികളിൽ നിന്ന് സിനിമയിലേക്ക് പോകുമെന്ന് ഞാൻ ഒരിക്കൽ കരുതിയിരുന്ന മനു.</p>
+<p class="l">സിനിമയിൽ എത്തിയില്ല.</p>
+<p class="l">പക്ഷേ കഥകൾ അവനെ വിട്ടുപോയില്ല.</p>
+<p class="l">ഇന്നും ഒരു ഓർമ്മക്കുറിപ്പ് വായിച്ചിട്ട്,</p>
+<p class="l q">“സൂപ്പർ ആണ്... ഇനിയും എഴുതണം.”</p>
+<p class="l">എന്ന് പറയുന്ന മനു.</p>
+<p class="l">അതിനിടയിൽ പെട്ടെന്ന്,</p>
+<p class="l q">“കുറച്ച് ഓന്തിറച്ചി വേണം.”</p>
+<p class="l">എന്ന് പറഞ്ഞ് സംഭാഷണം തമാശയാക്കുന്ന മനു.</p>
+<p class="l">പിന്നെ വർഷങ്ങൾക്കുമുമ്പ് പറഞ്ഞ ഒരു പെരുമ്പാമ്പിന്റെ കഥ ഓർമ്മിപ്പിക്കുന്ന മനു.</p>
+<p class="l">ഒരുപക്ഷേ അതാണ് മനുവിന്റെ യഥാർത്ഥ പ്രത്യേകത.</p>
+<p class="l q">അവൻ കഥകൾ മുഴുവൻ പറഞ്ഞുതരുന്ന ആളല്ല.<br>ചിലപ്പോൾ ഒരു ചെറിയ രംഗം മാത്രം മനസ്സിൽ ഇട്ടുതരും.<br>ബാക്കി സിനിമ ഓരോരുത്തരുടെയും ഉള്ളിൽ സ്വയം പൂർത്തിയാകും.</p>
+<p class="l">അങ്ങനെ നോക്കുമ്പോൾ, മനു സിനിമയിലേക്ക് എത്തിയില്ലെങ്കിലും എന്താണ് സംഭവിച്ചത്?</p>
+<p class="l q">ഒരു സിനിമ മനുവിൽ നിന്ന് എന്റെ മനസ്സിലേക്ക് വന്നതാണ്.</p>
+<p class="l">ഒരു പെരുമ്പാമ്പിന്റെ രൂപത്തിൽ.</p>
+<p class="l">ഒരു മഴയുടെ ശബ്ദത്തിൽ.</p>
+<p class="l">ഒരു പഴയ ഓർമ്മയുടെ ഫിലിം റീലിൽ.</p>
+<p class="l">അവസാനം—</p>
+<p class="l">കാട്ടിലേക്ക് തിരികെ മറയുന്ന ഒരു പെരുമ്പാമ്പിന്റെ ദൃശ്യത്തിൽ.</p>
+</div></section>
+<script>
+const cv=document.getElementById('c'),x=cv.getContext('2d');
+let W,H,t=0,S=0,K=0,flash=0,bolt=null,boltA=0,prog=0,sy=0;
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const R=(a,b)=>a+Math.random()*(b-a),cl=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+function rs(){const d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;x.setTransform(d,0,0,d,0,0)}
+addEventListener('resize',rs);rs();
+addEventListener('scroll',()=>{sy=scrollY;prog=cl(sy/Math.max(1,document.documentElement.scrollHeight-innerHeight));document.getElementById('pg').style.width=prog*100+'%'},{passive:true});
+const secs=[...document.querySelectorAll('section')];
+secs.forEach(sc=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){S=+sc.dataset.s;document.body.dataset.s=S;const nk=+sc.dataset.k;if(nk!==K){K=nk;onK()}}}),{rootMargin:'-45% 0px -45% 0px'}).observe(sc));
+const io=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting){e.target.style.transitionDelay=(i*90)+'ms';e.target.classList.add('on');document.getElementById('h').style.display='none';io.unobserve(e.target)}}),{threshold:.25});
+document.querySelectorAll('.l').forEach(e=>io.observe(e));
+// ---------- world data ----------
+const w=[1,0,0,0,0,0];
+const stars=Array.from({length:100},()=>({x:R(0,1),y:R(0,.55),r:R(.4,1.7),p:R(0,6)}));
+const ff=Array.from({length:28},()=>({x:R(0,1),y:R(.45,.95),p:R(0,6),s:R(.2,.7)}));
+const drops=Array.from({length:240},()=>({x:R(0,1),y:R(0,1),v:R(.7,1.5),l:R(10,26)}));
+const bld=[];for(let px=0;px<2400;){const bw=R(50,110);bld.push({x:px,w:bw,h:R(130,340),win:Array.from({length:40},()=>Math.random()<.5)});px+=bw+R(0,8)}
+const ppl=Array.from({length:24},(_,i)=>({a:i/24*6.283,f:R(0,6),h:R(26,38)}));
+const rip=[];
+// ---------- helpers ----------
+function sky(c1,c2,a){const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,c1);g.addColorStop(1,c2);x.globalAlpha=a;x.fillStyle=g;x.fillRect(0,0,W,H);x.globalAlpha=1}
+function mts(col,base,amp,seed,spd,a){x.globalAlpha=a;x.fillStyle=col;x.beginPath();x.moveTo(0,H);for(let i=0;i<=28;i++)x.lineTo(i*W/28,H*base-(Math.sin(i*.8+seed)+Math.sin(i*.33+seed*2)*.7+1.7)*amp*H+Math.sin(sy*spd*.003+i)*3);x.lineTo(W,H);x.fill();x.globalAlpha=1}
+function glow(px,py,r,rgb,a){const g=x.createRadialGradient(px,py,0,px,py,r);g.addColorStop(0,'rgba('+rgb+',1)');g.addColorStop(1,'rgba('+rgb+',0)');x.globalAlpha=a;x.fillStyle=g;x.fillRect(px-r,py-r,2*r,2*r);x.globalAlpha=1}
+function trees(col,a,n,hh){x.globalAlpha=a;x.fillStyle=col;for(let i=0;i<n;i++){const X=i*W/(n-1),h=H*hh*(.7+.5*Math.abs(Math.sin(i*2.3)));x.beginPath();x.moveTo(X-W/n*.7,H);x.lineTo(X,H-h);x.lineTo(X+W/n*.7,H);x.fill()}x.globalAlpha=1}
+// ---------- scenes ----------
+function s0(a){sky('#0b2733','#06141a',a);
+ stars.forEach(s=>{x.globalAlpha=a*(.35+.65*Math.abs(Math.sin(t*1.6+s.p)));x.fillStyle='#fff';x.fillRect(s.x*W,s.y*H,s.r,s.r)});x.globalAlpha=1;
+ glow(W*.8,H*.17,130,'230,240,230',a*.3);x.globalAlpha=a;x.fillStyle='#eef3e8';x.beginPath();x.arc(W*.8,H*.17,34,0,7);x.fill();x.globalAlpha=1;
+ mts('#0d2e35',.66,.12,1,.5,a);mts('#0a232a',.74,.1,4,.8,a);mts('#07181e',.82,.08,7,1.1,a);trees('#041014',a,16,.2);
+ ff.forEach(f=>glow((f.x*W+Math.sin(t*f.s+f.p)*34+W)%W,f.y*H+Math.cos(t*f.s*1.3+f.p)*18,11,'220,255,150',a*(.25+.65*Math.max(0,Math.sin(t*1.7+f.p)))))}
+function s1(a){sky('#02080c','#0c1c26',a);
+ for(let i=0;i<7;i++)glow(((i*W/5+t*(10+i%3*8))%(W+500))-250,H*.1+i%3*34,280,'70,92,108',a*.5);
+ mts('#041218',.62,.13,3,.6,a);
+ if(boltA>0&&bolt){x.globalAlpha=a;x.strokeStyle='rgba(225,238,255,'+boltA+')';x.lineWidth=2.2;x.shadowColor='#9cc8ff';x.shadowBlur=22;x.beginPath();bolt.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.stroke();x.shadowBlur=0;x.globalAlpha=1;boltA-=.05}
+ const cols=['#0d3a4a','#0a2e3c','#06202b'];
+ for(let l=0;l<3;l++){x.globalAlpha=a*(.6+l*.12);x.fillStyle=cols[l];x.beginPath();x.moveTo(0,H);for(let X=0;X<=W+16;X+=16)x.lineTo(X,H*(.76+l*.06)+Math.sin(X*.011+t*(1.1+l*.5)+l*2)*(7+l*5)+Math.sin(X*.027-t*1.7)*3);x.lineTo(W,H);x.fill()}
+ x.globalAlpha=a*.35;x.fillStyle='#cfe8f0';for(let i=0;i<36;i++){const X=(i*W/36+t*46)%W;x.fillRect(X,H*.76+Math.sin(X*.011+t*1.1)*7,6,2)}x.globalAlpha=1;
+ if(Math.random()<.5)rip.push({x:R(0,W),y:R(H*.8,H*.98),r:0});
+ x.strokeStyle='rgba(200,230,240,.35)';x.lineWidth=1;for(let i=rip.length-1;i>=0;i--){const r=rip[i];r.r+=1.1;x.globalAlpha=a*Math.max(0,1-r.r/40);x.beginPath();x.ellipse(r.x,r.y,r.r,r.r*.3,0,0,7);x.stroke();if(r.r>40)rip.splice(i,1)}x.globalAlpha=1}
+function s2(a){sky('#1b1428','#3b2442',a);
+ const ox=-((t*8+sy*.1)%2400);x.globalAlpha=a;
+ for(let k=0;k<2;k++)bld.forEach(b=>{const bx=b.x+ox+k*2400,by=H*.86-b.h;if(bx>W||bx+b.w<0)return;x.fillStyle='#0f0a16';x.fillRect(bx,by,b.w,b.h);
+  const cols=Math.floor(b.w/16);for(let i=0;i<cols*Math.floor(b.h/22);i++){if(b.win[i%40]&&Math.sin(t*.8+i+b.x)>-.85){x.fillStyle='#ffd27a';x.fillRect(bx+6+(i%cols)*16,by+8+Math.floor(i/cols)*22,8,11)}}});
+ x.fillStyle='#0c0910';x.fillRect(0,H*.86,W,H*.14);x.fillStyle='#4a3f58';for(let i=0;i<12;i++)x.fillRect(((i*W/6)-t*220+W*2)%(W+100)-50,H*.94,60,4);x.globalAlpha=1;
+ for(let i=0;i<9;i++)glow(W*(i+.5)/9,H*(.5+.1*Math.sin(i*2)),55,i%2?'255,80,160':'80,160,255',a*.22*(.6+.4*Math.sin(t*2+i)));
+ for(let k=0;k<3;k++){const p=((t*.33+k/3)%1),px=(k%2?1-p:p)*(W+500)-250,py=H*(.9+k*.02);glow(px,py,260,'255,244,200',a*.8);glow(px+50,py,160,'255,255,255',a*.5)}}
+function s3(a){x.globalAlpha=a;x.fillStyle='#d9d7cc';x.fillRect(0,0,W,H);x.fillStyle='#a9aba1';x.fillRect(0,0,W,H*.12);x.fillStyle='#c3c4ba';for(let i=0;i<5;i++)x.fillRect(W*(i+.3)/5,H*.12,16,H*.68);
+ x.fillStyle='#c8c6ba';x.fillRect(0,H*.8,W,H*.2);x.fillStyle='#e0b72a';x.fillRect(0,H*.9,W,6);x.fillStyle='#55575a';x.fillRect(0,H*.95,W,5);x.globalAlpha=1;
+ for(let i=0;i<5;i++)glow(W*(i+.5)/5,H*.1,240,'255,255,255',a*.95);
+ const tp=((t*.42)%1.7)*(W+900)-700;
+ for(let c=0;c<3;c++){const rx=tp-c*434;x.globalAlpha=a;x.fillStyle='#2f3a46';x.fillRect(rx,H*.6,420,H*.18);x.fillStyle='#c0392b';x.fillRect(rx,H*.7,420,8);
+  for(let i=0;i<6;i++){x.fillStyle='#f6e7a8';x.fillRect(rx+18+i*66,H*.63,44,H*.05)}
+  x.fillStyle='rgba(255,255,255,.18)';for(let i=0;i<5;i++)x.fillRect(rx-110,H*.62+i*14,100,2);x.globalAlpha=1}
+ window.tk=Math.max(0,1-Math.abs(tp-434-W/2)/(W*.9))}
+function s4(a){sky('#221b2a','#0c0912',a);glow(W*.62,H*.55,Math.min(W,H)*.6,'255,236,190',a*.13);
+ x.globalAlpha=a*.35;x.fillStyle='#000';x.beginPath();x.ellipse(ax,ay+40,Math.min(W,H)*.45,Math.min(W,H)*.14,0,0,7);x.fill();x.globalAlpha=1;
+ const RR=(Math.min(W,H)*.3+20)*a;
+ ppl.forEach(p=>{const px=ax+Math.cos(p.a+Math.sin(t*.3)*.04)*RR*1.4,py=ay+Math.sin(p.a)*RR*.7+24,s=p.h/32;x.globalAlpha=a;x.fillStyle='#120e18';x.beginPath();x.arc(px,py-p.h*.55,9*s,0,7);x.fill();x.fillRect(px-9*s,py-p.h*.45,18*s,p.h);
+  const on=Math.sin(t*3+p.f)>.6;x.fillStyle=on?'#fff':'#8fc4f0';x.fillRect(px+7*s,py-p.h*.35,6,11);if(on)glow(px+10*s,py-p.h*.3,46,'255,255,255',a*.8);x.globalAlpha=1});
+ const pu=Math.pow(Math.max(0,Math.sin(t*6.5)),6);x.fillStyle='rgba(130,0,25,'+(.09*pu*a)+')';x.fillRect(0,0,W,H)}
+function s5(a){sky('#dce9df','#7fa592',a);glow(W*.78,H*.2,300,'255,240,200',a*.7);
+ x.strokeStyle='rgba(255,246,210,.12)';x.lineWidth=18;x.globalAlpha=a;for(let i=0;i<8;i++){const an=.5+i*.17+Math.sin(t*.2)*.04;x.beginPath();x.moveTo(W*.78,H*.2);x.lineTo(W*.78+Math.cos(an)*W*1.2,H*.2+Math.sin(an)*W*1.2);x.stroke()}x.globalAlpha=1;
+ mts('#86ab97',.68,.14,5,.5,a);mts('#5d8571',.76,.12,8,.8,a);mts('#3e6652',.84,.1,11,1,a);trees('#1f3d30',a,12,.26);
+ x.globalAlpha=a;x.strokeStyle='#1a2f25';x.lineWidth=14;x.lineCap='round';for(let i=0;i<4;i++){x.beginPath();x.moveTo(W*(.78+i*.06),H);x.bezierCurveTo(W*(.8+i*.05),H*.9,W*(.84+i*.04),H*.86,W*(.9+i*.03),H*.8);x.stroke()}x.globalAlpha=1;
+ for(let i=0;i<7;i++)glow(((t*14*(i+1)+i*350)%(W+700))-350,H*(.35+i*.08),270,'255,255,255',a*.2);
+ for(let i=0;i<26;i++)glow((i*137%100)/100*W,H*(.45+(i*53%45)/100),7,'255,255,255',a*.5*Math.max(0,Math.sin(t*1.5+i)))}
+// ---------- snake ----------
+const trail=[];let ax=0,ay=0;
+function anchor(){if(S==0)return[W*.72,H*.35,22,10];if(S==1)return[W*.5+Math.sin(t*.8)*W*.3,H*.5+Math.sin(t*1.3)*H*.18,70,45];
+ if(S==2)return[W*.6,H*.88,50,5];if(S==3)return[W*.72,H*.88,28,4];if(S==4)return[W*.62,H*.58,0,0];
+ const pp=cl((prog-.9)/.1);return[W*(.55+.33*pp),H*(.8-.02*pp),12,4]}
+function snake(){const a=anchor();ax+=(a[0]-ax)*.03;ay+=(a[1]-ay)*.03;
+ let hx=ax+Math.sin(t*1.1)*a[2],hy=ay+Math.sin(t*1.7)*a[3];if(S==4){hx=ax+Math.cos(t*1.4)*48;hy=ay+Math.sin(t*1.4)*30}
+ trail.unshift([hx,hy]);if(trail.length>130)trail.pop();
+ const sa=S==5?1-cl((prog-.92)/.08):1;if(sa<=.01)return;x.globalAlpha=sa;
+ const pts=trail.map((p,i)=>[p[0]+Math.sin(i*.25+t*3)*6,p[1]+Math.cos(i*.2)*3]);
+ const n3=S==3,base=n3?'#6b5a1a':'#b8922a',dark=n3?'#3a300f':'#4a3610',lite=n3?'#8d7a2e':'#ecd37c';
+ for(let i=pts.length-1;i>=0;i--){const r=Math.max(2,16-i*.105),p=pts[i],q=pts[i+1]||p,an=Math.atan2(p[1]-q[1],p[0]-q[0]);
+  x.fillStyle=base;x.beginPath();x.arc(p[0],p[1],r,0,7);x.fill();
+  if(i%12<6&&r>4){x.fillStyle=dark;x.beginPath();x.ellipse(p[0],p[1],r*.75,r*.5,an+1.57,0,7);x.fill();x.fillStyle=base;x.beginPath();x.ellipse(p[0],p[1],r*.3,r*.2,an+1.57,0,7);x.fill()}
+  x.fillStyle=lite;x.globalAlpha=sa*.3;x.beginPath();x.arc(p[0]-r*.2,p[1]-r*.4,r*.45,0,7);x.fill();x.globalAlpha=sa}
+ {const p=pts[0],q=pts[5]||p,an=Math.atan2(p[1]-q[1],p[0]-q[0]);x.save();x.translate(p[0],p[1]);x.rotate(an);
+  x.fillStyle=base;x.beginPath();x.ellipse(8,0,23,13,0,0,7);x.fill();x.fillStyle=dark;x.beginPath();x.moveTo(-8,0);x.lineTo(4,-6);x.lineTo(16,0);x.lineTo(4,6);x.fill();
+  x.beginPath();x.arc(20,-4,1.6,0,7);x.arc(20,4,1.6,0,7);x.fill();
+  [-7,7].forEach(y=>{x.fillStyle='#f0d060';x.beginPath();x.arc(10,y,4,0,7);x.fill();x.fillStyle='#000';x.beginPath();x.ellipse(10,y,1,3.2,0,0,7);x.fill()});
+  const tl=Math.max(0,Math.sin(t*7))*(S==4?22:14);if(tl>2){x.strokeStyle='#c0243a';x.lineWidth=1.6;x.beginPath();x.moveTo(30,0);x.lineTo(30+tl,0);x.moveTo(30+tl,0);x.lineTo(34+tl,-4);x.moveTo(30+tl,0);x.lineTo(34+tl,4);x.stroke()}x.restore()}
+ x.globalAlpha=1}
+// ---------- rain ----------
+const RI=[.12,1,.3,.05,.03,0];
+function rain(){let ri=0;for(let i=0;i<6;i++)ri+=w[i]*RI[i];if(ri<.02)return;x.strokeStyle='#a8cddb';x.lineWidth=1;x.globalAlpha=.12+.4*ri;x.beginPath();
+ const n=Math.floor(drops.length*Math.min(1,ri+.2));for(let i=0;i<n;i++){const d=drops[i],px=d.x*W,py=d.y*H;x.moveTo(px,py);x.lineTo(px-d.l*.25,py+d.l*(.6+ri));d.y+=d.v*.02*(.5+ri*1.5);d.x-=.0009*ri;if(d.y>1){d.y=-.05;d.x=Math.random()}if(d.x<0)d.x=1}x.stroke();x.globalAlpha=1}
+// ---------- main loop ----------
+function frame(){if(!reduce)t+=.016;for(let i=0;i<6;i++)w[i]+=((S==i?1:0)-w[i])*.04;
+ x.fillStyle='#06141a';x.fillRect(0,0,W,H);[s0,s1,s2,s3,s4,s5].forEach((f,i)=>{if(w[i]>.01)f(w[i])});
+ rain();
+ if(S==1&&Math.random()<.004){flash=1;boltA=1;bolt=[[R(W*.2,W*.8),0]];while(bolt[bolt.length-1][1]<H*.62){const l=bolt[bolt.length-1];bolt.push([l[0]+R(-40,40),l[1]+R(30,70)])}thunder()}
+ if(flash>0){x.fillStyle='rgba(205,230,255,'+flash*.38+')';x.fillRect(0,0,W,H);flash-=.05}
+ snake();
+ const fo=cl((prog-.97)/.03);if(fo>0){x.fillStyle='rgba(0,0,0,'+fo*.7+')';x.fillRect(0,0,W,H)}
+ audioTick();requestAnimationFrame(frame)}
+// ---------- SOUND: each page has its own score ----------
+let AC,MG,REV,on=false,B={},PD=[],PG,NX={hb:0,tr:false};
+function bed(type,f,q,lr,ld){const b=AC.createBuffer(1,AC.sampleRate*3,AC.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;const s=AC.createBufferSource();s.buffer=b;s.loop=true;const fl=AC.createBiquadFilter();fl.type=type;fl.frequency.value=f;fl.Q.value=q;
+ if(lr){const o=AC.createOscillator(),og=AC.createGain();o.frequency.value=lr;og.gain.value=ld;o.connect(og);og.connect(fl.frequency);o.start()}const g=AC.createGain();g.gain.value=0;s.connect(fl);fl.connect(g);g.connect(MG);s.start();return g}
+function out(n,send){n.connect(MG);if(send){const g=AC.createGain();g.gain.value=send;n.connect(g);g.connect(REV)}}
+function env(src,pk,at,dur,send,pan,delay,st){const g=AC.createGain(),T=AC.currentTime+(delay||0);g.gain.setValueAtTime(.0001,T);g.gain.linearRampToValueAtTime(pk,T+at);g.gain.exponentialRampToValueAtTime(.0001,T+at+dur);let n=g;
+ if(pan&&AC.createStereoPanner){const p=AC.createStereoPanner();if(Array.isArray(pan)){p.pan.setValueAtTime(pan[0],T);p.pan.linearRampToValueAtTime(pan[1],T+at+dur)}else p.pan.value=pan;g.connect(p);n=p}
+ src.connect(g);out(n,send);const s=st||src;s.start(T);s.stop(T+at+dur+.1)}
+function tone(type,f,pk,at,dur,send,pan,delay,f2){const o=AC.createOscillator();o.type=type;o.frequency.value=f;if(f2)o.frequency.exponentialRampToValueAtTime(f2,AC.currentTime+(delay||0)+at+dur);env(o,pk,at,dur,send,pan,delay)}
+function nz(type,f,pk,at,dur,send,pan,delay,f2){const n=Math.ceil(AC.sampleRate*(at+dur+.3)),b=AC.createBuffer(1,n,AC.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;const s=AC.createBufferSource();s.buffer=b;const fl=AC.createBiquadFilter();fl.type=type;fl.frequency.value=f;if(f2)fl.frequency.exponentialRampToValueAtTime(f2,AC.currentTime+(delay||0)+at+dur);s.connect(fl);env(fl,pk,at,dur,send,pan,delay,s)}
+const pluck=(f,pk,pan)=>{tone('triangle',f,pk,.008,1.8,.5,pan);tone('sine',f*2,pk*.3,.005,.9,.5,pan)};
+const bell=(f,pk,d)=>{tone('sine',f,pk,.01,3.2,.7,0,d);tone('sine',f*2.76,pk*.35,.01,1.6,.7,0,d);tone('sine',f*5.4,pk*.12,.01,.8,.7,0,d)};
+const thunder=()=>{if(!on)return;nz('lowpass',220,.9,.05,3,.5,0,0,60);tone('sine',55,.5,.1,2.5,.3,0,0,30)};
+const ringPhone=()=>{for(let i=0;i<4;i++){tone('sine',440,.05,.02,.4,.1,0,i*.8);tone('sine',480,.05,.02,.4,.1,0,i*.8)}};
+const thump=()=>{tone('sine',90,.55,.01,.18,.1,0,0,40);tone('sine',80,.4,.01,.2,.1,0,.2,38)};
+const shutter=()=>{const p=R(-.7,.7);nz('highpass',3000,.14,.002,.04,.2,p);nz('highpass',2000,.1,.002,.03,.2,p,.06)};
+const bird=()=>{const f=R(2200,3600),p=R(-.8,.8),n=2+(Math.random()*3|0);for(let i=0;i<n;i++)tone('sine',f,.035,.01,.1,.5,p,i*.13,f*1.35)};
+const pick=a=>a[Math.random()*a.length|0];
+const CH=[[110,164.8,220,261.6],[110,164.8,220,261.6],[98,146.8,196,246.9],[130.8,196,196,261.6],[82.4,123.5,155.6,164.8],[73.4,110,116.5,146.8],[123.5,185,233.1,246.9],[196,293.7,415.3,587],[110,116.5,164.8,174.6],[130.8,196,261.6,329.6],[146.8,220,293.7,370]];
+const PGN=[.07,.07,.06,.015,.06,.05,.045,.04,.07,.09,.08];
+//          rain1 rain2 river wind road crowd hiss
+const BG=[[0,0,0,.025,0,0,0],[0,0,0,.02,0,0,0],[0,0,0,.012,0,0,0],[0,0,0,.008,.02,0,0],[.03,.04,0,.07,0,0,0],[.12,.2,.18,.12,0,0,0],[.04,.05,0,.02,.3,0,0],[.015,.02,0,.015,.1,0,0],[.01,.01,0,.02,0,.16,.03],[0,0,0,.025,0,0,0],[0,.012,0,.04,0,0,0]];
+function startAudio(){AC=new (window.AudioContext||window.webkitAudioContext)();MG=AC.createGain();MG.gain.value=.85;const cp=AC.createDynamicsCompressor();MG.connect(cp);cp.connect(AC.destination);
+ const L=AC.sampleRate*3,ir=AC.createBuffer(2,L,AC.sampleRate);for(let c=0;c<2;c++){const d=ir.getChannelData(c);for(let i=0;i<L;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/L,2.6)}
+ REV=AC.createConvolver();REV.buffer=ir;const rg=AC.createGain();rg.gain.value=.45;REV.connect(rg);rg.connect(MG);
+ B.r1=bed('highpass',5500,.5);B.r2=bed('bandpass',1800,.6);B.rv=bed('lowpass',500,.7,.15,200);B.wd=bed('bandpass',420,.8,.07,150);B.rd=bed('lowpass',220,.7);B.tr=bed('lowpass',110,1);B.cr1=bed('bandpass',350,1,3.1,70);B.cr2=bed('bandpass',1100,2,4.7,200);B.hs=bed('highpass',5500,.8);
+ PG=AC.createGain();PG.gain.value=0;const lp=AC.createBiquadFilter();lp.type='lowpass';lp.frequency.value=1100;PG.connect(lp);out(lp,.6);
+ const lf=AC.createOscillator(),lg=AC.createGain();lf.frequency.value=.18;lg.gain.value=.015;lf.connect(lg);lg.connect(PG.gain);lf.start();
+ PD=[0,1,2,3].map(()=>{const o=AC.createOscillator();o.type='triangle';o.frequency.value=110;o.connect(PG);o.start();return o})}
+function onK(){if(!on)return;const c=CH[K];PD.forEach((o,i)=>o.frequency.setTargetAtTime(c[i],AC.currentTime,1.5));nz('bandpass',600,.06,.3,.7,.5,[-.5,.5]);NX.hb=0;
+ if(K==3)ringPhone();if(K==7)[784,659,523].forEach((f,i)=>bell(f,.06,i*.55));if(K==9)bell(523.3,.07);if(K==10)bird()}
+function audioTick(){if(!on)return;const T=AC.currentTime,g=BG[K],s=(n,v)=>n.gain.setTargetAtTime(v,T,.7);
+ s(B.r1,g[0]);s(B.r2,g[1]);s(B.rv,g[2]);s(B.wd,g[3]);s(B.rd,g[4]);s(B.cr1,g[5]);s(B.cr2,g[5]*.7);s(B.hs,g[6]*Math.max(0,Math.sin(t*7)));s(B.tr,K==7?(window.tk||0)*.8:0);s(PG,PGN[K]);
+ const pp=cl((prog-.9)/.1);MG.gain.setTargetAtTime(.85*(1-pp*.95),T,.4);const r=Math.random();
+ if(K<=1&&r<.14)tone('sine',4300,.008,.005,.03,.1,R(-.8,.8));
+ if(K<=1&&r<.005)pluck(pick([440,523.3,587.3,659.3,784,880]),.05,R(-.5,.5));
+ if(K==2&&r<.004)pluck(pick([392,466,523,587,698]),.05,R(-.5,.5));
+ if(K==4&&r<.002)thunder();
+ if(K==5){if(r<.4)tone('sine',R(2500,5000),.01,.002,.08,.6,R(-.8,.8));if(r<.003)tone('triangle',pick([73.4,82.4,110]),.06,2.2,2.5,.6)}
+ if(K==6){if(r<.006)nz('bandpass',500,.25,1.2,1.2,.1,[-.9,.9],0,260);if(r<.004){const f=330+R(0,60);tone('square',f,.035,.03,.35,.2,R(-.6,.6));tone('square',f*1.25,.03,.03,.35,.2,R(-.6,.6))}}
+ if(K==7){if(r<.001)[784,659,523].forEach((f,i)=>bell(f,.05,i*.55));const k=window.tk||0;if(k>.05&&!NX.tr){NX.tr=true;tone('sawtooth',311,.045,.1,1.6,.4,0,0,290);tone('sawtooth',392,.045,.1,1.6,.4,0,0,366)}if(k<.01)NX.tr=false}
+ if(K==8){if(r<.08)shutter();if(T>NX.hb){thump();NX.hb=T+Math.max(.55,1.05-(t%40)*.012)}}
+ if(K==9){if(r<.014)pluck(pick([523.3,587.3,659.3,784,880,1046.5]),.07,R(-.4,.4));if(r<.003)bell(pick([523.3,659.3]),.05)}
+ if(K==10){if(r<.012)bird();if(r<.006)bell(pick([587,740,880]),.04);if(r<.08)tone('sine',R(2500,5000),.01,.002,.08,.6,R(-.8,.8))}}
+document.getElementById('snd').onclick=e=>{if(!AC)startAudio();on=!on;if(on){AC.resume();onK()}MG.gain.setTargetAtTime(on?.85:0,AC.currentTime,.1);e.target.textContent=on?'🔊 ശബ്ദം ഓഫ് ചെയ്യൂ':'🔇 ശബ്ദം ഓൺ ചെയ്യൂ';e.target.setAttribute('aria-pressed',on)};
+ax=W*.72;ay=H*.35;frame();
+</script>
+</body></html>
