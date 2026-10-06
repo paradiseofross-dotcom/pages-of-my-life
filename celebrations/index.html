@@ -2,6 +2,7 @@
 <html lang="ml">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,14 +11,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@400;500;600&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@400;500;600&display=swap"
+rel="stylesheet">
+
 
 <style>
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root {
+
     --bg: #0b1817;
     --bg2: #102522;
+
     --card: #162a27;
+
     --border: #29413d;
 
     --cyan: #72d8df;
@@ -27,7 +38,14 @@
     --text: #d8e3df;
     --muted: #9cafaa;
     --white: #f3f4ef;
+
+    --max: 800px;
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -38,19 +56,25 @@ html {
 }
 
 body {
+
     margin: 0;
 
+    min-height: 100vh;
+
     background:
+
         radial-gradient(
             circle at 10% 20%,
             rgba(62, 132, 130, .12),
-            transparent 32%
+            transparent 32rem
         ),
+
         radial-gradient(
             circle at 90% 75%,
             rgba(205, 140, 160, .08),
-            transparent 30%
+            transparent 30rem
         ),
+
         var(--bg);
 
     color: var(--text);
@@ -64,12 +88,18 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 
 /* =========================================================
    TOP BAR
-   ========================================================= */
+========================================================= */
 
 .topbar {
+
     height: 74px;
 
     border-bottom:
@@ -77,20 +107,47 @@ body {
         rgba(180, 220, 215, .12);
 
     display: flex;
+
     align-items: center;
+
+    background:
+        rgba(11, 24, 23, .88);
+
+    backdrop-filter:
+        blur(10px);
+
+    position: relative;
+
+    z-index: 20;
 }
 
+
 .topbar-inner {
-    width: min(800px, calc(100% - 40px));
+
+    width:
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
 
     margin: auto;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
+    gap: 20px;
 }
 
+
+/* =========================================================
+   BRAND
+========================================================= */
+
 .brand {
+
     text-decoration: none;
 
     color: var(--white);
@@ -102,9 +159,13 @@ body {
     font-size: 18px;
 
     font-weight: 600;
+
+    white-space: nowrap;
 }
 
+
 .brand::before {
+
     content: "◈";
 
     color: var(--pink);
@@ -114,7 +175,96 @@ body {
     font-size: 13px;
 }
 
+
+/* =========================================================
+   HEADER CONTROLS
+========================================================= */
+
+.header-controls {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+.music {
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 999px;
+
+    padding:
+        6px 15px;
+
+    color: var(--muted);
+
+    background:
+        transparent;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        border-color .25s ease,
+        color .25s ease,
+        background .25s ease;
+}
+
+
+.music:hover {
+
+    border-color:
+        var(--cyan);
+
+    color:
+        var(--cyan);
+}
+
+
+.music[aria-pressed="true"] {
+
+    border-color:
+        var(--cyan);
+
+    color:
+        var(--cyan);
+
+    background:
+        rgba(114,216,223,.04);
+}
+
+
+.music:focus-visible {
+
+    outline:
+        2px solid
+        var(--cyan);
+
+    outline-offset:
+        3px;
+}
+
+
+/* =========================================================
+   HOME LINK
+========================================================= */
+
 .home {
+
     text-decoration: none;
 
     color: var(--muted);
@@ -125,20 +275,31 @@ body {
 
     font-size: 14px;
 
-    transition: color .3s ease;
+    white-space: nowrap;
+
+    transition:
+        color .3s ease;
 }
 
+
 .home:hover {
-    color: var(--cyan);
+
+    color:
+        var(--cyan);
 }
 
 
 /* =========================================================
    MAIN
-   ========================================================= */
+========================================================= */
 
 main {
-    width: min(800px, calc(100% - 40px));
+
+    width:
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
 
     margin: auto;
 
@@ -150,37 +311,52 @@ main {
 
 /* =========================================================
    INTRODUCTION
-   ========================================================= */
+========================================================= */
 
 .eyebrow {
-    color: var(--cyan);
 
-    font-family:
-        "Anek Malayalam",
-        sans-serif;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    letter-spacing: .12em;
-
-    margin-bottom: 18px;
-}
-
-h1 {
-    margin: 0;
+    color:
+        var(--cyan);
 
     font-family:
         "Anek Malayalam",
         sans-serif;
 
     font-size:
-        clamp(3rem, 8vw, 5.5rem);
+        14px;
 
-    line-height: 1.05;
+    font-weight:
+        700;
 
-    font-weight: 700;
+    letter-spacing:
+        .12em;
+
+    margin-bottom:
+        18px;
+}
+
+
+h1 {
+
+    margin:
+        0;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        clamp(
+            3rem,
+            8vw,
+            5.5rem
+        );
+
+    line-height:
+        1.05;
+
+    font-weight:
+        700;
 
     background:
         linear-gradient(
@@ -190,45 +366,57 @@ h1 {
             var(--pink)
         );
 
-    -webkit-background-clip: text;
-    background-clip: text;
+    -webkit-background-clip:
+        text;
 
-    color: transparent;
+    background-clip:
+        text;
+
+    color:
+        transparent;
 }
 
+
 .intro {
-    max-width: 680px;
+
+    max-width:
+        680px;
 
     margin:
         32px 0
         70px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-family:
         "Noto Serif Malayalam",
         serif;
 
-    font-size: 17px;
+    font-size:
+        17px;
 
-    line-height: 1.95;
+    line-height:
+        1.95;
 }
 
 
 /* =========================================================
    STORY CARDS
-   ========================================================= */
+========================================================= */
 
 .story-card {
 
     position: relative;
 
     background:
+
         linear-gradient(
             135deg,
             rgba(255,255,255,.025),
             rgba(255,255,255,.005)
         ),
+
         var(--card);
 
     border:
@@ -239,25 +427,31 @@ h1 {
         3px solid
         var(--cyan);
 
-    border-radius: 12px;
+    border-radius:
+        12px;
 
     padding:
         34px 38px
         32px;
 
-    text-decoration: none;
+    text-decoration:
+        none;
 
-    color: inherit;
+    color:
+        inherit;
 
-    display: block;
+    display:
+        block;
 
-    margin-bottom: 24px;
+    margin-bottom:
+        24px;
 
     transition:
         transform .35s ease,
         border-color .35s ease,
         box-shadow .35s ease;
 }
+
 
 .story-card:hover {
 
@@ -268,6 +462,7 @@ h1 {
         rgba(114,216,223,.65);
 
     box-shadow:
+
         0 20px 60px
         rgba(0,0,0,.28),
 
@@ -278,7 +473,7 @@ h1 {
 
 /* =========================================================
    STORY NUMBER
-   ========================================================= */
+========================================================= */
 
 .number {
 
@@ -289,19 +484,23 @@ h1 {
     color:
         var(--pink);
 
-    font-size: 15px;
+    font-size:
+        15px;
 
-    font-weight: 700;
+    font-weight:
+        700;
 
-    line-height: 1;
+    line-height:
+        1;
 
-    margin-bottom: 12px;
+    margin-bottom:
+        12px;
 }
 
 
 /* =========================================================
    STORY TITLE
-   ========================================================= */
+========================================================= */
 
 .story-card h2 {
 
@@ -314,20 +513,26 @@ h1 {
         sans-serif;
 
     font-size:
-        clamp(1.9rem, 4vw, 2.35rem);
+        clamp(
+            1.9rem,
+            4vw,
+            2.35rem
+        );
 
     color:
         var(--white);
 
-    line-height: 1.35;
+    line-height:
+        1.35;
 
-    font-weight: 700;
+    font-weight:
+        700;
 }
 
 
 /* =========================================================
    STORY DESCRIPTION
-   ========================================================= */
+========================================================= */
 
 .story-card p {
 
@@ -342,19 +547,22 @@ h1 {
         "Noto Serif Malayalam",
         serif;
 
-    font-size: 17px;
+    font-size:
+        17px;
 
-    line-height: 1.85;
+    line-height:
+        1.85;
 }
 
 
 /* =========================================================
    READ LINK
-   ========================================================= */
+========================================================= */
 
 .read {
 
-    display: inline-block;
+    display:
+        inline-block;
 
     color:
         var(--cyan);
@@ -363,13 +571,16 @@ h1 {
         "Anek Malayalam",
         sans-serif;
 
-    font-size: 16px;
+    font-size:
+        16px;
 
-    font-weight: 600;
+    font-weight:
+        600;
 
     transition:
         transform .3s ease;
 }
+
 
 .story-card:hover .read {
 
@@ -380,11 +591,12 @@ h1 {
 
 /* =========================================================
    NOTE
-   ========================================================= */
+========================================================= */
 
 .note {
 
-    margin-top: 46px;
+    margin-top:
+        46px;
 
     padding:
         20px 24px;
@@ -400,22 +612,28 @@ h1 {
         "Noto Serif Malayalam",
         serif;
 
-    font-size: 14px;
+    font-size:
+        14px;
 
-    line-height: 1.9;
+    line-height:
+        1.9;
 }
 
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 footer {
 
     width:
-        min(800px, calc(100% - 40px));
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
 
-    margin: auto;
+    margin:
+        auto;
 
     padding:
         30px 0
@@ -432,26 +650,67 @@ footer {
         "Anek Malayalam",
         sans-serif;
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    text-align: center;
+    text-align:
+        center;
 }
 
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 600px) {
 
     .topbar {
-        height: 64px;
+
+        height:
+            64px;
     }
 
+
     .topbar-inner {
+
         width:
             calc(100% - 28px);
+
+        gap:
+            10px;
     }
+
+
+    .brand {
+
+        font-size:
+            16px;
+    }
+
+
+    .header-controls {
+
+        gap:
+            8px;
+    }
+
+
+    .music {
+
+        padding:
+            6px 11px;
+
+        font-size:
+            11px;
+    }
+
+
+    .home {
+
+        font-size:
+            12px;
+    }
+
 
     main {
 
@@ -463,19 +722,23 @@ footer {
             90px;
     }
 
+
     h1 {
 
         font-size:
             3.2rem;
     }
 
+
     .intro {
 
-        font-size: 16px;
+        font-size:
+            16px;
 
         margin-bottom:
             48px;
     }
+
 
     .story-card {
 
@@ -487,6 +750,7 @@ footer {
             20px;
     }
 
+
     .story-card h2 {
 
         font-size:
@@ -495,6 +759,7 @@ footer {
         line-height:
             1.4;
     }
+
 
     .story-card p {
 
@@ -510,22 +775,30 @@ footer {
 
 /* =========================================================
    REDUCED MOTION
-   ========================================================= */
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
     html {
-        scroll-behavior: auto;
+
+        scroll-behavior:
+            auto;
     }
 
+
     .story-card,
-    .read {
-        transition: none;
+    .read,
+    .music,
+    .home {
+
+        transition:
+            none;
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -534,11 +807,14 @@ footer {
 
 <!-- =======================================================
      HEADER
-     ======================================================= -->
+======================================================= -->
 
 <header class="topbar">
 
     <div class="topbar-inner">
+
+
+        <!-- BRAND -->
 
         <a
             href="../index.html"
@@ -547,12 +823,35 @@ footer {
             Paradise of Ross
         </a>
 
-        <a
-            href="../index.html"
-            class="home"
-        >
-            മുഖ്യപേജ്
-        </a>
+
+        <!-- HEADER CONTROLS -->
+
+        <div class="header-controls">
+
+
+            <!-- PIANO -->
+
+            <button
+                class="music"
+                id="music"
+                type="button"
+                aria-pressed="false"
+            >
+                Play music
+            </button>
+
+
+            <!-- HOME -->
+
+            <a
+                href="../index.html"
+                class="home"
+            >
+                മുഖ്യപേജ്
+            </a>
+
+
+        </div>
 
     </div>
 
@@ -562,12 +861,14 @@ footer {
 
 <!-- =======================================================
      MAIN CONTENT
-     ======================================================= -->
+======================================================= -->
 
 <main>
 
 
-    <!-- INTRO -->
+    <!-- ===================================================
+         INTRO
+    =================================================== -->
 
     <div class="eyebrow">
         PARADISE OF ROSS
@@ -580,16 +881,18 @@ footer {
 
 
     <p class="intro">
+
         ജീവിതത്തിലെ ചില ദിവസങ്ങൾ കലണ്ടറിൽ ഒരു തീയതി മാത്രമല്ല.
         അവ നമ്മുടെ ഓർമ്മയിൽ പതിഞ്ഞുനിൽക്കുന്ന പ്രത്യേക നിമിഷങ്ങളാണ്.
         ഒരു ആഘോഷവും ഒരു കഥയും ഒരു കാലത്തിന്റെ ചെറിയൊരു ഫ്രെയിമും.
+
     </p>
 
 
 
     <!-- ===================================================
          STORY 01
-         =================================================== -->
+    =================================================== -->
 
     <a
         href="roy_birthday.html"
@@ -607,10 +910,12 @@ footer {
 
 
         <p>
+
             റോയിയുടെ അറുപതാം പിറന്നാളും ഡയാനയുടെ പിറന്നാളും
             ഒരേ ദിവസം. കുടുംബം ഒരുക്കിയ ഒരു സർപ്രൈസ്,
             അതിഥികളുടെ വരവ്, ചിരികൾ, തമാശകൾ,
             ഒടുവിൽ മനസ്സിൽ പതിഞ്ഞ ഒരു അവസാന ഫ്രെയിം.
+
         </p>
 
 
@@ -624,7 +929,7 @@ footer {
 
     <!-- ===================================================
          STORY 02
-         =================================================== -->
+    =================================================== -->
 
     <a
         href="poornachandran_ravu.html"
@@ -642,10 +947,12 @@ footer {
 
 
         <p>
+
             ഒരു വിവാഹ രജിസ്ട്രേഷന്റെ ചെറിയ ആഘോഷമായി തുടങ്ങിയ
             ഒരു രാത്രി. സുഹൃത്തുക്കളുടെ കൂടിച്ചേരൽ, പഴയ ഓർമ്മകൾ,
             പുതിയ യാത്രകളുടെ സ്വപ്നങ്ങൾ, ചിരികൾ, സൗഹൃദം —
             ഒടുവിൽ പൂർണ്ണചന്ദ്രന്റെ വെളിച്ചത്തിൽ പതിഞ്ഞ ഒരു ഓർമ്മ.
+
         </p>
 
 
@@ -659,7 +966,7 @@ footer {
 
     <!-- ===================================================
          NOTE
-         =================================================== -->
+    =================================================== -->
 
     <div class="note">
 
@@ -676,13 +983,573 @@ footer {
 
 <!-- =======================================================
      FOOTER
-     ======================================================= -->
+======================================================= -->
 
 <footer>
 
     © Paradise of Ross
 
 </footer>
+
+
+
+<!-- =======================================================
+     PARADISE OF ROSS PIANO
+======================================================= -->
+
+<script>
+
+(function(){
+
+    const btn =
+        document.getElementById("music");
+
+
+    let ctx = null;
+
+    let master = null;
+
+    let timer = null;
+
+    let step = 0;
+
+    let next = 0;
+
+    let playing = false;
+
+
+    /* =====================================================
+       PIANO CHORD PROGRESSION
+    ===================================================== */
+
+    const chords = [
+
+        [48,55,60,64,67],
+
+        [45,52,57,60,64],
+
+        [41,48,57,60,65],
+
+        [43,50,59,62,67]
+
+    ];
+
+
+    /* =====================================================
+       ARPEGGIO
+    ===================================================== */
+
+    const arp =
+        [0,2,3,2,4,3,2,1];
+
+
+    /* =====================================================
+       MELODY
+    ===================================================== */
+
+    const melody =
+        [72,74,76,79,81,79,76,74];
+
+
+    const STEP =
+        0.75;
+
+
+
+    /* =====================================================
+       AUDIO SETUP
+    ===================================================== */
+
+    function setupAudio(){
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+
+        if(!AudioContext){
+
+            alert(
+                "Your browser does not support Web Audio."
+            );
+
+            return false;
+        }
+
+
+        ctx =
+            new AudioContext();
+
+
+        master =
+            ctx.createGain();
+
+
+        master.gain.value =
+            0;
+
+
+
+        /* =================================================
+           REVERB
+        ================================================= */
+
+        const convolver =
+            ctx.createConvolver();
+
+
+        const length =
+            ctx.sampleRate * 3;
+
+
+        const impulse =
+            ctx.createBuffer(
+                2,
+                length,
+                ctx.sampleRate
+            );
+
+
+        for(
+            let channel = 0;
+            channel < 2;
+            channel++
+        ){
+
+            const data =
+                impulse.getChannelData(
+                    channel
+                );
+
+
+            for(
+                let i = 0;
+                i < length;
+                i++
+            ){
+
+                data[i] =
+                    (Math.random() * 2 - 1)
+                    *
+                    Math.pow(
+                        1 - i / length,
+                        2.5
+                    );
+
+            }
+
+        }
+
+
+        convolver.buffer =
+            impulse;
+
+
+        const wet =
+            ctx.createGain();
+
+
+        wet.gain.value =
+            .5;
+
+
+        const dry =
+            ctx.createGain();
+
+
+        dry.gain.value =
+            .7;
+
+
+
+        /* =================================================
+           AUDIO ROUTING
+        ================================================= */
+
+        master.connect(
+            dry
+        );
+
+        dry.connect(
+            ctx.destination
+        );
+
+
+        master.connect(
+            convolver
+        );
+
+        convolver.connect(
+            wet
+        );
+
+        wet.connect(
+            ctx.destination
+        );
+
+
+        return true;
+    }
+
+
+
+    /* =====================================================
+       PIANO NOTE
+    ===================================================== */
+
+    function playNote(
+        midi,
+        time,
+        volume
+    ){
+
+        const frequency =
+            440 *
+            Math.pow(
+                2,
+                (midi - 69) / 12
+            );
+
+
+        const filter =
+            ctx.createBiquadFilter();
+
+
+        filter.type =
+            "lowpass";
+
+
+        filter.frequency.value =
+            2200;
+
+
+        filter.connect(
+            master
+        );
+
+
+        const harmonics = [
+
+            [1, 1],
+
+            [2, .35],
+
+            [3, .1]
+
+        ];
+
+
+        harmonics.forEach(
+            function(part, index){
+
+                const oscillator =
+                    ctx.createOscillator();
+
+
+                const gain =
+                    ctx.createGain();
+
+
+                const duration =
+                    3.8 /
+                    (1 + index * .7);
+
+
+                oscillator.type =
+                    "sine";
+
+
+                oscillator.frequency.value =
+                    frequency *
+                    part[0];
+
+
+                gain.gain.setValueAtTime(
+                    0,
+                    time
+                );
+
+
+                gain.gain.linearRampToValueAtTime(
+                    volume *
+                    part[1],
+                    time + .04
+                );
+
+
+                gain.gain.exponentialRampToValueAtTime(
+                    .0005,
+                    time + duration
+                );
+
+
+                oscillator.connect(
+                    gain
+                );
+
+                gain.connect(
+                    filter
+                );
+
+
+                oscillator.start(
+                    time
+                );
+
+
+                oscillator.stop(
+                    time +
+                    duration +
+                    .1
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       MUSIC SCHEDULER
+    ===================================================== */
+
+    function schedule(){
+
+        while(
+            next <
+            ctx.currentTime + 1.5
+        ){
+
+            const bar =
+                Math.floor(
+                    step / 8
+                ) % 4;
+
+
+            const position =
+                step % 8;
+
+
+            const chord =
+                chords[bar];
+
+
+            /* ARPEGGIO */
+
+            playNote(
+
+                chord[
+                    arp[position]
+                ],
+
+                next,
+
+                .16
+
+            );
+
+
+            /* BASS */
+
+            if(
+                position === 0
+            ){
+
+                playNote(
+
+                    chord[0] - 12,
+
+                    next,
+
+                    .20
+
+                );
+
+            }
+
+
+            /* MELODY */
+
+            if(
+                position % 4 === 0
+                &&
+                Math.random() < .7
+            ){
+
+                const randomMelody =
+
+                    melody[
+                        Math.floor(
+                            Math.random()
+                            *
+                            melody.length
+                        )
+                    ];
+
+
+                playNote(
+
+                    randomMelody,
+
+                    next +
+                    STEP * .5,
+
+                    .08
+
+                );
+
+            }
+
+
+            next +=
+                STEP;
+
+
+            step++;
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       START MUSIC
+    ===================================================== */
+
+    async function startMusic(){
+
+        if(!ctx){
+
+            if(
+                !setupAudio()
+            ){
+
+                return;
+            }
+
+        }
+
+
+        await ctx.resume();
+
+
+        playing =
+            true;
+
+
+        master.gain
+            .cancelScheduledValues(
+                ctx.currentTime
+            );
+
+
+        master.gain
+            .linearRampToValueAtTime(
+                .9,
+                ctx.currentTime + 2.5
+            );
+
+
+        next =
+            ctx.currentTime + .1;
+
+
+        schedule();
+
+
+        timer =
+            setInterval(
+                schedule,
+                250
+            );
+
+
+        btn.textContent =
+            "Pause music";
+
+
+        btn.setAttribute(
+            "aria-pressed",
+            "true"
+        );
+
+    }
+
+
+
+    /* =====================================================
+       STOP MUSIC
+    ===================================================== */
+
+    function stopMusic(){
+
+        if(!ctx){
+
+            return;
+        }
+
+
+        playing =
+            false;
+
+
+        clearInterval(
+            timer
+        );
+
+
+        master.gain
+            .cancelScheduledValues(
+                ctx.currentTime
+            );
+
+
+        master.gain
+            .linearRampToValueAtTime(
+                0,
+                ctx.currentTime + 1
+            );
+
+
+        btn.textContent =
+            "Play music";
+
+
+        btn.setAttribute(
+            "aria-pressed",
+            "false"
+        );
+
+    }
+
+
+
+    /* =====================================================
+       MUSIC BUTTON
+    ===================================================== */
+
+    btn.addEventListener(
+        "click",
+        function(){
+
+            if(playing){
+
+                stopMusic();
+
+            }else{
+
+                startMusic();
+
+            }
+
+        }
+    );
+
+})();
+
+</script>
 
 
 </body>
