@@ -2,6 +2,7 @@
 <html lang="ml">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,6 +11,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700;800;900&family=Noto+Serif+Malayalam:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
 
 :root{
     --bg:#0b1715;
@@ -22,6 +27,11 @@
     --border:#31534d;
     --max:780px;
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     box-sizing:border-box;
@@ -55,6 +65,8 @@ body{
         serif;
 
     line-height:1.9;
+
+    -webkit-font-smoothing:antialiased;
 }
 
 a{
@@ -63,9 +75,9 @@ a{
 }
 
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 header{
     height:72px;
@@ -74,24 +86,32 @@ header{
     align-items:center;
 
     border-bottom:
-        1px solid rgba(103,216,228,.15);
+        1px solid
+        rgba(103,216,228,.15);
 
     background:
         rgba(11,23,21,.88);
 
     backdrop-filter:blur(10px);
+
+    position:relative;
+
+    z-index:10;
 }
 
 .brand{
-    width:min(
-        var(--max),
-        calc(100% - 40px)
-    );
+    width:
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
 
     margin:auto;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     font-family:
@@ -105,7 +125,9 @@ header{
 
 .brand-name{
     display:flex;
+
     align-items:center;
+
     gap:9px;
 }
 
@@ -125,34 +147,74 @@ header{
     transform:rotate(25deg);
 }
 
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
 .music{
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-radius:999px;
 
     padding:
-        5px 14px;
+        6px 15px;
 
     color:var(--soft);
+
+    background:
+        transparent;
 
     font-family:
         "Noto Sans Malayalam",
         sans-serif;
 
     font-size:.8rem;
+
+    cursor:pointer;
+
+    transition:
+        border-color .25s ease,
+        color .25s ease,
+        background .25s ease;
+}
+
+.music:hover{
+    border-color:var(--cyan);
+
+    color:var(--cyan);
+}
+
+.music[aria-pressed="true"]{
+    border-color:var(--cyan);
+
+    color:var(--cyan);
+
+    background:
+        rgba(103,216,228,.04);
+}
+
+.music:focus-visible{
+    outline:
+        2px solid
+        var(--cyan);
+
+    outline-offset:3px;
 }
 
 
-/* =========================
+/* =========================================================
    MAIN
-========================= */
+========================================================= */
 
 main{
-    width:min(
-        var(--max),
-        calc(100% - 40px)
-    );
+    width:
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
 
     margin:auto;
 
@@ -161,9 +223,9 @@ main{
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
     margin-bottom:45px;
@@ -188,7 +250,11 @@ h1{
         0 0 18px;
 
     font-size:
-        clamp(2.8rem,7vw,4.8rem);
+        clamp(
+            2.8rem,
+            7vw,
+            4.8rem
+        );
 
     line-height:1.15;
 
@@ -202,6 +268,7 @@ h1{
         );
 
     -webkit-background-clip:text;
+
     background-clip:text;
 
     color:transparent;
@@ -218,9 +285,9 @@ h1{
 }
 
 
-/* =========================
+/* =========================================================
    TRAVEL CARDS
-========================= */
+========================================================= */
 
 .grid{
     display:grid;
@@ -234,16 +301,19 @@ h1{
     position:relative;
 
     padding:
-        25px 27px 27px;
+        25px 27px
+        27px;
 
     background:
         rgba(20,37,34,.92);
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-left:
-        3px solid var(--cyan);
+        3px solid
+        var(--cyan);
 
     border-radius:
         0 13px 13px 0;
@@ -251,7 +321,8 @@ h1{
     transition:
         transform .25s ease,
         border-color .25s ease,
-        background .25s ease;
+        background .25s ease,
+        box-shadow .25s ease;
 }
 
 .card:hover{
@@ -263,6 +334,10 @@ h1{
 
     border-color:
         var(--cyan);
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.18);
 }
 
 .num{
@@ -305,12 +380,20 @@ h2{
     color:var(--cyan);
 
     font-weight:700;
+
+    transition:
+        transform .25s ease;
+}
+
+.card:hover .read-more{
+    transform:
+        translateX(5px);
 }
 
 
-/* =========================
+/* =========================================================
    BACK LINK
-========================= */
+========================================================= */
 
 .back{
     display:inline-block;
@@ -320,22 +403,30 @@ h2{
     color:var(--cyan);
 
     font-weight:700;
+
+    transition:
+        color .25s ease,
+        transform .25s ease;
 }
 
 .back:hover{
     color:var(--pink);
+
+    transform:
+        translateX(-3px);
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
-    width:min(
-        var(--max),
-        calc(100% - 40px)
-    );
+    width:
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
 
     margin:auto;
 
@@ -343,7 +434,8 @@ footer{
         28px 0 45px;
 
     border-top:
-        1px solid rgba(103,216,228,.15);
+        1px solid
+        rgba(103,216,228,.15);
 
     text-align:center;
 
@@ -353,9 +445,9 @@ footer{
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media(max-width:600px){
 
@@ -369,7 +461,12 @@ footer{
     }
 
     .music{
-        display:none;
+        display:block;
+
+        padding:
+            6px 12px;
+
+        font-size:.75rem;
     }
 
     main{
@@ -403,9 +500,9 @@ footer{
 }
 
 
-/* =========================
+/* =========================================================
    REDUCED MOTION
-========================= */
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -413,21 +510,25 @@ footer{
         scroll-behavior:auto;
     }
 
-    .card{
+    .card,
+    .read-more,
+    .back,
+    .music{
         transition:none;
     }
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =========================
+<!-- =======================================================
      HEADER
-========================= -->
+======================================================= -->
 
 <header>
 
@@ -437,9 +538,15 @@ footer{
             Paradise of Ross
         </div>
 
-        <div class="music">
-            •• &nbsp;Play music
-        </div>
+
+        <button
+            class="music"
+            id="music"
+            type="button"
+            aria-pressed="false"
+        >
+            Play music
+        </button>
 
     </div>
 
@@ -447,14 +554,16 @@ footer{
 
 
 
-<!-- =========================
+<!-- =======================================================
      MAIN
-========================= -->
+======================================================= -->
 
 <main>
 
 
-    <!-- HERO -->
+    <!-- ===================================================
+         HERO
+    =================================================== -->
 
     <section class="hero">
 
@@ -462,9 +571,11 @@ footer{
             വഴികളിലൂടെ, ഓർമ്മകളിലേക്ക്
         </div>
 
+
         <h1>
             യാത്രകൾ
         </h1>
+
 
         <p class="intro">
             യാത്രകൾ എന്നത് സ്ഥലങ്ങൾ കാണുന്നതു മാത്രമല്ല —
@@ -477,9 +588,9 @@ footer{
 
 
 
-    <!-- =========================
+    <!-- ===================================================
          TRAVEL STORIES
-    ========================= -->
+    =================================================== -->
 
     <section class="grid">
 
@@ -495,15 +606,18 @@ footer{
                 01
             </div>
 
+
             <h2>
                 രാജാക്കാട് യാത്ര
             </h2>
+
 
             <p>
                 ഒരു യാത്രയുടെ വഴികളിലൂടെ കണ്ടുമുട്ടിയ
                 മനുഷ്യരും, മലനാടിന്റെ കാഴ്ചകളും,
                 മനസ്സിൽ പതിഞ്ഞ ചില നിമിഷങ്ങളും.
             </p>
+
 
             <span class="read-more">
                 യാത്രയിലേക്ക് →
@@ -524,15 +638,18 @@ footer{
                 02
             </div>
 
+
             <h2>
                 ഒരു യാത്രയുടെ ഓർമ്മ
             </h2>
+
 
             <p>
                 വഴിയിൽ സംഭവിച്ച ചെറിയ കാര്യങ്ങൾ പോലും
                 വർഷങ്ങൾക്കിപ്പുറം മനസ്സിൽ വീണ്ടും തെളിയുന്ന
                 ഒരു യാത്ര.
             </p>
+
 
             <span class="read-more">
                 യാത്രയിലേക്ക് →
@@ -553,15 +670,18 @@ footer{
                 03
             </div>
 
+
             <h2>
                 വഴിയിലൊരു കഥ
             </h2>
+
 
             <p>
                 ലക്ഷ്യസ്ഥാനത്തേക്കാൾ മനസ്സിൽ തങ്ങിനിൽക്കുന്നത്
                 പലപ്പോഴും വഴിയിൽ കണ്ടുമുട്ടിയ മനുഷ്യരും
                 നിമിഷങ്ങളുമാണ്.
             </p>
+
 
             <span class="read-more">
                 യാത്രയിലേക്ക് →
@@ -574,7 +694,9 @@ footer{
 
 
 
-    <!-- BACK TO MAIN SITE -->
+    <!-- ===================================================
+         BACK TO MAIN SITE
+    =================================================== -->
 
     <a
         class="back"
@@ -588,9 +710,9 @@ footer{
 
 
 
-<!-- =========================
+<!-- =======================================================
      FOOTER
-========================= -->
+======================================================= -->
 
 <footer>
 
@@ -600,5 +722,562 @@ footer{
 </footer>
 
 
+
+<!-- =======================================================
+     PARADISE OF ROSS PIANO
+     
+     This is the generated piano system used
+     on the original Paradise of Ross first screen.
+======================================================= -->
+
+<script>
+
+(function(){
+
+    var btn =
+        document.getElementById('music');
+
+    var ctx = null;
+
+    var master = null;
+
+    var timer = null;
+
+    var step = 0;
+
+    var next = 0;
+
+    var on = false;
+
+    var started = false;
+
+
+    /* -------------------------------------------------------
+       CHORD PROGRESSION
+    ------------------------------------------------------- */
+
+    var chords = [
+
+        [48,55,60,64,67],
+
+        [45,52,57,60,64],
+
+        [41,48,57,60,65],
+
+        [43,50,59,62,67]
+
+    ];
+
+
+    /* -------------------------------------------------------
+       ARPEGGIO
+    ------------------------------------------------------- */
+
+    var arp =
+        [0,2,3,2,4,3,2,1];
+
+
+    /* -------------------------------------------------------
+       MELODY
+    ------------------------------------------------------- */
+
+    var mel =
+        [72,74,76,79,81,79,76,74];
+
+
+    var STEP = 0.75;
+
+
+
+    /* =======================================================
+       AUDIO SETUP
+    ======================================================= */
+
+    function setup(){
+
+        var C =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+
+        if(!C){
+
+            return false;
+
+        }
+
+
+        ctx =
+            new C();
+
+
+        master =
+            ctx.createGain();
+
+
+        master.gain.value = 0;
+
+
+
+        /* ---------------------------------------------------
+           REVERB
+        --------------------------------------------------- */
+
+        var conv =
+            ctx.createConvolver();
+
+
+        var len =
+            ctx.sampleRate * 3;
+
+
+        var buf =
+            ctx.createBuffer(
+                2,
+                len,
+                ctx.sampleRate
+            );
+
+
+        for(
+            var ch = 0;
+            ch < 2;
+            ch++
+        ){
+
+            var d =
+                buf.getChannelData(ch);
+
+
+            for(
+                var i = 0;
+                i < len;
+                i++
+            ){
+
+                d[i] =
+                    (Math.random() * 2 - 1)
+                    *
+                    Math.pow(
+                        1 - i / len,
+                        2.5
+                    );
+
+            }
+
+        }
+
+
+        conv.buffer = buf;
+
+
+        var wet =
+            ctx.createGain();
+
+
+        wet.gain.value =
+            .5;
+
+
+        var dry =
+            ctx.createGain();
+
+
+        dry.gain.value =
+            .7;
+
+
+
+        /* ---------------------------------------------------
+           AUDIO ROUTING
+        --------------------------------------------------- */
+
+        master.connect(dry);
+
+        dry.connect(
+            ctx.destination
+        );
+
+
+        master.connect(conv);
+
+        conv.connect(wet);
+
+        wet.connect(
+            ctx.destination
+        );
+
+
+        return true;
+
+    }
+
+
+
+    /* =======================================================
+       PIANO NOTE
+    ======================================================= */
+
+    function note(
+        m,
+        t,
+        v
+    ){
+
+        var f =
+            440 *
+            Math.pow(
+                2,
+                (m - 69) / 12
+            );
+
+
+        var lp =
+            ctx.createBiquadFilter();
+
+
+        lp.type =
+            'lowpass';
+
+
+        lp.frequency.value =
+            2200;
+
+
+        lp.connect(
+            master
+        );
+
+
+        [
+            [1,1],
+            [2,.35],
+            [3,.1]
+
+        ].forEach(
+            function(p,i){
+
+                var o =
+                    ctx.createOscillator();
+
+
+                var g =
+                    ctx.createGain();
+
+
+                var d =
+                    3.8 /
+                    (1 + i * .7);
+
+
+                o.type =
+                    'sine';
+
+
+                o.frequency.value =
+                    f * p[0];
+
+
+                g.gain.setValueAtTime(
+                    0,
+                    t
+                );
+
+
+                g.gain.linearRampToValueAtTime(
+                    v * p[1],
+                    t + .04
+                );
+
+
+                g.gain.exponentialRampToValueAtTime(
+                    .0005,
+                    t + d
+                );
+
+
+                o.connect(g);
+
+                g.connect(lp);
+
+
+                o.start(t);
+
+                o.stop(
+                    t + d + .1
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =======================================================
+       SCHEDULE MUSIC
+    ======================================================= */
+
+    function schedule(){
+
+        while(
+            next <
+            ctx.currentTime + 1.5
+        ){
+
+            var bar =
+                Math.floor(
+                    step / 8
+                ) % 4;
+
+
+            var pos =
+                step % 8;
+
+
+            var ch =
+                chords[bar];
+
+
+            /* Arpeggio */
+
+            note(
+                ch[arp[pos]],
+                next,
+                .16
+            );
+
+
+            /* Bass */
+
+            if(
+                pos === 0
+            ){
+
+                note(
+                    ch[0] - 12,
+                    next,
+                    .20
+                );
+
+            }
+
+
+            /* Melody */
+
+            if(
+                pos % 4 === 0 &&
+                Math.random() < .7
+            ){
+
+                note(
+                    mel[
+                        Math.floor(
+                            Math.random()
+                            * mel.length
+                        )
+                    ],
+
+                    next +
+                    STEP * .5,
+
+                    .08
+                );
+
+            }
+
+
+            next += STEP;
+
+            step++;
+
+        }
+
+    }
+
+
+
+    /* =======================================================
+       START MUSIC
+    ======================================================= */
+
+    function start(){
+
+        if(
+            !ctx &&
+            !setup()
+        ){
+
+            return;
+
+        }
+
+
+        ctx.resume();
+
+
+        on = true;
+
+        started = true;
+
+
+        master.gain
+            .cancelScheduledValues(
+                ctx.currentTime
+            );
+
+
+        master.gain
+            .linearRampToValueAtTime(
+                .9,
+                ctx.currentTime + 2.5
+            );
+
+
+        next =
+            ctx.currentTime + .1;
+
+
+        schedule();
+
+
+        timer =
+            setInterval(
+                schedule,
+                250
+            );
+
+
+        btn.textContent =
+            'Pause music';
+
+
+        btn.setAttribute(
+            'aria-pressed',
+            'true'
+        );
+
+    }
+
+
+
+    /* =======================================================
+       STOP MUSIC
+    ======================================================= */
+
+    function stop(){
+
+        on = false;
+
+
+        clearInterval(
+            timer
+        );
+
+
+        master.gain
+            .cancelScheduledValues(
+                ctx.currentTime
+            );
+
+
+        master.gain
+            .linearRampToValueAtTime(
+                0,
+                ctx.currentTime + 1
+            );
+
+
+        btn.textContent =
+            'Play music';
+
+
+        btn.setAttribute(
+            'aria-pressed',
+            'false'
+        );
+
+    }
+
+
+
+    /* =======================================================
+       MUSIC BUTTON
+    ======================================================= */
+
+    btn.addEventListener(
+        'click',
+        function(){
+
+            if(on){
+
+                stop();
+
+            }else{
+
+                start();
+
+            }
+
+        }
+    );
+
+
+
+    /* =======================================================
+       FIRST USER INTERACTION
+       
+       Browsers require user interaction before
+       audio can begin.
+    ======================================================= */
+
+    function first(e){
+
+        if(
+            started ||
+            (
+                e.target.closest &&
+                e.target.closest('#music')
+            )
+        ){
+
+            return;
+
+        }
+
+
+        start();
+
+    }
+
+
+
+    [
+        'pointerdown',
+        'keydown',
+        'touchstart'
+
+    ].forEach(
+        function(ev){
+
+            document.addEventListener(
+                ev,
+                first,
+                {
+                    once:false,
+                    passive:true
+                }
+            );
+
+        }
+    );
+
+
+})();
+
+</script>
+
+
 </body>
+
 </html>
