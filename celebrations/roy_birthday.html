@@ -20,6 +20,7 @@
     --serif: 'Noto Serif Malayalam', 'Manjari', 'Kartika', serif;
     --display: 'Anek Malayalam', 'Noto Sans Malayalam', 'Manjari', sans-serif;
   }
+
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
@@ -32,6 +33,7 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
+
   main { position: relative; z-index: 1; }
 
   /* ---------- ambient party lights: they dim as the night ends ---------- */
@@ -41,11 +43,13 @@
     transition: opacity .35s linear;
     overflow: hidden;
   }
+
   .bokeh {
     position: absolute; border-radius: 50%;
     filter: blur(28px);
     animation: drift var(--d, 18s) ease-in-out infinite alternate;
   }
+
   @keyframes drift {
     from { transform: translate3d(0, 0, 0) scale(1); }
     to   { transform: translate3d(var(--x, 30px), var(--y, -40px), 0) scale(1.15); }
@@ -60,16 +64,19 @@
     margin: 0 auto;
     padding: 0 clamp(1.25rem, 5vw, 3rem);
   }
+
   .scene {
     position: sticky; top: 0;
     height: 100svh;
     display: flex; align-items: center; justify-content: center;
   }
+
   .scene svg { width: 100%; max-width: 440px; max-height: 88svh; height: auto; overflow: visible; }
   .scene .g-mother, .scene .g-father, .scene .g-roy {
     opacity: .7;
     transition: opacity .9s ease, filter .9s ease;
   }
+
   .scene[data-look="roy"]    .g-roy,
   .scene[data-look="mother"] .g-mother,
   .scene[data-look="frames"] .g-mother,
@@ -79,14 +86,17 @@
     opacity: 1;
     filter: drop-shadow(0 0 16px rgba(227,176,75,.6));
   }
+
   .scene .arc {
     stroke: var(--gold); stroke-width: 2.5; fill: none; stroke-linecap: round;
     stroke-dasharray: 1; stroke-dashoffset: 1;
     transition: stroke-dashoffset 1.8s ease;
   }
+
   .scene[data-look="both"] .arc { stroke-dashoffset: 0; }
   .scene text { font-family: var(--display); fill: var(--mist); }
   .scene .g-roy text, .scene .g-mother text, .scene .g-father text { transition: fill .9s; }
+
   .scene[data-look="roy"] .g-roy text,
   .scene[data-look="mother"] .g-mother text,
   .scene[data-look="frames"] text,
@@ -94,6 +104,7 @@
   .scene[data-look="both"] .g-roy text { fill: var(--gold); }
 
   .opening .text { padding: 32svh 0 14svh; }
+
   h1 {
     font-family: var(--display);
     font-weight: 700;
@@ -102,13 +113,20 @@
     color: var(--gold);
     margin: 0 0 .4em;
   }
-  .lead { font-family: var(--display); font-size: 1.25em; color: var(--linen); margin-bottom: 2.5em; }
+
+  .lead {
+    font-family: var(--display);
+    font-size: 1.25em;
+    color: var(--linen);
+    margin-bottom: 2.5em;
+  }
 
   /* ---------- story text: each line pulls into focus ---------- */
   .js .story p, .js .story li, .js .story h2 {
     opacity: 0; filter: blur(7px); transform: translateY(6px);
     transition: opacity 1.2s ease, filter 1.2s ease, transform 1.2s ease;
   }
+
   .js .story .in { opacity: 1; filter: none; transform: none; }
   .story p { margin: 0 0 1.5em; }
 
@@ -120,6 +138,7 @@
     color: var(--gold);
     margin: 0 0 1em;
   }
+
   .column { max-width: 36rem; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2rem); }
   .chapter { margin-top: clamp(6rem, 16vh, 10rem); }
 
@@ -136,6 +155,7 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 4rem 1.5rem;
   }
+
   #rewind .counter {
     font-family: 'Share Tech Mono', ui-monospace, monospace;
     font-size: clamp(2.2rem, 9vw, 4.5rem);
@@ -144,10 +164,12 @@
     font-variant-numeric: tabular-nums;
     display: flex; align-items: center; gap: .5em;
   }
+
   #rewind .mode { color: var(--rose); min-width: 1.6em; }
   #rewind h2 { margin: 1.2em 0 0; }
   body.rewinding #rewind { animation: jitter .16s steps(2) infinite; }
   body.rewinding main { filter: saturate(.55) contrast(1.08); }
+
   body.rewinding::before {
     content: ""; position: fixed; inset: 0; z-index: 60; pointer-events: none;
     background:
@@ -155,8 +177,16 @@
       repeating-linear-gradient(to bottom, rgba(255,255,255,.06) 0 2px, transparent 2px 5px);
     animation: tracking .9s linear infinite;
   }
-  @keyframes tracking { from { background-position: 0 -30%, 0 0; } to { background-position: 0 130%, 0 4px; } }
-  @keyframes jitter { 0% { transform: translateX(-2px); } 100% { transform: translateX(3px); } }
+
+  @keyframes tracking {
+    from { background-position: 0 -30%, 0 0; }
+    to { background-position: 0 130%, 0 4px; }
+  }
+
+  @keyframes jitter {
+    0% { transform: translateX(-2px); }
+    100% { transform: translateX(3px); }
+  }
 
   /* ---------- arrivals grow in size, like the surprise ---------- */
   .arrivals p:nth-child(1) { font-size: 1em; }
@@ -177,17 +207,20 @@
       linear-gradient(var(--gold), var(--gold)) bottom right / 26px 2px no-repeat,
       linear-gradient(var(--gold), var(--gold)) bottom right / 2px 26px no-repeat;
   }
+
   .rec {
     position: absolute; top: .7rem; left: 1.6rem;
     font-family: 'Share Tech Mono', ui-monospace, monospace;
     font-size: .8rem; line-height: 1; color: var(--rose);
     display: flex; align-items: center; gap: .5rem;
   }
+
   .rec::before {
     content: ""; width: .6rem; height: .6rem; border-radius: 50%;
     background: #e5484d;
     animation: blink 1.4s steps(1) infinite;
   }
+
   @keyframes blink { 50% { opacity: 0; } }
 
   /* ---------- the reel of remembered frames ---------- */
@@ -197,18 +230,22 @@
     background: #0D1B1F;
     border-radius: 4px;
   }
+
   .reel::before, .reel::after {
     content: ""; position: absolute; top: 10px; bottom: 10px; width: 12px;
     background: repeating-linear-gradient(to bottom, transparent 0 12px, rgba(234,227,213,.8) 12px 26px);
     border-radius: 2px;
   }
+
   .reel::before { left: 16px; }
   .reel::after { right: 16px; }
+
   .reel li {
     margin: 0; padding: .55rem 0;
     border-bottom: 1px solid rgba(227,176,75,.22);
     font-size: .95em; line-height: 1.7;
   }
+
   .reel li:last-child { border-bottom: 0; color: var(--gold); font-weight: 600; }
 
   /* ---------- ending ---------- */
@@ -219,6 +256,7 @@
     text-align: center; padding: 6rem 1.5rem;
     margin-top: clamp(5rem, 14vh, 8rem);
   }
+
   .final::before {
     content: ""; position: absolute; left: 50%; top: 50%;
     width: min(90vw, 70vh); aspect-ratio: 1;
@@ -227,8 +265,18 @@
     animation: breathe 7s ease-in-out infinite;
     pointer-events: none;
   }
-  @keyframes breathe { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
-  .final h2 { position: relative; font-size: clamp(2.4rem, 8vw, 4.6rem); margin: 0 0 1.4em; }
+
+  @keyframes breathe {
+    0%,100% { opacity: .55; }
+    50% { opacity: 1; }
+  }
+
+  .final h2 {
+    position: relative;
+    font-size: clamp(2.4rem, 8vw, 4.6rem);
+    margin: 0 0 1.4em;
+  }
+
   .again {
     position: relative;
     font: inherit; font-family: var(--display); font-size: 1rem;
@@ -237,8 +285,11 @@
     padding: .6rem 1.6rem; cursor: pointer;
     transition: background .25s, color .25s;
   }
+
   .again:hover { background: var(--gold); color: var(--night); }
-  .again:focus-visible, .strip a:focus-visible { outline: 2px solid var(--linen); outline-offset: 4px; }
+  .again:focus-visible, .strip a:focus-visible {
+    outline: 2px solid var(--linen); outline-offset: 4px;
+  }
 
   /* ---------- top bar: home button + sound toggle ---------- */
   .topbar {
@@ -250,6 +301,7 @@
     align-items: center;
     gap: .5rem;
   }
+
   .home-btn {
     font-family: var(--display);
     font-size: .82rem;
@@ -263,9 +315,18 @@
     cursor: pointer;
     box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
     transition: background .25s, border-color .25s, transform .18s, box-shadow .25s;
+    text-decoration: none;
+    display: inline-block;
   }
-  .home-btn:hover { border-color: var(--gold); background: rgba(27, 52, 59, .95); transform: translateY(-1px); }
+
+  .home-btn:hover {
+    border-color: var(--gold);
+    background: rgba(27, 52, 59, .95);
+    transform: translateY(-1px);
+  }
+
   .home-btn:active { transform: translateY(0) scale(.96); }
+
   .mute-btn {
     display: flex; align-items: center; gap: .45rem; flex: none;
     font-family: var(--display);
@@ -282,12 +343,25 @@
     box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
     transition: background .25s, border-color .25s, transform .18s;
   }
+
   .mute-btn .icon { font-size: 1rem; line-height: 1; }
-  .mute-btn:hover { border-color: var(--gold); background: rgba(27, 52, 59, .95); transform: translateY(-1px); }
+  .mute-btn:hover {
+    border-color: var(--gold);
+    background: rgba(27, 52, 59, .95);
+    transform: translateY(-1px);
+  }
+
   .mute-btn:active { transform: translateY(0) scale(.96); }
-  .home-btn:focus-visible, .mute-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .home-btn:focus-visible, .mute-btn:focus-visible {
+    outline: 2px solid var(--gold); outline-offset: 3px;
+  }
+
   @media (max-width: 860px) {
-    .topbar { top: calc(.7rem + env(safe-area-inset-top, 0px)); right: .7rem; }
+    .topbar {
+      top: calc(.7rem + env(safe-area-inset-top, 0px));
+      right: .7rem;
+    }
     .home-btn { font-size: .74rem; padding: .48rem 1rem; }
     .mute-btn { font-size: .72rem; padding: .48rem .9rem; }
     .mute-btn .icon { font-size: .9rem; }
@@ -298,24 +372,31 @@
     position: fixed; right: 1.1rem; top: 50%; transform: translateY(-50%);
     z-index: 10; display: flex; flex-direction: column; gap: 7px; align-items: flex-end;
   }
+
   .strip a {
     display: block; height: 4px; width: 12px; border-radius: 2px;
     background: rgba(234,227,213,.25);
     transition: width .3s, background .3s;
   }
+
   .strip a:hover { background: rgba(234,227,213,.6); }
   .strip a.on { width: 28px; background: var(--gold); }
 
-  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .sr {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
 
   /* ---------- small screens ---------- */
   @media (max-width: 860px) {
     .opening { grid-template-columns: 1fr; gap: 0; }
+
     .scene {
       height: 46svh; z-index: 5;
       background: linear-gradient(to bottom, var(--night) 82%, rgba(20,42,48,0));
       padding-top: 1rem;
     }
+
     .scene svg { max-height: 42svh; }
     .opening .text { padding: 4svh 0 12svh; }
     .strip { display: none; }
@@ -324,12 +405,15 @@
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .js .story p, .js .story li, .js .story h2 { opacity: 1; filter: none; transform: none; transition: none; }
+    .js .story p, .js .story li, .js .story h2 {
+      opacity: 1; filter: none; transform: none; transition: none;
+    }
     .bokeh, .final::before, .rec::before { animation: none; }
     .scene .arc { transition: none; }
   }
 </style>
 </head>
+
 <body>
 <div id="lights" aria-hidden="true"></div>
 
@@ -338,7 +422,8 @@
     <span class="icon" id="muteIcon" aria-hidden="true">🔈</span>
     <span id="muteLabel">ശബ്ദം ഓൺ ചെയ്യൂ</span>
   </button>
-  <button class="home-btn" id="homeBtn" type="button">മുഖ്യപേജ്</button>
+
+  <a class="home-btn" href="../index.html">മുഖ്യപേജ്</a>
 </div>
 
 <nav class="strip" id="strip" aria-label="അധ്യായങ്ങൾ"></nav>
@@ -347,6 +432,7 @@
 
   <!-- ============ അവസാന ഫ്രെയിം ============ -->
   <section class="opening" data-chapter data-title="അവസാന ഫ്രെയിം" id="c0">
+
     <div class="scene" id="scene" data-look="">
       <svg viewBox="0 0 400 560" role="img" aria-label="ചുമരിൽ രണ്ട് ചിത്രങ്ങൾ; അതിനു താഴെ സെറ്റിയിൽ റോയ്">
         <defs>
@@ -354,11 +440,18 @@
             <stop offset="0" stop-color="#E3B04B" stop-opacity=".38"/>
             <stop offset="1" stop-color="#E3B04B" stop-opacity="0"/>
           </radialGradient>
+
           <pattern id="paper" width="24" height="10" patternUnits="userSpaceOnUse">
             <rect width="12" height="10" fill="rgba(255,255,255,.028)"/>
           </pattern>
-          <clipPath id="clipL"><ellipse cx="120" cy="150" rx="59" ry="75"/></clipPath>
-          <clipPath id="clipR"><ellipse cx="280" cy="150" rx="59" ry="75"/></clipPath>
+
+          <clipPath id="clipL">
+            <ellipse cx="120" cy="150" rx="59" ry="75"/>
+          </clipPath>
+
+          <clipPath id="clipR">
+            <ellipse cx="280" cy="150" rx="59" ry="75"/>
+          </clipPath>
         </defs>
 
         <rect x="0" y="0" width="400" height="420" rx="6" fill="#1B343B"/>
@@ -372,11 +465,13 @@
         <!-- mother -->
         <g class="g-mother">
           <ellipse cx="120" cy="150" rx="59" ry="75" fill="#0F1E22"/>
+
           <g clip-path="url(#clipL)">
             <ellipse cx="120" cy="134" rx="31" ry="32" fill="#34504F"/>
             <circle cx="120" cy="138" r="22" fill="#7C9A97"/>
             <path d="M52 240 Q56 178 120 174 Q184 178 188 240 Z" fill="#4D6A6B"/>
           </g>
+
           <ellipse cx="120" cy="150" rx="62" ry="78" fill="none" stroke="#E3B04B" stroke-width="7"/>
           <ellipse cx="120" cy="150" rx="55" ry="71" fill="none" stroke="#E3B04B" stroke-opacity=".45" stroke-width="1.2"/>
           <text x="120" y="256" text-anchor="middle" font-size="13">അമ്മ കർമെലി</text>
@@ -385,12 +480,14 @@
         <!-- father -->
         <g class="g-father">
           <ellipse cx="280" cy="150" rx="59" ry="75" fill="#0F1E22"/>
+
           <g clip-path="url(#clipR)">
             <circle cx="280" cy="138" r="22" fill="#7C9A97"/>
             <path d="M258 132 Q280 104 302 132 Q280 120 258 132 Z" fill="#2C4548"/>
             <path d="M212 240 Q216 178 280 174 Q344 178 348 240 Z" fill="#4D6A6B"/>
             <path d="M262 176 L280 200 L298 176 Z" fill="#EAE3D5" fill-opacity=".7"/>
           </g>
+
           <ellipse cx="280" cy="150" rx="62" ry="78" fill="none" stroke="#E3B04B" stroke-width="7"/>
           <ellipse cx="280" cy="150" rx="55" ry="71" fill="none" stroke="#E3B04B" stroke-opacity=".45" stroke-width="1.2"/>
           <text x="280" y="256" text-anchor="middle" font-size="13">അപ്പൻ O.P. ജോർജ്</text>
@@ -438,7 +535,10 @@
 
   <!-- ============ rewind ============ -->
   <section id="rewind" data-chapter data-title="പിന്നിലേക്ക്">
-    <div class="counter" aria-hidden="true"><span class="mode" id="mode">◀◀</span><span id="tc">05:42:11</span></div>
+    <div class="counter" aria-hidden="true">
+      <span class="mode" id="mode">◀◀</span>
+      <span id="tc">05:42:11</span>
+    </div>
     <h2>കുറച്ചുമണിക്കൂറുകൾ പിന്നിലേക്ക്</h2>
   </section>
 
@@ -685,12 +785,14 @@
       <p>അവസാനം എല്ലാ ആഘോഷങ്ങളും നമ്മളെ തിരികെ കൊണ്ടുവരുന്നത് ഇതിലേക്കാണ്.</p>
       <p>ജീവിതത്തിലേക്ക്.</p>
     </section>
+
   </div>
 
   <section class="final">
     <h2>ജീവിതം തുടരുന്നു.</h2>
     <button class="again" id="again" type="button">വീണ്ടും കാണാം</button>
   </section>
+
 </main>
 
 <script>
@@ -701,32 +803,47 @@
   /* ================= sound engine (synthesized, no audio files) ================= */
   var soundOn = false;
   var audioCtx = null;
+
   function ensureAudio() {
     if (!audioCtx) {
-      try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-      catch (e) { audioCtx = null; }
+      try {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      } catch (e) {
+        audioCtx = null;
+      }
     }
+
     if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
     return audioCtx;
   }
-  function unlockAudio() { ensureAudio(); }
+
+  function unlockAudio() {
+    ensureAudio();
+  }
+
   ['pointerdown', 'touchstart', 'keydown', 'wheel'].forEach(function (ev) {
     window.addEventListener(ev, unlockAudio, { once: true, passive: true });
   });
 
   function tone(freq, start, dur, type, vol) {
     if (!soundOn) return;
-    var ctx = ensureAudio(); if (!ctx) return;
+
+    var ctx = ensureAudio();
+    if (!ctx) return;
+
     var t0 = ctx.currentTime + (start || 0);
     var osc = ctx.createOscillator();
     var gain = ctx.createGain();
+
     osc.type = type || 'sine';
     osc.frequency.setValueAtTime(freq, t0);
     gain.gain.setValueAtTime(0, t0);
     gain.gain.linearRampToValueAtTime(vol || 0.07, t0 + 0.02);
     gain.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+
     osc.connect(gain).connect(ctx.destination);
-    osc.start(t0); osc.stop(t0 + dur + 0.05);
+    osc.start(t0);
+    osc.stop(t0 + dur + 0.05);
   }
 
   function chime(kind) {
@@ -747,51 +864,70 @@
 
   function rewindWhoosh(duration) {
     if (!soundOn) return;
-    var ctx = ensureAudio(); if (!ctx) return;
+
+    var ctx = ensureAudio();
+    if (!ctx) return;
+
     var len = Math.max(1, Math.floor(ctx.sampleRate * duration));
     var buffer = ctx.createBuffer(1, len, ctx.sampleRate);
     var data = buffer.getChannelData(0);
-    for (var i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+
+    for (var i = 0; i < len; i++) {
+      data[i] = Math.random() * 2 - 1;
+    }
+
     var noise = ctx.createBufferSource();
     noise.buffer = buffer;
+
     var band = ctx.createBiquadFilter();
     band.type = 'bandpass';
     band.Q.value = 7;
+
     var t0 = ctx.currentTime;
     band.frequency.setValueAtTime(200, t0);
     band.frequency.linearRampToValueAtTime(1500, t0 + duration * 0.92);
+
     var gain = ctx.createGain();
     gain.gain.setValueAtTime(0, t0);
     gain.gain.linearRampToValueAtTime(.045, t0 + .18);
     gain.gain.setValueAtTime(.045, t0 + Math.max(.18, duration - .25));
     gain.gain.linearRampToValueAtTime(0, t0 + duration);
+
     noise.connect(band).connect(gain).connect(ctx.destination);
-    noise.start(t0); noise.stop(t0 + duration + .05);
+    noise.start(t0);
+    noise.stop(t0 + duration + .05);
   }
 
   var muteBtn = document.getElementById('muteBtn');
   var muteIcon = document.getElementById('muteIcon');
   var muteLabel = document.getElementById('muteLabel');
+
   muteBtn.addEventListener('click', function () {
     soundOn = !soundOn;
+
     muteIcon.textContent = soundOn ? '🔊' : '🔈';
     muteLabel.textContent = soundOn ? 'ശബ്ദം ഓഫ് ചെയ്യൂ' : 'ശബ്ദം ഓൺ ചെയ്യൂ';
     muteBtn.setAttribute('aria-pressed', String(soundOn));
-    if (soundOn) { ensureAudio(); chime('click'); }
-  });
 
-  var homeBtn = document.getElementById('homeBtn');
-  homeBtn.addEventListener('click', function () {
-    chime('click');
-    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    if (soundOn) {
+      ensureAudio();
+      chime('click');
+    }
   });
 
   /* ---- bokeh party lights ---- */
   var lights = document.getElementById('lights');
-  var palette = ['rgba(227,176,75,.34)', 'rgba(212,120,138,.26)', 'rgba(147,173,169,.24)', 'rgba(234,227,213,.18)'];
+  var palette = [
+    'rgba(227,176,75,.34)',
+    'rgba(212,120,138,.26)',
+    'rgba(147,173,169,.24)',
+    'rgba(234,227,213,.18)'
+  ];
+
   for (var i = 0; i < 16; i++) {
     var b = document.createElement('div');
     var s = 90 + Math.random() * 190;
+
     b.className = 'bokeh';
     b.style.width = b.style.height = s + 'px';
     b.style.left = (Math.random() * 100) + '%';
@@ -800,50 +936,77 @@
     b.style.setProperty('--d', (14 + Math.random() * 16) + 's');
     b.style.setProperty('--x', (Math.random() * 90 - 45) + 'px');
     b.style.setProperty('--y', (Math.random() * 90 - 45) + 'px');
+
     lights.appendChild(b);
   }
 
   /* ---- reveal: lines pull into focus ---- */
   var items = document.querySelectorAll('.story p, .story li, .story h2, .story h1');
+
   if ('IntersectionObserver' in window && !reduce) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
       });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
-    items.forEach(function (el) { io.observe(el); });
+
+    items.forEach(function (el) {
+      io.observe(el);
+    });
   } else {
-    items.forEach(function (el) { el.classList.add('in'); });
+    items.forEach(function (el) {
+      el.classList.add('in');
+    });
   }
 
   /* ---- the scene follows what the narrator is looking at ---- */
   var scene = document.getElementById('scene');
   var looks = document.querySelectorAll('[data-look]');
+
   if ('IntersectionObserver' in window) {
     var lo = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) scene.setAttribute('data-look', e.target.getAttribute('data-look'));
+        if (e.isIntersecting) {
+          scene.setAttribute(
+            'data-look',
+            e.target.getAttribute('data-look')
+          );
+        }
       });
     }, { rootMargin: '-42% 0px -42% 0px' });
-    looks.forEach(function (el) { if (el !== scene) lo.observe(el); });
+
+    looks.forEach(function (el) {
+      if (el !== scene) lo.observe(el);
+    });
   }
 
   /* ---- camera shutter sound when the viewfinder chapter appears ---- */
   var viewfinder = document.querySelector('.viewfinder');
+
   if (viewfinder && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { chime('shutter'); obs.disconnect(); }
+        if (e.isIntersecting) {
+          chime('shutter');
+          obs.disconnect();
+        }
       });
     }, { threshold: 0.5 }).observe(viewfinder);
   }
 
   /* ---- gentle closing chime when the final frame arrives ---- */
   var finalSection = document.querySelector('.final');
+
   if (finalSection && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { chime('end'); obs.disconnect(); }
+        if (e.isIntersecting) {
+          chime('end');
+          obs.disconnect();
+        }
       });
     }, { threshold: 0.6 }).observe(finalSection);
   }
@@ -853,73 +1016,157 @@
   var tc = document.getElementById('tc');
   var mode = document.getElementById('mode');
   var played = false;
-  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  function pad(n) {
+    return (n < 10 ? '0' : '') + n;
+  }
+
   function show(frames) {
-    var f = frames % 25, s = Math.floor(frames / 25) % 60, m = Math.floor(frames / 1500);
+    var f = frames % 25;
+    var s = Math.floor(frames / 25) % 60;
+    var m = Math.floor(frames / 1500);
+
     tc.textContent = pad(m) + ':' + pad(s) + ':' + pad(f);
   }
+
   function runRewind() {
-    if (played) return; played = true;
-    if (reduce) { show(0); mode.textContent = '▶'; return; }
-    var start = 5 * 1500 + 42 * 25 + 11, dur = 2600, t0 = null;
+    if (played) return;
+    played = true;
+
+    if (reduce) {
+      show(0);
+      mode.textContent = '▶';
+      return;
+    }
+
+    var start = 5 * 1500 + 42 * 25 + 11;
+    var dur = 2600;
+    var t0 = null;
+
     document.body.classList.add('rewinding');
     rewindWhoosh(dur / 1000);
+
     function step(t) {
       if (!t0) t0 = t;
+
       var p = Math.min(1, (t - t0) / dur);
-      var eased = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      var eased = p < .5
+        ? 2 * p * p
+        : 1 - Math.pow(-2 * p + 2, 2) / 2;
+
       show(Math.round(start * (1 - eased)));
-      if (p < 1) requestAnimationFrame(step);
-      else { document.body.classList.remove('rewinding'); mode.textContent = '▶'; mode.style.color = 'var(--gold)'; }
+
+      if (p < 1) {
+        requestAnimationFrame(step);
+      } else {
+        document.body.classList.remove('rewinding');
+        mode.textContent = '▶';
+        mode.style.color = 'var(--gold)';
+      }
     }
+
     requestAnimationFrame(step);
   }
+
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entries, obs) {
-      entries.forEach(function (e) { if (e.isIntersecting) { runRewind(); obs.disconnect(); } });
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          runRewind();
+          obs.disconnect();
+        }
+      });
     }, { threshold: 0.6 }).observe(rewind);
-  } else { runRewind(); }
+  } else {
+    runRewind();
+  }
 
   /* ---- chapter strip + light dimming ---- */
-  var chapters = Array.prototype.slice.call(document.querySelectorAll('[data-chapter]'));
+  var chapters = Array.prototype.slice.call(
+    document.querySelectorAll('[data-chapter]')
+  );
+
   var strip = document.getElementById('strip');
+
   var ticks = chapters.map(function (ch, i) {
     if (!ch.id) ch.id = 'c' + i;
+
     var a = document.createElement('a');
     a.href = '#' + ch.id;
     a.setAttribute('aria-label', ch.getAttribute('data-title'));
     a.title = ch.getAttribute('data-title');
+
     strip.appendChild(a);
     return a;
   });
 
   var ticking = false;
+
   function update() {
     ticking = false;
-    var max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    var p = Math.min(1, Math.max(0, window.scrollY / max));
-    var d = Math.min(1, Math.max(0, (p - 0.55) / 0.4));
-    d = d * d * (3 - 2 * d);
-    document.documentElement.style.setProperty('--lights', (1 - d * 0.94).toFixed(3));
 
-    var cur = 0, line = window.innerHeight * 0.45;
-    chapters.forEach(function (ch, i) { if (ch.getBoundingClientRect().top < line) cur = i; });
-    ticks.forEach(function (t, i) { t.classList.toggle('on', i === cur); });
-    if (lastChapter !== null && cur !== lastChapter) chime('chapter');
+    var max = Math.max(
+      1,
+      document.documentElement.scrollHeight - window.innerHeight
+    );
+
+    var p = Math.min(
+      1,
+      Math.max(0, window.scrollY / max)
+    );
+
+    var d = Math.min(
+      1,
+      Math.max(0, (p - 0.55) / 0.4)
+    );
+
+    d = d * d * (3 - 2 * d);
+
+    document.documentElement.style.setProperty(
+      '--lights',
+      (1 - d * 0.94).toFixed(3)
+    );
+
+    var cur = 0;
+    var line = window.innerHeight * 0.45;
+
+    chapters.forEach(function (ch, i) {
+      if (ch.getBoundingClientRect().top < line) cur = i;
+    });
+
+    ticks.forEach(function (t, i) {
+      t.classList.toggle('on', i === cur);
+    });
+
+    if (lastChapter !== null && cur !== lastChapter) {
+      chime('chapter');
+    }
+
     lastChapter = cur;
   }
+
   var lastChapter = null;
+
   window.addEventListener('scroll', function () {
-    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
   }, { passive: true });
+
   window.addEventListener('resize', update);
   update();
 
   document.getElementById('again').addEventListener('click', function () {
     chime('click');
-    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: reduce ? 'auto' : 'smooth'
+    });
   });
+
 })();
 </script>
+
 </body>
 </html>
