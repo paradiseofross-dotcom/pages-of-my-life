@@ -1,1 +1,594 @@
+<!DOCTYPE html>
+<html lang="ml">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>നന്ദി | Paradise of Ross</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --bg: #0b1817;
+    --card: #162a27;
+    --border: #29413d;
+
+    --cyan: #72d8df;
+    --pink: #d99caf;
+
+    --text: #d8e3df;
+    --muted: #9cafaa;
+    --white: #f3f4ef;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(62, 132, 130, .12),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 75%,
+            rgba(205, 140, 160, .08),
+            transparent 30%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    line-height: 1.9;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* =========================================
+   TOP BAR
+   ========================================= */
+
+.topbar {
+    height: 74px;
+
+    border-bottom:
+        1px solid
+        rgba(180, 220, 215, .12);
+
+    display: flex;
+    align-items: center;
+}
+
+.topbar-inner {
+    width:
+        min(800px, calc(100% - 40px));
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    text-decoration: none;
+
+    color: var(--white);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+.brand::before {
+    content: "◈";
+
+    color: var(--pink);
+
+    margin-right: 9px;
+
+    font-size: 13px;
+}
+
+.home {
+    text-decoration: none;
+
+    color: var(--muted);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size: 14px;
+
+    transition: .3s;
+}
+
+.home:hover {
+    color: var(--cyan);
+}
+
+
+/* =========================================
+   MAIN
+   ========================================= */
+
+main {
+    width:
+        min(800px, calc(100% - 40px));
+
+    margin: auto;
+
+    padding:
+        90px 0
+        120px;
+}
+
+
+/* =========================================
+   INTRO
+   ========================================= */
+
+.eyebrow {
+    color: var(--cyan);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: .12em;
+
+    margin-bottom: 18px;
+}
+
+h1 {
+    margin: 0;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        clamp(3rem, 8vw, 5.5rem);
+
+    line-height: 1.05;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            #d5d6d2,
+            var(--pink)
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.intro {
+    max-width: 680px;
+
+    margin:
+        32px 0
+        70px;
+
+    color: var(--muted);
+
+    font-size: 17px;
+
+    line-height: 1.95;
+}
+
+
+/* =========================================
+   THANKS CARD
+   ========================================= */
+
+.thanks-card {
+    position: relative;
+
+    display: block;
+
+    padding:
+        34px 38px
+        32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.025),
+            rgba(255,255,255,.005)
+        ),
+        var(--card);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-left:
+        3px solid
+        var(--cyan);
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    margin-bottom: 24px;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.thanks-card:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(114,216,223,.65);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.28),
+        0 0 35px rgba(114,216,223,.05);
+}
+
+
+/* =========================================
+   NUMBER
+   ========================================= */
+
+.number {
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    color: var(--pink);
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   CARD TITLE
+   ========================================= */
+
+.thanks-card h2 {
+    margin:
+        0 0
+        14px;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        clamp(1.9rem, 4vw, 2.35rem);
+
+    color: var(--white);
+
+    line-height: 1.35;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   CARD DESCRIPTION
+   ========================================= */
+
+.thanks-card p {
+    margin:
+        0 0
+        22px;
+
+    color: var(--muted);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================
+   READ LINK
+   ========================================= */
+
+.read {
+    display: inline-block;
+
+    color: var(--cyan);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.thanks-card:hover .read {
+    transform: translateX(6px);
+}
+
+
+/* =========================================
+   NOTE
+   ========================================= */
+
+.note {
+    margin-top: 46px;
+
+    padding:
+        20px 24px;
+
+    border-left:
+        1px solid
+        rgba(217,156,175,.5);
+
+    color: #849994;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    width:
+        min(800px, calc(100% - 40px));
+
+    margin: auto;
+
+    padding:
+        30px 0
+        50px;
+
+    border-top:
+        1px solid
+        rgba(180,220,215,.08);
+
+    color: #657873;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .topbar {
+        height: 64px;
+    }
+
+    .topbar-inner {
+        width:
+            calc(100% - 28px);
+    }
+
+    main {
+        width:
+            calc(100% - 28px);
+
+        padding:
+            65px 0
+            90px;
+    }
+
+    h1 {
+        font-size: 3.2rem;
+    }
+
+    .intro {
+        font-size: 16px;
+
+        margin-bottom:
+            48px;
+    }
+
+    .thanks-card {
+        padding:
+            28px 26px
+            30px;
+
+        margin-bottom:
+            20px;
+    }
+
+    .thanks-card h2 {
+        font-size: 1.8rem;
+
+        line-height: 1.4;
+    }
+
+    .thanks-card p {
+        font-size: 16px;
+
+        line-height: 1.8;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+     ========================================= -->
+
+<header class="topbar">
+
+    <div class="topbar-inner">
+
+        <a
+            href="../index.html"
+            class="brand"
+        >
+            Paradise of Ross
+        </a>
+
+        <a
+            href="../index.html"
+            class="home"
+        >
+            മുഖ്യപേജ്
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     MAIN CONTENT
+     ========================================= -->
+
+<main>
+
+    <div class="eyebrow">
+        PARADISE OF ROSS
+    </div>
+
+
+    <h1>
+        നന്ദി
+    </h1>
+
+
+    <p class="intro">
+        ചില നിമിഷങ്ങൾ നമ്മൾ അനുഭവിക്കുന്നു.
+        ചിലത് ഓർമ്മയായി മാറുന്നു.
+        ചില ഓർമ്മകൾക്ക് പിന്നിൽ
+        നന്ദി പറയേണ്ട മനുഷ്യരുണ്ടാകും.
+    </p>
+
+
+    <!-- =====================================
+         THANK YOU STORY
+         ===================================== -->
+
+    <a
+        href="onam_thanks.html"
+        class="thanks-card"
+    >
+
+        <div class="number">
+            01
+        </div>
+
+
+        <h2>
+            ഹൃദയം നിറഞ്ഞ നന്ദി
+        </h2>
+
+
+        <p>
+            തുടർച്ചയായ നാലാം വർഷവും
+            തിരുവോണാമുറ്റമായി തുറന്ന മുറ്റത്തിനും,
+            ഒരുമിച്ചുകൂടിയ എല്ലാവർക്കും,
+            ഈ വർഷത്തെ ഓണാഘോഷത്തെ
+            മനോഹരമാക്കിയ ഓരോരുത്തർക്കുമുള്ള
+            സ്നേഹവും നന്ദിയും.
+        </p>
+
+
+        <span class="read">
+            നന്ദിയിലേക്ക് →
+        </span>
+
+    </a>
+
+
+    <!-- =====================================
+         NOTE
+         ===================================== -->
+
+    <div class="note">
+
+        ചില നന്ദികൾ ഒരു വാക്കിൽ തീരില്ല.
+        അതുകൊണ്ടാണ് ചില ഓർമ്മകൾ
+        കഥകളായി സൂക്ഷിക്കുന്നത്.
+
+    </div>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
+<footer>
+
+    © Paradise of Ross
+
+</footer>
+
+
+</body>
+
+</html>
