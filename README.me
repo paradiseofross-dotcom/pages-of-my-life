@@ -1,0 +1,65 @@
+# Paradise of Ross · റോസിന്റെ പറുദീസ
+
+> എന്റെ മനസ്സിൽ വിരിഞ്ഞ ചിന്തകൾക്കും, ഞാൻ പഠിച്ച പാഠങ്ങൾക്കും, ഹൃദയത്തോട് ചേർത്തുവെച്ച ഓർമ്മകൾക്കുമായി ഒരു ചെറിയ സ്വർഗ്ഗം.
+
+A small, growing home for memories, travels, celebrations, thanks and reflections, written in Malayalam with love.
+
+**Live site:** https://paradiseofross-dotcom.github.io/paradise-of-ross/
+
+## About
+
+Paradise of Ross is a personal website of written memories. The notes are composed in text, kept safe here, and read back whenever they are needed. New pages are added as each memory is finished.
+
+The site is plain HTML, CSS and JavaScript. There is no build step and nothing to install.
+
+## Features
+
+- Soft background piano music (made in the browser, no audio files), with a Play / Pause button in the top right corner
+- Gentle animations: fading entrances, drifting rose petals, scroll reveals
+- Light and dark appearance, following the visitor's device setting
+- Works on phones and computers
+- Respects the "reduce motion" setting for visitors who prefer it
+
+## Structure
+
+```
+paradise-of-ross/
+├── index.html              Home page and the "ഓർമ്മകളുടെ താളുകൾ" section
+├── README.md               This file
+└── memories/
+    ├── ormakal.html        List of memories (ഓർമ്മകൾ)
+    ├── thekke-veedu.html   Memory: തെക്കേ വീട്
+    └── manu-mathew.html    Memory: മനു മാത്യുവിന്റെ ഓർമ്മ
+```
+
+### Still to come
+
+- [ ] Travels (യാത്രകൾ)
+- [ ] Celebrations (ആഘോഷങ്ങൾ)
+- [ ] Notes of thanks (നന്ദിക്കുറിപ്പുകൾ)
+- [ ] Reflections (ചിന്തകൾ)
+
+## Adding a new memory
+
+1. Create the new page inside the `memories` folder, for example `memories/new-story.html`.
+2. Open `memories/ormakal.html`, find the comment `ADD NEW STORIES BELOW THIS LINE`, copy the sample block and change the number, file name, title and description.
+3. Commit the changes. The site updates in a minute or two.
+
+## Link rules
+
+Broken links show a 404 page, so keep these in mind:
+
+- Pages inside `memories/` link to the home page with `../index.html`.
+- The home page links to pages inside `memories/` with `memories/file-name.html`.
+- File names are case sensitive. Use lowercase letters, hyphens and `.html` only once.
+- After a change, press `Ctrl + F5` to see the latest version.
+
+## Hosting
+
+Published with GitHub Pages from the `main` branch.
+
+## Author
+
+Written with love by **Abraham Clancy Ross**.
+
+Last updated: 6 October 2026
