@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>അവസാന ഫ്രെയിം</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@500;700&family=Noto+Serif+Malayalam:wght@400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #142A30;
+    --wall: #1B343B;
+    --plum: #3A2C40;
+    --gold: #E3B04B;
+    --linen: #EAE3D5;
+    --mist: #93ADA9;
+    --rose: #D4788A;
+    --lights: 1;
+    --serif: 'Noto Serif Malayalam', 'Manjari', 'Kartika', serif;
+    --display: 'Anek Malayalam', 'Noto Sans Malayalam', 'Manjari', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--night);
+    color: var(--linen);
+    font-family: var(--serif);
+    font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+    line-height: 2;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  main { position: relative; z-index: 1; }
+
+  /* ---------- ambient party lights: they dim as the night ends ---------- */
+  #lights {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    opacity: var(--lights);
+    transition: opacity .35s linear;
+    overflow: hidden;
+  }
+  .bokeh {
+    position: absolute; border-radius: 50%;
+    filter: blur(28px);
+    animation: drift var(--d, 18s) ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(var(--x, 30px), var(--y, -40px), 0) scale(1.15); }
+  }
+
+  /* ---------- opening: the last frame ---------- */
+  .opening {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(0, 34rem);
+    gap: clamp(2rem, 6vw, 6rem);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 5vw, 3rem);
+  }
+  .scene {
+    position: sticky; top: 0;
+    height: 100svh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .scene svg { width: 100%; max-width: 440px; max-height: 88svh; height: auto; overflow: visible; }
+  .scene .g-mother, .scene .g-father, .scene .g-roy {
+    opacity: .7;
+    transition: opacity .9s ease, filter .9s ease;
+  }
+  .scene[data-look="roy"]    .g-roy,
+  .scene[data-look="mother"] .g-mother,
+  .scene[data-look="frames"] .g-mother,
+  .scene[data-look="frames"] .g-father,
+  .scene[data-look="both"]   .g-mother,
+  .scene[data-look="both"]   .g-roy {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(227,176,75,.6));
+  }
+  .scene .arc {
+    stroke: var(--gold); stroke-width: 2.5; fill: none; stroke-linecap: round;
+    stroke-dasharray: 1; stroke-dashoffset: 1;
+    transition: stroke-dashoffset 1.8s ease;
+  }
+  .scene[data-look="both"] .arc { stroke-dashoffset: 0; }
+  .scene text { font-family: var(--display); fill: var(--mist); }
+  .scene .g-roy text, .scene .g-mother text, .scene .g-father text { transition: fill .9s; }
+  .scene[data-look="roy"] .g-roy text,
+  .scene[data-look="mother"] .g-mother text,
+  .scene[data-look="frames"] text,
+  .scene[data-look="both"] .g-mother text,
+  .scene[data-look="both"] .g-roy text { fill: var(--gold); }
+
+  .opening .text { padding: 32svh 0 14svh; }
+  h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.8rem, 8vw, 5.2rem);
+    line-height: 1.2;
+    color: var(--gold);
+    margin: 0 0 .4em;
+  }
+  .lead { font-family: var(--display); font-size: 1.25em; color: var(--linen); margin-bottom: 2.5em; }
+
+  /* ---------- story text: each line pulls into focus ---------- */
+  .js .story p, .js .story li, .js .story h2 {
+    opacity: 0; filter: blur(7px); transform: translateY(6px);
+    transition: opacity 1.2s ease, filter 1.2s ease, transform 1.2s ease;
+  }
+  .js .story .in { opacity: 1; filter: none; transform: none; }
+  .story p { margin: 0 0 1.5em; }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.7rem, 4.4vw, 2.5rem);
+    line-height: 1.4;
+    color: var(--gold);
+    margin: 0 0 1em;
+  }
+  .column { max-width: 36rem; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2rem); }
+  .chapter { margin-top: clamp(6rem, 16vh, 10rem); }
+
+  .say {
+    padding-left: 1.1rem;
+    border-left: 2px solid var(--gold);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* ---------- rewind ---------- */
+  #rewind {
+    min-height: 100svh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 4rem 1.5rem;
+  }
+  #rewind .counter {
+    font-family: 'Share Tech Mono', ui-monospace, monospace;
+    font-size: clamp(2.2rem, 9vw, 4.5rem);
+    letter-spacing: .06em;
+    color: var(--linen);
+    font-variant-numeric: tabular-nums;
+    display: flex; align-items: center; gap: .5em;
+  }
+  #rewind .mode { color: var(--rose); min-width: 1.6em; }
+  #rewind h2 { margin: 1.2em 0 0; }
+  body.rewinding #rewind { animation: jitter .16s steps(2) infinite; }
+  body.rewinding main { filter: saturate(.55) contrast(1.08); }
+  body.rewinding::before {
+    content: ""; position: fixed; inset: 0; z-index: 60; pointer-events: none;
+    background:
+      linear-gradient(to bottom, transparent 0, rgba(255,255,255,.16) 50%, transparent 100%) 0 0 / 100% 22% no-repeat,
+      repeating-linear-gradient(to bottom, rgba(255,255,255,.06) 0 2px, transparent 2px 5px);
+    animation: tracking .9s linear infinite;
+  }
+  @keyframes tracking { from { background-position: 0 -30%, 0 0; } to { background-position: 0 130%, 0 4px; } }
+  @keyframes jitter { 0% { transform: translateX(-2px); } 100% { transform: translateX(3px); } }
+
+  /* ---------- arrivals grow in size, like the surprise ---------- */
+  .arrivals p:nth-child(1) { font-size: 1em; }
+  .arrivals p:nth-child(2) { font-size: 1.3em; }
+  .arrivals p:nth-child(3) { font-size: 1.7em; color: #fff; }
+
+  /* ---------- viewfinder ---------- */
+  .viewfinder {
+    position: relative;
+    padding: 2.6rem 1.6rem 1.2rem;
+    background:
+      linear-gradient(var(--gold), var(--gold)) top left / 26px 2px no-repeat,
+      linear-gradient(var(--gold), var(--gold)) top left / 2px 26px no-repeat,
+      linear-gradient(var(--gold), var(--gold)) top right / 26px 2px no-repeat,
+      linear-gradient(var(--gold), var(--gold)) top right / 2px 26px no-repeat,
+      linear-gradient(var(--gold), var(--gold)) bottom left / 26px 2px no-repeat,
+      linear-gradient(var(--gold), var(--gold)) bottom left / 2px 26px no-repeat,
+      linear-gradient(var(--gold), var(--gold)) bottom right / 26px 2px no-repeat,
+      linear-gradient(var(--gold), var(--gold)) bottom right / 2px 26px no-repeat;
+  }
+  .rec {
+    position: absolute; top: .7rem; left: 1.6rem;
+    font-family: 'Share Tech Mono', ui-monospace, monospace;
+    font-size: .8rem; line-height: 1; color: var(--rose);
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .rec::before {
+    content: ""; width: .6rem; height: .6rem; border-radius: 50%;
+    background: #e5484d;
+    animation: blink 1.4s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ---------- the reel of remembered frames ---------- */
+  .reel {
+    list-style: none; margin: 3rem 0; padding: .5rem 3rem;
+    position: relative;
+    background: #0D1B1F;
+    border-radius: 4px;
+  }
+  .reel::before, .reel::after {
+    content: ""; position: absolute; top: 10px; bottom: 10px; width: 12px;
+    background: repeating-linear-gradient(to bottom, transparent 0 12px, rgba(234,227,213,.8) 12px 26px);
+    border-radius: 2px;
+  }
+  .reel::before { left: 16px; }
+  .reel::after { right: 16px; }
+  .reel li {
+    margin: 0; padding: .55rem 0;
+    border-bottom: 1px solid rgba(227,176,75,.22);
+    font-size: .95em; line-height: 1.7;
+  }
+  .reel li:last-child { border-bottom: 0; color: var(--gold); font-weight: 600; }
+
+  /* ---------- ending ---------- */
+  .final {
+    position: relative;
+    min-height: 90svh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 6rem 1.5rem;
+    margin-top: clamp(5rem, 14vh, 8rem);
+  }
+  .final::before {
+    content: ""; position: absolute; left: 50%; top: 50%;
+    width: min(90vw, 70vh); aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(closest-side, rgba(227,176,75,.28), transparent);
+    animation: breathe 7s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes breathe { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+  .final h2 { position: relative; font-size: clamp(2.4rem, 8vw, 4.6rem); margin: 0 0 1.4em; }
+  .again {
+    position: relative;
+    font: inherit; font-family: var(--display); font-size: 1rem;
+    color: var(--gold); background: transparent;
+    border: 1px solid var(--gold); border-radius: 999px;
+    padding: .6rem 1.6rem; cursor: pointer;
+    transition: background .25s, color .25s;
+  }
+  .again:hover { background: var(--gold); color: var(--night); }
+  .again:focus-visible, .strip a:focus-visible { outline: 2px solid var(--linen); outline-offset: 4px; }
+
+  /* ---------- chapter strip ---------- */
+  .strip {
+    position: fixed; right: 1.1rem; top: 50%; transform: translateY(-50%);
+    z-index: 10; display: flex; flex-direction: column; gap: 7px; align-items: flex-end;
+  }
+  .strip a {
+    display: block; height: 4px; width: 12px; border-radius: 2px;
+    background: rgba(234,227,213,.25);
+    transition: width .3s, background .3s;
+  }
+  .strip a:hover { background: rgba(234,227,213,.6); }
+  .strip a.on { width: 28px; background: var(--gold); }
+
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  /* ---------- small screens ---------- */
+  @media (max-width: 860px) {
+    .opening { grid-template-columns: 1fr; gap: 0; }
+    .scene {
+      height: 46svh; z-index: 5;
+      background: linear-gradient(to bottom, var(--night) 82%, rgba(20,42,48,0));
+      padding-top: 1rem;
+    }
+    .scene svg { max-height: 42svh; }
+    .opening .text { padding: 4svh 0 12svh; }
+    .strip { display: none; }
+    .reel { padding: .5rem 2.6rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .story p, .js .story li, .js .story h2 { opacity: 1; filter: none; transform: none; transition: none; }
+    .bokeh, .final::before, .rec::before { animation: none; }
+    .scene .arc { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div id="lights" aria-hidden="true"></div>
+<nav class="strip" id="strip" aria-label="അധ്യായങ്ങൾ"></nav>
+
+<main class="story">
+
+  <!-- ============ അവസാന ഫ്രെയിം ============ -->
+  <section class="opening" data-chapter data-title="അവസാന ഫ്രെയിം" id="c0">
+    <div class="scene" id="scene" data-look="">
+      <svg viewBox="0 0 400 560" role="img" aria-label="ചുമരിൽ രണ്ട് ചിത്രങ്ങൾ; അതിനു താഴെ സെറ്റിയിൽ റോയ്">
+        <defs>
+          <radialGradient id="lamp" cx="88%" cy="6%" r="75%">
+            <stop offset="0" stop-color="#E3B04B" stop-opacity=".38"/>
+            <stop offset="1" stop-color="#E3B04B" stop-opacity="0"/>
+          </radialGradient>
+          <pattern id="paper" width="24" height="10" patternUnits="userSpaceOnUse">
+            <rect width="12" height="10" fill="rgba(255,255,255,.028)"/>
+          </pattern>
+          <clipPath id="clipL"><ellipse cx="120" cy="150" rx="59" ry="75"/></clipPath>
+          <clipPath id="clipR"><ellipse cx="280" cy="150" rx="59" ry="75"/></clipPath>
+        </defs>
+
+        <rect x="0" y="0" width="400" height="420" rx="6" fill="#1B343B"/>
+        <rect x="0" y="0" width="400" height="420" rx="6" fill="url(#paper)"/>
+        <rect x="0" y="0" width="400" height="420" rx="6" fill="url(#lamp)"/>
+
+        <!-- picture wire -->
+        <path d="M120 74 L200 26 L280 74" fill="none" stroke="#93ADA9" stroke-opacity=".5" stroke-width="1.2"/>
+        <circle cx="200" cy="26" r="3" fill="#E3B04B"/>
+
+        <!-- mother -->
+        <g class="g-mother">
+          <ellipse cx="120" cy="150" rx="59" ry="75" fill="#0F1E22"/>
+          <g clip-path="url(#clipL)">
+            <ellipse cx="120" cy="134" rx="31" ry="32" fill="#34504F"/>
+            <circle cx="120" cy="138" r="22" fill="#7C9A97"/>
+            <path d="M52 240 Q56 178 120 174 Q184 178 188 240 Z" fill="#4D6A6B"/>
+          </g>
+          <ellipse cx="120" cy="150" rx="62" ry="78" fill="none" stroke="#E3B04B" stroke-width="7"/>
+          <ellipse cx="120" cy="150" rx="55" ry="71" fill="none" stroke="#E3B04B" stroke-opacity=".45" stroke-width="1.2"/>
+          <text x="120" y="256" text-anchor="middle" font-size="13">അമ്മ കർമെലി</text>
+        </g>
+
+        <!-- father -->
+        <g class="g-father">
+          <ellipse cx="280" cy="150" rx="59" ry="75" fill="#0F1E22"/>
+          <g clip-path="url(#clipR)">
+            <circle cx="280" cy="138" r="22" fill="#7C9A97"/>
+            <path d="M258 132 Q280 104 302 132 Q280 120 258 132 Z" fill="#2C4548"/>
+            <path d="M212 240 Q216 178 280 174 Q344 178 348 240 Z" fill="#4D6A6B"/>
+            <path d="M262 176 L280 200 L298 176 Z" fill="#EAE3D5" fill-opacity=".7"/>
+          </g>
+          <ellipse cx="280" cy="150" rx="62" ry="78" fill="none" stroke="#E3B04B" stroke-width="7"/>
+          <ellipse cx="280" cy="150" rx="55" ry="71" fill="none" stroke="#E3B04B" stroke-opacity=".45" stroke-width="1.2"/>
+          <text x="280" y="256" text-anchor="middle" font-size="13">അപ്പൻ O.P. ജോർജ്</text>
+        </g>
+
+        <!-- sofa -->
+        <rect x="52" y="352" width="296" height="200" rx="34" fill="#3A2C40"/>
+        <rect x="28" y="420" width="54" height="132" rx="22" fill="#47364E"/>
+        <rect x="318" y="420" width="54" height="132" rx="22" fill="#47364E"/>
+
+        <!-- Roy -->
+        <g class="g-roy">
+          <path d="M138 470 Q138 384 200 384 Q262 384 262 470 Z" fill="#5C7D7A"/>
+          <circle cx="200" cy="344" r="31" fill="#93ADA9"/>
+          <path d="M170 336 Q172 306 200 306 Q228 306 230 336 Q214 322 200 322 Q186 322 170 336 Z" fill="#D9DED9"/>
+          <text x="200" y="510" text-anchor="middle" font-size="14">റോയ്</text>
+        </g>
+
+        <!-- the resemblance -->
+        <path class="arc" pathLength="1" d="M112 232 C 108 292, 150 306, 176 322"/>
+      </svg>
+    </div>
+
+    <div class="text">
+      <h1 data-reveal>അവസാന ഫ്രെയിം</h1>
+      <p class="lead">ഇന്നലെ കണ്ട അവസാന ഫ്രെയിം</p>
+
+      <p>ഞങ്ങൾ യാത്രപറയുന്നതിന് തൊട്ടുമുമ്പുള്ള ആ നിമിഷം.</p>
+      <p>ഞാൻ സെറ്റിയിൽ പിന്നിലേക്ക് ചാരിയിരുന്നു.<br>മൊബൈലിൽ ഒരു യാത്രാവിവരണം കാണുകയായിരുന്നു.</p>
+      <p>യാത്രാവിവരണം അവസാനിച്ചു.</p>
+      <p>ഞാൻ മൊബൈൽ താഴ്ത്തി മുന്നിലേക്ക് നോക്കി.</p>
+      <p data-look="roy">എന്റെ എതിർവശത്ത് റോയ് ഇരിക്കുന്നു.</p>
+      <p data-look="frames">അദ്ദേഹത്തിന്റെ തലയ്ക്ക് മുകളിലായി ചുമരിൽ രണ്ട് ചിത്രങ്ങൾ</p>
+      <p data-look="frames">അമ്മ കർമെലിയും അപ്പൻ O.P. ജോർജും.</p>
+      <p data-look="roy">ഞാൻ റോയിയുടെ മുഖത്തേക്ക് നോക്കി.</p>
+      <p data-look="mother">പിന്നെ അമ്മയുടെ ചിത്രത്തിലേക്ക്.</p>
+      <p data-look="roy">വീണ്ടും റോയിയിലേക്ക്.</p>
+      <p data-look="both">അപ്പോഴാണ് ആ സാമ്യം കൂടുതൽ വ്യക്തമായി തോന്നിയത്.</p>
+      <p data-look="both">അമ്മയുടെ മുഖത്തിന്റെ ഒരു ഭാഗം മകന്റെ മുഖത്ത് ഇന്നും ജീവിക്കുന്നതുപോലെ.</p>
+      <p>ആ ഒരു കാഴ്ചയിൽ ഞാൻ കുറച്ചുനേരം നിശ്ശബ്ദനായി.</p>
+      <p>പുറത്ത് ആളുകൾ യാത്രപറയുന്നു.<br>വീട്ടിനുള്ളിൽ ചിരിയുടെ അവസാന ശബ്ദങ്ങൾ.<br>ആഘോഷത്തിന്റെ അവസാന നിമിഷങ്ങൾ.</p>
+      <p>പക്ഷേ എന്റെ മനസ്സിൽ അപ്പോഴേക്കും മറ്റൊരു സിനിമ ആരംഭിച്ചിരുന്നു.</p>
+    </div>
+  </section>
+
+  <!-- ============ rewind ============ -->
+  <section id="rewind" data-chapter data-title="പിന്നിലേക്ക്">
+    <div class="counter" aria-hidden="true"><span class="mode" id="mode">◀◀</span><span id="tc">05:42:11</span></div>
+    <h2>കുറച്ചുമണിക്കൂറുകൾ പിന്നിലേക്ക്</h2>
+  </section>
+
+  <div class="column">
+
+    <section class="chapter" data-chapter data-title="ഒരു സർപ്രൈസിന്റെ തുടക്കം">
+      <h2>ഒരു സർപ്രൈസിന്റെ തുടക്കം</h2>
+      <p>റോയിയുടെ അറുപതാം പിറന്നാളും പ്രിയപ്പെട്ട ഭാര്യ ഡയാനയുടെ പിറന്നാളും ഒരേ ദിവസമായിരുന്നു.</p>
+      <p>ആഘോഷത്തിന് പിന്നിൽ ഒരു രഹസ്യപദ്ധതിയുണ്ടായിരുന്നു. അവരുടെ മക്കളായ സമ്മുവും ഇമ്മുവും ചേർന്ന് Pappaയ്ക്കും Ammichിക്കും വേണ്ടി ഒരു സർപ്രൈസ് ആഘോഷം ഒരുക്കുകയായിരുന്നു.</p>
+      <p>പക്ഷേ കുടുംബത്തിൽ രഹസ്യങ്ങൾ എത്രകാലം രഹസ്യമായി തുടരും.</p>
+      <p>ആഘോഷത്തിന് ഏതാനും ദിവസങ്ങൾക്ക് മുമ്പേ ഡയാനയ്ക്ക് സമ്മുവിന്റെയും ഇമ്മുവിന്റെയും സർപ്രൈസിന്റെ രഹസ്യം ഏതാണ്ട് മനസ്സിലായിരുന്നു.</p>
+      <p>എങ്കിലും മുഴുവൻ പരിപാടി എന്താണെന്ന് അറിയാത്തതിനാൽ ആ ചെറിയ ആവേശം അവിടെ തന്നെ ബാക്കിയുണ്ടായിരുന്നു.</p>
+      <p>പാർട്ടി ദിവസം സമ്മുവിനെ നോക്കിയപ്പോൾ അവൻ കുറച്ച് ക്ഷീണിതനായി തോന്നി. അടുത്തിടെ പനി ഉണ്ടായിരുന്നതിന്റെയും അതിന്റെ ക്ഷീണം പൂർണ്ണമായി മാറാത്തതിന്റെയും അടയാളം മുഖത്ത് കാണാമായിരുന്നു.</p>
+      <p>എങ്കിലും Pappaയുടെയും Ammichിയുടെയും ഈ പ്രത്യേക ദിവസം മനോഹരമാക്കണമെന്ന ആഗ്രഹം അവന്റെ ക്ഷീണത്തെക്കാൾ വലുതായിരുന്നു.</p>
+      <p>അവൻ ഓടിനടന്നു.</p>
+      <p>ഒരുക്കങ്ങൾ നോക്കി.</p>
+      <p>അതിഥികളെ സ്വീകരിച്ചു.</p>
+      <p>അങ്ങനെ ആ ദിവസം പതുക്കെ ജീവൻ പ്രാപിച്ചു.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="റോയിയുടെ മുഖത്തെ അതിശയം">
+      <h2>റോയിയുടെ മുഖത്തെ അതിശയം</h2>
+      <p>അതിഥികൾ ഓരോരുത്തരായി എത്തിത്തുടങ്ങി.</p>
+      <div class="arrivals">
+        <p>ഒരാൾ വന്നു.</p>
+        <p>പിന്നെ മറ്റൊരാൾ.</p>
+        <p>പിന്നെ മറ്റൊരാൾ.</p>
+      </div>
+      <p>ഓരോ വരവിനും റോയിയുടെ മുഖത്ത് അതിശയം കൂടിക്കൊണ്ടിരുന്നു.</p>
+      <p>ഒടുവിൽ സർപ്രൈസ് പൂർണ്ണമായി തുറന്നപ്പോൾ ആ മുഖത്ത് കണ്ടത് ഒരു കുട്ടിയുടെ സന്തോഷം പോലെയായിരുന്നു.</p>
+      <p class="say">എനിക്ക് ഇത്രയും വലിയൊരു സർപ്രൈസ് ഒരുക്കുമെന്ന് കരുതിയില്ല.</p>
+      <p>എന്ന് പറയുമ്പോൾ അദ്ദേഹത്തിന്റെ ശബ്ദത്തിലും മുഖത്തും ആ സന്തോഷം നിറഞ്ഞിരുന്നു.</p>
+      <p>വന്ന ഓരോ അതിഥിയോടും അദ്ദേഹം തന്റെ സന്തോഷം വീണ്ടും പങ്കുവച്ചു.</p>
+      <p>അത് ഒരു പിറന്നാൾ പാർട്ടി മാത്രമായിരുന്നില്ല.</p>
+      <p>റോയിയുടെ സന്തോഷം എല്ലാവരും ചേർന്ന് ആഘോഷിച്ച ഒരു ദിവസം കൂടിയായിരുന്നു.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="ആഘോഷം പതുക്കെ അവസാനിക്കുന്നു">
+      <h2>ആഘോഷം പതുക്കെ അവസാനിക്കുന്നു</h2>
+      <p>സമയം കടന്നുപോയി.</p>
+      <p>ചിരികൾ.</p>
+      <p>സംസാരങ്ങൾ.</p>
+      <p>ആശംസകൾ.</p>
+      <p>സമ്മാനങ്ങൾ.</p>
+      <p>ഫോട്ടോകൾ.</p>
+      <p>പതുക്കെ ആഘോഷം അവസാനത്തിലേക്ക് നീങ്ങി.</p>
+      <p>ഒരാളുടെ പിന്നാലെ മറ്റൊരാൾ യാത്ര പറയാൻ തുടങ്ങി.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="ജെസ്സി ചേച്ചിയും മെഴ്‌സി ചേച്ചിയും">
+      <h2>ജെസ്സി ചേച്ചിയും മെഴ്‌സി ചേച്ചിയും</h2>
+      <p>ആദ്യം ജെസ്സി ചേച്ചിയും മെഴ്‌സി ചേച്ചിയും പോകാൻ തയ്യാറായി.</p>
+      <p>മെഴ്‌സി ചേച്ചി തന്റെ മകൻ കെവിനെയോ ക്ലിന്റണെയോ തിരയുകയായിരുന്നു. തന്നെ വീട്ടിൽ ഇറക്കാൻ സഹായിക്കാനായി.</p>
+      <p>അവരും പതുക്കെ യാത്രയായി.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="ബിജു പ്രിൻസ് ജാക്ക്സി നിഷ">
+      <h2>ബിജു പ്രിൻസ് ജാക്ക്സി നിഷ</h2>
+      <p>പിന്നീട് ഡയാനയുടെയും റോയിയുടെയും സുഹൃത്തുക്കളായ ബിജു പ്രിൻസ് ജാക്ക്സി നിഷ എന്നിവർ യാത്ര പറയാൻ തുടങ്ങി.</p>
+      <p>പോകുന്നതിന് മുമ്പ് ജാക്ക്സിയും നിഷയും സുപ്രിയയുടെ വിശേഷങ്ങൾ അന്വേഷിച്ചു.</p>
+      <p>ചുരുങ്ങിയ സംഭാഷണത്തിന് ശേഷം അവരും പുറത്തേക്ക് നീങ്ങി.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="ജോബിയുടെ യാത്ര">
+      <h2>ജോബിയുടെ യാത്ര</h2>
+      <p>ഇതിനിടെ ജോബി ഒരു ഓൺലൈൻ യാത്രാസേവനം വഴി കാർ ഏർപ്പെടുത്തി.</p>
+      <p>ചേട്ടനും ചേച്ചിയും ജോബിയുടെ മകൻ ഹെയ്നസും എവിനും വീട്ടിലേക്ക് പോകാൻ തയ്യാറായി.</p>
+      <p>എല്ലാവരും യാത്ര പറയുമ്പോഴും ഹെയ്നസ് തന്റെ മൊബൈലിൽ വീഡിയോ ഗെയിം കളിക്കുന്ന തിരക്കിലായിരുന്നു.</p>
+      <p>പുറത്തേക്ക് പോകുമ്പോൾ ചേച്ചി എന്നോട് ചോദിച്ചു.</p>
+      <p class="say">അടുത്ത യാത്ര എപ്പോഴാണ്.</p>
+      <p>കഴിഞ്ഞ യാത്ര ആരോഗ്യപ്രശ്നം കാരണം നഷ്ടപ്പെട്ടതിന്റെ ചെറിയൊരു വിഷമവും ആ ചോദ്യത്തിൽ ഉണ്ടായിരുന്നു.</p>
+      <p>അവരും യാത്രയായി.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="അപ്പോഴാണ് പപ്പാ വന്നൂ">
+      <h2>അപ്പോഴാണ് പപ്പാ വന്നൂ</h2>
+      <p>അപ്പോഴാണ് അക്കുവിന്റെ ശബ്ദം കേട്ടത്.</p>
+      <p class="say">പപ്പാ വന്നൂ.</p>
+      <p>ഞാൻ നോക്കിയപ്പോൾ ബിന്ദു പുറത്തേക്ക് പോയി ടൈറ്റസിനെ സ്വീകരിക്കുകയായിരുന്നു.</p>
+      <p>അൽപ്പസമയം കഴിഞ്ഞ് ടൈറ്റസ് അകത്തേക്ക് വന്നു.</p>
+      <p>കയ്യിൽ ഒരു ഗ്ലാസ് Mansion House ബ്രാണ്ടി.</p>
+      <p>റോയിയുടെ അടുത്തേക്ക് ചെന്നു കൈകൊടുത്തു.</p>
+      <p>കെട്ടിപ്പിടിച്ചു.</p>
+      <p>പിന്നെ പതിവ് ആവേശത്തിൽ വലിയ ശബ്ദത്തിൽ പറഞ്ഞു.</p>
+      <p class="say">ജന്മദിനാശംസകൾ പ്രിയ സഹോദരാ.</p>
+      <p>പിന്നെ റോയിയോട് ചോദിച്ചു.</p>
+      <p class="say">എങ്ങനെയുണ്ടായിരുന്നു ഇന്നത്തെ ദിവസം.</p>
+      <p>റോയിയുടെ മുഖം വീണ്ടും തെളിഞ്ഞു.</p>
+      <p class="say">ഇത് എനിക്ക് ഒരിക്കലും മറക്കാൻ കഴിയാത്ത ദിവസമാണ്.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="ഒരു നന്ദികുർബാന">
+      <h2>ഒരു നന്ദികുർബാന</h2>
+      <p>റോയ് തന്റെ ദിവസം വിവരിക്കാൻ തുടങ്ങി.</p>
+      <p>രാവിലെ പള്ളിയിൽ വിശുദ്ധ കുർബാന.</p>
+      <p>അൾത്താരയിൽ വൈദികൻ റോയിയുടെ പേര് പരാമർശിച്ചു.</p>
+      <p>അത് ഒരു നന്ദികുർബാന ആയിരുന്നു.</p>
+      <p>നന്ദികുർബാന എന്താണ് എന്ന ചർച്ച കുറച്ചുനേരം നീണ്ടു.</p>
+      <p>എന്റെ പിന്നിൽ നിന്ന് ഡയാനയുടെ അപ്പച്ചനും അതിനെക്കുറിച്ച് വിശദീകരിച്ചു.</p>
+      <p>അവസാനം ഡയാന തന്നെ കാര്യങ്ങൾ സ്ഥിരീകരിച്ചു.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="ആഷ്ബിയുടെ ഉമ്മ">
+      <h2>ആഷ്ബിയുടെ ഉമ്മ</h2>
+      <p>പിന്നെ റോയിയുടെ ശബ്ദത്തിൽ വീണ്ടും ആവേശം.</p>
+      <p>പുതിയ മരുമകൾ ആഷ്ബി നൽകിയ ഒരു ഉമ്മ.</p>
+      <p>അത് പറയുമ്പോൾ റോയിയുടെ മുഖത്തെ സന്തോഷം വീണ്ടും ഉയർന്നു.</p>
+      <p>ടൈറ്റസ് കുറച്ചുനേരം അത്ഭുതത്തോടെ നിന്നു.</p>
+      <p>അപ്പോഴേക്കും ഈ കുടുംബസംഗമത്തിൽ പങ്കെടുക്കാൻ കഴിയാതിരുന്ന ഷിനോജ് തിരക്കിനിടയിലും ഞങ്ങളെ വിളിക്കാൻ മറന്നില്ല.</p>
+      <p class="say">പാർട്ടി എങ്ങനെയുണ്ട്. എല്ലാവരും എങ്ങനെയുണ്ട്.</p>
+      <p>എന്ന് ഫോണിലൂടെ ചോദിച്ചു.</p>
+      <p>പാർട്ടിയുടെ കുറച്ച് വിശേഷങ്ങൾ അവനുമായി പങ്കുവച്ചു.</p>
+      <p>ഫോൺ സംഭാഷണം അവസാനിച്ചു.</p>
+      <p>വീണ്ടും ചിരി.</p>
+      <p>വീണ്ടും സംഭാഷണം.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="ടൈറ്റസിന്റെ അറുപതാം പിറന്നാൾ">
+      <h2>ടൈറ്റസിന്റെ അറുപതാം പിറന്നാൾ</h2>
+      <p>അപ്പോഴാണ് ടൈറ്റസിന്റെ അടുത്ത തമാശ.</p>
+      <p class="say">ഞാനും അടുത്ത ആഴ്ച എന്റെ അറുപതാം പിറന്നാൾ ആഘോഷിക്കും. റോയിയേക്കാൾ കൂടുതൽ ഉമ്മ എനിക്ക് കിട്ടുമോന്ന് നോക്കട്ടെ.</p>
+      <p>ചിരി വീണ്ടും പൊട്ടി.</p>
+      <p>പിന്നെ ടൈറ്റസ് എന്നോട് ചോദിച്ചു.</p>
+      <p class="say">നിന്റെ അറുപതാം പിറന്നാൾ എപ്പോഴാണ്.</p>
+      <p>ഞാൻ സത്യസന്ധമായി പറഞ്ഞു.</p>
+      <p class="say">ഇനി പതിനഞ്ച് വർഷം കഴിഞ്ഞ്.</p>
+      <p>റോയി എന്റെ ഇപ്പോഴത്തെ പ്രായം ചോദിച്ചു.</p>
+      <p>അന്വേഷണം തുടർന്നു.</p>
+      <p>ഒടുവിൽ ടൈറ്റസിന്റെ തമാശയിൽ എന്റെ പ്രായത്തിന്റെ രഹസ്യം പുറത്തുവന്നു.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="ക്യാമറ ഒരിക്കലും നിർത്തിയില്ല">
+      <h2>ക്യാമറ ഒരിക്കലും നിർത്തിയില്ല</h2>
+      <div class="viewfinder">
+        <span class="rec" aria-hidden="true">REC</span>
+        <p>ഇതെല്ലാം നടക്കുമ്പോഴും സ്റ്റീവ് മൊബൈൽ ക്യാമറയിൽ ഓരോ നിമിഷവും പകർത്തുകയായിരുന്നു.</p>
+        <p>സംസാരങ്ങൾ.</p>
+        <p>ചിരികൾ.</p>
+        <p>തമാശകൾ.</p>
+        <p>റോയിയുടെ ആവേശം.</p>
+        <p>ടൈറ്റസിന്റെ പ്രതികരണങ്ങൾ.</p>
+        <p>എല്ലാം ഒരു വിശാല ദൃശ്യത്തിൽ പതിഞ്ഞുകൊണ്ടിരുന്നു.</p>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter data-title="സാന്ദ്രയുടെ രഹസ്യ സംഭാഷണം">
+      <h2>സാന്ദ്രയുടെ രഹസ്യ സംഭാഷണം</h2>
+      <p>സാന്ദ്രയ്ക്ക് നല്ല ക്ഷീണമുണ്ടെന്ന് തോന്നി.</p>
+      <p>പക്ഷേ മുഖഭാവം കണ്ടപ്പോൾ ഒരു സംശയം.</p>
+      <p>ജോലിയുടെ ക്ഷീണമല്ല.</p>
+      <p>ജെറിനോട് ഇവിടെ ഇപ്പോൾ നടക്കുന്നതെല്ലാം രഹസ്യമായി തത്സമയം റിപ്പോർട്ട് ചെയ്യുകയായിരുന്നോ എന്തോ.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="Mansion House മറ്റൊരു കഥാപാത്രം">
+      <h2>Mansion House മറ്റൊരു കഥാപാത്രം</h2>
+      <p>ഇതിനിടയിൽ ടൈറ്റസിന്റെ കൈയിലെ Mansion House ബ്രാണ്ടിയും ഈ കഥയിലെ ഒരു കഥാപാത്രമായി മാറിയിരുന്നു.</p>
+      <p>ടൈറ്റസ് എത്തിയാൽ കൂടെ വരാറുള്ള ആ അതിഥിക്ക് അധികം നേരം വിശ്രമിക്കാനുള്ള ഭാഗ്യമുണ്ടായിരുന്നില്ല.</p>
+      <p>Mansion House ടൈറ്റസിന്റെ കൈയിൽ എത്തിയാൽ അതിന്റെ ആയുസ്സ് എത്രയെന്ന് എല്ലാവർക്കും അറിയാമല്ലോ.</p>
+      <p>കുറച്ചുനേരം കഴിഞ്ഞപ്പോൾ പതിവുപോലെ Mansion Houseന്റെ അധ്യായവും അവസാനിച്ചു.</p>
+      <p>ടൈറ്റസ് ഒന്നുമറിയാത്തതുപോലെ വീണ്ടും സംഭാഷണത്തിലേക്ക്.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="ഡയാനയുടെ സമ്മാനങ്ങൾ">
+      <h2>ഡയാനയുടെ സമ്മാനങ്ങൾ</h2>
+      <p>അതിനിടെ ഡയാന സുഹൃത്തുക്കൾ നൽകിയ സമ്മാനങ്ങൾ എടുത്ത് കാണിച്ചു.</p>
+      <p>ഞാൻ തമാശയായി ചോദിച്ചു.</p>
+      <p class="say">ഇതിൽ ഒരേ പോലെയുള്ള അധിക സാധനം വല്ലതുമുണ്ടെങ്കിൽ എനിക്ക് തന്നേക്കൂ.</p>
+      <p>ഡയാന എന്നെ നോക്കി.</p>
+      <p>ഒരു പ്രത്യേക തമാശയും കളിയാക്കലും നിറഞ്ഞ മുഖഭാവം.</p>
+      <p>ആ മുഖഭാവം തന്നെ മറുപടിയായി.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="അവസാന പരിശോധന">
+      <h2>അവസാന പരിശോധന</h2>
+      <p>സമയം ഏറെ കഴിഞ്ഞിരുന്നു.</p>
+      <p>സുപ്രിയ മൊബൈലിൽ വീട്ടിലെ നിരീക്ഷണ ക്യാമറ നോക്കുകയായിരുന്നു.</p>
+      <p>ആരെങ്കിലും നമ്മുടെ വീട്ടിലെത്തിയോയെന്ന് പരിശോധിച്ചു.</p>
+      <p>ഒടുവിൽ എല്ലാവരും പോയി.</p>
+      <p>ഇനി നമ്മളും പോകേണ്ട സമയം.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="വീണ്ടും ആ അവസാന ഫ്രെയിമിലേക്ക്">
+      <h2>വീണ്ടും ആ അവസാന ഫ്രെയിമിലേക്ക്</h2>
+      <p>അങ്ങനെ ഞങ്ങളും റോയിയുടെയും ഡയാനയുടെയും വീട്ടിൽ നിന്ന് യാത്ര പറയാൻ തയ്യാറായി.</p>
+      <p>അപ്പോഴാണ് ഞാൻ സെറ്റിയിൽ പിന്നിലേക്ക് ചാരിയിരുന്ന് കണ്ട ആ അവസാന കാഴ്ച മനസ്സിൽ പതിഞ്ഞത്.</p>
+      <p>റോയി എന്റെ എതിർവശത്ത്.</p>
+      <p>മുകളിൽ കർമെലിയുടെയും O.P. ജോർജിന്റെയും ചിത്രങ്ങൾ.</p>
+      <p>അമ്മയുടെ മുഖവും മകന്റെ മുഖവും.</p>
+      <p>അത് തന്നെയായിരുന്നു ഇന്നലത്തെ എന്റെ അവസാന ഫ്രെയിം.</p>
+      <p>പിന്നെ ഞങ്ങൾ യാത്രയായി.</p>
+      <p>വീട്ടിലെത്തി.</p>
+      <p>നല്ല ഉറക്കം.</p>
+      <p>പക്ഷേ പിറ്റേന്ന് രാവിലെ ആ ഫ്രെയിം വീണ്ടും മനസ്സിൽ തെളിഞ്ഞു.</p>
+      <p>അതിന്റെ പിന്നാലെ മറ്റെല്ലാ ഫ്രെയിമുകളും ഒന്നിന് പിന്നാലെ ഒന്നായി വന്നു.</p>
+
+      <ul class="reel">
+        <li>സമ്മുവിന്റെയും ഇമ്മുവിന്റെയും സർപ്രൈസ്.</li>
+        <li>ഡയാന നേരത്തെ തന്നെ മനസ്സിലാക്കിയ ആ ചെറിയ രഹസ്യം.</li>
+        <li>പനിക്കുശേഷവും ക്ഷീണം മറന്ന് ഓടിനടന്ന സമ്മു.</li>
+        <li>റോയിയുടെ അതിശയം.</li>
+        <li>അതിഥികളുടെ വരവ്.</li>
+        <li>ഓരോരുത്തരോടും സന്തോഷം പങ്കുവച്ച റോയ്.</li>
+        <li>ജെസ്സി ചേച്ചി.</li>
+        <li>മെഴ്‌സി ചേച്ചി.</li>
+        <li>ബിജു.</li>
+        <li>പ്രിൻസ്.</li>
+        <li>ജാക്ക്സി.</li>
+        <li>നിഷ.</li>
+        <li>ജോബി.</li>
+        <li>ഹെയ്നസിന്റെ മൊബൈൽ ഗെയിം.</li>
+        <li>അടുത്ത യാത്രയെക്കുറിച്ചുള്ള ചേച്ചിയുടെ ചോദ്യം.</li>
+        <li>ടൈറ്റസിന്റെ വരവ്.</li>
+        <li>നന്ദികുർബാന.</li>
+        <li>ആഷ്ബിയുടെ ഉമ്മ.</li>
+        <li>ഷിനോജിന്റെ ഫോൺകോൾ.</li>
+        <li>ടൈറ്റസിന്റെ അറുപതാം പിറന്നാൾ തമാശ.</li>
+        <li>സ്റ്റീവിന്റെ വിശാല ദൃശ്യ ക്യാമറ.</li>
+        <li>Mansion Houseന്റെ ചെറിയെങ്കിലും ഓർമ്മിക്കാവുന്ന അധ്യായം.</li>
+        <li>ഡയാനയുടെ സമ്മാനങ്ങൾ.</li>
+        <li>സുപ്രിയയുടെ നിരീക്ഷണ ക്യാമറ പരിശോധന.</li>
+        <li>അവസാനം.</li>
+        <li>ആ അവസാന ഫ്രെയിം.</li>
+      </ul>
+
+      <p>ഞാൻ ആ ഓർമ്മകളെല്ലാം മനസ്സിൽ നിന്ന് ഒരു നൂൽ അഴിക്കുന്നതുപോലെ രംഗം രംഗമായി പതുക്കെ അഴിച്ചെടുത്തു.</p>
+      <p>അങ്ങനെ ഈ കഥ പിറന്നു.</p>
+    </section>
+
+    <section class="chapter" data-chapter data-title="ജീവിതം">
+      <p>വലിയ ആഘോഷങ്ങൾ അവസാനിക്കും.</p>
+      <p>അതിഥികൾ പിരിയും.</p>
+      <p>വീടുകൾ വീണ്ടും ശാന്തമാകും.</p>
+      <p>ഫോട്ടോകൾ ചുമരിൽ തന്നെ തുടരും.</p>
+      <p>പക്ഷേ ആ ഫോട്ടോകളുടെ പിന്നിൽ നമുക്ക് മാത്രം അറിയാവുന്ന നിമിഷങ്ങൾ ജീവിച്ചുകൊണ്ടിരിക്കും.</p>
+      <p>ചിലത് ക്യാമറയിൽ പതിയും.</p>
+      <p>ചിലത് ഓർമ്മയിൽ മാത്രം.</p>
+      <p>ചിലത് കഥയായി മാറും.</p>
+      <p>ഞാൻ ഈ കഥയുടെ അവസാന വരികൾ എഴുതിക്കൊണ്ടിരിക്കുമ്പോഴാണ്.</p>
+      <p>സുപ്രിയ എഴുന്നേറ്റ് വളരെ സാധാരണമായ ശബ്ദത്തിൽ പറഞ്ഞത്.</p>
+      <p class="say">കറി ഒന്നും ഇല്ല. പോയി വാങ്ങണം.</p>
+      <p>ഞാൻ ചിരിച്ചു.</p>
+      <p>ഒരു വശത്ത് അറുപതാം പിറന്നാളിന്റെ ആഘോഷവും ഓർമ്മകളും.</p>
+      <p>മറുവശത്ത് അടുത്ത ഭക്ഷണത്തിനുള്ള കറി വാങ്ങാനുള്ള സാധാരണ ജീവിതവും.</p>
+      <p>അവസാനം എല്ലാ ആഘോഷങ്ങളും നമ്മളെ തിരികെ കൊണ്ടുവരുന്നത് ഇതിലേക്കാണ്.</p>
+      <p>ജീവിതത്തിലേക്ക്.</p>
+    </section>
+  </div>
+
+  <section class="final">
+    <h2>ജീവിതം തുടരുന്നു.</h2>
+    <button class="again" id="again" type="button">വീണ്ടും കാണാം</button>
+  </section>
+</main>
+
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- bokeh party lights ---- */
+  var lights = document.getElementById('lights');
+  var palette = ['rgba(227,176,75,.34)', 'rgba(212,120,138,.26)', 'rgba(147,173,169,.24)', 'rgba(234,227,213,.18)'];
+  for (var i = 0; i < 16; i++) {
+    var b = document.createElement('div');
+    var s = 90 + Math.random() * 190;
+    b.className = 'bokeh';
+    b.style.width = b.style.height = s + 'px';
+    b.style.left = (Math.random() * 100) + '%';
+    b.style.top = (Math.random() * 100) + '%';
+    b.style.background = palette[i % palette.length];
+    b.style.setProperty('--d', (14 + Math.random() * 16) + 's');
+    b.style.setProperty('--x', (Math.random() * 90 - 45) + 'px');
+    b.style.setProperty('--y', (Math.random() * 90 - 45) + 'px');
+    lights.appendChild(b);
+  }
+
+  /* ---- reveal: lines pull into focus ---- */
+  var items = document.querySelectorAll('.story p, .story li, .story h2, .story h1');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---- the scene follows what the narrator is looking at ---- */
+  var scene = document.getElementById('scene');
+  var looks = document.querySelectorAll('[data-look]');
+  if ('IntersectionObserver' in window) {
+    var lo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) scene.setAttribute('data-look', e.target.getAttribute('data-look'));
+      });
+    }, { rootMargin: '-42% 0px -42% 0px' });
+    looks.forEach(function (el) { if (el !== scene) lo.observe(el); });
+  }
+
+  /* ---- rewind: tape counter runs backwards ---- */
+  var rewind = document.getElementById('rewind');
+  var tc = document.getElementById('tc');
+  var mode = document.getElementById('mode');
+  var played = false;
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function show(frames) {
+    var f = frames % 25, s = Math.floor(frames / 25) % 60, m = Math.floor(frames / 1500);
+    tc.textContent = pad(m) + ':' + pad(s) + ':' + pad(f);
+  }
+  function runRewind() {
+    if (played) return; played = true;
+    if (reduce) { show(0); mode.textContent = '▶'; return; }
+    var start = 5 * 1500 + 42 * 25 + 11, dur = 2600, t0 = null;
+    document.body.classList.add('rewinding');
+    function step(t) {
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      var eased = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      show(Math.round(start * (1 - eased)));
+      if (p < 1) requestAnimationFrame(step);
+      else { document.body.classList.remove('rewinding'); mode.textContent = '▶'; mode.style.color = 'var(--gold)'; }
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (e) { if (e.isIntersecting) { runRewind(); obs.disconnect(); } });
+    }, { threshold: 0.6 }).observe(rewind);
+  } else { runRewind(); }
+
+  /* ---- chapter strip + light dimming ---- */
+  var chapters = Array.prototype.slice.call(document.querySelectorAll('[data-chapter]'));
+  var strip = document.getElementById('strip');
+  var ticks = chapters.map(function (ch, i) {
+    if (!ch.id) ch.id = 'c' + i;
+    var a = document.createElement('a');
+    a.href = '#' + ch.id;
+    a.setAttribute('aria-label', ch.getAttribute('data-title'));
+    a.title = ch.getAttribute('data-title');
+    strip.appendChild(a);
+    return a;
+  });
+
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    var p = Math.min(1, Math.max(0, window.scrollY / max));
+    var d = Math.min(1, Math.max(0, (p - 0.55) / 0.4));
+    d = d * d * (3 - 2 * d);
+    document.documentElement.style.setProperty('--lights', (1 - d * 0.94).toFixed(3));
+
+    var cur = 0, line = window.innerHeight * 0.45;
+    chapters.forEach(function (ch, i) { if (ch.getBoundingClientRect().top < line) cur = i; });
+    ticks.forEach(function (t, i) { t.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+
+  document.getElementById('again').addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>
