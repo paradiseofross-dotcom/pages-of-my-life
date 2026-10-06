@@ -1,8 +1,881 @@
+<!DOCTYPE html>
+<html lang="ml">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>യാത്രകൾ | Paradise of Ross</title>
+
+
+<!-- =====================================================
+     FONTS
+===================================================== -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700;800;900&family=Noto+Serif+Malayalam:wght@400;500;600;700;900&display=swap"
+rel="stylesheet">
+
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+    --bg: #0b1817;
+
+    --bg2: #102522;
+
+    --card: #162a27;
+
+    --border: #29413d;
+
+    --cyan: #72d8df;
+
+    --pink: #d99caf;
+
+    --text: #d8e3df;
+
+    --muted: #9cafaa;
+
+    --white: #f3f4ef;
+
+    --max: 800px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(62, 132, 130, .12),
+            transparent 32rem
+        ),
+
+        radial-gradient(
+            circle at 90% 75%,
+            rgba(205, 140, 160, .08),
+            transparent 30rem
+        ),
+
+        var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size: 1.05rem;
+
+    line-height: 1.9;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+a {
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+
+    height: 74px;
+
+    border-bottom:
+        1px solid
+        rgba(180, 220, 215, .12);
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+        rgba(11, 24, 23, .88);
+
+    backdrop-filter:
+        blur(10px);
+
+    position: relative;
+
+    z-index: 20;
+}
+
+
+.topbar-inner {
+
+    width:
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+
+    color:
+        var(--white);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size:
+        18px;
+
+    font-weight:
+        600;
+
+    white-space:
+        nowrap;
+}
+
+
+.brand::before {
+
+    content:
+        "◈";
+
+    color:
+        var(--pink);
+
+    margin-right:
+        9px;
+
+    font-size:
+        13px;
+}
+
+
+/* =========================================================
+   HEADER CONTROLS
+========================================================= */
+
+.header-controls {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+}
+
+
+/* =========================================================
+   PLAY MUSIC BUTTON
+========================================================= */
+
+.music {
+
+    display:
+        inline-block;
+
+    padding:
+        6px 15px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        999px;
+
+    color:
+        var(--muted);
+
+    background:
+        transparent;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        13px;
+
+    cursor:
+        pointer;
+
+    white-space:
+        nowrap;
+
+    transition:
+        border-color .25s ease,
+        color .25s ease,
+        background .25s ease;
+}
+
+
+.music:hover {
+
+    border-color:
+        var(--cyan);
+
+    color:
+        var(--cyan);
+
+    background:
+        rgba(114,216,223,.04);
+}
+
+
+.music[aria-pressed="true"] {
+
+    border-color:
+        var(--cyan);
+
+    color:
+        var(--cyan);
+
+    background:
+        rgba(114,216,223,.04);
+}
+
+
+.music:focus-visible {
+
+    outline:
+        2px solid
+        var(--cyan);
+
+    outline-offset:
+        3px;
+}
+
+
+/* =========================================================
+   MUKHYAPAGE BUTTON
+========================================================= */
+
+.home {
+
+    display:
+        inline-block;
+
+    padding:
+        6px 15px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        999px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        13px;
+
+    white-space:
+        nowrap;
+
+    transition:
+        border-color .25s ease,
+        color .25s ease,
+        background .25s ease;
+}
+
+
+.home:hover {
+
+    border-color:
+        var(--cyan);
+
+    color:
+        var(--cyan);
+
+    background:
+        rgba(114,216,223,.04);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+
+    width:
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
+
+    margin:
+        auto;
+
+    padding:
+        90px 0
+        120px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.eyebrow {
+
+    color:
+        var(--cyan);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .12em;
+
+    margin-bottom:
+        18px;
+}
+
+
+h1 {
+
+    margin:
+        0;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        clamp(
+            3rem,
+            8vw,
+            5.5rem
+        );
+
+    line-height:
+        1.08;
+
+    font-weight:
+        700;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            #d5d6d2,
+            var(--pink)
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+
+.intro {
+
+    max-width:
+        680px;
+
+    margin:
+        30px 0 65px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.95;
+}
+
+
+/* =========================================================
+   TRAVEL CARDS
+========================================================= */
+
+.story-card {
+
+    position:
+        relative;
+
+    display:
+        block;
+
+    padding:
+        34px 38px
+        32px;
+
+    margin-bottom:
+        24px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.025),
+            rgba(255,255,255,.005)
+        ),
+
+        var(--card);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-left:
+        3px solid
+        var(--cyan);
+
+    border-radius:
+        12px;
+
+    text-decoration:
+        none;
+
+    color:
+        inherit;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.story-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(114,216,223,.65);
+
+    box-shadow:
+
+        0 20px 60px
+        rgba(0,0,0,.28),
+
+        0 0 35px
+        rgba(114,216,223,.05);
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.number {
+
+    color:
+        var(--pink);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1;
+
+    margin-bottom:
+        12px;
+}
+
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.story-card h2 {
+
+    margin:
+        0 0 14px;
+
+    color:
+        var(--white);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        clamp(
+            1.9rem,
+            4vw,
+            2.35rem
+        );
+
+    line-height:
+        1.35;
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
+
+.story-card p {
+
+    margin:
+        0 0 22px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.85;
+}
+
+
+/* =========================================================
+   READ MORE
+========================================================= */
+
+.read-more {
+
+    display:
+        inline-block;
+
+    color:
+        var(--cyan);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        16px;
+
+    font-weight:
+        600;
+
+    transition:
+        transform .3s ease;
+}
+
+
+.story-card:hover .read-more {
+
+    transform:
+        translateX(6px);
+}
+
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.note {
+
+    margin-top:
+        46px;
+
+    padding:
+        20px 24px;
+
+    border-left:
+        1px solid
+        rgba(217,156,175,.5);
+
+    color:
+        #849994;
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size:
+        14px;
+
+    line-height:
+        1.9;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    width:
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
+
+    margin:
+        auto;
+
+    padding:
+        30px 0
+        50px;
+
+    border-top:
+        1px solid
+        rgba(180,220,215,.08);
+
+    color:
+        #657873;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        13px;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .topbar {
+
+        height:
+            64px;
+    }
+
+
+    .topbar-inner {
+
+        width:
+            calc(100% - 28px);
+
+        gap:
+            8px;
+    }
+
+
+    .brand {
+
+        font-size:
+            16px;
+    }
+
+
+    .header-controls {
+
+        gap:
+            6px;
+    }
+
+
+    .music,
+    .home {
+
+        padding:
+            6px 10px;
+
+        font-size:
+            11px;
+    }
+
+
+    main {
+
+        width:
+            calc(100% - 28px);
+
+        padding:
+            65px 0
+            90px;
+    }
+
+
+    h1 {
+
+        font-size:
+            3.2rem;
+    }
+
+
+    .intro {
+
+        font-size:
+            16px;
+
+        line-height:
+            1.85;
+
+        margin-bottom:
+            48px;
+    }
+
+
+    .story-card {
+
+        padding:
+            28px 26px
+            30px;
+
+        margin-bottom:
+            20px;
+    }
+
+
+    .story-card h2 {
+
+        font-size:
+            1.8rem;
+
+        line-height:
+            1.4;
+    }
+
+
+    .story-card p {
+
+        font-size:
+            16px;
+
+        line-height:
+            1.8;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior:
+            auto;
+    }
+
+
+    .story-card,
+    .read-more,
+    .music,
+    .home {
+
+        transition:
+            none;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
 <header class="topbar">
 
     <div class="topbar-inner">
 
+
         <!-- BRAND -->
+
         <a
             href="../index.html"
             class="brand"
@@ -11,10 +884,13 @@
         </a>
 
 
-        <!-- HEADER CONTROLS -->
+        <!-- CONTROLS -->
+
         <div class="header-controls">
 
-            <!-- MUSIC BUTTON -->
+
+            <!-- PLAY MUSIC -->
+
             <button
                 class="music"
                 id="music"
@@ -25,7 +901,8 @@
             </button>
 
 
-            <!-- MUKHYAPAGE BUTTON -->
+            <!-- MUKHYAPAGE -->
+
             <a
                 href="../index.html"
                 class="home"
@@ -38,3 +915,733 @@
     </div>
 
 </header>
+
+
+
+<!-- =======================================================
+     MAIN CONTENT
+======================================================= -->
+
+<main>
+
+
+    <!-- ===================================================
+         HERO
+    =================================================== -->
+
+    <section>
+
+        <div class="eyebrow">
+            വഴികളിലൂടെ, ഓർമ്മകളിലേക്ക്
+        </div>
+
+
+        <h1>
+            യാത്രകൾ
+        </h1>
+
+
+        <p class="intro">
+
+            യാത്രകൾ എന്നത് സ്ഥലങ്ങൾ കാണുന്നതു മാത്രമല്ല —
+            വഴിയിൽ കണ്ടുമുട്ടിയ മനുഷ്യരും, അപ്രതീക്ഷിതമായി
+            സംഭവിച്ച നിമിഷങ്ങളും, പിന്നെ മനസ്സിൽ ഏറെക്കാലം
+            ബാക്കിനിൽക്കുന്ന ചെറിയ കഥകളുമാണ്.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         TRAVEL STORIES
+    =================================================== -->
+
+
+    <!-- STORY 01 -->
+
+    <a
+        class="story-card"
+        href="rajakkad_yathra.html"
+    >
+
+        <div class="number">
+            01
+        </div>
+
+
+        <h2>
+            രാജാക്കാട് യാത്ര
+        </h2>
+
+
+        <p>
+
+            ഒരു യാത്രയുടെ വഴികളിലൂടെ കണ്ടുമുട്ടിയ
+            മനുഷ്യരും, മലനാടിന്റെ കാഴ്ചകളും,
+            മനസ്സിൽ പതിഞ്ഞ ചില നിമിഷങ്ങളും.
+
+        </p>
+
+
+        <span class="read-more">
+            യാത്രയിലേക്ക് →
+        </span>
+
+    </a>
+
+
+
+    <!-- STORY 02 -->
+
+    <a
+        class="story-card"
+        href="#"
+    >
+
+        <div class="number">
+            02
+        </div>
+
+
+        <h2>
+            ഒരു യാത്രയുടെ ഓർമ്മ
+        </h2>
+
+
+        <p>
+
+            വഴിയിൽ സംഭവിച്ച ചെറിയ കാര്യങ്ങൾ പോലും
+            വർഷങ്ങൾക്കിപ്പുറം മനസ്സിൽ വീണ്ടും തെളിയുന്ന
+            ഒരു യാത്ര.
+
+        </p>
+
+
+        <span class="read-more">
+            യാത്രയിലേക്ക് →
+        </span>
+
+    </a>
+
+
+
+    <!-- STORY 03 -->
+
+    <a
+        class="story-card"
+        href="#"
+    >
+
+        <div class="number">
+            03
+        </div>
+
+
+        <h2>
+            വഴിയിലൊരു കഥ
+        </h2>
+
+
+        <p>
+
+            ലക്ഷ്യസ്ഥാനത്തേക്കാൾ മനസ്സിൽ തങ്ങിനിൽക്കുന്നത്
+            പലപ്പോഴും വഴിയിൽ കണ്ടുമുട്ടിയ മനുഷ്യരും
+            നിമിഷങ്ങളുമാണ്.
+
+        </p>
+
+
+        <span class="read-more">
+            യാത്രയിലേക്ക് →
+        </span>
+
+    </a>
+
+
+
+    <!-- ===================================================
+         NOTE
+    =================================================== -->
+
+    <div class="note">
+
+        ഓരോ യാത്രയും ഒരു സ്ഥലത്തേക്കുള്ള യാത്ര മാത്രമല്ല.
+        ചിലപ്പോൾ അത് നമ്മളിലേക്കുള്ള ഒരു തിരിച്ചുവരവുമാണ്.
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+    © Paradise of Ross
+
+</footer>
+
+
+
+<!-- =======================================================
+     PIANO MUSIC
+======================================================= -->
+
+<script>
+
+(function () {
+
+    const btn =
+        document.getElementById("music");
+
+
+    let ctx = null;
+
+    let master = null;
+
+    let timer = null;
+
+    let step = 0;
+
+    let next = 0;
+
+    let playing = false;
+
+
+    /* =====================================================
+       CHORD PROGRESSION
+    ===================================================== */
+
+    const chords = [
+
+        [48, 55, 60, 64, 67],
+
+        [45, 52, 57, 60, 64],
+
+        [41, 48, 57, 60, 65],
+
+        [43, 50, 59, 62, 67]
+
+    ];
+
+
+    /* =====================================================
+       ARPEGGIO
+    ===================================================== */
+
+    const arp = [
+        0, 2, 3, 2,
+        4, 3, 2, 1
+    ];
+
+
+    /* =====================================================
+       MELODY
+    ===================================================== */
+
+    const melody = [
+        72, 74, 76, 79,
+        81, 79, 76, 74
+    ];
+
+
+    const STEP = 0.75;
+
+
+    /* =====================================================
+       AUDIO SETUP
+    ===================================================== */
+
+    function setupAudio() {
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+
+        if (!AudioContext) {
+
+            alert(
+                "Your browser does not support Web Audio."
+            );
+
+            return false;
+        }
+
+
+        ctx =
+            new AudioContext();
+
+
+        master =
+            ctx.createGain();
+
+
+        master.gain.value =
+            0;
+
+
+        /* =================================================
+           REVERB
+        ================================================= */
+
+        const convolver =
+            ctx.createConvolver();
+
+
+        const length =
+            ctx.sampleRate * 3;
+
+
+        const impulse =
+            ctx.createBuffer(
+                2,
+                length,
+                ctx.sampleRate
+            );
+
+
+        for (
+            let channel = 0;
+            channel < 2;
+            channel++
+        ) {
+
+            const data =
+                impulse.getChannelData(
+                    channel
+                );
+
+
+            for (
+                let i = 0;
+                i < length;
+                i++
+            ) {
+
+                data[i] =
+                    (Math.random() * 2 - 1)
+                    *
+                    Math.pow(
+                        1 - i / length,
+                        2.5
+                    );
+
+            }
+
+        }
+
+
+        convolver.buffer =
+            impulse;
+
+
+        const wet =
+            ctx.createGain();
+
+
+        const dry =
+            ctx.createGain();
+
+
+        wet.gain.value =
+            0.5;
+
+
+        dry.gain.value =
+            0.7;
+
+
+        master.connect(
+            dry
+        );
+
+
+        dry.connect(
+            ctx.destination
+        );
+
+
+        master.connect(
+            convolver
+        );
+
+
+        convolver.connect(
+            wet
+        );
+
+
+        wet.connect(
+            ctx.destination
+        );
+
+
+        return true;
+
+    }
+
+
+
+    /* =====================================================
+       PIANO NOTE
+    ===================================================== */
+
+    function playNote(
+        midi,
+        time,
+        volume
+    ) {
+
+        const frequency =
+            440 *
+            Math.pow(
+                2,
+                (midi - 69) / 12
+            );
+
+
+        const filter =
+            ctx.createBiquadFilter();
+
+
+        filter.type =
+            "lowpass";
+
+
+        filter.frequency.value =
+            2200;
+
+
+        filter.connect(
+            master
+        );
+
+
+        const harmonics = [
+
+            [1, 1],
+
+            [2, .35],
+
+            [3, .1]
+
+        ];
+
+
+        harmonics.forEach(
+            function (part, index) {
+
+                const oscillator =
+                    ctx.createOscillator();
+
+
+                const gain =
+                    ctx.createGain();
+
+
+                const duration =
+                    3.8 /
+                    (1 + index * .7);
+
+
+                oscillator.type =
+                    "sine";
+
+
+                oscillator.frequency.value =
+                    frequency *
+                    part[0];
+
+
+                gain.gain.setValueAtTime(
+                    0,
+                    time
+                );
+
+
+                gain.gain.linearRampToValueAtTime(
+                    volume *
+                    part[1],
+                    time + .04
+                );
+
+
+                gain.gain.exponentialRampToValueAtTime(
+                    .0005,
+                    time + duration
+                );
+
+
+                oscillator.connect(
+                    gain
+                );
+
+
+                gain.connect(
+                    filter
+                );
+
+
+                oscillator.start(
+                    time
+                );
+
+
+                oscillator.stop(
+                    time +
+                    duration +
+                    .1
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SCHEDULE MUSIC
+    ===================================================== */
+
+    function schedule() {
+
+        while (
+            next <
+            ctx.currentTime + 1.5
+        ) {
+
+            const bar =
+                Math.floor(
+                    step / 8
+                ) % 4;
+
+
+            const position =
+                step % 8;
+
+
+            const chord =
+                chords[bar];
+
+
+            /* ARPEGGIO */
+
+            playNote(
+
+                chord[
+                    arp[position]
+                ],
+
+                next,
+
+                .16
+
+            );
+
+
+            /* BASS */
+
+            if (
+                position === 0
+            ) {
+
+                playNote(
+
+                    chord[0] - 12,
+
+                    next,
+
+                    .20
+
+                );
+
+            }
+
+
+            /* MELODY */
+
+            if (
+                position % 4 === 0 &&
+                Math.random() < .7
+            ) {
+
+                const note =
+                    melody[
+                        Math.floor(
+                            Math.random() *
+                            melody.length
+                        )
+                    ];
+
+
+                playNote(
+
+                    note,
+
+                    next +
+                    STEP * .5,
+
+                    .08
+
+                );
+
+            }
+
+
+            next +=
+                STEP;
+
+
+            step++;
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       START MUSIC
+    ===================================================== */
+
+    async function startMusic() {
+
+        if (!ctx) {
+
+            if (!setupAudio()) {
+                return;
+            }
+
+        }
+
+
+        await ctx.resume();
+
+
+        playing =
+            true;
+
+
+        master.gain
+            .cancelScheduledValues(
+                ctx.currentTime
+            );
+
+
+        master.gain
+            .linearRampToValueAtTime(
+                .9,
+                ctx.currentTime + 2.5
+            );
+
+
+        next =
+            ctx.currentTime + .1;
+
+
+        schedule();
+
+
+        timer =
+            setInterval(
+                schedule,
+                250
+            );
+
+
+        btn.textContent =
+            "Pause music";
+
+
+        btn.setAttribute(
+            "aria-pressed",
+            "true"
+        );
+
+    }
+
+
+
+    /* =====================================================
+       STOP MUSIC
+    ===================================================== */
+
+    function stopMusic() {
+
+        if (!ctx) {
+            return;
+        }
+
+
+        playing =
+            false;
+
+
+        clearInterval(
+            timer
+        );
+
+
+        master.gain
+            .cancelScheduledValues(
+                ctx.currentTime
+            );
+
+
+        master.gain
+            .linearRampToValueAtTime(
+                0,
+                ctx.currentTime + 1
+            );
+
+
+        btn.textContent =
+            "Play music";
+
+
+        btn.setAttribute(
+            "aria-pressed",
+            "false"
+        );
+
+    }
+
+
+
+    /* =====================================================
+       BUTTON
+    ===================================================== */
+
+    btn.addEventListener(
+        "click",
+        function () {
+
+            if (playing) {
+
+                stopMusic();
+
+            } else {
+
+                startMusic();
+
+            }
+
+        }
+    );
+
+})();
+
+</script>
+
+
+</body>
+
+</html>
