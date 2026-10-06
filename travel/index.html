@@ -1,5 +1,604 @@
-<a class="story" href="rajakkad_yathra.html">
-    <h2>രാജാക്കാട് യാത്ര</h2>
-    <p>ഒരു യാത്രയുടെ ഓർമ്മകളും വഴിയിൽ കണ്ട മനുഷ്യരും കാഴ്ചകളും.</p>
-    <span>വായിക്കാം →</span>
-</a>
+<!DOCTYPE html>
+<html lang="ml">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>യാത്രകൾ | Paradise of Ross</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700;800;900&family=Noto+Serif+Malayalam:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#0b1715;
+    --bg2:#101f1c;
+    --ink:#edf3f0;
+    --soft:#a9bbb5;
+    --cyan:#67d8e4;
+    --pink:#e9a6bb;
+    --card:#142522;
+    --border:#31534d;
+    --max:780px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(103,216,228,.07),
+            transparent 28rem
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(233,166,187,.06),
+            transparent 30rem
+        ),
+        var(--bg);
+
+    color:var(--ink);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    line-height:1.9;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    height:72px;
+
+    display:flex;
+    align-items:center;
+
+    border-bottom:
+        1px solid rgba(103,216,228,.15);
+
+    background:
+        rgba(11,23,21,.88);
+
+    backdrop-filter:blur(10px);
+}
+
+.brand{
+    width:min(
+        var(--max),
+        calc(100% - 40px)
+    );
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-weight:700;
+
+    font-size:1.05rem;
+}
+
+.brand-name{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.brand-name::before{
+    content:"";
+
+    width:9px;
+    height:17px;
+
+    display:inline-block;
+
+    background:var(--pink);
+
+    border-radius:
+        100% 0 100% 0;
+
+    transform:rotate(25deg);
+}
+
+.music{
+    border:
+        1px solid var(--border);
+
+    border-radius:999px;
+
+    padding:
+        5px 14px;
+
+    color:var(--soft);
+
+    font-family:
+        "Noto Sans Malayalam",
+        sans-serif;
+
+    font-size:.8rem;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    width:min(
+        var(--max),
+        calc(100% - 40px)
+    );
+
+    margin:auto;
+
+    padding:
+        58px 0 80px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    margin-bottom:45px;
+}
+
+.eyebrow{
+    color:var(--pink);
+
+    font-family:
+        "Noto Sans Malayalam",
+        sans-serif;
+
+    font-size:.9rem;
+
+    letter-spacing:.08em;
+
+    margin-bottom:5px;
+}
+
+h1{
+    margin:
+        0 0 18px;
+
+    font-size:
+        clamp(2.8rem,7vw,4.8rem);
+
+    line-height:1.15;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--pink)
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+}
+
+.intro{
+    margin:0;
+
+    max-width:700px;
+
+    color:var(--soft);
+
+    font-size:1.05rem;
+}
+
+
+/* =========================
+   TRAVEL CARDS
+========================= */
+
+.grid{
+    display:grid;
+
+    gap:18px;
+}
+
+.card{
+    display:block;
+
+    position:relative;
+
+    padding:
+        25px 27px 27px;
+
+    background:
+        rgba(20,37,34,.92);
+
+    border:
+        1px solid var(--border);
+
+    border-left:
+        3px solid var(--cyan);
+
+    border-radius:
+        0 13px 13px 0;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+}
+
+.card:hover{
+    transform:
+        translateY(-3px);
+
+    background:
+        #172b27;
+
+    border-color:
+        var(--cyan);
+}
+
+.num{
+    color:var(--pink);
+
+    font-family:
+        "Noto Sans Malayalam",
+        sans-serif;
+
+    font-weight:700;
+
+    font-size:1.05rem;
+
+    margin-bottom:2px;
+}
+
+h2{
+    margin:
+        0 0 8px;
+
+    font-size:1.5rem;
+
+    line-height:1.4;
+
+    font-weight:800;
+}
+
+.card p{
+    margin:
+        0 0 11px;
+
+    color:var(--soft);
+
+    font-size:.98rem;
+}
+
+.read-more{
+    display:inline-block;
+
+    color:var(--cyan);
+
+    font-weight:700;
+}
+
+
+/* =========================
+   BACK LINK
+========================= */
+
+.back{
+    display:inline-block;
+
+    margin-top:43px;
+
+    color:var(--cyan);
+
+    font-weight:700;
+}
+
+.back:hover{
+    color:var(--pink);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    width:min(
+        var(--max),
+        calc(100% - 40px)
+    );
+
+    margin:auto;
+
+    padding:
+        28px 0 45px;
+
+    border-top:
+        1px solid rgba(103,216,228,.15);
+
+    text-align:center;
+
+    color:#879b95;
+
+    font-size:.9rem;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    header{
+        height:62px;
+    }
+
+    .brand{
+        width:
+            calc(100% - 28px);
+    }
+
+    .music{
+        display:none;
+    }
+
+    main{
+        width:
+            calc(100% - 28px);
+
+        padding-top:40px;
+    }
+
+    h1{
+        font-size:2.8rem;
+    }
+
+    .intro{
+        font-size:.98rem;
+    }
+
+    .card{
+        padding:
+            21px 20px 23px;
+    }
+
+    h2{
+        font-size:1.3rem;
+    }
+
+    footer{
+        width:
+            calc(100% - 28px);
+    }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    .card{
+        transition:none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="brand">
+
+        <div class="brand-name">
+            Paradise of Ross
+        </div>
+
+        <div class="music">
+            •• &nbsp;Play music
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="eyebrow">
+            വഴികളിലൂടെ, ഓർമ്മകളിലേക്ക്
+        </div>
+
+        <h1>
+            യാത്രകൾ
+        </h1>
+
+        <p class="intro">
+            യാത്രകൾ എന്നത് സ്ഥലങ്ങൾ കാണുന്നതു മാത്രമല്ല —
+            വഴിയിൽ കണ്ടുമുട്ടിയ മനുഷ്യരും, അപ്രതീക്ഷിതമായി
+            സംഭവിച്ച നിമിഷങ്ങളും, പിന്നെ മനസ്സിൽ ഏറെക്കാലം
+            ബാക്കിനിൽക്കുന്ന ചെറിയ കഥകളുമാണ്.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         TRAVEL STORIES
+    ========================= -->
+
+    <section class="grid">
+
+
+        <!-- STORY 01 -->
+
+        <a
+            class="card"
+            href="rajakkad_yathra.html"
+        >
+
+            <div class="num">
+                01
+            </div>
+
+            <h2>
+                രാജാക്കാട് യാത്ര
+            </h2>
+
+            <p>
+                ഒരു യാത്രയുടെ വഴികളിലൂടെ കണ്ടുമുട്ടിയ
+                മനുഷ്യരും, മലനാടിന്റെ കാഴ്ചകളും,
+                മനസ്സിൽ പതിഞ്ഞ ചില നിമിഷങ്ങളും.
+            </p>
+
+            <span class="read-more">
+                യാത്രയിലേക്ക് →
+            </span>
+
+        </a>
+
+
+
+        <!-- STORY 02 -->
+
+        <a
+            class="card"
+            href="#"
+        >
+
+            <div class="num">
+                02
+            </div>
+
+            <h2>
+                ഒരു യാത്രയുടെ ഓർമ്മ
+            </h2>
+
+            <p>
+                വഴിയിൽ സംഭവിച്ച ചെറിയ കാര്യങ്ങൾ പോലും
+                വർഷങ്ങൾക്കിപ്പുറം മനസ്സിൽ വീണ്ടും തെളിയുന്ന
+                ഒരു യാത്ര.
+            </p>
+
+            <span class="read-more">
+                യാത്രയിലേക്ക് →
+            </span>
+
+        </a>
+
+
+
+        <!-- STORY 03 -->
+
+        <a
+            class="card"
+            href="#"
+        >
+
+            <div class="num">
+                03
+            </div>
+
+            <h2>
+                വഴിയിലൊരു കഥ
+            </h2>
+
+            <p>
+                ലക്ഷ്യസ്ഥാനത്തേക്കാൾ മനസ്സിൽ തങ്ങിനിൽക്കുന്നത്
+                പലപ്പോഴും വഴിയിൽ കണ്ടുമുട്ടിയ മനുഷ്യരും
+                നിമിഷങ്ങളുമാണ്.
+            </p>
+
+            <span class="read-more">
+                യാത്രയിലേക്ക് →
+            </span>
+
+        </a>
+
+
+    </section>
+
+
+
+    <!-- BACK TO MAIN SITE -->
+
+    <a
+        class="back"
+        href="../index.html"
+    >
+        ← Paradise of Ross-ലേക്ക് മടങ്ങുക
+    </a>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    സ്നേഹത്തോടെ,
+    <strong>Abraham Clancy Ross</strong>
+
+</footer>
+
+
+</body>
+</html>
