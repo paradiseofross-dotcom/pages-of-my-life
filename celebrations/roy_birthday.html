@@ -240,6 +240,59 @@
   .again:hover { background: var(--gold); color: var(--night); }
   .again:focus-visible, .strip a:focus-visible { outline: 2px solid var(--linen); outline-offset: 4px; }
 
+  /* ---------- top bar: home button + sound toggle ---------- */
+  .topbar {
+    position: fixed;
+    top: calc(.9rem + env(safe-area-inset-top, 0px));
+    right: 1rem;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .home-btn {
+    font-family: var(--display);
+    font-size: .82rem;
+    color: var(--linen);
+    background: rgba(20, 42, 48, .82);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(234, 227, 213, .28);
+    border-radius: 999px;
+    padding: .55rem 1.25rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+    transition: background .25s, border-color .25s, transform .18s, box-shadow .25s;
+  }
+  .home-btn:hover { border-color: var(--gold); background: rgba(27, 52, 59, .95); transform: translateY(-1px); }
+  .home-btn:active { transform: translateY(0) scale(.96); }
+  .mute-btn {
+    display: flex; align-items: center; gap: .45rem; flex: none;
+    font-family: var(--display);
+    font-size: .82rem; line-height: 1;
+    white-space: nowrap;
+    color: var(--linen);
+    background: rgba(20, 42, 48, .82);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(234, 227, 213, .28);
+    border-radius: 999px;
+    padding: .55rem 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+    transition: background .25s, border-color .25s, transform .18s;
+  }
+  .mute-btn .icon { font-size: 1rem; line-height: 1; }
+  .mute-btn:hover { border-color: var(--gold); background: rgba(27, 52, 59, .95); transform: translateY(-1px); }
+  .mute-btn:active { transform: translateY(0) scale(.96); }
+  .home-btn:focus-visible, .mute-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  @media (max-width: 860px) {
+    .topbar { top: calc(.7rem + env(safe-area-inset-top, 0px)); right: .7rem; }
+    .home-btn { font-size: .74rem; padding: .48rem 1rem; }
+    .mute-btn { font-size: .72rem; padding: .48rem .9rem; }
+    .mute-btn .icon { font-size: .9rem; }
+  }
+
   /* ---------- chapter strip ---------- */
   .strip {
     position: fixed; right: 1.1rem; top: 50%; transform: translateY(-50%);
@@ -279,6 +332,15 @@
 </head>
 <body>
 <div id="lights" aria-hidden="true"></div>
+
+<div class="topbar">
+  <button class="mute-btn" id="muteBtn" type="button" aria-pressed="false">
+    <span class="icon" id="muteIcon" aria-hidden="true">🔈</span>
+    <span id="muteLabel">ശബ്ദം ഓൺ ചെയ്യൂ</span>
+  </button>
+  <button class="home-btn" id="homeBtn" type="button">മുഖ്യപേജ്</button>
+</div>
+
 <nav class="strip" id="strip" aria-label="അധ്യായങ്ങൾ"></nav>
 
 <main class="story">
@@ -385,12 +447,12 @@
     <section class="chapter" data-chapter data-title="ഒരു സർപ്രൈസിന്റെ തുടക്കം">
       <h2>ഒരു സർപ്രൈസിന്റെ തുടക്കം</h2>
       <p>റോയിയുടെ അറുപതാം പിറന്നാളും പ്രിയപ്പെട്ട ഭാര്യ ഡയാനയുടെ പിറന്നാളും ഒരേ ദിവസമായിരുന്നു.</p>
-      <p>ആഘോഷത്തിന് പിന്നിൽ ഒരു രഹസ്യപദ്ധതിയുണ്ടായിരുന്നു. അവരുടെ മക്കളായ സമ്മുവും ഇമ്മുവും ചേർന്ന് Pappaയ്ക്കും Ammichിക്കും വേണ്ടി ഒരു സർപ്രൈസ് ആഘോഷം ഒരുക്കുകയായിരുന്നു.</p>
+      <p>ആഘോഷത്തിന് പിന്നിൽ ഒരു രഹസ്യപദ്ധതിയുണ്ടായിരുന്നു. അവരുടെ മക്കളായ സമ്മുവും ഇമ്മുവും ചേർന്ന് Pappaയ്ക്കും Ammichikkum വേണ്ടി ഒരു സർപ്രൈസ് ആഘോഷം ഒരുക്കുകയായിരുന്നു.</p>
       <p>പക്ഷേ കുടുംബത്തിൽ രഹസ്യങ്ങൾ എത്രകാലം രഹസ്യമായി തുടരും.</p>
       <p>ആഘോഷത്തിന് ഏതാനും ദിവസങ്ങൾക്ക് മുമ്പേ ഡയാനയ്ക്ക് സമ്മുവിന്റെയും ഇമ്മുവിന്റെയും സർപ്രൈസിന്റെ രഹസ്യം ഏതാണ്ട് മനസ്സിലായിരുന്നു.</p>
       <p>എങ്കിലും മുഴുവൻ പരിപാടി എന്താണെന്ന് അറിയാത്തതിനാൽ ആ ചെറിയ ആവേശം അവിടെ തന്നെ ബാക്കിയുണ്ടായിരുന്നു.</p>
       <p>പാർട്ടി ദിവസം സമ്മുവിനെ നോക്കിയപ്പോൾ അവൻ കുറച്ച് ക്ഷീണിതനായി തോന്നി. അടുത്തിടെ പനി ഉണ്ടായിരുന്നതിന്റെയും അതിന്റെ ക്ഷീണം പൂർണ്ണമായി മാറാത്തതിന്റെയും അടയാളം മുഖത്ത് കാണാമായിരുന്നു.</p>
-      <p>എങ്കിലും Pappaയുടെയും Ammichിയുടെയും ഈ പ്രത്യേക ദിവസം മനോഹരമാക്കണമെന്ന ആഗ്രഹം അവന്റെ ക്ഷീണത്തെക്കാൾ വലുതായിരുന്നു.</p>
+      <p>എങ്കിലും Pappaയുടെയും Ammichiyudeyum ഈ പ്രത്യേക ദിവസം മനോഹരമാക്കണമെന്ന ആഗ്രഹം അവന്റെ ക്ഷീണത്തെക്കാൾ വലുതായിരുന്നു.</p>
       <p>അവൻ ഓടിനടന്നു.</p>
       <p>ഒരുക്കങ്ങൾ നോക്കി.</p>
       <p>അതിഥികളെ സ്വീകരിച്ചു.</p>
@@ -636,6 +698,94 @@
   document.documentElement.classList.add('js');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ================= sound engine (synthesized, no audio files) ================= */
+  var soundOn = false;
+  var audioCtx = null;
+  function ensureAudio() {
+    if (!audioCtx) {
+      try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+      catch (e) { audioCtx = null; }
+    }
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
+  function unlockAudio() { ensureAudio(); }
+  ['pointerdown', 'touchstart', 'keydown', 'wheel'].forEach(function (ev) {
+    window.addEventListener(ev, unlockAudio, { once: true, passive: true });
+  });
+
+  function tone(freq, start, dur, type, vol) {
+    if (!soundOn) return;
+    var ctx = ensureAudio(); if (!ctx) return;
+    var t0 = ctx.currentTime + (start || 0);
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.type = type || 'sine';
+    osc.frequency.setValueAtTime(freq, t0);
+    gain.gain.setValueAtTime(0, t0);
+    gain.gain.linearRampToValueAtTime(vol || 0.07, t0 + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(t0); osc.stop(t0 + dur + 0.05);
+  }
+
+  function chime(kind) {
+    if (kind === 'chapter') {
+      tone(659.25, 0, .35, 'sine', .045);
+      tone(880, .07, .42, 'sine', .035);
+    } else if (kind === 'click') {
+      tone(523.25, 0, .09, 'triangle', .06);
+    } else if (kind === 'shutter') {
+      tone(1046.5, 0, .05, 'square', .025);
+      tone(392, .04, .07, 'sine', .035);
+    } else if (kind === 'end') {
+      tone(392.0, 0, 1.2, 'sine', .05);
+      tone(587.33, .14, 1.4, 'sine', .045);
+      tone(783.99, .28, 1.7, 'sine', .04);
+    }
+  }
+
+  function rewindWhoosh(duration) {
+    if (!soundOn) return;
+    var ctx = ensureAudio(); if (!ctx) return;
+    var len = Math.max(1, Math.floor(ctx.sampleRate * duration));
+    var buffer = ctx.createBuffer(1, len, ctx.sampleRate);
+    var data = buffer.getChannelData(0);
+    for (var i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+    var noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+    var band = ctx.createBiquadFilter();
+    band.type = 'bandpass';
+    band.Q.value = 7;
+    var t0 = ctx.currentTime;
+    band.frequency.setValueAtTime(200, t0);
+    band.frequency.linearRampToValueAtTime(1500, t0 + duration * 0.92);
+    var gain = ctx.createGain();
+    gain.gain.setValueAtTime(0, t0);
+    gain.gain.linearRampToValueAtTime(.045, t0 + .18);
+    gain.gain.setValueAtTime(.045, t0 + Math.max(.18, duration - .25));
+    gain.gain.linearRampToValueAtTime(0, t0 + duration);
+    noise.connect(band).connect(gain).connect(ctx.destination);
+    noise.start(t0); noise.stop(t0 + duration + .05);
+  }
+
+  var muteBtn = document.getElementById('muteBtn');
+  var muteIcon = document.getElementById('muteIcon');
+  var muteLabel = document.getElementById('muteLabel');
+  muteBtn.addEventListener('click', function () {
+    soundOn = !soundOn;
+    muteIcon.textContent = soundOn ? '🔊' : '🔈';
+    muteLabel.textContent = soundOn ? 'ശബ്ദം ഓഫ് ചെയ്യൂ' : 'ശബ്ദം ഓൺ ചെയ്യൂ';
+    muteBtn.setAttribute('aria-pressed', String(soundOn));
+    if (soundOn) { ensureAudio(); chime('click'); }
+  });
+
+  var homeBtn = document.getElementById('homeBtn');
+  homeBtn.addEventListener('click', function () {
+    chime('click');
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+
   /* ---- bokeh party lights ---- */
   var lights = document.getElementById('lights');
   var palette = ['rgba(227,176,75,.34)', 'rgba(212,120,138,.26)', 'rgba(147,173,169,.24)', 'rgba(234,227,213,.18)'];
@@ -678,6 +828,26 @@
     looks.forEach(function (el) { if (el !== scene) lo.observe(el); });
   }
 
+  /* ---- camera shutter sound when the viewfinder chapter appears ---- */
+  var viewfinder = document.querySelector('.viewfinder');
+  if (viewfinder && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { chime('shutter'); obs.disconnect(); }
+      });
+    }, { threshold: 0.5 }).observe(viewfinder);
+  }
+
+  /* ---- gentle closing chime when the final frame arrives ---- */
+  var finalSection = document.querySelector('.final');
+  if (finalSection && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { chime('end'); obs.disconnect(); }
+      });
+    }, { threshold: 0.6 }).observe(finalSection);
+  }
+
   /* ---- rewind: tape counter runs backwards ---- */
   var rewind = document.getElementById('rewind');
   var tc = document.getElementById('tc');
@@ -693,6 +863,7 @@
     if (reduce) { show(0); mode.textContent = '▶'; return; }
     var start = 5 * 1500 + 42 * 25 + 11, dur = 2600, t0 = null;
     document.body.classList.add('rewinding');
+    rewindWhoosh(dur / 1000);
     function step(t) {
       if (!t0) t0 = t;
       var p = Math.min(1, (t - t0) / dur);
@@ -734,7 +905,10 @@
     var cur = 0, line = window.innerHeight * 0.45;
     chapters.forEach(function (ch, i) { if (ch.getBoundingClientRect().top < line) cur = i; });
     ticks.forEach(function (t, i) { t.classList.toggle('on', i === cur); });
+    if (lastChapter !== null && cur !== lastChapter) chime('chapter');
+    lastChapter = cur;
   }
+  var lastChapter = null;
   window.addEventListener('scroll', function () {
     if (!ticking) { ticking = true; requestAnimationFrame(update); }
   }, { passive: true });
@@ -742,6 +916,7 @@
   update();
 
   document.getElementById('again').addEventListener('click', function () {
+    chime('click');
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   });
 })();
