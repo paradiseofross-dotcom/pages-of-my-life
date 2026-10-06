@@ -18,7 +18,7 @@
       crossorigin>
 
 <link
-href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@400;500;600;700;900&display=swap"
+href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700;800;900&family=Noto+Serif+Malayalam:wght@400;500;600;700;900&display=swap"
 rel="stylesheet">
 
 
@@ -95,6 +95,8 @@ body {
     line-height: 1.9;
 
     -webkit-font-smoothing: antialiased;
+
+    overflow-x: hidden;
 }
 
 
@@ -124,6 +126,9 @@ a {
         rgba(11, 24, 23, .88);
 
     backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
         blur(10px);
 
     position: relative;
@@ -205,7 +210,7 @@ a {
         center;
 
     gap:
-        18px;
+        12px;
 }
 
 
@@ -214,6 +219,15 @@ a {
 ========================================================= */
 
 .music {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     border:
         1px solid
@@ -241,6 +255,9 @@ a {
     cursor:
         pointer;
 
+    white-space:
+        nowrap;
+
     transition:
         border-color .25s ease,
         color .25s ease,
@@ -255,6 +272,9 @@ a {
 
     color:
         var(--cyan);
+
+    background:
+        rgba(114,216,223,.04);
 }
 
 
@@ -272,33 +292,63 @@ a {
 
 
 /* =========================================================
-   HOME
+   HOME BUTTON
 ========================================================= */
 
 .home {
 
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        6px 15px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        999px;
+
     color:
         var(--muted);
+
+    background:
+        transparent;
 
     font-family:
         "Anek Malayalam",
         sans-serif;
 
     font-size:
-        14px;
+        13px;
 
     white-space:
         nowrap;
 
     transition:
-        color .3s ease;
+        border-color .25s ease,
+        color .25s ease,
+        background .25s ease;
 }
 
 
 .home:hover {
 
+    border-color:
+        var(--cyan);
+
     color:
         var(--cyan);
+
+    background:
+        rgba(114,216,223,.04);
 }
 
 
@@ -390,10 +440,6 @@ h1 {
         transparent;
 }
 
-
-/* =========================================================
-   INTRO TEXT
-========================================================= */
 
 .intro {
 
@@ -496,10 +542,6 @@ h1 {
 }
 
 
-/* =========================================================
-   CATEGORY TITLE
-========================================================= */
-
 .category h2 {
 
     margin:
@@ -527,10 +569,6 @@ h1 {
 }
 
 
-/* =========================================================
-   CATEGORY DESCRIPTION
-========================================================= */
-
 .category p {
 
     margin:
@@ -550,10 +588,6 @@ h1 {
         1.85;
 }
 
-
-/* =========================================================
-   READ MORE
-========================================================= */
 
 .read-more {
 
@@ -642,7 +676,7 @@ footer {
             calc(100% - 28px);
 
         gap:
-            10px;
+            8px;
     }
 
 
@@ -656,14 +690,14 @@ footer {
     .header-controls {
 
         gap:
-            8px;
+            6px;
     }
 
 
     .music {
 
         padding:
-            6px 11px;
+            6px 10px;
 
         font-size:
             11px;
@@ -672,8 +706,11 @@ footer {
 
     .home {
 
+        padding:
+            6px 10px;
+
         font-size:
-            12px;
+            11px;
     }
 
 
@@ -797,7 +834,7 @@ footer {
         <div class="header-controls">
 
 
-            <!-- MUSIC -->
+            <!-- MUSIC BUTTON -->
 
             <button
                 class="music"
@@ -833,9 +870,7 @@ footer {
 <main class="container">
 
 
-    <!-- ===================================================
-         INTRO
-    =================================================== -->
+    <!-- INTRO -->
 
     <div class="eyebrow">
         PARADISE OF ROSS
@@ -1006,29 +1041,120 @@ footer {
 
 
 <!-- =======================================================
-     PARADISE OF ROSS PIANO
+     PIANO MUSIC
 ======================================================= -->
 
 <script>
 
 (function () {
 
+
     const btn =
         document.getElementById("music");
 
-    let ctx = null;
 
-    let master = null;
+    let ctx =
+        null;
 
-    let convolver = null;
 
-    let timer = null;
+    let master =
+        null;
 
-    let step = 0;
 
-    let next = 0;
+    let timer =
+        null;
 
-    let playing = false;
+
+    let step =
+        0;
+
+
+    let next =
+        0;
+
+
+    let playing =
+        false;
+
+
+    /* =====================================================
+       REMEMBER MUSIC STATE
+    ===================================================== */
+
+    function getMusicState() {
+
+        try {
+
+            return localStorage.getItem(
+                "rossMusic"
+            );
+
+        } catch (e) {
+
+            return null;
+
+        }
+
+    }
+
+
+    function setMusicState(value) {
+
+        try {
+
+            localStorage.setItem(
+                "rossMusic",
+                value
+            );
+
+        } catch (e) {}
+
+    }
+
+
+    /* =====================================================
+       REMEMBER TUNE POSITION
+    ===================================================== */
+
+    function getStep() {
+
+        try {
+
+            return parseInt(
+                sessionStorage.getItem(
+                    "rossStep"
+                ),
+                10
+            ) || 0;
+
+        } catch (e) {
+
+            return 0;
+
+        }
+
+    }
+
+
+    function setStep(value) {
+
+        try {
+
+            sessionStorage.setItem(
+                "rossStep",
+                value
+            );
+
+        } catch (e) {}
+
+    }
+
+
+    step =
+        Math.floor(
+            getStep() / 8
+        ) * 8;
+
 
 
     /* =====================================================
@@ -1053,8 +1179,11 @@ footer {
     ===================================================== */
 
     const arp = [
+
         0, 2, 3, 2,
+
         4, 3, 2, 1
+
     ];
 
 
@@ -1063,12 +1192,17 @@ footer {
     ===================================================== */
 
     const melody = [
+
         72, 74, 76, 79,
+
         81, 79, 76, 74
+
     ];
 
 
-    const STEP = 0.75;
+    const STEP =
+        0.75;
+
 
 
     /* =====================================================
@@ -1076,6 +1210,7 @@ footer {
     ===================================================== */
 
     function setupAudio() {
+
 
         const AudioContext =
             window.AudioContext ||
@@ -1089,6 +1224,7 @@ footer {
             );
 
             return false;
+
         }
 
 
@@ -1104,11 +1240,12 @@ footer {
             0;
 
 
+
         /* =================================================
            REVERB
         ================================================= */
 
-        convolver =
+        const convolver =
             ctx.createConvolver();
 
 
@@ -1130,6 +1267,7 @@ footer {
             channel++
         ) {
 
+
             const data =
                 impulse.getChannelData(
                     channel
@@ -1142,9 +1280,15 @@ footer {
                 i++
             ) {
 
+
                 data[i] =
-                    (Math.random() * 2 - 1)
+
+                    (
+                        Math.random() * 2 - 1
+                    )
+
                     *
+
                     Math.pow(
                         1 - i / length,
                         2.5
@@ -1216,8 +1360,11 @@ footer {
         volume
     ) {
 
+
         const frequency =
+
             440 *
+
             Math.pow(
                 2,
                 (midi - 69) / 12
@@ -1253,7 +1400,11 @@ footer {
 
 
         harmonics.forEach(
-            function (part, index) {
+            function (
+                part,
+                index
+            ) {
+
 
                 const oscillator =
                     ctx.createOscillator();
@@ -1264,7 +1415,9 @@ footer {
 
 
                 const duration =
+
                     3.8 /
+
                     (1 + index * .7);
 
 
@@ -1273,7 +1426,9 @@ footer {
 
 
                 oscillator.frequency.value =
+
                     frequency *
+
                     part[0];
 
 
@@ -1284,15 +1439,22 @@ footer {
 
 
                 gain.gain.linearRampToValueAtTime(
+
                     volume *
+
                     part[1],
+
                     time + .04
+
                 );
 
 
                 gain.gain.exponentialRampToValueAtTime(
+
                     .0005,
+
                     time + duration
+
                 );
 
 
@@ -1312,9 +1474,13 @@ footer {
 
 
                 oscillator.stop(
+
                     time +
+
                     duration +
+
                     .1
+
                 );
 
             }
@@ -1330,12 +1496,23 @@ footer {
 
     function schedule() {
 
+
+        if (!ctx) {
+            return;
+        }
+
+
         while (
+
             next <
+
             ctx.currentTime + 1.5
+
         ) {
 
+
             const bar =
+
                 Math.floor(
                     step / 8
                 ) % 4;
@@ -1386,16 +1563,26 @@ footer {
             /* MELODY */
 
             if (
+
                 position % 4 === 0 &&
+
                 Math.random() < .7
+
             ) {
 
+
                 const note =
+
                     melody[
+
                         Math.floor(
+
                             Math.random() *
+
                             melody.length
+
                         )
+
                     ];
 
 
@@ -1403,8 +1590,7 @@ footer {
 
                     note,
 
-                    next +
-                    STEP * .5,
+                    next + STEP * .5,
 
                     .08
 
@@ -1421,6 +1607,11 @@ footer {
 
         }
 
+
+        setStep(
+            step
+        );
+
     }
 
 
@@ -1431,20 +1622,36 @@ footer {
 
     async function startMusic() {
 
+
         if (!ctx) {
 
             if (!setupAudio()) {
+
                 return;
+
             }
 
         }
 
 
-        await ctx.resume();
+        try {
+
+            await ctx.resume();
+
+        } catch (error) {
+
+            return;
+
+        }
 
 
         playing =
             true;
+
+
+        setMusicState(
+            "on"
+        );
 
 
         master.gain
@@ -1455,8 +1662,11 @@ footer {
 
         master.gain
             .linearRampToValueAtTime(
+
                 .9,
+
                 ctx.currentTime + 2.5
+
             );
 
 
@@ -1467,11 +1677,15 @@ footer {
         schedule();
 
 
-        timer =
-            setInterval(
-                schedule,
-                250
-            );
+        if (!timer) {
+
+            timer =
+                setInterval(
+                    schedule,
+                    250
+                );
+
+        }
 
 
         btn.textContent =
@@ -1493,8 +1707,11 @@ footer {
 
     function stopMusic() {
 
+
         if (!ctx) {
+
             return;
+
         }
 
 
@@ -1502,9 +1719,18 @@ footer {
             false;
 
 
+        setMusicState(
+            "off"
+        );
+
+
         clearInterval(
             timer
         );
+
+
+        timer =
+            null;
 
 
         master.gain
@@ -1515,8 +1741,11 @@ footer {
 
         master.gain
             .linearRampToValueAtTime(
+
                 0,
+
                 ctx.currentTime + 1
+
             );
 
 
@@ -1541,7 +1770,16 @@ footer {
         "click",
         function () {
 
-            if (playing) {
+
+            if (
+
+                playing &&
+
+                ctx &&
+
+                ctx.state === "running"
+
+            ) {
 
                 stopMusic();
 
@@ -1553,6 +1791,111 @@ footer {
 
         }
     );
+
+
+
+    /* =====================================================
+       FIRST USER INTERACTION
+       Required by browser autoplay policy.
+    ===================================================== */
+
+    function firstInteraction(event) {
+
+
+        if (
+
+            event.target.closest &&
+
+            event.target.closest("#music")
+
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+
+            getMusicState() === "off"
+
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+
+            playing &&
+
+            ctx &&
+
+            ctx.state === "running"
+
+        ) {
+
+            return;
+
+        }
+
+
+        startMusic();
+
+    }
+
+
+    [
+        "pointerdown",
+        "keydown",
+        "touchstart"
+    ].forEach(
+
+        function (eventName) {
+
+
+            document.addEventListener(
+
+                eventName,
+
+                firstInteraction,
+
+                {
+                    passive: true,
+                    once: true
+                }
+
+            );
+
+        }
+
+    );
+
+
+    /* =====================================================
+       RESTORE MUSIC PREFERENCE
+    ===================================================== */
+
+    if (
+
+        getMusicState() === "on"
+
+    ) {
+
+        /*
+         * The browser may block autoplay
+         * until the user interacts with
+         * the page.
+         *
+         * The first interaction will start it.
+         */
+
+        btn.textContent =
+            "Play music";
+
+    }
+
 
 })();
 
