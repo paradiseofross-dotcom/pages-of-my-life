@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ഓണാശംസ — നന്ദി</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@500;700&family=Noto+Sans+Malayalam:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E3;
+    --leaf:#2E5D3A;
+    --leaf-deep:#1E3F27;
+    --gold:#C6972B;
+    --gold-soft:#E9C468;
+    --maroon:#8E2A2A;
+    --ink:#3A2A1B;
+    --card:#FFFDF8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --cream:#1B1610;
+      --leaf:#4F8A61;
+      --leaf-deep:#3A6B49;
+      --gold:#D9AE4F;
+      --gold-soft:#E9C468;
+      --maroon:#C7736A;
+      --ink:#EFE6D6;
+      --card:#241D15;
+    }
+  }
+  :root[data-theme="dark"]{
+    --cream:#1B1610; --leaf:#4F8A61; --leaf-deep:#3A6B49;
+    --gold:#D9AE4F; --gold-soft:#E9C468; --maroon:#C7736A;
+    --ink:#EFE6D6; --card:#241D15;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Noto Sans Malayalam','Noto Sans',sans-serif;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2{
+    font-family:'Baloo Bhaina 2','Noto Sans Malayalam',sans-serif;
+    color:var(--maroon);
+    margin:0;
+  }
+  .hero{
+    position:relative;
+    padding:3.2rem 1.2rem 2.4rem;
+    text-align:center;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 50% 18%, rgba(198,151,43,0.10), transparent 60%),
+      var(--cream);
+  }
+  .pookalam{
+    width:min(260px,60vw);
+    height:min(260px,60vw);
+    margin:0 auto 1.4rem;
+    display:block;
+  }
+  .pookalam circle, .pookalam path{
+    transform-origin:150px 150px;
+    opacity:0;
+    animation:bloom 0.9s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  @keyframes bloom{
+    from{opacity:0; transform:scale(0.35);}
+    to{opacity:1; transform:scale(1);}
+  }
+  .hero h1{
+    font-size:clamp(1.9rem,5vw,2.6rem);
+    letter-spacing:0.01em;
+    opacity:0;
+    animation:rise 0.8s ease-out 1.05s forwards;
+  }
+  .hero p.sub{
+    margin:0.6rem auto 0;
+    max-width:32ch;
+    color:var(--leaf-deep);
+    font-weight:500;
+    opacity:0;
+    animation:rise 0.8s ease-out 1.25s forwards;
+  }
+  @keyframes rise{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .divider{
+    width:64px;height:3px;margin:1.4rem auto;border-radius:2px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    opacity:0;
+    animation:rise 0.8s ease-out 1.4s forwards;
+  }
+  main{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 1.4rem 3rem;
+  }
+  .letter p{
+    margin:0 0 1.15rem;
+    font-size:1.02rem;
+  }
+  .letter{
+    background:var(--card);
+    border-radius:14px;
+    padding:1.8rem 1.6rem;
+    box-shadow:0 1px 0 rgba(0,0,0,0.03);
+    border:1px solid rgba(198,151,43,0.18);
+  }
+  h2.section-title{
+    font-size:1.3rem;
+    margin:2.6rem 0 1rem;
+    text-align:center;
+  }
+  ul.thanks-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    background:var(--card);
+    border-radius:14px;
+    border:1px solid rgba(198,151,43,0.18);
+    overflow:hidden;
+  }
+  ul.thanks-list li{
+    padding:0.95rem 1.3rem;
+    border-bottom:1px solid rgba(198,151,43,0.16);
+    display:flex;
+    gap:0.6rem;
+    align-items:baseline;
+  }
+  ul.thanks-list li:last-child{border-bottom:none;}
+  ul.thanks-list li .name{
+    color:var(--maroon);
+    font-weight:600;
+    white-space:nowrap;
+  }
+  ul.thanks-list li .why{color:var(--ink);}
+  .missed{
+    margin-top:1.6rem;
+    padding:1.3rem 1.4rem;
+    border-left:3px solid var(--leaf);
+    background:rgba(46,93,58,0.06);
+    border-radius:0 10px 10px 0;
+  }
+  .missed p{margin:0 0 0.7rem;font-size:0.98rem;}
+  .missed p:last-child{margin-bottom:0;}
+  .callout{
+    margin-top:2.6rem;
+    text-align:center;
+    padding:2rem 1.4rem;
+    background:linear-gradient(180deg, rgba(198,151,43,0.10), rgba(198,151,43,0.02));
+    border-radius:16px;
+  }
+  .callout h2{font-size:1.5rem;margin-bottom:0.8rem;}
+  .callout p{max-width:44ch;margin:0 auto;color:var(--ink);}
+  footer{
+    text-align:center;
+    padding:2.4rem 1.4rem 3rem;
+    color:var(--leaf-deep);
+    font-family:'Baloo Bhaina 2',sans-serif;
+    font-size:1.15rem;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .pookalam circle,.pookalam path,.hero h1,.hero p.sub,.divider{
+      animation:none !important; opacity:1 !important; transform:none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <svg class="pookalam" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="150" cy="150" r="140" fill="none" stroke="var(--gold)" stroke-width="2" style="animation-delay:0s"/>
+    <circle cx="150" cy="150" r="112" fill="none" stroke="var(--leaf)" stroke-width="10" style="animation-delay:.12s"/>
+    <circle cx="150" cy="150" r="112" fill="none" stroke="var(--cream)" stroke-width="2" style="animation-delay:.12s"/>
+    <g style="animation-delay:.28s">
+      <circle cx="150" cy="150" r="86" fill="none" stroke="var(--maroon)" stroke-width="9"/>
+    </g>
+    <g style="animation-delay:.42s">
+      <!-- petal ring -->
+      <g fill="var(--gold-soft)">
+        <ellipse cx="150" cy="66" rx="10" ry="20"/>
+        <ellipse cx="150" cy="234" rx="10" ry="20"/>
+        <ellipse cx="66" cy="150" rx="20" ry="10"/>
+        <ellipse cx="234" cy="150" rx="20" ry="10"/>
+        <ellipse cx="90" cy="90" rx="10" ry="18" transform="rotate(45 90 90)"/>
+        <ellipse cx="210" cy="90" rx="10" ry="18" transform="rotate(-45 210 90)"/>
+        <ellipse cx="90" cy="210" rx="10" ry="18" transform="rotate(-45 90 210)"/>
+        <ellipse cx="210" cy="210" rx="10" ry="18" transform="rotate(45 210 210)"/>
+      </g>
+    </g>
+    <circle cx="150" cy="150" r="46" fill="var(--leaf)" style="animation-delay:.58s"/>
+    <circle cx="150" cy="150" r="46" fill="none" stroke="var(--gold)" stroke-width="2" style="animation-delay:.58s"/>
+    <circle cx="150" cy="150" r="18" fill="var(--maroon)" style="animation-delay:.74s"/>
+    <circle cx="150" cy="150" r="18" fill="none" stroke="var(--gold-soft)" stroke-width="2" style="animation-delay:.74s"/>
+  </svg>
+  <h1>ഹൃദയം നിറഞ്ഞ നന്ദി</h1>
+  <p class="sub">ജോബിക്കും ഷിനോജിനും, തിരുവോണാമുറ്റം ഒരുക്കിയ എല്ലാവർക്കും</p>
+  <div class="divider"></div>
+</section>
+
+<main>
+  <div class="letter">
+    <p>ഈ വർഷത്തെ ഓണാഘോഷത്തിൽ പങ്കെടുത്ത ഞങ്ങളൊക്കെയുടെയും ഹൃദയം നിറഞ്ഞ നന്ദി.</p>
+    <p>തുടർച്ചയായ നാലാം വർഷവും നിങ്ങളുടെ വീട്ടിലെ മുറ്റം തിരുവോണാമുറ്റമായി ഞങ്ങൾക്കായി തുറന്നുതന്നതിന് ഒരുപാട് നന്ദി. എല്ലാവർക്കും ഒരുമിച്ച് കൂടാനും, പാട്ടുപാടാനും, നൃത്തം ചെയ്യാനും, ശബ്ദമുയർത്തി ആഘോഷിക്കാനും കഴിയുന്നത്ര വിശാലവും സ്വതന്ത്രവുമായ ഈ ഇടം നമ്മുടെ ഓണാഘോഷത്തിന്റെ തന്നെ ഒരു പ്രധാന ഭാഗമായിക്കഴിഞ്ഞു.</p>
+    <p>തുറന്ന ആകാശത്തിൻ കീഴിൽ, ചുറ്റുമുള്ള പച്ചപ്പിനും ചെടികൾക്കുമിടയിൽ ഒരുക്കിയ ഓണസദ്യയ്ക്ക് ഉണ്ടായിരുന്ന പ്രൗഢിയും ഭംഗിയും പ്രത്യേകം പറയേണ്ടതാണ്. ഓരോരുത്തരും വീട്ടിൽ തയ്യാറാക്കി കൊണ്ടുവന്ന് പങ്കുവെച്ച potluck രീതിയിലുള്ള ഓണസദ്യ ഈ ആഘോഷത്തിന്റെ ഏറ്റവും മനോഹരമായ കൂട്ടായ്മകളിലൊന്നായിരുന്നു. സദ്യയ്ക്കായി വിഭവങ്ങൾ തയ്യാറാക്കി കൊണ്ടുവന്നും സംഭാവന ചെയ്തും പങ്കാളികളായ എല്ലാവർക്കും പ്രത്യേക നന്ദി. ഓരോ വിഭവത്തിലും ഉണ്ടായിരുന്നത് ഭക്ഷണം മാത്രമല്ല, ഓരോരുത്തരുടെയും സ്നേഹവും സമയവും പങ്കാളിത്തവുമായിരുന്നു.</p>
+    <p>വിദേശ അതിഥിയായ മാരിക്ക് പ്രത്യേകം ഒരു മുറിയും ആവശ്യമായ മുഴുവൻ സ്ഥലസൗകര്യവും ഒരുക്കിത്തന്ന ജോബിക്ക് പ്രത്യേക നന്ദി. ഒരു അതിഥിയുടെ സൗകര്യവും സ്വകാര്യതയും ഇത്രയും മനസ്സോടെ പരിഗണിച്ചതിന് പ്രത്യേകം നന്ദി.</p>
+    <p>പരിധികൾ എല്ലായ്പ്പോഴും കുറച്ചുകൂടി ഉയർത്താൻ നമ്മളെ പ്രേരിപ്പിക്കുന്ന ഷിനോജിന് പ്രത്യേക നന്ദി. സാധാരണയായി ഒരു ആഘോഷം നടത്തുന്നതിൽ ഒതുങ്ങാതെ, "ഇത് ഇനിയും എങ്ങനെ മികച്ചതാക്കാം?" എന്ന് നമ്മളെ ചിന്തിപ്പിക്കുകയും പുതിയ കാര്യങ്ങൾ പരീക്ഷിക്കാൻ പ്രേരിപ്പിക്കുകയും ചെയ്യുന്നതാണ് ഷിനോജിന്റെ വലിയ പ്രത്യേകത. ഇത്തരത്തിൽ നമ്മളെ നമ്മുടെ comfort zone-ന് പുറത്തേക്ക് കൊണ്ടുപോകുന്ന ഒരാൾ നമ്മുടെ കൂട്ടത്തിൽ ഉണ്ടാകുമ്പോഴാണ് ഒരു സാധാരണ ഒത്തുചേരലിനെ മറികടന്ന് ഒരു experiential Onam celebration സൃഷ്ടിക്കാൻ കഴിയുന്നത്.</p>
+  </div>
+
+  <h2 class="section-title">ആഘോഷം മനോഹരമാക്കിയവർ</h2>
+  <ul class="thanks-list">
+    <li><span class="name">ഡയാന &amp; ബിന്ദു</span><span class="why">— വസ്ത്രധാരണ ഏകോപനം</span></li>
+    <li><span class="name">അഷ്‌ബി &amp; സാന്ദ്ര</span><span class="why">— റീൽ ഏകോപനം</span></li>
+    <li><span class="name">സാവ്</span><span class="why">— വീഡിയോ ചിത്രീകരണം</span></li>
+    <li><span class="name">ക്ലിന്റൺ</span><span class="why">— രുചികരമായ കരിമീൻ</span></li>
+    <li><span class="name">ജിയോ</span><span class="why">— ജെസ്സി ചേച്ചിയെ കൂട്ടിക്കൊണ്ടുവന്നതിന്</span></li>
+    <li><span class="name">റീമ</span><span class="why">— ലിനോജിന്റെ surprise entry</span></li>
+    <li><span class="name">ചിന്ന ചേച്ചിയും ചേട്ടനും</span><span class="why">— നൃത്തങ്ങളിലും കളികളിലും നിറഞ്ഞ ആവേശം</span></li>
+  </ul>
+
+  <div class="missed">
+    <p>നമ്മോടൊപ്പം ചേരാൻ കഴിയാതിരുന്നവരെയും ഈ അവസരത്തിൽ സ്നേഹത്തോടെ ഓർക്കുന്നു — ജോലിത്തിരക്ക് കാരണം ഇമ്മു, വീട് പണിയുന്ന തിരക്കിൽ ആന്റണി ചേട്ടനും ഷൈനി ചേച്ചിയും, യാത്രാച്ചെലവ് കാരണം ഫിലോ ആന്റി.</p>
+    <p>മറ്റ് കുടുംബപരിപാടികൾക്ക് ശേഷം അവസാനഘട്ടത്തിൽ എത്തിച്ചേർന്ന സിന്ദ്രയെയും മിഥുനെയും കൂടി സന്തോഷത്തോടെ ഓർക്കുന്നു.</p>
+  </div>
+
+  <div class="callout">
+    <h2>ഇനി മുതൽ — കാണികളല്ല, സൃഷ്ടിക്കുന്നവർ</h2>
+    <p>ഓരോരുത്തരും ഒരു പുതിയ ആശയം കൊണ്ടുവരണം, ഒരു ചെറിയ ഉത്തരവാദിത്തമെങ്കിലും ഏറ്റെടുക്കണം. "എന്താണ് പരിപാടി?" എന്ന് ചോദിക്കുന്നവരല്ല, "നമുക്ക് എന്ത് പുതുതായി ചെയ്യാം?" എന്ന് ചിന്തിക്കുന്നവരാകട്ടെ നമ്മൾ. അഷ്‌ബിയെ പോലെയുള്ള പുതിയ അതിഥികൾ ഓരോ വർഷവും നമ്മുടെ കൂട്ടായ്മയെ സമ്പന്നമാക്കട്ടെ.</p>
+  </div>
+
+  <div class="letter" style="margin-top:2.2rem;">
+    <p style="margin:0;">ജോബിക്കും ഷിനോജിനും, അവരുടെ മക്കളായ എവിനും ഹെയ്ൻസിനും കൂടി ഈ നാലാം വർഷത്തെ ഓണാഘോഷത്തിനായി മുറ്റവും സമയവും സ്ഥലവും പങ്കുവെച്ചതിന് ഹൃദയം നിറഞ്ഞ നന്ദി.</p>
+  </div>
+</main>
+
+<footer>ഇനിയും ഒരുപാട് ഓണങ്ങൾ, ഒരുമിച്ച് 🌼</footer>
+
+</body>
+</html>
