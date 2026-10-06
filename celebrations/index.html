@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ml">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,9 +19,11 @@
     --bg2: #102522;
     --card: #162a27;
     --border: #29413d;
+
     --cyan: #72d8df;
     --pink: #d99caf;
     --gold: #e5c06b;
+
     --text: #d8e3df;
     --muted: #9cafaa;
     --white: #f3f4ef;
@@ -36,27 +39,52 @@ html {
 
 body {
     margin: 0;
+
     background:
-        radial-gradient(circle at 10% 20%, rgba(62, 132, 130, .12), transparent 32%),
-        radial-gradient(circle at 90% 75%, rgba(205, 140, 160, .08), transparent 30%),
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(62, 132, 130, .12),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 75%,
+            rgba(205, 140, 160, .08),
+            transparent 30%
+        ),
         var(--bg);
+
     color: var(--text);
-    font-family: "Noto Serif Malayalam", serif;
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
     line-height: 1.9;
+
+    -webkit-font-smoothing: antialiased;
 }
 
-/* ---------- TOP BAR ---------- */
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
 
 .topbar {
     height: 74px;
-    border-bottom: 1px solid rgba(180, 220, 215, .12);
+
+    border-bottom:
+        1px solid
+        rgba(180, 220, 215, .12);
+
     display: flex;
     align-items: center;
 }
 
 .topbar-inner {
     width: min(800px, calc(100% - 40px));
+
     margin: auto;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -64,80 +92,137 @@ body {
 
 .brand {
     text-decoration: none;
+
     color: var(--white);
-    font-family: "Noto Serif Malayalam", serif;
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
     font-size: 18px;
+
     font-weight: 600;
 }
 
 .brand::before {
     content: "◈";
+
     color: var(--pink);
+
     margin-right: 9px;
+
     font-size: 13px;
 }
 
 .home {
     text-decoration: none;
+
     color: var(--muted);
-    font-family: "Anek Malayalam", sans-serif;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
     font-size: 14px;
-    transition: .3s;
+
+    transition: color .3s ease;
 }
 
 .home:hover {
     color: var(--cyan);
 }
 
-/* ---------- MAIN ---------- */
+
+/* =========================================================
+   MAIN
+   ========================================================= */
 
 main {
     width: min(800px, calc(100% - 40px));
+
     margin: auto;
-    padding: 90px 0 120px;
+
+    padding:
+        90px 0
+        120px;
 }
 
-/* ---------- INTRO ---------- */
+
+/* =========================================================
+   INTRODUCTION
+   ========================================================= */
 
 .eyebrow {
     color: var(--cyan);
-    font-family: "Anek Malayalam", sans-serif;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
     font-size: 14px;
+
     font-weight: 700;
+
     letter-spacing: .12em;
+
     margin-bottom: 18px;
 }
 
 h1 {
     margin: 0;
-    font-family: "Anek Malayalam", sans-serif;
-    font-size: clamp(3rem, 8vw, 5.5rem);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        clamp(3rem, 8vw, 5.5rem);
+
     line-height: 1.05;
+
     font-weight: 700;
 
-    background: linear-gradient(
-        90deg,
-        var(--cyan),
-        #d5d6d2,
-        var(--pink)
-    );
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            #d5d6d2,
+            var(--pink)
+        );
 
     -webkit-background-clip: text;
     background-clip: text;
+
     color: transparent;
 }
 
 .intro {
     max-width: 680px;
-    margin: 32px 0 70px;
+
+    margin:
+        32px 0
+        70px;
+
     color: var(--muted);
-    font-size: 18px;
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.95;
 }
 
-/* ---------- STORY CARD ---------- */
+
+/* =========================================================
+   STORY CARDS
+   ========================================================= */
 
 .story-card {
+
     position: relative;
+
     background:
         linear-gradient(
             135deg,
@@ -146,16 +231,27 @@ h1 {
         ),
         var(--card);
 
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--cyan);
+    border:
+        1px solid
+        var(--border);
+
+    border-left:
+        3px solid
+        var(--cyan);
+
     border-radius: 12px;
 
-    padding: 38px 42px 40px;
+    padding:
+        34px 38px
+        32px;
 
     text-decoration: none;
+
     color: inherit;
 
     display: block;
+
+    margin-bottom: 24px;
 
     transition:
         transform .35s ease,
@@ -164,81 +260,187 @@ h1 {
 }
 
 .story-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(114,216,223,.65);
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(114,216,223,.65);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,.28),
-        0 0 35px rgba(114,216,223,.05);
+        0 20px 60px
+        rgba(0,0,0,.28),
+
+        0 0 35px
+        rgba(114,216,223,.05);
 }
+
+
+/* =========================================================
+   STORY NUMBER
+   ========================================================= */
 
 .number {
-    font-family: "Anek Malayalam", sans-serif;
-    color: var(--pink);
-    font-size: 17px;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    color:
+        var(--pink);
+
+    font-size: 15px;
+
     font-weight: 700;
-    margin-bottom: 10px;
+
+    line-height: 1;
+
+    margin-bottom: 12px;
 }
+
+
+/* =========================================================
+   STORY TITLE
+   ========================================================= */
 
 .story-card h2 {
-    margin: 0 0 12px;
 
-    font-family: "Anek Malayalam", sans-serif;
-    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    margin:
+        0 0
+        14px;
 
-    color: var(--white);
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        clamp(1.9rem, 4vw, 2.35rem);
+
+    color:
+        var(--white);
+
     line-height: 1.35;
+
+    font-weight: 700;
 }
+
+
+/* =========================================================
+   STORY DESCRIPTION
+   ========================================================= */
 
 .story-card p {
-    margin: 0 0 20px;
-    color: var(--muted);
-    font-size: 16px;
+
+    margin:
+        0 0
+        22px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.85;
 }
 
+
+/* =========================================================
+   READ LINK
+   ========================================================= */
+
 .read {
+
     display: inline-block;
 
-    color: var(--cyan);
-    font-family: "Anek Malayalam", sans-serif;
+    color:
+        var(--cyan);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
     font-size: 16px;
+
     font-weight: 600;
 
-    transition: .3s;
+    transition:
+        transform .3s ease;
 }
 
 .story-card:hover .read {
-    transform: translateX(6px);
+
+    transform:
+        translateX(6px);
 }
 
-/* ---------- SMALL NOTE ---------- */
+
+/* =========================================================
+   NOTE
+   ========================================================= */
 
 .note {
-    margin-top: 42px;
-    padding: 22px 25px;
 
-    border-left: 1px solid rgba(217,156,175,.5);
+    margin-top: 46px;
 
-    color: #849994;
+    padding:
+        20px 24px;
+
+    border-left:
+        1px solid
+        rgba(217,156,175,.5);
+
+    color:
+        #849994;
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
     font-size: 14px;
+
+    line-height: 1.9;
 }
 
-/* ---------- FOOTER ---------- */
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer {
-    width: min(800px, calc(100% - 40px));
+
+    width:
+        min(800px, calc(100% - 40px));
+
     margin: auto;
 
-    padding: 30px 0 50px;
+    padding:
+        30px 0
+        50px;
 
-    border-top: 1px solid rgba(180,220,215,.08);
+    border-top:
+        1px solid
+        rgba(180,220,215,.08);
 
-    color: #657873;
+    color:
+        #657873;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
     font-size: 13px;
+
     text-align: center;
 }
 
-/* ---------- MOBILE ---------- */
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 600px) {
 
@@ -247,29 +449,78 @@ footer {
     }
 
     .topbar-inner {
-        width: calc(100% - 28px);
+        width:
+            calc(100% - 28px);
     }
 
     main {
-        width: calc(100% - 28px);
-        padding: 65px 0 90px;
+
+        width:
+            calc(100% - 28px);
+
+        padding:
+            65px 0
+            90px;
     }
 
     h1 {
-        font-size: 3.2rem;
+
+        font-size:
+            3.2rem;
     }
 
     .intro {
+
         font-size: 16px;
-        margin-bottom: 48px;
+
+        margin-bottom:
+            48px;
     }
 
     .story-card {
-        padding: 28px 25px 30px;
+
+        padding:
+            28px 26px
+            30px;
+
+        margin-bottom:
+            20px;
     }
 
     .story-card h2 {
-        font-size: 1.7rem;
+
+        font-size:
+            1.8rem;
+
+        line-height:
+            1.4;
+    }
+
+    .story-card p {
+
+        font-size:
+            16px;
+
+        line-height:
+            1.8;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .story-card,
+    .read {
+        transition: none;
     }
 
 }
@@ -277,17 +528,29 @@ footer {
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =======================================================
+     HEADER
+     ======================================================= -->
 
 <header class="topbar">
 
     <div class="topbar-inner">
 
-        <a href="../index.html" class="brand">
+        <a
+            href="../index.html"
+            class="brand"
+        >
             Paradise of Ross
         </a>
 
-        <a href="../index.html" class="home">
+        <a
+            href="../index.html"
+            class="home"
+        >
             മുഖ്യപേജ്
         </a>
 
@@ -296,13 +559,25 @@ footer {
 </header>
 
 
+
+<!-- =======================================================
+     MAIN CONTENT
+     ======================================================= -->
+
 <main>
+
+
+    <!-- INTRO -->
 
     <div class="eyebrow">
         PARADISE OF ROSS
     </div>
 
-    <h1>ആഘോഷങ്ങൾ</h1>
+
+    <h1>
+        ആഘോഷങ്ങൾ
+    </h1>
+
 
     <p class="intro">
         ജീവിതത്തിലെ ചില ദിവസങ്ങൾ കലണ്ടറിൽ ഒരു തീയതി മാത്രമല്ല.
@@ -311,17 +586,25 @@ footer {
     </p>
 
 
-    <!-- STORY 01 -->
 
-    <a href="roy_birthday.html" class="story-card">
+    <!-- ===================================================
+         STORY 01
+         =================================================== -->
+
+    <a
+        href="roy_birthday.html"
+        class="story-card"
+    >
 
         <div class="number">
             01
         </div>
 
+
         <h2>
             അവസാന ഫ്രെയിം
         </h2>
+
 
         <p>
             റോയിയുടെ അറുപതാം പിറന്നാളും ഡയാനയുടെ പിറന്നാളും
@@ -330,50 +613,78 @@ footer {
             ഒടുവിൽ മനസ്സിൽ പതിഞ്ഞ ഒരു അവസാന ഫ്രെയിം.
         </p>
 
+
         <span class="read">
             ഓർമ്മയിലേക്ക് →
         </span>
 
     </a>
 
+
+
+    <!-- ===================================================
+         STORY 02
+         =================================================== -->
+
+    <a
+        href="poornachandran_ravu.html"
+        class="story-card"
+    >
+
+        <div class="number">
+            02
+        </div>
+
+
+        <h2>
+            പൂർണ്ണചന്ദ്രന്റെ വെളിച്ചത്തിൽ ഒരു രാത്രി
+        </h2>
+
+
+        <p>
+            ഒരു വിവാഹ രജിസ്ട്രേഷന്റെ ചെറിയ ആഘോഷമായി തുടങ്ങിയ
+            ഒരു രാത്രി. സുഹൃത്തുക്കളുടെ കൂടിച്ചേരൽ, പഴയ ഓർമ്മകൾ,
+            പുതിയ യാത്രകളുടെ സ്വപ്നങ്ങൾ, ചിരികൾ, സൗഹൃദം —
+            ഒടുവിൽ പൂർണ്ണചന്ദ്രന്റെ വെളിച്ചത്തിൽ പതിഞ്ഞ ഒരു ഓർമ്മ.
+        </p>
+
+
+        <span class="read">
+            ഓർമ്മയിലേക്ക് →
+        </span>
+
     </a>
 
-<!-- STORY 02 -->
 
-<a href="poornachandran_ravu.html" class="story-card">
 
-<div class="number">
-        02
-</div>
-
-</h2>പൂർണ്ണചന്ദ്രന്റെ വെളിച്ചത്തിൽ ഒരു രാത്രി</h2>
-
-<p>
-ഒരു വിവാഹ രജിസ്ട്രേഷന്റെ ചെറിയ ആഘോഷമായി തുടങ്ങിയ
-ഒരു രാത്രി. സുഹൃത്തുക്കളുടെ കൂടിച്ചേരൽ, പഴയ ഓർമ്മകൾ,
-പുതിയ യാത്രകളുടെ സ്വപ്നങ്ങൾ, ചിരികൾ, സൗഹൃദം —
-ഒടുവിൽ പൂർണ്ണചന്ദ്രന്റെ വെളിച്ചത്തിൽ പതിഞ്ഞ ഒരു ഓർമ്മ.
-</p>
-
-<span class="read">
-ഓർമ്മയിലേക്ക് →
-</span>
-
-</a>
-
+    <!-- ===================================================
+         NOTE
+         =================================================== -->
 
     <div class="note">
+
         ചില ആഘോഷങ്ങൾ അവസാനിച്ചാലും,
-        അവയിൽ ജീവിച്ച നിമിഷങ്ങൾ നമ്മളിൽ തുടർന്നുകൊണ്ടിരിക്കും.
+        അവയിൽ ജീവിച്ച നിമിഷങ്ങൾ നമ്മളിൽ
+        തുടർന്നുകൊണ്ടിരിക്കും.
+
     </div>
+
 
 </main>
 
 
+
+<!-- =======================================================
+     FOOTER
+     ======================================================= -->
+
 <footer>
+
     © Paradise of Ross
+
 </footer>
 
 
 </body>
+
 </html>
