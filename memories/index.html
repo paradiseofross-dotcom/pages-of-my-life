@@ -2,158 +2,925 @@
 <html lang="ml">
 
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>ഓർമ്മകളുടെ താളുകളിലേക്ക് | Paradise of Ross</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<title>ഓർമ്മകളുടെ താളുകളിലേക്ക് | Paradise of Ross</title>
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700;900&display=swap"
-          rel="stylesheet">
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
 
-    <style>
+<link
+href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@400;500;600;700;900&display=swap"
+rel="stylesheet">
 
-        * {
-            box-sizing: border-box;
-        }
 
-        body {
-            margin: 0;
-            background: #101918;
-            color: #eeeeee;
-            font-family: "Noto Serif Malayalam", "Manjari", "Kartika", Georgia, serif;
-            font-size: 1.0625rem;
-            line-height: 1.9;
-        }
+<style>
 
-        .container {
-            max-width: 850px;
-            margin: auto;
-            padding: 60px 25px;
-        }
+/* =========================================================
+   ROOT
+========================================================= */
 
-        h1 {
-            font-size: clamp(1.9rem, 6vw, 2.6rem);
-            font-weight: 700;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
+:root {
 
-        .intro {
-            font-size: 1.15rem;
-            line-height: 2;
-            color: #c8d0cf;
-            margin-bottom: 35px;
-        }
+    --bg: #0b1817;
+    --bg2: #102522;
 
-        .category {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            background: #182523;
-            border-left: 3px solid #6fcbd8;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 18px;
+    --card: #162a27;
 
-            transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease;
-        }
+    --border: #29413d;
 
-        .category:hover {
-            transform: translateX(5px);
+    --cyan: #72d8df;
+    --pink: #d99caf;
 
-            box-shadow:
-                0 0 20px rgba(111, 203, 216, 0.15);
-        }
+    --text: #d8e3df;
+    --muted: #9cafaa;
+    --white: #f3f4ef;
 
-        .category h2 {
-            margin: 0 0 10px;
-            color: #eeeeee;
-            font-size: 1.45rem;
-            font-weight: 700;
-        }
+    --max: 800px;
+}
 
-        .category p {
-            margin: 0;
-            color: #c8d0cf;
-            line-height: 1.9;
-        }
 
-        .read-more {
-            display: inline-block;
-            margin-top: 12px;
-            color: #7bd1d8;
-            font-weight: 700;
-        }
+/* =========================================================
+   RESET
+========================================================= */
 
-    </style>
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(62, 132, 130, .12),
+            transparent 32rem
+        ),
+
+        radial-gradient(
+            circle at 90% 75%,
+            rgba(205, 140, 160, .08),
+            transparent 30rem
+        ),
+
+        var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size: 1.05rem;
+
+    line-height: 1.9;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+
+    height: 74px;
+
+    border-bottom:
+        1px solid
+        rgba(180, 220, 215, .12);
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+        rgba(11, 24, 23, .88);
+
+    backdrop-filter:
+        blur(10px);
+
+    position: relative;
+
+    z-index: 20;
+}
+
+
+.topbar-inner {
+
+    width:
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+
+    color:
+        var(--white);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size:
+        18px;
+
+    font-weight:
+        600;
+
+    white-space:
+        nowrap;
+}
+
+
+.brand::before {
+
+    content:
+        "◈";
+
+    color:
+        var(--pink);
+
+    margin-right:
+        9px;
+
+    font-size:
+        13px;
+}
+
+
+/* =========================================================
+   HEADER CONTROLS
+========================================================= */
+
+.header-controls {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        18px;
+}
+
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+.music {
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        999px;
+
+    padding:
+        6px 15px;
+
+    color:
+        var(--muted);
+
+    background:
+        transparent;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        13px;
+
+    cursor:
+        pointer;
+
+    transition:
+        border-color .25s ease,
+        color .25s ease,
+        background .25s ease;
+}
+
+
+.music:hover {
+
+    border-color:
+        var(--cyan);
+
+    color:
+        var(--cyan);
+}
+
+
+.music[aria-pressed="true"] {
+
+    border-color:
+        var(--cyan);
+
+    color:
+        var(--cyan);
+
+    background:
+        rgba(114,216,223,.04);
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+.home {
+
+    color:
+        var(--muted);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        14px;
+
+    white-space:
+        nowrap;
+
+    transition:
+        color .3s ease;
+}
+
+
+.home:hover {
+
+    color:
+        var(--cyan);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.container {
+
+    width:
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
+
+    margin:
+        auto;
+
+    padding:
+        90px 0
+        120px;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.eyebrow {
+
+    color:
+        var(--cyan);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .12em;
+
+    margin-bottom:
+        18px;
+}
+
+
+h1 {
+
+    margin:
+        0;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        clamp(
+            3rem,
+            8vw,
+            5.5rem
+        );
+
+    line-height:
+        1.08;
+
+    font-weight:
+        700;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            #d5d6d2,
+            var(--pink)
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+
+/* =========================================================
+   INTRO TEXT
+========================================================= */
+
+.intro {
+
+    max-width:
+        680px;
+
+    margin:
+        30px 0 22px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.95;
+}
+
+
+.intro:last-of-type {
+
+    margin-bottom:
+        65px;
+}
+
+
+/* =========================================================
+   CATEGORY CARDS
+========================================================= */
+
+.category {
+
+    display:
+        block;
+
+    position:
+        relative;
+
+    text-decoration:
+        none;
+
+    color:
+        inherit;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.025),
+            rgba(255,255,255,.005)
+        ),
+
+        var(--card);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-left:
+        3px solid
+        var(--cyan);
+
+    border-radius:
+        12px;
+
+    padding:
+        34px 38px
+        32px;
+
+    margin-bottom:
+        24px;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.category:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(114,216,223,.65);
+
+    box-shadow:
+
+        0 20px 60px
+        rgba(0,0,0,.28),
+
+        0 0 35px
+        rgba(114,216,223,.05);
+}
+
+
+/* =========================================================
+   CATEGORY TITLE
+========================================================= */
+
+.category h2 {
+
+    margin:
+        0 0 12px;
+
+    color:
+        var(--white);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        clamp(
+            1.8rem,
+            4vw,
+            2.3rem
+        );
+
+    line-height:
+        1.35;
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   CATEGORY DESCRIPTION
+========================================================= */
+
+.category p {
+
+    margin:
+        0 0 20px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        "Noto Serif Malayalam",
+        serif;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.85;
+}
+
+
+/* =========================================================
+   READ MORE
+========================================================= */
+
+.read-more {
+
+    display:
+        inline-block;
+
+    color:
+        var(--cyan);
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        16px;
+
+    font-weight:
+        600;
+
+    transition:
+        transform .3s ease;
+}
+
+
+.category:hover .read-more {
+
+    transform:
+        translateX(6px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    width:
+        min(
+            var(--max),
+            calc(100% - 40px)
+        );
+
+    margin:
+        auto;
+
+    padding:
+        30px 0
+        50px;
+
+    border-top:
+        1px solid
+        rgba(180,220,215,.08);
+
+    color:
+        #657873;
+
+    font-family:
+        "Anek Malayalam",
+        sans-serif;
+
+    font-size:
+        13px;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .topbar {
+
+        height:
+            64px;
+    }
+
+
+    .topbar-inner {
+
+        width:
+            calc(100% - 28px);
+
+        gap:
+            10px;
+    }
+
+
+    .brand {
+
+        font-size:
+            16px;
+    }
+
+
+    .header-controls {
+
+        gap:
+            8px;
+    }
+
+
+    .music {
+
+        padding:
+            6px 11px;
+
+        font-size:
+            11px;
+    }
+
+
+    .home {
+
+        font-size:
+            12px;
+    }
+
+
+    .container {
+
+        width:
+            calc(100% - 28px);
+
+        padding:
+            65px 0
+            90px;
+    }
+
+
+    h1 {
+
+        font-size:
+            3.2rem;
+    }
+
+
+    .intro {
+
+        font-size:
+            16px;
+
+        line-height:
+            1.85;
+    }
+
+
+    .intro:last-of-type {
+
+        margin-bottom:
+            48px;
+    }
+
+
+    .category {
+
+        padding:
+            28px 26px
+            30px;
+
+        margin-bottom:
+            20px;
+    }
+
+
+    .category h2 {
+
+        font-size:
+            1.8rem;
+    }
+
+
+    .category p {
+
+        font-size:
+            16px;
+
+        line-height:
+            1.8;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior:
+            auto;
+    }
+
+
+    .category,
+    .read-more,
+    .music,
+    .home {
+
+        transition:
+            none;
+    }
+
+}
+
+</style>
 
 </head>
 
+
 <body>
 
-<div class="container">
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header class="topbar">
+
+    <div class="topbar-inner">
+
+
+        <!-- BRAND -->
+
+        <a
+            href="../index.html"
+            class="brand"
+        >
+            Paradise of Ross
+        </a>
+
+
+        <!-- HEADER CONTROLS -->
+
+        <div class="header-controls">
+
+
+            <!-- MUSIC -->
+
+            <button
+                class="music"
+                id="music"
+                type="button"
+                aria-pressed="false"
+            >
+                Play music
+            </button>
+
+
+            <!-- MAIN PAGE -->
+
+            <a
+                href="../index.html"
+                class="home"
+            >
+                മുഖ്യപേജ്
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =======================================================
+     MAIN CONTENT
+======================================================= -->
+
+<main class="container">
+
+
+    <!-- ===================================================
+         INTRO
+    =================================================== -->
+
+    <div class="eyebrow">
+        PARADISE OF ROSS
+    </div>
+
 
     <h1>
         ഓർമ്മകളുടെ താളുകളിലേക്ക്
     </h1>
 
+
     <p class="intro">
+
         ജീവിതത്തിന്റെ വിവിധ കാലങ്ങളിലൂടെ കടന്നുപോകുമ്പോൾ
         മനസ്സിൽ പതിഞ്ഞ ചില മനുഷ്യരും സംഭവങ്ങളും
         യാത്രകളും വേർപാടുകളും ഇവിടെ സൂക്ഷിക്കുന്നു.
         കാലം കടന്നുപോയാലും മറക്കാതിരിക്കേണ്ട
         ചില നിമിഷങ്ങൾ വീണ്ടും വായിക്കാനും ഓർക്കാനും
         ഇവിടെ കാത്തിരിക്കുന്നു.
+
     </p>
 
+
     <p class="intro">
+
         ഇവയിൽ നിങ്ങൾക്ക് പരിചിതമായ ഒരു ഓർമ്മയുണ്ടാകാം.
         ഒരുപക്ഷേ, നിങ്ങളും ഒരിക്കൽ അതിന്റെ ഭാഗമായിരുന്നിരിക്കാം.
         വായിക്കുക, ഓർക്കുക, ഇഷ്ടപ്പെട്ടാൽ വീണ്ടും വരിക.
+
     </p>
 
 
-    <!-- ഓർമ്മകൾ -->
 
-   <!-- ഓർമ്മകൾ -->
+    <!-- ===================================================
+         ഓർമ്മകൾ
+    =================================================== -->
 
-<a class="category" href="ormakal.html">
+    <a
+        class="category"
+        href="ormakal.html"
+    >
 
-    <h2>ഓർമ്മകൾ</h2>
+        <h2>
+            ഓർമ്മകൾ
+        </h2>
 
-    <p>
-        കാലം കടന്നുപോയിട്ടും മനസ്സിൽ മായാതെ
-        നിൽക്കുന്ന മനുഷ്യരും ഇടങ്ങളും നിമിഷങ്ങളും —
-        ഒരിക്കൽ കൂടി അവരിലേക്കും ആ ദിവസങ്ങളിലേക്കും.
-    </p>
-
-    <span class="read-more">
-        ഓർമ്മകളിലേക്ക് →
-    </span>
-
-</a>        
-
-
-    <!-- യാത്രകൾ -->
-
-    <a class="category" href="travel.html">
-
-        <h2>യാത്രകൾ</h2>
 
         <p>
+
+            കാലം കടന്നുപോയിട്ടും മനസ്സിൽ മായാതെ
+            നിൽക്കുന്ന മനുഷ്യരും ഇടങ്ങളും നിമിഷങ്ങളും —
+            ഒരിക്കൽ കൂടി അവരിലേക്കും ആ ദിവസങ്ങളിലേക്കും.
+
+        </p>
+
+
+        <span class="read-more">
+            ഓർമ്മകളിലേക്ക് →
+        </span>
+
+    </a>
+
+
+
+    <!-- ===================================================
+         യാത്രകൾ
+    =================================================== -->
+
+    <a
+        class="category"
+        href="../travel/index.html"
+    >
+
+        <h2>
+            യാത്രകൾ
+        </h2>
+
+
+        <p>
+
             യാത്രകളിൽ കണ്ട കാഴ്ചകളും അനുഭവങ്ങളും
             മനസ്സിൽ പതിഞ്ഞ വഴികളിലെ കഥകളും.
+
         </p>
+
 
         <span class="read-more">
             യാത്രകളിലേക്ക് →
@@ -162,16 +929,28 @@
     </a>
 
 
-    <!-- ആഘോഷങ്ങൾ -->
 
-    <a class="category" href="celebrations.html">
+    <!-- ===================================================
+         ആഘോഷങ്ങൾ
+    =================================================== -->
 
-        <h2>ആഘോഷങ്ങൾ</h2>
+    <a
+        class="category"
+        href="../celebrations/index.html"
+    >
+
+        <h2>
+            ആഘോഷങ്ങൾ
+        </h2>
+
 
         <p>
+
             കുടുംബത്തോടും സുഹൃത്തുക്കളോടും ചേർന്ന്
             പങ്കിട്ട സന്തോഷ നിമിഷങ്ങളും ആഘോഷങ്ങളും.
+
         </p>
+
 
         <span class="read-more">
             ആഘോഷങ്ങളിലേക്ക് →
@@ -180,16 +959,28 @@
     </a>
 
 
-    <!-- വേർപാടുകൾ -->
 
-    <a class="category" href="separations.html">
+    <!-- ===================================================
+         വേർപാടുകൾ
+    =================================================== -->
 
-        <h2>വേർപാടുകൾ</h2>
+    <a
+        class="category"
+        href="separations.html"
+    >
+
+        <h2>
+            വേർപാടുകൾ
+        </h2>
+
 
         <p>
+
             ജീവിതത്തിൽ ഒരിക്കൽ നമ്മോടൊപ്പം ഉണ്ടായിരുന്ന
             ചില മനുഷ്യരെ ഓർമ്മയിൽ വീണ്ടും കണ്ടുമുട്ടുന്ന കുറിപ്പുകൾ.
+
         </p>
+
 
         <span class="read-more">
             ഓർമ്മകളിലേക്ക് →
@@ -197,7 +988,577 @@
 
     </a>
 
-</div>
+
+</main>
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+    © Paradise of Ross
+
+</footer>
+
+
+
+<!-- =======================================================
+     PARADISE OF ROSS PIANO
+======================================================= -->
+
+<script>
+
+(function () {
+
+    const btn =
+        document.getElementById("music");
+
+    let ctx = null;
+
+    let master = null;
+
+    let convolver = null;
+
+    let timer = null;
+
+    let step = 0;
+
+    let next = 0;
+
+    let playing = false;
+
+
+    /* =====================================================
+       CHORD PROGRESSION
+    ===================================================== */
+
+    const chords = [
+
+        [48, 55, 60, 64, 67],
+
+        [45, 52, 57, 60, 64],
+
+        [41, 48, 57, 60, 65],
+
+        [43, 50, 59, 62, 67]
+
+    ];
+
+
+    /* =====================================================
+       ARPEGGIO
+    ===================================================== */
+
+    const arp = [
+        0, 2, 3, 2,
+        4, 3, 2, 1
+    ];
+
+
+    /* =====================================================
+       MELODY
+    ===================================================== */
+
+    const melody = [
+        72, 74, 76, 79,
+        81, 79, 76, 74
+    ];
+
+
+    const STEP = 0.75;
+
+
+    /* =====================================================
+       AUDIO SETUP
+    ===================================================== */
+
+    function setupAudio() {
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+
+        if (!AudioContext) {
+
+            alert(
+                "Your browser does not support Web Audio."
+            );
+
+            return false;
+        }
+
+
+        ctx =
+            new AudioContext();
+
+
+        master =
+            ctx.createGain();
+
+
+        master.gain.value =
+            0;
+
+
+        /* =================================================
+           REVERB
+        ================================================= */
+
+        convolver =
+            ctx.createConvolver();
+
+
+        const length =
+            ctx.sampleRate * 3;
+
+
+        const impulse =
+            ctx.createBuffer(
+                2,
+                length,
+                ctx.sampleRate
+            );
+
+
+        for (
+            let channel = 0;
+            channel < 2;
+            channel++
+        ) {
+
+            const data =
+                impulse.getChannelData(
+                    channel
+                );
+
+
+            for (
+                let i = 0;
+                i < length;
+                i++
+            ) {
+
+                data[i] =
+                    (Math.random() * 2 - 1)
+                    *
+                    Math.pow(
+                        1 - i / length,
+                        2.5
+                    );
+
+            }
+
+        }
+
+
+        convolver.buffer =
+            impulse;
+
+
+        const wet =
+            ctx.createGain();
+
+
+        const dry =
+            ctx.createGain();
+
+
+        wet.gain.value =
+            0.5;
+
+
+        dry.gain.value =
+            0.7;
+
+
+        master.connect(
+            dry
+        );
+
+
+        dry.connect(
+            ctx.destination
+        );
+
+
+        master.connect(
+            convolver
+        );
+
+
+        convolver.connect(
+            wet
+        );
+
+
+        wet.connect(
+            ctx.destination
+        );
+
+
+        return true;
+
+    }
+
+
+
+    /* =====================================================
+       PIANO NOTE
+    ===================================================== */
+
+    function playNote(
+        midi,
+        time,
+        volume
+    ) {
+
+        const frequency =
+            440 *
+            Math.pow(
+                2,
+                (midi - 69) / 12
+            );
+
+
+        const filter =
+            ctx.createBiquadFilter();
+
+
+        filter.type =
+            "lowpass";
+
+
+        filter.frequency.value =
+            2200;
+
+
+        filter.connect(
+            master
+        );
+
+
+        const harmonics = [
+
+            [1, 1],
+
+            [2, .35],
+
+            [3, .1]
+
+        ];
+
+
+        harmonics.forEach(
+            function (part, index) {
+
+                const oscillator =
+                    ctx.createOscillator();
+
+
+                const gain =
+                    ctx.createGain();
+
+
+                const duration =
+                    3.8 /
+                    (1 + index * .7);
+
+
+                oscillator.type =
+                    "sine";
+
+
+                oscillator.frequency.value =
+                    frequency *
+                    part[0];
+
+
+                gain.gain.setValueAtTime(
+                    0,
+                    time
+                );
+
+
+                gain.gain.linearRampToValueAtTime(
+                    volume *
+                    part[1],
+                    time + .04
+                );
+
+
+                gain.gain.exponentialRampToValueAtTime(
+                    .0005,
+                    time + duration
+                );
+
+
+                oscillator.connect(
+                    gain
+                );
+
+
+                gain.connect(
+                    filter
+                );
+
+
+                oscillator.start(
+                    time
+                );
+
+
+                oscillator.stop(
+                    time +
+                    duration +
+                    .1
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SCHEDULE MUSIC
+    ===================================================== */
+
+    function schedule() {
+
+        while (
+            next <
+            ctx.currentTime + 1.5
+        ) {
+
+            const bar =
+                Math.floor(
+                    step / 8
+                ) % 4;
+
+
+            const position =
+                step % 8;
+
+
+            const chord =
+                chords[bar];
+
+
+            /* ARPEGGIO */
+
+            playNote(
+
+                chord[
+                    arp[position]
+                ],
+
+                next,
+
+                .16
+
+            );
+
+
+            /* BASS */
+
+            if (
+                position === 0
+            ) {
+
+                playNote(
+
+                    chord[0] - 12,
+
+                    next,
+
+                    .20
+
+                );
+
+            }
+
+
+            /* MELODY */
+
+            if (
+                position % 4 === 0 &&
+                Math.random() < .7
+            ) {
+
+                const note =
+                    melody[
+                        Math.floor(
+                            Math.random() *
+                            melody.length
+                        )
+                    ];
+
+
+                playNote(
+
+                    note,
+
+                    next +
+                    STEP * .5,
+
+                    .08
+
+                );
+
+            }
+
+
+            next +=
+                STEP;
+
+
+            step++;
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       START MUSIC
+    ===================================================== */
+
+    async function startMusic() {
+
+        if (!ctx) {
+
+            if (!setupAudio()) {
+                return;
+            }
+
+        }
+
+
+        await ctx.resume();
+
+
+        playing =
+            true;
+
+
+        master.gain
+            .cancelScheduledValues(
+                ctx.currentTime
+            );
+
+
+        master.gain
+            .linearRampToValueAtTime(
+                .9,
+                ctx.currentTime + 2.5
+            );
+
+
+        next =
+            ctx.currentTime + .1;
+
+
+        schedule();
+
+
+        timer =
+            setInterval(
+                schedule,
+                250
+            );
+
+
+        btn.textContent =
+            "Pause music";
+
+
+        btn.setAttribute(
+            "aria-pressed",
+            "true"
+        );
+
+    }
+
+
+
+    /* =====================================================
+       STOP MUSIC
+    ===================================================== */
+
+    function stopMusic() {
+
+        if (!ctx) {
+            return;
+        }
+
+
+        playing =
+            false;
+
+
+        clearInterval(
+            timer
+        );
+
+
+        master.gain
+            .cancelScheduledValues(
+                ctx.currentTime
+            );
+
+
+        master.gain
+            .linearRampToValueAtTime(
+                0,
+                ctx.currentTime + 1
+            );
+
+
+        btn.textContent =
+            "Play music";
+
+
+        btn.setAttribute(
+            "aria-pressed",
+            "false"
+        );
+
+    }
+
+
+
+    /* =====================================================
+       BUTTON
+    ===================================================== */
+
+    btn.addEventListener(
+        "click",
+        function () {
+
+            if (playing) {
+
+                stopMusic();
+
+            } else {
+
+                startMusic();
+
+            }
+
+        }
+    );
+
+})();
+
+</script>
+
 
 </body>
+
 </html>
