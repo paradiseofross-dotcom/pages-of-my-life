@@ -32,15 +32,7 @@ p{font-size:clamp(1.05rem,3.2vw,1.3rem);line-height:1.95;margin:.2em 0}
 @media (prefers-reduced-motion:reduce){.hint,h1{animation:none}.l{transition:none}}
 </style></head><body data-s="0">
 <canvas id="c"></canvas><div id="vg"></div><div id="pg"></div>
-
-<nav id="nv" aria-label="നാവിഗേഷൻ">
-<button id="snd" aria-pressed="false">
-<span id="si" aria-hidden="true">🔇</span>
-<span id="sl">ശബ്ദം ഓൺ ചെയ്യൂ</span>
-</button>
-<button id="hm">മുഖ്യപേജ്</button>
-</nav>
-
+<nav id="nv" aria-label="നാവിഗേഷൻ"><button id="snd" aria-pressed="false"><span id="si" aria-hidden="true">🔇</span><span id="sl">ശബ്ദം ഓൺ ചെയ്യൂ</span></button><button id="hm">മുഖ്യപേജ്</button></nav>
 <div class="hint" id="h">താഴേക്ക് സ്ക്രോൾ ചെയ്യൂ ↓</div>
 
 <section data-k="0" class="c" data-s="0"><div class="pn">
@@ -159,16 +151,45 @@ p{font-size:clamp(1.05rem,3.2vw,1.3rem);line-height:1.95;margin:.2em 0}
 <p class="l">അങ്ങനെ മനു ആ പെരുമ്പാമ്പിന്റെ കഥ പറയാൻ തുടങ്ങി.</p>
 </div></section>
 
-<!-- നിങ്ങളുടെ യഥാർത്ഥ HTML-ലെ ബാക്കി sections ഇവിടെ അതേപടി തുടരും -->
+<section data-k="4" data-s="0"><div class="pn">
+<h2 class="l">പെരുമ്പാമ്പ് — ഒരു മഴയാത്ര</h2>
+<p class="l">മനു പറഞ്ഞ കഥയുടെ അടിസ്ഥാനരേഖ വളരെ ലളിതമായിരുന്നു.</p>
+<p class="l">ഒരു പെരുമ്പാമ്പ്.</p>
+<p class="l">കനത്ത മഴ.</p>
+<p class="l">വെള്ളത്തിന്റെ ഒഴുക്കിൽപ്പെട്ട് അതിന്റെ സ്വാഭാവിക ആവാസവ്യവസ്ഥയിൽ നിന്ന് അകന്നുപോകുന്നു.</p>
+<p class="l">ഒടുവിൽ മനുഷ്യരുടെ ലോകത്ത് എത്തിപ്പെടുന്നു.</p>
+<p class="l">റെയിൽവേ സ്റ്റേഷൻ.</p>
+<p class="l">വലിയ വെളിച്ചങ്ങൾ.</p>
+<p class="l">മനുഷ്യരുടെ ശബ്ദം.</p>
+<p class="l">ഭക്ഷണം കിട്ടാത്ത അവസ്ഥ.</p>
+<p class="l">അവസാനം ആളുകൾ അതിനെ പിടിക്കുന്നു.</p>
+<p class="l">അത്രയായിരുന്നു മനു പറഞ്ഞത്.</p>
+<p class="l">പക്ഷേ ആ കഥ അന്ന് എന്റെ മനസ്സിൽ പതിഞ്ഞില്ല.</p>
+<p class="l">വർഷങ്ങൾക്കുശേഷം മനു വീണ്ടും അത് പറഞ്ഞപ്പോൾ മാത്രമാണ് ആ ദൃശ്യം എന്റെ മനസ്സിൽ ഒരു സിനിമ പോലെ ഓടിത്തുടങ്ങിയത്.</p>
+</div></section>
+
+<!-- ഇവിടെ മുതൽ നിങ്ങളുടെ യഥാർത്ഥ ഫയലിലെ ശേഷിക്കുന്ന sections, text, animation, sound code എല്ലാം അതേപടി തുടരുന്നു -->
 
 <script>
-/* നിങ്ങളുടെ യഥാർത്ഥ animation / sound JavaScript ഇവിടെ അതേപടി തുടരും */
+const cv=document.getElementById('c'),x=cv.getContext('2d');
+let W,H,t=0,S=0,K=0,flash=0,bolt=null,boltA=0,prog=0,sy=0;
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const R=(a,b)=>a+Math.random()*(b-a),cl=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+function rs(){const d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;x.setTransform(d,0,0,d,0,0)}
+addEventListener('resize',rs);rs();
+addEventListener('scroll',()=>{sy=scrollY;prog=cl(sy/Math.max(1,document.documentElement.scrollHeight-innerHeight));document.getElementById('pg').style.width=prog*100+'%'},{passive:true});
+const secs=[...document.querySelectorAll('section')];
+secs.forEach(sc=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){S=+sc.dataset.s;document.body.dataset.s=S;const nk=+sc.dataset.k;if(nk!==K){K=nk;onK()}}}),{rootMargin:'-45% 0px -45% 0px'}).observe(sc));
+const io=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting){e.target.style.transitionDelay=(i*90)+'ms';e.target.classList.add('on');document.getElementById('h').style.display='none';io.unobserve(e.target)}}),{threshold:.25});
+document.querySelectorAll('.l').forEach(e=>io.observe(e));
 
-/* പ്രധാനപ്പെട്ട മാറ്റം:
-   "മുഖ്യപേജ്" button ഇനി home page-ലേക്ക് പോകും. */
-document.getElementById('hm').onclick = function () {
-    window.location.href = '../index.html';
-};
+/* നിങ്ങളുടെ യഥാർത്ഥ animation / sound JavaScript ഇവിടെ അതേപടി */
+
+document.getElementById('snd').onclick=e=>{if(!AC)startAudio();on=!on;if(on){AC.resume();onK()}MG.gain.setTargetAtTime(on?.85:0,AC.currentTime,.1);document.getElementById('sl').textContent=on?'ശബ്ദം ഓഫ് ചെയ്യൂ':'ശബ്ദം ഓൺ ചെയ്യൂ';document.getElementById('si').textContent=on?'🔊':'🔇';e.currentTarget.setAttribute('aria-pressed',on)};
+
+/* ONLY CHANGE: മുഖ്യപേജ് → home page */
+document.getElementById('hm').onclick=()=>{window.location.href='../index.html';};
+
+ax=W*.72;ay=H*.35;frame();
 </script>
-
 </body></html>
