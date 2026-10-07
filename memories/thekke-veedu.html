@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>വേലിക്കപ്പുറത്തെ തെക്കേ വീട്</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700;900&family=Noto+Sans+Malayalam:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#d6e6cf;--bg2:#c4dbbb;--ink:#35241c;--soft:#5c4a3f;--gold:#d9961a;--pink:#c23b6e;--blue:#2d4a8c;--door:#6b3f26;--card:#eef5e9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d2a22;--bg2:#16211a;--ink:#f1e8d6;--soft:#c9bba3;--card:#26362c;--door:#8a5434}}
+:root[data-theme="dark"]{--bg:#1d2a22;--bg2:#16211a;--ink:#f1e8d6;--soft:#c9bba3;--card:#26362c;--door:#8a5434}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font:400 1.1rem/2 'Noto Serif Malayalam',serif;overflow-x:hidden}
+#dots{position:fixed;inset:0;z-index:0;pointer-events:none}
+.hero{position:relative;height:100vh;height:100svh;display:grid;place-items:center;text-align:center;overflow:hidden;z-index:1}
+.hero h1{font-weight:900;font-size:clamp(2.2rem,9vw,5.5rem);line-height:1.35;padding:0 1.5rem;opacity:0;animation:rise 1.4s 1.6s forwards}
+.hero p{position:absolute;bottom:12%;left:0;right:0;font:500 1rem 'Noto Sans Malayalam',sans-serif;color:var(--soft);opacity:0;animation:rise 1s 2.6s forwards}
+.hero p::after{content:"";display:block;width:2px;height:48px;margin:14px auto 0;background:var(--gold);animation:drip 1.8s 3s infinite}
+.panel{position:absolute;top:0;bottom:0;width:50%;background:repeating-linear-gradient(90deg,var(--door) 0 38px,#00000022 38px 40px);z-index:3;display:grid;align-content:center;animation-duration:2.2s;animation-delay:.5s;animation-timing-function:cubic-bezier(.7,0,.2,1);animation-fill-mode:forwards}
+.panel::after{content:"";position:absolute;top:50%;width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px #0003}
+.pl{left:0;transform-origin:left;animation-name:oL}.pl::after{right:18px}
+.pr{right:0;transform-origin:right;animation-name:oR}.pr::after{left:18px}
+@keyframes oL{to{transform:perspective(900px) rotateY(-100deg);opacity:0}}
+@keyframes oR{to{transform:perspective(900px) rotateY(100deg);opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+main{position:relative;z-index:1;max-width:44rem;margin:0 auto;padding:0 1.4rem 6rem}
+.ch{padding:4.5rem 0 1rem}
+.ch h2{font-weight:900;font-size:clamp(1.6rem,5vw,2.3rem);line-height:1.5;margin-bottom:1.2rem;display:inline;background:linear-gradient(transparent 62%,color-mix(in srgb,var(--gold) 45%,transparent) 0) no-repeat;background-size:0 100%;transition:background-size 1.2s .2s}
+.ch.in h2{background-size:100% 100%}
+.ch p{margin:1.1rem 0;opacity:0;transform:translateY(14px);transition:opacity .9s,transform .9s}
+.ch.in p{opacity:1;transform:none}
+.ch.in p:nth-of-type(2){transition-delay:.15s}.ch.in p:nth-of-type(3){transition-delay:.3s}.ch.in p:nth-of-type(4){transition-delay:.45s}
+.call{font-family:'Noto Sans Malayalam',sans-serif;font-weight:500;font-size:clamp(1.5rem,6vw,2.4rem);color:var(--pink);margin:1.8rem 0;display:block;animation:sway 3s ease-in-out infinite}
+@keyframes sway{50%{transform:translateX(10px) rotate(.8deg)}}
+.log{display:block;width:100%;max-width:300px;height:46px;margin:1.5rem 0;border-radius:23px;background:repeating-linear-gradient(90deg,#8a5a36 0 18px,#7a4c2c 18px 20px);position:relative;box-shadow:inset 0 -8px #0002}
+.log::before{content:"";position:absolute;right:-6px;top:0;width:46px;height:46px;border-radius:50%;background:radial-gradient(#c89b6a 0 20%,#a67647 21% 40%,#c89b6a 41% 60%,#8a5a36 61%)}
+.saw{position:absolute;width:5px;height:5px;border-radius:50%;background:#c89b6a;animation:fall 3s infinite ease-in}
+@keyframes fall{from{transform:translateY(-4px);opacity:1}to{transform:translateY(60px) translateX(14px);opacity:0}}
+.ticket{display:inline-block;background:var(--gold);color:#35241c;font:700 1.1rem 'Noto Sans Malayalam',sans-serif;padding:.4rem 1.6rem;margin:.6rem 0;border-radius:4px;position:relative;transform:rotate(-2deg);-webkit-mask:radial-gradient(circle 8px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 8px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 8px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 8px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+.names{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0}
+.names span{font:500 .95rem 'Noto Sans Malayalam',sans-serif;padding:.3rem 1rem;border-radius:99px;background:var(--card);border:2px solid var(--c);color:var(--ink)}
+.q{margin:3rem 0;padding:1.6rem 1.8rem;background:var(--card);border-left:6px solid var(--blue);font-weight:700;font-size:1.25rem;line-height:1.9}
+.fin{position:relative;z-index:1;text-align:center;padding:7rem 1.4rem 9rem;background:linear-gradient(var(--bg),var(--bg2))}
+.fin .lines p{opacity:0;transform:translateY(12px);transition:.8s}
+.fin.in .lines p{opacity:1;transform:none}
+.fin h2{font-size:clamp(1.8rem,6vw,3rem);font-weight:900;margin:3rem 0 1rem;line-height:1.5}
+.gate{width:140px;height:190px;margin:2.5rem auto;position:relative;perspective:700px}
+.gate i{position:absolute;top:0;width:50%;height:100%;background:repeating-linear-gradient(90deg,var(--door) 0 14px,#0003 14px 15px);transition:transform 2.4s cubic-bezier(.6,0,.2,1)}
+.gate i:first-child{left:0;transform-origin:left}.gate i:last-child{right:0;transform-origin:right}
+.gate::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,#ffe9a8,var(--gold) 60%,#0000 100%);filter:blur(4px)}
+.fin.in .gate i:first-child{transform:rotateY(-110deg)}.fin.in .gate i:last-child{transform:rotateY(110deg)}
+.fin>p,.fin>.q,.fin>.call{opacity:0;transform:translateY(12px);transition:.8s}.fin.in>p,.fin.in>.q,.fin.in>.call{opacity:1;transform:none}.fin>.q{text-align:left}.sub{font-weight:700;font-size:1.3rem;line-height:1.6;color:var(--pink);margin:2.2rem 0 .6rem}
+.coin{display:flex;flex-direction:column;align-items:center;justify-content:center;width:84px;height:84px;margin:1.4rem auto;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f3d77a,var(--gold) 60%,#a8710f);color:#35241c;font:800 1.7rem/1 'Noto Sans Malayalam',sans-serif;box-shadow:inset 0 0 0 4px #0002,0 6px 14px #0003;animation:flip 3.2s ease-in-out infinite}
+.coin small{font-size:.65rem;font-weight:700;margin-top:2px}
+@keyframes flip{0%,60%,100%{transform:rotateY(0)}80%{transform:rotateY(360deg)}}
+.small{font:400 .95rem 'Noto Sans Malayalam',sans-serif;color:var(--soft);margin-top:3rem}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important;transition-duration:.01s!important}}
+
+.ico{display:inline-block;margin-left:.6rem;font-size:1.7rem;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(10deg)}}
+.anim{opacity:0;transition:opacity 1s}.anim.in{opacity:1}
+[data-tap]{cursor:pointer}
+.sky{position:relative;height:96px;margin:1.4rem 0;overflow:hidden;border-radius:14px;background:linear-gradient(#9fd0ee,var(--card))}
+.sky span{position:absolute;font-size:2rem;bottom:6px;animation:kite 6s ease-in-out infinite}
+@keyframes kite{0%,100%{transform:translate(0,0) rotate(-12deg)}50%{transform:translate(26px,-48px) rotate(12deg)}}
+.sky .bd{bottom:auto;animation:fly 9s linear infinite}
+.sky .hl{bottom:auto;top:26px;animation:fly 8s linear infinite}
+@keyframes fly{from{left:-12%}to{left:104%}}
+.field{position:relative;height:84px;margin:1.4rem 0;overflow:hidden;border-radius:14px;background:linear-gradient(#d3b277,#a98450)}
+.field .water{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(#5aa0d0,#2d6ea6);animation:flood 7s ease-in-out infinite alternate}
+@keyframes flood{to{height:100%}}
+.fish{position:absolute;top:30%;font-size:1.6rem;animation:swim 7s linear infinite alternate}
+@keyframes swim{from{left:4%;transform:scaleX(-1)}to{left:82%}}
+.night{position:relative;height:120px;margin:1.4rem 0;border-radius:14px;background:#0b1712;display:grid;place-items:center;overflow:hidden}
+.night span{position:absolute;bottom:8px;right:22%;font-size:2.2rem;animation:hop 2.6s infinite}
+@keyframes hop{0%,70%,100%{transform:none}80%{transform:translateY(-18px)}}
+.lamp{display:block;width:130px;height:130px;border-radius:50%;background:radial-gradient(#fff7c8 0 12%,#ffd45c 30%,#0000 70%);animation:flick .9s infinite alternate}
+@keyframes flick{from{opacity:.75;transform:scale(.95)}to{opacity:1;transform:scale(1.05)}}
+.boat{height:70px;margin:1.2rem 0;border-radius:14px;overflow:hidden;position:relative;background:linear-gradient(#bfe0f0,#4f93c4)}
+.boat span{position:absolute;bottom:6px;font-size:2.2rem;animation:row 10s linear infinite}
+@keyframes row{from{left:-10%}to{left:100%}}
+.clap{display:inline-block;margin:1rem 0;background:#1d1d1d;color:#fff;font:700 1.05rem 'Noto Sans Malayalam',sans-serif;padding:.7rem 1.4rem;border-radius:0 0 8px 8px;position:relative}
+.clap b{position:absolute;left:0;right:0;top:-14px;height:14px;background:repeating-linear-gradient(110deg,#fff 0 12px,#1d1d1d 12px 24px);transform-origin:left bottom;animation:snap 3s infinite}
+@keyframes snap{0%,70%,100%{transform:rotate(-24deg)}80%{transform:none}}
+.road{position:relative;height:60px;margin:1rem 0;border-bottom:3px dashed var(--soft);overflow:hidden}
+.road span{position:absolute;bottom:3px;font-size:2.3rem;transform:scaleX(-1);animation:ride 6s linear infinite}
+@keyframes ride{from{left:-12%}to{left:100%}}
+.bang{display:block;font:900 2.2rem 'Noto Sans Malayalam',sans-serif;color:var(--pink);text-align:center;animation:pop 1.6s infinite}
+@keyframes pop{50%{transform:scale(1.25) rotate(-4deg)}}
+.ch.in .crash{animation:shake .6s 1s}
+@keyframes shake{25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-5px)}}
+.reel{height:36px;margin:1.2rem 0;border-radius:4px;background:repeating-linear-gradient(90deg,#d9961a 0 28px,#222 28px 36px);background-size:36px 100%;animation:strip 1.4s linear infinite}
+@keyframes strip{to{background-position:36px 0}}
+.bulb{width:56px;height:56px;margin:1.2rem auto;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#bfe3ff 45%,#5aa0d0);box-shadow:0 0 22px #bfe3ff;position:relative;overflow:hidden}
+.bulb i{position:absolute;left:-30%;right:-30%;bottom:-60%;height:100%;border-radius:40%;background:#2d6ea6aa;animation:wave 3s linear infinite}
+@keyframes wave{to{transform:rotate(360deg)}}
+.sun{font-size:3rem;text-align:center;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.proj{display:flex;align-items:center;height:120px;margin:1.5rem 0}
+.proj .box{width:58px;height:46px;flex:none;background:#8a6a45;border-radius:6px}
+.proj .beam{flex:1;height:100%;background:linear-gradient(90deg,#fff3b0cc,#fff3b033);clip-path:polygon(0 42%,100% 0,100% 100%,0 58%);animation:fl .15s infinite alternate}
+@keyframes fl{to{opacity:.7}}
+.proj .wall{position:relative;width:96px;height:100%;flex:none;background:#f4f0e6;border-radius:6px;box-shadow:0 0 18px #fff6;display:grid;place-items:center}
+.proj .wall span{position:absolute;font-size:2.6rem;opacity:0;animation:frm 6s infinite}
+@keyframes frm{0%{opacity:0}5%,28%{opacity:1}33%,100%{opacity:0}}
+.tools{position:fixed;right:14px;top:calc(14px + env(safe-area-inset-top,0px));z-index:20;display:flex;gap:8px;align-items:center}
+#snd,#home{text-decoration:none;display:inline-block;white-space:nowrap;border:0;border-radius:99px;padding:.6rem 1.1rem;background:var(--gold);color:#35241c;font:700 .95rem 'Noto Sans Malayalam',sans-serif;box-shadow:0 4px 14px #0004;cursor:pointer}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important}}
+.talk{display:flex;flex-direction:column;gap:.7rem;margin:1.3rem 0}
+.talk span{align-self:flex-start;background:var(--card);border:2px solid var(--pink);border-radius:18px 18px 18px 4px;padding:.3rem 1.2rem;font:700 1.25rem 'Noto Sans Malayalam',sans-serif;position:relative}
+.talk .b2{align-self:flex-end;border-color:var(--blue);border-radius:18px 18px 4px 18px}
+.talk s{color:var(--soft);text-decoration-color:var(--pink);text-decoration-thickness:3px;animation:strk 5s infinite}
+.talk em{font-style:normal;color:var(--pink);animation:fix 5s infinite}
+.talk .b2 em{color:var(--blue)}
+.talk .b2 s,.talk .b2 em{animation-delay:.8s}
+@keyframes strk{0%,35%{text-decoration-line:none}45%,100%{text-decoration-line:line-through}}
+@keyframes fix{0%,40%{opacity:0;transform:scale(.6)}55%,100%{opacity:1;transform:none}}
+.cane{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.2rem 0}
+.cane span{font-size:2.6rem;transform-origin:bottom;animation:sway 3s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(14deg)}}
+.cane b{background:var(--gold);color:#35241c;border-radius:99px;padding:.2rem .9rem;font:700 1rem 'Noto Sans Malayalam',sans-serif}
+.stage{position:relative;height:110px;margin:1.3rem 0;border-radius:14px;background:#171112;overflow:hidden;display:grid;place-items:center}
+.stage span{font-size:3rem;animation:bob 3s ease-in-out infinite}
+.stage i{position:absolute;top:0;bottom:0;width:51%;background:repeating-linear-gradient(90deg,#8e1b2a 0 14px,#6d1220 14px 28px)}
+.stage .cl{left:0;animation:opl 7s ease-in-out infinite alternate}
+.stage .cr{right:0;animation:opr 7s ease-in-out infinite alternate}
+@keyframes opl{to{transform:translateX(-92%)}}
+@keyframes opr{to{transform:translateX(92%)}}
+.petals{position:relative;height:110px;margin:1.2rem 0;overflow:hidden}
+.petals span{position:absolute;top:-30px;font-size:1.7rem;animation:fall 6s linear infinite}
+@keyframes fall{to{transform:translateY(150px) rotate(180deg)}}
+.candle{text-align:center;font-size:2.6rem;animation:flick 1.1s infinite alternate}
+strong{color:var(--gold)}
+.wallgate{position:relative;height:130px;margin:1.6rem 0;border-radius:12px;overflow:hidden;background:linear-gradient(#bfe0f0,var(--card))}
+.wallgate>*{position:absolute;left:0;right:0;bottom:0}
+.fenceL{height:62px;background:repeating-linear-gradient(90deg,#9a7a4a 0 6px,#0000 6px 22px);border-top:5px solid #9a7a4a;animation:fo 9s infinite}
+@keyframes fo{0%,30%{opacity:1}50%,88%{opacity:0}100%{opacity:1}}
+.brick{height:112px;transform-origin:bottom;background:repeating-linear-gradient(0deg,#0000 0 17px,#5b2a1d 17px 19px),repeating-linear-gradient(90deg,#b5533a 0 38px,#5b2a1d 38px 40px);animation:rb 9s infinite}
+@keyframes rb{0%,30%{transform:scaleY(0)}50%,88%{transform:scaleY(1)}100%{transform:scaleY(0)}}
+.gate2{left:30%;right:30%;height:88px;display:flex;transform-origin:bottom;animation:rb 9s infinite}
+.gate2 i{flex:1;border:3px solid #5f6870;background:repeating-linear-gradient(90deg,#aab3bb 0 4px,#0000 4px 12px)}
+.lines p{text-align:center}
+</style>
+</head>
+<body>
+<div class="tools"><button id="snd" type="button">🔇 ശബ്ദം ഓൺ ചെയ്യൂ</button><a id="home" href="https://paradiseofross-dotcom.github.io/paradise-of-ross/index.html#home" target="_blank" rel="noopener">മുഖ്യപേജ്</a></div>
+<canvas id="dots"></canvas>
+<header class="hero">
+  <div class="panel pl"></div><div class="panel pr"></div>
+  <h1>വേലിക്കപ്പുറത്തെ<br>തെക്കേ വീട്</h1>
+  <p>താഴേക്ക് നടക്കൂ</p>
+</header>
+<main>
+<section class="ch" data-snd="creak"><h2>ഒരു ഒളിച്ചോട്ടം</h2><span class="ico">🚪</span>
+<p>എനിക്ക് വേലിക്കപ്പുറത്തുള്ള തെക്കേ വീട്ടിലേക്കുള്ള പോക്ക് മിക്ക ദിവസവും ഒരു സന്ദർശനം മാത്രമായിരുന്നില്ല; മനസ്സിലെ ചെറിയ സമ്മർദ്ദങ്ങൾ ഒന്ന് ഇറക്കിവെക്കാനും, ബാല്യത്തിന്റെ ചൂടുള്ള ഒരു കോണിലേക്ക് ഒളിച്ചോടാനും ഉള്ള ഒരു യാത്രയായിരുന്നു.</p>
+</section>
+<section class="ch" data-snd="saw"><h2>മരത്തടിയും കഞ്ഞിക്കറിയും</h2><span class="ico">🪵</span>
+<p>എന്റെ നഴ്സറി പഠനവർഷം വൈപ്പിനിലായിരുന്നു. അവധിക്കാലമാകുമ്പോൾ എന്നെ കലൂർ വീട്ടിലേക്ക് കൊണ്ടുവരുമായിരുന്നു. അന്നത്തെ എന്റെ ബാല്യകാല സുഹൃത്ത് മോളി ചേച്ചിയായിരുന്നു.</p>
+<p>മോളി ചേച്ചി കൊണ്ടുവരുന്ന ചെറിയ കളിപ്പാട്ടപ്പാത്രങ്ങളിൽ കഞ്ഞിക്കറി ഉണ്ടാക്കി കളിച്ചതും ഇന്നും മനസ്സിൽ തെളിഞ്ഞുനിൽക്കുന്നു.</p>
+<p>ഞങ്ങളുടെ വീടിന്റെ നിർമ്മാണം നടക്കുന്ന കാലമായിരുന്നു അത്. ഇന്ന് എന്റെ വീട്ടിലെ മുറി നിൽക്കുന്ന അതേ സ്ഥലത്ത് അന്ന് ഒരു വലിയ മരത്തടി കിടന്നിരുന്നു. അതായിരുന്നു ഞങ്ങളുടെ മറ്റൊരു കളിസ്ഥലം. മരത്തടിയിൽ കയറിയും ഇരുന്നും മണിക്കൂറുകളോളം ഞങ്ങൾ കളിക്കും.</p>
+<span class="log" data-tap="saw"><b class="saw" style="left:30%"></b><b class="saw" style="left:55%;animation-delay:.9s"></b><b class="saw" style="left:78%;animation-delay:1.7s"></b></span>
+<p>ആ മരത്തടിയിൽ നിന്ന് കിട്ടുന്ന മരപ്പൊടിയായിരുന്നു ഞങ്ങളുടെ കറിയിലെ പ്രധാന ചേരുവ — ഇന്നത്തെ ഷെഫുമാർക്ക് പോലും ചിന്തിക്കാനാകാത്തൊരു രഹസ്യ റെസിപ്പി! 😄</p>
+<p>ഇന്ന് അതേ സ്ഥലത്ത് എന്റെ വീട്ടിലെ മുറി നിൽക്കുമ്പോൾ, ആ സ്ഥലം കാണുമ്പോഴൊക്കെ ആ പഴയ മരത്തടിയും, മോളി ചേച്ചിയുമൊത്തുള്ള ആ കളികളും, ആ കുഞ്ഞു അടുക്കളയും എല്ലാം മനസ്സിലേക്ക് തിരിച്ചെത്തും.</p>
+<p>ഒരു കാലത്ത് ഞങ്ങൾ കളിച്ചിരുന്നിടത്താണ് ഇന്ന് എന്റെ മുറി നിൽക്കുന്നത്. കാലം മാറിയെങ്കിലും ആ സ്ഥലത്തിന്റെ ഓർമ മാറിയിട്ടില്ല.</p>
+</section>
+<section class="ch" data-snd="myna"><h2>തെക്കേ വീട്ടിലെ ഒരു ലോകം</h2><span class="ico">🧵</span>
+<p>അവിടെ എത്തിയാൽ ആദ്യം കേൾക്കുന്നത് ഐറിൻ ചേച്ചിയുടെ</p>
+<span class="call" data-tap="sing">“കാഞ്ചീരെ… കാഞ്ചീരെ…”</span>
+<p>എന്ന സ്വാഗതഗാനമായിരിക്കും.</p>
+<p>അതിനു പിന്നാലെ ഐറിൻ ചേച്ചി എന്നോട് “I love you” എന്നും പറയും. അതായിരുന്നു എന്റെ അന്നത്തെ ഏറ്റവും വലിയ നാണവും, ഒരുപക്ഷേ ഏറ്റവും ഇഷ്ടപ്പെട്ടിരുന്ന വാക്കും! 😄 കേൾക്കുമ്പോൾ മുഖത്ത് നാണം നിറയും, എന്ത് പറയണമെന്നറിയാതെ നിൽക്കും. പക്ഷേ ഉള്ളിൽ ആ വാക്ക് വീണ്ടും കേൾക്കാൻ ഒരു ചെറിയ ആഗ്രഹവും ഉണ്ടായിരുന്നു.</p>
+<p>അതുകൊണ്ടുതന്നെ ഇന്നും ഐറിൻ ചേച്ചിയുടെ “കാഞ്ചീരെ… കാഞ്ചീരെ…” എന്ന ശബ്ദം ഓർക്കുമ്പോൾ എന്റെ ഉള്ളിലെ പഴയ shy guy ഉണരും. ബാല്യത്തിലെ ആ നാണവും സന്തോഷവും ഒരുമിച്ച് ഓർമയിൽ വരും.</p>
+<p>അപ്പുറത്ത് സോണി ചേച്ചി, ബീന ചേച്ചി, റെക്സി ചേച്ചി… പിന്നെ</p>
+<span class="call" data-tap="sing">“കളാ… ക്ല… ക്ളീ… ക്ലൂ…”</span>
+<p>എന്നൊക്കെയുള്ള ശബ്ദങ്ങൾ.</p>
+<p>അതിനിടയിൽ മുറ്റത്തെ ഒരു മൈന കൂടി ചിലച്ചാൽ ഞാൻ പതിയെ ആവിയാകാൻ തുടങ്ങും. എന്നാലും പിടിച്ചുനിൽക്കും. സോണി ചേച്ചിയുടെ തയ്യൽ മെഷീനടുത്ത് നിന്നാൽ വലിയ പരിക്കൊന്നുമില്ലാതെ രക്ഷപ്പെടാം എന്നൊരു ആത്മവിശ്വാസം എനിക്കുണ്ടായിരുന്നു.</p>
+<p>ഇന്നും കണ്ണടച്ചാൽ ആ വീട് മുഴുവൻ കാണാം — ഓരോ മുറിയും, മൂന്ന് അടുക്കളകളും, തയ്യൽ മെഷീൻ ഇരുന്ന മുറിയും, വരാന്തയും, സ്വീകരണമുറിയും.</p>
+<p>വരാന്തയിലെ ഇളംപച്ച നിറത്തിൽ പല വർണങ്ങളിലുള്ള ബ്രഷ് പഞ്ച് മാർക്കുകൾ… അത് വില്ലി ചേട്ടന്റെ കലാവിരുതിന്റെ സ്വന്തം ഒപ്പുപോലെ ഇന്നും ഓർമയിൽ.</p>
+<p>ചുമരുകൾ പോലും അവിടെ വെറും ചുമരുകളായിരുന്നില്ല; ഓരോന്നിനും ഒരു കഥയുണ്ടായിരുന്നു.</p>
+<h3 class="sub">വൈപ്പിൻ ടച്ച്</h3>
+<p>എന്റെ നഴ്സറി പഠനവർഷങ്ങൾ വൈപ്പിനിലായിരുന്നതിനാൽ, അവിടത്തെ ഭാഷാശൈലിയും എന്റെ സംസാരത്തിൽ കയറിയിരുന്നു. “ഞങ്ങൾ” എന്നതിന് “ഞങ്ങ” എന്നും “നിങ്ങൾ” എന്നതിന് “നിങ്ങ” എന്നുമൊക്കെയായിരുന്നു എന്റെ പ്രയോഗം. കലൂർ വീട്ടിൽ തിരിച്ചെത്തിയപ്പോൾ ഈ കൊച്ചിക്കാരുടെ ഭാഷാശൈലി കേട്ട തെക്കേ വീട്ടിലെ ചേച്ചിമാർക്ക് അത് വലിയ തമാശയായിരുന്നു.</p>
+<div class="talk anim" data-snd="giggle" data-tap="giggle"><span class="b1"><s>ഞങ്ങ…</s> <em>ഞങ്ങൾ</em></span><span class="b2"><s>നിങ്ങ…</s> <em>നിങ്ങൾ</em></span></div>
+<p>ഞാൻ “ഞങ്ങ…” എന്നും “നിങ്ങ…” എന്നും പറയുമ്പോൾ ചേച്ചിമാർ ചിരിക്കും. പിന്നെ എന്നെ തിരുത്തും — “ഞങ്ങ അല്ല, ഞങ്ങൾ… നിങ്ങ അല്ല, നിങ്ങൾ…”</p>
+<p>അന്ന് എനിക്ക് അത് ഒരു വലിയ ഭാഷാപ്രശ്നം പോലെയൊന്നും തോന്നിയിരുന്നില്ല. പക്ഷേ ചേച്ചിമാരുടെ ആ ചിരിയും തിരുത്തലും ഇന്നും ഓർമയിലുണ്ട്.</p>
+<div class="q">വൈപ്പിനിൽ നിന്ന് കലൂരിലേക്ക് വന്നപ്പോൾ എന്റെ സംസാരത്തിലും ഒരു ചെറിയ “വൈപ്പിൻ ടച്ച്” കൂടെ വന്നിരുന്നു എന്നതാണ് സത്യം!</div>
+
+</section>
+<section class="ch" data-snd="bell"><h2>കല്യാണങ്ങളും ചെറിയ സന്തോഷങ്ങളും</h2><span class="ico">💒</span>
+<p>അവിടെ നടന്നിരുന്ന കല്യാണങ്ങൾ മറ്റൊരു അനുഭവമായിരുന്നു. സാമ്പത്തിക ഞെരുക്കങ്ങൾക്കിടയിലും ഒന്നോ ഒന്നരയോ കല്യാണങ്ങൾ നടന്നിരുന്ന കാലം. ഇന്നും ഓർക്കുമ്പോൾ അതിശയം മാത്രം — GOD is GREAT.</p>
+<p>തേങ്ങ ചിരണ്ടിയതും, ഭക്ഷണം വിളമ്പിയതും, വില്ലി ചേട്ടന്റെയും മേരി (ഷിനു) ചേച്ചിയുടെയും കല്യാണദിവസം വെള്ളം വിളമ്പുന്നതിനിടയിൽ വെള്ളം മേരി ചേച്ചിയുടെ സാരിയിൽ വീണതും ഇന്നും ഓർമയിലുണ്ട്! 😄</p>
+<p>അന്ന് വെള്ളം വിളമ്പുന്നത് വലിയൊരു സേവനമാണെന്ന് കരുതിയിരിക്കാം; ഇന്ന് ഓർക്കുമ്പോൾ ആ കല്യാണദിവസത്തിലെ എന്റെ ചെറിയ സംഭാവനയായി തോന്നുന്നു!</p>
+<h3 class="sub">ലൈന ചേച്ചിയുടെ കല്യാണദിവസത്തെ 10 പൈസ</h3>
+<p>ലൈന ചേച്ചിയുടെ കല്യാണദിവസം നടന്ന ഒരു ചെറിയ സംഭവം ഇന്നും ഓർക്കുമ്പോൾ ചിരി വരും. ക്ലെസി എങ്ങനെയോ ഒരു 10 പൈസ നാണയം സംഘടിപ്പിച്ച് ലൈന ചേച്ചിയുടെ കയ്യിൽ കൊടുത്തു. ചേച്ചി അത് എല്ലാവരും കാണുന്ന രീതിയിൽ സ്വീകരിച്ചതോടെ ആ ചെറിയ സമ്മാനം തന്നെ എല്ലാവരുടെയും ശ്രദ്ധ പിടിച്ചുപറ്റി.</p>
+<span class="coin" data-tap="coin">10<small>പൈസ</small></span>
+<p>വധൂവരന്മാർ യാത്രയാകുന്ന സമയത്ത്, ആ 10 പൈസയുടെ സംഭവം ഒരു ചെറിയ തമാശയായി മാറി. വലിയ സമ്മാനങ്ങളോ വലിയ ചിലവുകളോ ഒന്നുമില്ലാതെ, എല്ലാവരെയും ചിരിപ്പിച്ചുകൊണ്ട് ഇന്നും ഓർമ്മയിൽ നിൽക്കുന്ന ഒരു കൊച്ചു കല്യാണ ഓർമ.</p>
+<p>അന്ന് 10 പൈസയ്ക്ക് വലിയ വിലയുണ്ടായിരുന്ന കാലം. അതുകൊണ്ടുതന്നെ ആ ചെറിയ നാണയത്തിന് ഇന്നും ഒരു പ്രത്യേക വിലയുണ്ട് — പണത്തിന്റെ വിലയല്ല, അതിനൊപ്പം ചേർന്ന ഓർമയുടെ വില.</p>
+<p>അവിടത്തെ ചിരികളിൽ എലിക്കുട്ടി കൊച്ചമ്മയുടെ തമാശകൾക്ക് ഒരു പ്രത്യേക സ്ഥാനമുണ്ടായിരുന്നു.</p>
+<p>എലിക്കുട്ടി കൊച്ചമ്മയുടെ സംഭാഷണങ്ങളിൽ എപ്പോഴും എന്തെങ്കിലും തമാശ ഒളിഞ്ഞിരിക്കും. വൈകുന്നേരങ്ങളിലെ കട്ടൻചായയും, അതിനൊപ്പം പഞ്ചസാര സാധാരണമാകുന്നതിന് മുമ്പുള്ള ശർക്കരക്കഷണവും ഇന്നും ഓർമയിൽ.</p>
+<p>ആ ചെറിയ കാര്യങ്ങൾക്കൊന്നും അന്ന് വലിയ അർത്ഥമൊന്നും തോന്നിയിരുന്നില്ല. പക്ഷേ ഇന്ന് തിരിഞ്ഞുനോക്കുമ്പോൾ, അതാണ് ജീവിതം എന്ന് തോന്നുന്നു.</p>
+</section>
+<section class="ch" data-snd="pluck"><h2>കുടുംബത്തിലെ ഒരു സംഭവം</h2><span class="ico">😄</span>
+<p>അക്കാലത്ത് ഞങ്ങളുടെ കുടുംബവും തെക്കേ വീട്ടുകാരും തമ്മിൽ വലിയൊരു വഴക്ക് നിലനിന്നിരുന്ന കാലമായിരുന്നു. അതുകൊണ്ടുതന്നെ അങ്ങോട്ടും ഇങ്ങോട്ടുമുള്ള ഇടപെടലുകൾക്ക് കുട്ടികളായ ഞങ്ങൾക്കുപോലും ചിലപ്പോഴൊക്കെ ഒരു പ്രത്യേക ശ്രദ്ധ ഉണ്ടായിരുന്നു.</p>
+<p>ഒരിക്കൽ സ്കൂളിൽ നിന്ന് വീട്ടിലേക്ക് നടക്കുമ്പോൾ, ഇപ്പോൾ കുര്യാക്കോസ് സാറിന്റെ വീട് സ്ഥിതി ചെയ്യുന്ന സ്ഥലത്ത് എത്തിയപ്പോൾ, ബീന ചേച്ചിയും ഗെർട്ടി ചേച്ചിയും എതിർദിശയിൽ നിന്ന് വരുന്നത് കണ്ടു. കൂടെ ഞങ്ങളുടെ സ്വന്തം കുറുമ്പി ക്ലെസിയും ഉണ്ടായിരുന്നു.</p>
+<p>ബീന ചേച്ചിയും ഗെർട്ടി ചേച്ചിയും ഞങ്ങളെ നോക്കി ചിരിച്ചു; ഞാനും സ്വാഭാവികമായി ചിരിച്ചു. പക്ഷേ ആ കുറുമ്പി ക്ലെസി വലിയ മുഖം കാട്ടി കടന്നുപോയി.</p>
+<p>വീട്ടിലെത്തിയ ഉടൻ, ഞാൻ ചിരിച്ചതിനാണ് ക്ലെസി വഴക്കിട്ടത്! 😄</p>
+<p>അന്ന് കുട്ടിയായിരുന്ന എനിക്ക് ആ വലിയ വഴക്കിന്റെ കാരണങ്ങളൊന്നും പൂർണ്ണമായി മനസ്സിലായിരുന്നില്ല. മുതിർന്നവരുടെ ലോകത്ത് നടന്നിരുന്ന കാര്യങ്ങൾ കുട്ടികളുടെ ചെറിയ ലോകത്തേക്കും എങ്ങനെ എത്തിപ്പെടുന്നു എന്നതിന്റെ ഒരു ഓർമ മാത്രമാണ് അത്.</p>
+<p>ഇന്ന് തിരിഞ്ഞുനോക്കുമ്പോൾ, ആ വഴക്കിനേക്കാൾ ഓർമയിൽ നിൽക്കുന്നത് അതിനിടയിലും സംഭവിച്ചിരുന്ന ഈ ചെറിയ ചിരികളും, കൂടിക്കാഴ്ചകളും, ബാല്യത്തിന്റെ നിഷ്കളങ്കതയുമാണ്.</p>
+</section>
+<section class="ch" data-snd="toll"><h2>രംഗബോധമില്ലാത്ത കോമാളി</h2><span class="ico">🤡</span>
+<p>കുട്ടിക്കാലത്ത് അടുത്തറിഞ്ഞിരുന്ന പ്രിയപ്പെട്ടവരിൽ രണ്ടുപേരുടെ മരണം ഇന്നും എന്റെ ഓർമയിൽ വളരെ വ്യക്തമായി നിൽക്കുന്നു. ജീവിതത്തിന്റെ ഏറ്റവും മനോഹരമായ ബാല്യകാല രംഗങ്ങൾക്കിടയിലേക്ക്, ഒരു മുന്നറിയിപ്പുമില്ലാതെ കടന്നുവന്ന <strong>രംഗബോധമില്ലാത്ത കോമാളി</strong> പോലെയായിരുന്നു മരണം.</p>
+<div class="stage anim" data-snd="toll" data-tap="toll"><i class="cl"></i><i class="cr"></i><span>🤡</span></div>
+<p>ഹെൻറി ചേട്ടന്റെ മരണത്തെക്കുറിച്ചുള്ള ഓർമകൾ എനിക്ക് വളരെ വ്യക്തമായി സൂക്ഷിക്കാൻ കഴിഞ്ഞിട്ടില്ല. മരണം സംഭവിച്ചതും, അതുമായി ബന്ധപ്പെട്ടുണ്ടായ ഓട്ടപ്പാച്ചിലും തിരക്കുകളും ഇന്നും ഓർമയിൽ ഉണ്ട്. സംഭവത്തിന്റെ ഓരോ വിശദാംശങ്ങളും ഓർമയിലില്ലെങ്കിലും, ആ ദിവസം ബാല്യത്തിന്റെ ഓർമയിൽ പതിഞ്ഞ ഒരു ദൃശ്യമായി ഇന്നും അവശേഷിക്കുന്നു.</p>
+<p>സ്കൂൾ പഠനത്തിനുശേഷം ലിബോ ചേട്ടൻ ക്രിസ്തീയ പൗരോഹിത്യത്തിനായി സെമിനാരിയിൽ ചേർന്നു. ഒരിക്കൽ ഞാനും റീത്താമ്മ കൊച്ചമ്മയും കൂടി കളമശ്ശേരിയിലെ സെമിനാരിയിൽ ലിബോ ചേട്ടനെ കാണാൻ പോയതും എന്റെ ഓർമയിലുണ്ട്.</p>
+<p>ലിബോ ചേട്ടന്റെ മരണവാർത്ത എന്നെ തേടിയെത്തിയത് ബീന ചേച്ചിയുടെ ട്യൂഷൻ ക്ലാസിലിരിക്കുമ്പോഴായിരുന്നു. ഞാനും എന്റെ സഹോദരി ക്ലെസിയും അന്ന് ആ ക്ലാസിൽ ഉണ്ടായിരുന്നു. ബീന ചേച്ചി മോഹൻ ചേട്ടന്റെ ഭാര്യയായിരുന്നു. ക്ലാസ് നടന്നുകൊണ്ടിരിക്കുമ്പോൾ അമ്മച്ചി വീട്ടിൽ നിന്ന് കരഞ്ഞുകൊണ്ട് അവിടേക്ക് വന്നാണ് ലിബോ ചേട്ടൻ മരിച്ച വാർത്ത അറിയിച്ചത്. പെട്ടെന്ന് വന്ന ആ വാർത്ത കേട്ട് എന്റെ മനസ്സ് വല്ലാതെ ഭാരപ്പെട്ടു. അമ്മച്ചിയുടെ കരച്ചിലും മുഖത്തെ വിഷമവും ആ വാർത്തയുടെ ഗൗരവം മനസ്സിലാക്കാൻ മതിയായിരുന്നു.</p>
+<p>ലിബോ ചേട്ടനും ഞാനും തമ്മിൽ കട്ട സുഹൃദ് ബന്ധമായിരുന്നു. കുട്ടിക്കാലത്തെ പല ചെറിയ സന്തോഷങ്ങളുടെയും കൂട്ടുകാരനായിരുന്നു ലിബോ ചേട്ടൻ. ഒരു കളിപ്പാട്ട ട്രാക്ടർ — അതുപോലൊരു ഒരെണ്ണം — ഇന്നും കിട്ടുമോ എന്ന് നോക്കി നടന്നിട്ടും കിട്ടിയിട്ടില്ല. ചാലിൽ നിന്ന് കിട്ടിയ കൊഞ്ചിന്റെ ഓർമയും ഇന്നും മനസ്സിലുണ്ട്.</p>
+<div class="road anim" data-snd="tractor" data-tap="tractor"><span>🚜</span></div>
+<p>ലിബോ ചേട്ടൻ മരിച്ചപ്പോൾ, ആലുവ മംഗലപ്പുഴ സെമിനാരി ഹാളിൽ റോസാപ്പൂക്കൾ കൊണ്ട് അലങ്കരിച്ചും കുന്തിരിക്കം പുകച്ചും യാത്രയയപ്പ് നൽകി. ആ വീട്ടിൽ അത്രയും വലിയൊരു ജനാവലി ഞാൻ അതിനുമുമ്പ് കണ്ടിട്ടില്ല. കുട്ടിയായിരുന്ന എനിക്ക് മരണത്തിന്റെ അർത്ഥം പൂർണ്ണമായി മനസ്സിലായിരുന്നില്ലെങ്കിലും, ചുറ്റുമുണ്ടായിരുന്ന ആൾക്കൂട്ടവും അന്തരീക്ഷവും ലിബോ ചേട്ടന്റെ അഭാവവും മനസ്സിൽ ആഴത്തിൽ പതിഞ്ഞു.</p>
+<div class="petals anim" data-snd="soft" data-tap="soft"><span style="left:8%;animation-delay:-0s">🌹</span><span style="left:26%;animation-delay:-2s">🌹</span><span style="left:45%;animation-delay:-4s">🌹</span><span style="left:63%;animation-delay:-1s">🌹</span><span style="left:82%;animation-delay:-3s">🌹</span></div>
+<p>ഇന്ന് ഇത്രയും വർഷങ്ങൾക്കുശേഷം തിരിഞ്ഞുനോക്കുമ്പോൾ, ബാല്യത്തിന്റെ ആ ഓർമകളിൽ മരണം കടന്നുവന്നത് <strong>രംഗബോധമില്ലാത്ത ഒരു കോമാളിയെപ്പോലെയാണ്</strong> എന്ന് തോന്നുന്നു. വരേണ്ട സമയമോ പോകേണ്ട സമയമോ നോക്കാതെ, ഒരു മനോഹരമായ ഓർമയുടെ നടുവിലേക്ക് കടന്നുവന്ന് എല്ലാം പെട്ടെന്ന് മാറ്റിമറിച്ചുകൊണ്ട്.</p>
+<div class="q">ഹെൻറി ചേട്ടനും ലിബോ ചേട്ടനും ഇന്ന് നമ്മോടൊപ്പമില്ല. പക്ഷേ അവരുടെ ഓർമകൾക്ക് മരണമില്ല. കുട്ടിക്കാലത്തിന്റെ ആ ചെറിയ ലോകത്ത്, അവർ ഇന്നും അവരുടേതായ ഇടങ്ങളിൽ തന്നെയുണ്ട്.</div>
+<div class="candle anim" data-snd="toll" data-tap="toll">🕯️</div>
+</section>
+<section class="ch" data-snd="ring"><h2>പയസ് ചേട്ടനും ഖുർബാനിയും</h2><span class="ico">🚲</span>
+<p>പിന്നെ പയസ് ചേട്ടൻ.</p>
+<p>ഞാനും പയസ് ചേട്ടനും ഞായറാഴ്ച പള്ളിക്കാരായിരുന്നു. ഞായറാഴ്ച രാവിലെ സൈക്കിളിൽ വച്ചുപിടിപ്പിക്കൽ ഒരു പതിവായിരുന്നു.</p>
+<h3 class="sub">സൈക്കിൾ പഠനം</h3>
+<p>പയസ് ചേട്ടൻ സൈക്കിൾ ഓടിക്കാൻ അറിയാമായിരുന്നു. പക്ഷേ ഞാനും ഷാജിയും അന്ന് സൈക്കിൾ ഓടിക്കാൻ അറിയില്ലായിരുന്നു. സൈക്കിളിന്റെ സീറ്റിൽ എന്നെ ഇരുത്തി, പിന്നിൽ നിന്ന് പിടിച്ചുകൊണ്ട് ബാലൻസ് പഠിപ്പിക്കുകയും സൈക്കിൾ ഓടിക്കാൻ വഴികാട്ടുകയും ചെയ്തത് പയസ് ചേട്ടനായിരുന്നു.</p>
+<div class="road anim" data-snd="ring" data-tap="ring"><span>🚲</span></div>
+<p>ഞങ്ങളുടെ അയൽവാസിയായിരുന്ന സുരേഷ് ചേട്ടനും കുടുംബത്തിനും ചേരാത്രിക്കോവിൽ ക്ഷേത്രത്തിനടുത്ത് ഒരു കടയുണ്ടായിരുന്നു. അവിടെ നിന്ന് ചെറിയ സൈക്കിളുകൾ വാടകയ്ക്ക് കിട്ടുമായിരുന്നു. അരസൈക്കിളിന് ഒരു മണിക്കൂറിന് 10 പൈസയും ഒരു ദിവസത്തേക്ക് 1 രൂപയുമായിരുന്നു വാടക.</p>
+<p>ഞങ്ങൾ പലപ്പോഴും സൈക്കിളുകൾ രാത്രിയോടെ എടുത്തുകൊണ്ടുപോയി പിറ്റേന്ന് വരെ ഉപയോഗിച്ച് സൈക്കിൾ പഠിക്കുമായിരുന്നു.</p>
+<p>ആദ്യ ദിവസം സൈക്കിൾ എടുത്ത് പഠിക്കാൻ ശ്രമിച്ച സംഭവം ഇന്നും നല്ല ഓർമയുണ്ട്. അന്ന് സൈക്കിൾ ഓടിക്കുന്ന മറ്റുള്ളവരെ ഞാൻ ശ്രദ്ധിച്ചുനോക്കുമായിരുന്നു. സൈക്കിൾ നിർത്തുമ്പോൾ ചിലർ ബ്രേക്ക് പിടിച്ച് പതുക്കെ നിർത്തും; ചിലർ സൈക്കിൾ ഒന്ന് മൃദുവായി മതിലിനോട് ചേർത്ത് നിർത്തുന്നതും ഞാൻ കണ്ടിട്ടുണ്ട്.</p>
+<div class="q">അപ്പോൾ എനിക്ക് തോന്നി — “ഇതൊക്കെ വലിയ കാര്യമൊന്നുമല്ലല്ലോ, മതിലിൽ ഒന്ന് തട്ടിച്ചാൽ സൈക്കിൾ നിർത്താമല്ലോ!”</div>
+<p>പക്ഷേ അവർ ആദ്യം ബ്രേക്ക് പിടിക്കുന്നുണ്ടെന്ന് എനിക്ക് അറിയില്ലായിരുന്നു!</p>
+<p class="crash">അങ്ങനെ ഞാൻ നേരെ സൈക്കിളുമായി മതിലിലേക്ക് പോയി ഇടിച്ചു. സൈക്കിളിന്റെ ടയർ പൊട്ടി, പഞ്ചറായി. അന്നത്തെ സൈക്കിൾ പഠനത്തിൽ ആദ്യത്തെ പരീക്ഷണം തന്നെ പരാജയപ്പെട്ടു!</p>
+<span class="bang anim" data-snd="crash" data-tap="crash">ഠേ! 💥</span>
+<p>പക്ഷേ പയസ് ചേട്ടൻ കൂടെയുണ്ടായിരുന്നു. സൈക്കിൾ പഠിപ്പിച്ച ആ ദിവസങ്ങളിലെ ഓർമകളിൽ പയസ് ചേട്ടന്റെ കൈ സീറ്റിന്റെ പിന്നിൽ പിടിച്ചുനിന്നിരുന്ന ചിത്രം ഇന്നും വ്യക്തമാണ്.</p>
+
+<p>പയസ് ചേട്ടനെയും ഷാജിയെയും കൂട്ടി നടന്ന മറ്റൊരു സാഹസവും ഉണ്ട് — ഖുർബാനി സിനിമ!</p>
+<p>എനിക്ക് അന്ന് പതിനൊന്ന് വയസ്സായിരുന്നു. ടിക്കറ്റ് രണ്ട് രൂപ.</p>
+<span class="ticket" data-tap="ticket">ടിക്കറ്റ് ₹2</span>
+<div class="q">First day, first show!</div>
+<p>ടിക്കറ്റ് എടുക്കാൻ “ഗുഹയിൽ” കൂടെ നിൽക്കണം. Morning Show കാണാൻ പോയി. പക്ഷേ സിനിമയുടെ പെട്ടി എത്തിയില്ല!</p>
+<p>Morning Show പോയി. പിന്നെ Matinee വരെ കാത്തുനിന്നു. ഒടുവിൽ സിനിമ കണ്ട് മടങ്ങി.</p>
+<p>അന്നത്തെ കലൂർ നിവാസികൾക്ക് ഇതൊക്കെ സാധാരണമായിരുന്നു — സീനാ തിയേറ്ററിലെ സിനിമയുടെ പെട്ടി വരുന്നതും കാത്തുനിൽക്കുക! 😄</p>
+<p>രണ്ട് രൂപയുടെ ടിക്കറ്റും, സൈക്കിളും, പയസ് ചേട്ടനും ഷാജിയും, സിനിമയുടെ പെട്ടി കാത്തുനിന്ന ആ ദിവസവും — ഇന്നിപ്പോൾ ഓർക്കുമ്പോൾ അതെല്ലാം ഒരു വലിയ സാഹസികയാത്ര പോലെ തോന്നുന്നു.</p>
+</section>
+<section class="ch" data-snd="splash"><h2>വിൽസൺ — എന്റെ ബാല്യകാല ഹീറോ</h2><span class="ico">🎣</span>
+<p>പിന്നെ വിൽസൺ കുറ്റിക്കാട്ടിലേക്കുള്ള വീട്ടിലെ വരവ് — അതൊരു ആസ്ഥാന ഹീറോയുടെ വരവായിരുന്നു.</p>
+<div class="q">നീ ഇന്നും എന്റെ ഹീറോ!</div>
+<p>വിൽസന്റെ മീൻപിടുത്തം, ആ ചാട്ടം, ഓട്ടം… ചൂണ്ട ഇട്ടാൽ മീൻ കൊത്തിയിരിക്കും എന്നൊരു ഉറപ്പ്! അത് എനിക്ക് ചെറിയ അസൂയ പോലും ഉണ്ടാക്കിയിരുന്നു.</p>
+<p>അതിലും വലിയ അതിശയം —</p>
+<p>തേങ്ങിൽ കയറാൻ അറിയാവുന്ന ഒരു ബാലനെ ഞാൻ ആദ്യമായാണ് കാണുന്നത്.</p>
+<p>ഞാൻ എന്നും കണ്ണുംതള്ളി നോക്കിനിന്നിട്ടുണ്ട്.</p>
+<p>ഞങ്ങൾക്ക് തേങ്ങ ഒരു മരമായിരുന്നു; വിൽസന് അത് കയറാനുള്ള ഒരു പടിക്കെട്ട്!</p>
+</section>
+<section class="ch" data-snd="wind"><h2>കവണയും കിഴക്കേ പാടവും</h2><span class="ico">🪁</span>
+<p>ലിബോ ചേട്ടനും പയസ് ചേട്ടനും സുരേഷ് ചേട്ടനും, സുരേഷ് ചേട്ടന്റെ ഇളയ സഹോദരനായ അംബുവും പട്ടം ഉണ്ടാക്കുന്നതിൽ വലിയ വിദഗ്ധരായിരുന്നു. വിരലിൽ വെച്ച് ബാലൻസ് നോക്കി, പല നിറങ്ങളിലുള്ള ഫാൻസി പേപ്പറുകൾ ഉപയോഗിച്ച് മനോഹരമായ പട്ടങ്ങൾ ഉണ്ടാക്കും. പട്ടം ആകാശത്തേക്ക് പറത്തിയിട്ട് ആരുടെ പട്ടമാണ് ഏറ്റവും ഉയരത്തിൽ എത്തുന്നതെന്ന് നോക്കുന്നതും അന്നത്തെ വലിയ വിനോദമായിരുന്നു. നിറമുള്ള പട്ടങ്ങൾ ആകാശത്ത് പറന്നുനിൽക്കുന്നതും, അതിനുപിന്നാലെ ഞങ്ങളുടെ കണ്ണുകൾ അവയെ പിന്തുടരുന്നതും ഇന്നും മനസ്സിലുണ്ട്.</p>
+<p>പയസ് ചേട്ടന്റെയും ലിബോ ചേട്ടന്റെയും അമ്മയായ റീത്താമ്മ കൊച്ചമ്മ പട്ടത്തെ “സരംഗോള” (Saranggola) എന്നാണ് വിളിച്ചിരുന്നത്. ഈയിടെയാണ് അത് ഒരു ഫിലിപ്പീനോ വാക്കാണെന്ന് ഞാൻ അറിഞ്ഞത്. ആ വാക്ക് എങ്ങനെയാണ് നമ്മുടെ മലയാളത്തിലെ പ്രയോഗത്തിലേക്ക് എത്തിയതെന്ന് എനിക്ക് ഇന്നും അറിയില്ല.</p>
+<div class="sky anim" data-snd="wind" data-tap="wind"><span style="left:12%">🪁</span><span style="left:40%;animation-delay:-3s">🪁</span><span style="left:68%;animation-delay:-6s">🪁</span></div>
+<p>ഈ ഓർമകളിൽ പലതും വേനൽക്കാലത്തേതാണ്. കിഴക്കേ പാടം വേനലാകുമ്പോൾ പൂർണ്ണമായും ഉണങ്ങും. ചളി ഉണങ്ങി വിണ്ടുകീറും, കണ്ണെത്താത്തത്ര വലിയൊരു തുറന്ന മൈതാനം പോലെ മാറും. പട്ടം പറത്താനും ഓടിക്കളിക്കാനും കവണയുമായി നടക്കാനുമൊക്കെ അതൊരു വലിയ ലോകമായിരുന്നു.</p>
+<p>കിഴക്കേ പാടത്തിന്റെ അക്കരെ ഒരു വീട്ടിൽ കരിമ്പ് വിൽക്കുമായിരുന്നു. കരിമ്പ് വാങ്ങണമെങ്കിൽ ചാലിന് കുറുകെയുള്ള ആ വഴിയിലൂടെ കടന്നുപോകണം. ആദ്യം ഒരു കരിമ്പിന് 10 പൈസയായിരുന്നു വില; പിന്നീട് അത് 25 പൈസയായി. മഴക്കാലത്തോ വെള്ളം നിറഞ്ഞ സമയത്തോ ചാൽ കടക്കുക എളുപ്പമായിരുന്നില്ല. അതിനായി ആഫ്രിക്കൻ പായൽ കൂട്ടിയിട്ട് ഒരു മെത്തപോലെ ചാലിന് കുറുകെ ഒരുക്കും. അതിന്റെ മുകളിലൂടെ നടന്ന് മറുകരയിലെത്തി കരിമ്പ് വാങ്ങുമായിരുന്നു. ഇന്നത്തെ സൗകര്യങ്ങളൊന്നുമില്ലാത്ത ആ കാലത്ത് ഒരു 10 പൈസയുടെ കരിമ്പ് വാങ്ങാൻ പോലും ഇത്രയും സാഹസം വേണ്ടിവന്നിരുന്നുവെന്നത് ഇന്ന് ഓർക്കുമ്പോൾ തന്നെ രസകരമാണ്.</p>
+<div class="cane anim" data-snd="pluck" data-tap="coin"><span>🎋</span><b>10 പൈസ</b></div>
+<p>ആ കിഴക്കേ പാടത്തിന് സിനിമയുമായും ഒരു പ്രത്യേക ബന്ധമുണ്ടായിരുന്നു. പി.ജി. വിശ്വംഭരൻ സംവിധാനം ചെയ്ത “സീമന്തിനി” എന്ന സിനിമയുടെ ഷൂട്ടിംഗ് അവിടെ നടന്നത് ഇന്നും വ്യക്തമായ ഓർമയാണ്.</p>
+<div class="clap anim" data-snd="clap" data-tap="clap"><b></b>സീമന്തിനി — ആക്ഷൻ! 🎬</div>
+<p>ഷൂട്ടിംഗ് കാണാൻ കലൂരിലെ ആളുകൾ മുഴുവൻ എന്നുതന്നെ പറയാം പാടത്തേക്ക് ഒഴുകിയെത്തിയിരുന്നു. സിനിമയിൽ മാത്രം കണ്ടിരുന്ന നടന്മാരെയും നടിമാരെയും നേരിൽ കാണുക എന്നത് അന്നത്തെ വലിയൊരു സംഭവമായിരുന്നു. പ്രത്യേകിച്ച് ജയഭാരതിയെ കാണാനുള്ള ആകാംക്ഷ എല്ലാവർക്കുമുണ്ടായിരുന്നു.</p>
+<p>ഷൂട്ടിംഗ് കഴിഞ്ഞ് നടൻ മധു ഞങ്ങളുടെ ചാമ്പ മരത്തിന്റെ ചുവട്ടിൽ വന്ന് വിശ്രമിച്ചിരുന്നതും എന്റെ ഓർമയിലുണ്ട്. സിനിമയിൽ മാത്രം കണ്ടിരുന്ന ഒരു നടൻ നമ്മുടെ വീട്ടുമുറ്റത്തെ ചാമ്പ മരത്തിന്റെ താഴെ ഇരുന്ന് വിശ്രമിക്കുന്നത് കുട്ടിയായിരുന്ന എനിക്ക് വലിയൊരു അത്ഭുതമായിരുന്നു. ഇന്ന് ആ രംഗം ഓർക്കുമ്പോൾ, കിഴക്കേ പാടം ഒരു സിനിമാ ലൊക്കേഷനായിരുന്ന കാലവും, അതുകാണാൻ കലൂർ മുഴുവൻ അവിടെ കൂടിയിരുന്ന ആ കൗതുകവും ഒരുമിച്ച് മനസ്സിലേക്ക് വരുന്നു.</p>
+<p>പക്ഷേ മഴക്കാലം വന്നാൽ കാഴ്ച പൂർണ്ണമായും മാറും. പാടം ഒരു വരമ്പ് പോലും കാണാൻ കഴിയാത്ത രീതിയിൽ ഒരു വലിയ കായൽ പോലെ മാറും. നിർത്താതെ പെയ്യുന്ന മഴ പത്തു ദിവസം വരെ നീണ്ടുനിൽക്കുന്നതും ഓർമയിലുണ്ട്. അന്നേരം പലരും ഒരു കുഴലിൽ ശക്തമായി ഊതി, അതിൽ നിന്ന് പായുന്ന അമ്പ് മീനുകളെ ലക്ഷ്യം വച്ച് മീൻ പിടിക്കുമായിരുന്നു. ഒരു കുഴലിൽ അമ്പ് വച്ച് ശക്തിയായി ഊതുമ്പോൾ, അത് വെള്ളത്തിലെ മീനിനെ ലക്ഷ്യമാക്കി പായുന്ന ഒരു നാടൻ രീതിയായിരുന്നു അത്.</p>
+<div class="field anim" data-snd="splash" data-tap="splash"><div class="water"></div><span class="fish">🐟</span><span class="fish" style="animation-delay:-4s;top:55%">🐠</span></div>
+<p>ചിലർ അമ്പും വില്ലും ഉപയോഗിച്ചും മീൻ പിടിക്കും. വെള്ളത്തിൽ കാണുന്ന മീനിനെ ലക്ഷ്യമാക്കി അമ്പ് എയ്യുന്ന രീതിയായിരുന്നു അത്. കുട്ടിക്കാലത്ത് അതെല്ലാം കാണുന്നത് തന്നെ വലിയൊരു കൗതുകമായിരുന്നു.</p>
+<p>കലക്കവെള്ളത്തിൽ മീൻ പിടിക്കുന്നതിൽ വിൽസൺ ഒരു വിദഗ്ധനായിരുന്നു. മഴ പെയ്ത് പാടത്തെ വെള്ളം മണ്ണുമായി കലർന്ന് തെളിച്ചമില്ലാതെ കലങ്ങിയിരിക്കുന്ന സമയത്താണ് “കലക്കവെള്ളത്തിൽ മീൻ പിടിക്കൽ”. അത്തരമൊരു വെള്ളത്തിൽ മീനുകളുടെ ചലനം മനസ്സിലാക്കി പിടിക്കുന്നതിൽ വിൽസണിന് പ്രത്യേക കഴിവുണ്ടായിരുന്നു.</p>
+<p>കിഴക്കേ പാടം മുഴുവൻ വെള്ളത്തിൽ മുങ്ങും. വെള്ളം നിറയുമ്പോൾ പാടത്ത് നിറയെ മീനുകളും എത്തും. വേനലിൽ ഞങ്ങളുടെ കളിസ്ഥലമായിരുന്ന അതേ പാടം മഴക്കാലത്ത് ഒരു ചെറിയ ജലലോകമായി മാറും.</p>
+<p>മഴക്കാലത്ത് ചിലപ്പോൾ ചിലവന്നൂർ ഭാഗത്തെ കായലിൽ നിന്നുള്ള മത്സ്യത്തൊഴിലാളികൾ വള്ളത്തിൽ കിഴക്കേ പാടത്തേക്ക് വരുമായിരുന്നു. വെള്ളം നിറഞ്ഞ പാടത്ത് മീൻ പിടിക്കാൻ അവർ എത്തുന്നത് ഞങ്ങൾ കൗതുകത്തോടെ നോക്കിനിൽക്കും. വെള്ളം കയറിയാൽ പാടത്തിന്റെ സ്വഭാവം തന്നെ മാറിപ്പോകും.</p>
+<div class="boat anim" data-snd="splash" data-tap="splash"><span>🛶</span></div>
+<p>ആ വേനൽക്കാല കാഴ്ചകളിൽ പക്ഷികൾക്കും വലിയൊരു പങ്കുണ്ടായിരുന്നു. ആറ്റക്കുരുവിയും തൂക്കണാംകുരുവിയും കൂടുകൾ വയ്ക്കുന്നത് കാണാം. നീലപ്പൊന്മാൻ വരമ്പിനോട് ചേർന്ന് കൂടുണ്ടാക്കുന്നതും ഓർമയിലുണ്ട്. അന്നത്തെ കിഴക്കേ പാടം മനുഷ്യരുടെയും പക്ഷികളുടെയും ഒരുപോലെ സജീവമായ ഒരു ലോകമായിരുന്നു.</p>
+<div class="sky anim" data-snd="myna" data-tap="myna"><span class="bd" style="top:20%">🐦</span><span class="bd" style="top:50%;animation-delay:-4s">🐦</span><span class="bd" style="top:10%;animation-delay:-7s">🕊️</span></div>
+<p>ഒരു വേനൽക്കാലത്ത് നേവിയുടെ ഒരു ഹെലികോപ്റ്റർ പരിശീലനത്തിന്റെ ഭാഗമായി അവിടെ എവിടെയോ ഇറക്കി നിർത്തിയതും ഓർമയിലുണ്ട്. ഇപ്പോൾ IMA House ഉള്ള ഭാഗത്തിന് സമീപത്തായിരുന്നുവെന്നാണ് എന്റെ ഓർമ. ആകാശത്ത് മാത്രം കണ്ടിരുന്ന ഒരു ഹെലികോപ്റ്റർ അടുത്ത് നിലത്ത് നിൽക്കുന്നത് ഞങ്ങളെ സംബന്ധിച്ചിടത്തോളം വലിയൊരു കാഴ്ചയായിരുന്നു.</p>
+<div class="sky anim" data-snd="heli" data-tap="heli"><span class="hl">🚁</span></div>
+<p>ലിബോ ചേട്ടനും പയസ് ചേട്ടനും സുരേഷ് ചേട്ടനും അംബുവും പട്ടം ഉണ്ടാക്കുന്നതിൽ മാത്രമല്ല, കവണ ഉണ്ടാക്കുന്നതിലും വിദഗ്ധരായിരുന്നു. കവണ ഉപയോഗിച്ചുള്ള അവരുടെ കൃത്യതയും ഞങ്ങളെ അത്ഭുതപ്പെടുത്തുമായിരുന്നു.</p>
+<p>വെള്ളക്കറുപ്പൻ കത്രിക എന്നറിയപ്പെട്ടിരുന്ന, വളരെ ഉയരത്തിൽ പറക്കുന്ന പക്ഷിയെപ്പോലും ലക്ഷ്യമിട്ട് കവണ കൊണ്ട് അടിക്കാൻ കഴിയുന്നത്ര കൃത്യത അവർക്കുണ്ടായിരുന്നുവെന്നാണ് എന്റെ ഓർമ.</p>
+<p>അന്നൊക്കെ അതെല്ലാം കുട്ടിക്കാലത്തെ ഒരു സാഹസവും കളിയുമായിരുന്നു. പക്ഷേ ഇന്ന് തിരിഞ്ഞുനോക്കുമ്പോൾ, ആ പക്ഷികളെയും ആ തുറന്ന പാടങ്ങളെയും ഓർക്കുമ്പോൾ മറ്റൊരു വികാരമാണ് തോന്നുന്നത്.</p>
+<div class="q">ഇന്ന് എന്റെ വീട്ടിൽ വെള്ളക്കറുപ്പൻ കത്രികയ്ക്ക് സ്ഥിരമായി ഒരു കൂടുണ്ട്.</div>
+<p>ഒരിക്കൽ കിഴക്കേ പാടത്ത് വളരെ ഉയരത്തിൽ പറന്നിരുന്ന ആ പക്ഷിയെ അത്ഭുതത്തോടെ നോക്കിനിന്നിരുന്ന ഞാൻ, ഇന്ന് അതേ പക്ഷി എന്റെ വീട്ടിൽ കൂടുണ്ടാക്കി താമസിക്കുന്നത് കാണുന്നു.</p>
+<p>കാലം ആ പാടം കൊണ്ടുപോയെങ്കിലും, അതിന്റെ ഒരു ചെറിയ കഷണം ഇന്നും എന്റെ വീട്ടിലുണ്ട് — എന്റെ മുറ്റത്ത് കൂടുകൂട്ടിയെത്തുന്ന ആ പക്ഷിയുടെ രൂപത്തിൽ.</p>
+<p>കിഴക്കേ പാടവും, സിനിമാ ഷൂട്ടിംഗും, മധു ചാമ്പ മരത്തിന്റെ ചുവട്ടിൽ വിശ്രമിച്ചതും, ജയഭാരതിയെ കാണാൻ കൂടിയ കലൂരും, നിറമുള്ള പട്ടങ്ങളും, ചാലിന് കുറുകെ ആഫ്രിക്കൻ പായൽ കൂട്ടിയുണ്ടാക്കിയ മെത്തയിലൂടെ നടന്ന് വാങ്ങിയ 10 പൈസയുടെ കരിമ്പും, മഴയിൽ നിറഞ്ഞ വെള്ളവും മീനുകളും, പെട്രോമാക്സിന്റെ വെളിച്ചത്തിൽ നിശ്ചലമായ തവളകളും, വള്ളത്തിൽ എത്തിയ മത്സ്യത്തൊഴിലാളികളും, ലിബോ ചേട്ടനും പയസ് ചേട്ടനും സുരേഷ് ചേട്ടനും അംബുവും, ആകാശത്ത് പറന്നിരുന്ന പക്ഷികളും — ഇന്നും എന്റെ ഓർമയിൽ അതേപടി ജീവിച്ചിരിക്കുന്നു.</p>
+</section>
+<section class="ch" data-snd="proj"><h2>സിനിമാ റീലുകളും ഞങ്ങളുടെ ജുഗാഡ് പ്രൊജക്ടറും</h2><span class="ico">🎞️</span>
+<p>സുരേഷ് ചേട്ടന്റെ കുടുംബം പ്രശസ്ത സിനിമാ സംവിധായകൻ പി.ജി. വിശ്വംഭരന്റെ ബന്ധുക്കളായിരുന്നു. അതുകൊണ്ടുതന്നെ സിനിമയുമായി ബന്ധപ്പെട്ട ചില കൗതുകകരമായ കാര്യങ്ങൾ ഞങ്ങളുടെ ബാല്യത്തിലേക്കും എത്തിയിരുന്നു.</p>
+<p>സുരേഷ് ചേട്ടൻ ചിലപ്പോൾ ഉപയോഗശൂന്യമായ പഴയ സിനിമാ ഫിലിം റീലുകൾ കൊണ്ടുവരുമായിരുന്നു. അന്ന് അവയിൽ പതിഞ്ഞിരുന്ന സിനിമയിലെ നടന്മാരെയും നടിമാരെയും കാണാൻ ഞങ്ങൾ ആ ഫിലിം കഷണങ്ങൾ സൂര്യപ്രകാശത്തിന് നേരെ പിടിച്ചുനോക്കും. ഇന്നത്തെ ഡിജിറ്റൽ കാലത്ത് ഒരു സിനിമയിലെ ഒരു ഫ്രെയിം കാണാൻ സ്ക്രീൻ തുറന്നാൽ മതി. അന്ന് ഒരു ചെറിയ ഫിലിം കഷണം സൂര്യനു നേരെ പിടിച്ച് അതിനുള്ളിലെ മുഖങ്ങൾ തിരിച്ചറിയുന്നതുപോലും വലിയൊരു അത്ഭുതമായിരുന്നു.</p>
+<div class="reel anim" data-snd="proj" data-tap="proj"></div>
+<p>പക്ഷേ അതിലും വലിയ അത്ഭുതം സുരേഷ് ചേട്ടനും ലിബോ ചേട്ടനും പയസ് ചേട്ടനും ചേർന്ന് ഉണ്ടാക്കിയിരുന്ന ഞങ്ങളുടെ സ്വന്തം “ജുഗാഡ് സിനിമാ പ്രൊജക്ടർ” ആയിരുന്നു.</p>
+<p>ഒരു കാർഡ്ബോർഡ് പെട്ടിയായിരുന്നു അതിന്റെ പ്രധാന ഭാഗം. പെട്ടിയുടെ രണ്ടറ്റത്തും വട്ടത്തിൽ ഒരു കൃത്യമായ വലുപ്പത്തിലുള്ള ദ്വാരം ഉണ്ടാക്കും. അത് ഞങ്ങൾ “കുട്ടിക്കുറ” എന്ന് വിളിച്ചിരുന്ന Cuticura ടാൽക്കം പൗഡറിന്റെ ടിന്നിന്റെ വലുപ്പത്തിന് ഏകദേശം തുല്യമായിരിക്കും.</p>
+<p>ഒഴിഞ്ഞ Cuticura ടിന്നിന്റെ അലുമിനിയം ഭാഗം രണ്ടുവശവും തുറന്ന്, അതിനെ ആ കാർഡ്ബോർഡ് പെട്ടിക്കുള്ളിൽ കൃത്യമായി ഘടിപ്പിക്കും.</p>
+<p>അടുത്തത് ഒരു ടംഗ്സ്റ്റൺ ബൾബ്.</p>
+<p>പഴയ ബൾബ് സൂക്ഷിച്ച് എടുത്ത്, പുറത്തെ ഗ്ലാസ് പൊട്ടിക്കാതെ ഉള്ളിലെ ഫിലമെന്റും മറ്റ് ഗ്ലാസ് ഭാഗങ്ങളും സ്ക്രൂഡ്രൈവർ ഉപയോഗിച്ച് പതുക്കെ നീക്കം ചെയ്യും. പിന്നീട് അതിനുള്ളിൽ വെള്ളം നിറച്ച്, കാർഡ്ബോർഡ് പെട്ടിയുടെ പിൻഭാഗത്ത് ഘടിപ്പിക്കും. വെള്ളം നിറച്ച ആ ബൾബ് തന്നെയായിരുന്നു ഞങ്ങളുടെ ജുഗാഡ് ലെൻസ്!</p>
+<div class="bulb anim" data-snd="pluck" data-tap="pluck"><i></i></div>
+<p>ഇനി സിനിമാ ഫിലിമിന്റെ കഷണങ്ങൾ.</p>
+<p>ഒരു ഫിലിം കഷണം എടുത്ത് കാർഡ്ബോർഡിൽ ഒട്ടിച്ച് ഓരോ ഫ്രെയിമും ഒരു സ്ലൈഡുപോലെ തയ്യാറാക്കും. അതായിരുന്നു ഞങ്ങളുടെ “സിനിമാ റീൽ”.</p>
+<p>പിന്നെ യഥാർത്ഥ പ്രദർശനം.</p>
+<p>സുരേഷ് ചേട്ടനും ലിബോ ചേട്ടനും ആയിരുന്നു ഈ പ്രൊജക്ഷന്റെ പ്രധാന ടെക്നീഷ്യന്മാർ. കൈയിൽ ഒരു കണ്ണാടി പിടിച്ച് സൂര്യപ്രകാശം പിടിച്ച് അത് ഞങ്ങളുടെ ജുഗാഡ് പ്രൊജക്ടറിലേക്ക് കൃത്യമായി തിരിച്ചുവിടും. വെളിച്ചം ശരിയായ രീതിയിൽ കിട്ടുന്നുണ്ടോ, ഓരോ ഫിലിം ഫ്രെയിമും പഴയ വീട്ടിന്റെ ചുമരിൽ കൃത്യമായി പതിക്കുന്നുണ്ടോ എന്നൊക്കെ അവർ ശ്രദ്ധിക്കും.</p>
+<div class="sun anim" data-tap="pluck">☀️</div>
+<p>പെട്ടെന്ന്…</p>
+<p>പഴയ വീട്ടിന്റെ വെളുത്ത ചുമരിൽ ഒരു സിനിമാ നടന്റെ മുഖം!</p>
+<p>പിന്നെ മറ്റൊരു ഫ്രെയിം.</p>
+<p>മറ്റൊരു നടി.</p>
+<p>മറ്റൊരു രംഗം.</p>
+<p>ഞങ്ങളുടെ ആവേശത്തിന് അന്ന് അതിരുണ്ടായിരുന്നില്ല.</p>
+<div class="proj anim" data-snd="proj" data-tap="proj"><div class="box"></div><div class="beam"></div><div class="wall"><span>🎭</span><span style="animation-delay:2s">😮</span><span style="animation-delay:4s">🤠</span></div></div>
+<p>ഇന്നത്തെ വലിയ സ്ക്രീനും പ്രൊജക്ടറും, സിനിമാ ഹാളിലെ സൗകര്യങ്ങളുമൊന്നും ഞങ്ങൾക്ക് വേണ്ടിയിരുന്നില്ല. ഒരു കാർഡ്ബോർഡ് പെട്ടി, ഒരു പഴയ ബൾബ്, വെള്ളം നിറച്ച ഗ്ലാസ്, കുറച്ച് ഫിലിം കഷണങ്ങൾ, ഒരു കണ്ണാടി, പിന്നെ കുറച്ച് സൂര്യപ്രകാശം — അത്രയും മാത്രം.</p>
+<p>പക്ഷേ ആ ചുമരിൽ സിനിമയിലെ കഥാപാത്രങ്ങൾ തെളിഞ്ഞുവന്ന നിമിഷം ഞങ്ങൾക്ക് അത് ഒരു യഥാർത്ഥ സിനിമാ തിയേറ്ററായിരുന്നു.</p>
+<div class="q">ഇന്ന് ആ സംഭവം ഓർക്കുമ്പോൾ തോന്നുന്നു — ഞങ്ങൾ അന്ന് സിനിമ കണ്ടതല്ല; ഞങ്ങൾ തന്നെയാണ് സിനിമ ഉണ്ടാക്കിയത്.</div>
+<p>സാങ്കേതിക വിദ്യയൊന്നും അറിയാത്ത പ്രായത്തിൽ, കിട്ടിയ സാധനങ്ങൾകൊണ്ട് ഒരു സിനിമാ പ്രൊജക്ടർ ഉണ്ടാക്കി, പഴയ വീട്ടിന്റെ ചുമരിൽ സിനിമാ കഥാപാത്രങ്ങളെ തെളിയിച്ച ആ ദിവസങ്ങൾ…</p>
+<p>അതാണ് ഞങ്ങളുടെ ബാല്യത്തിലെ ഏറ്റവും വലിയ സിനിമാ മായാജാലങ്ങളിൽ ഒന്ന്.</p>
+</section>
+<section class="ch" data-snd="soft"><h2>പിന്നെ ഒരു ദിവസം…</h2><span class="ico">🏠</span>
+<p>അങ്ങനെ മൂന്നു വർഷത്തെ ഡിഗ്രി പഠനകാലം കഴിഞ്ഞതോടെ, പതിയെ എന്റെ തെക്കേ വീട്ടിലേക്കുള്ള സന്ദർശനങ്ങൾക്കും വിരാമമായി.</p>
+<p>അതിനു മുമ്പ് മോളി ചേച്ചി എന്റെ ട്യൂഷൻ ടീച്ചറായിരുന്നു.</p>
+<p>പിന്നെ ജീവിതം പതിയെ ഓരോരുത്തരെയും ഓരോ വഴികളിലേക്ക് കൊണ്ടുപോയി.</p>
+<p>തെക്കേ വീട്ടിലേക്കുള്ള പോക്ക് അങ്ങനെ നിന്നു.</p>
+<p>പക്ഷേ ഓർമകൾ അവിടെ നിന്നില്ല.</p>
+<p>കാലം പിന്നെയും കടന്നുപോയി.</p>
+<p>ഒരിക്കൽ എപ്പോഴും ആളും ബഹളവും കുട്ടികളുടെ കളിയും ചിരിയും നിറഞ്ഞിരുന്ന തെക്കേ വീട്ടിൽ നിന്ന്, ഓരോരുത്തരായി വിവാഹം കഴിഞ്ഞ് ഓരോ വഴികളിലേക്ക് പോയി. വീടിന്റെ ഓരോ കോണിലും നിറഞ്ഞിരുന്ന ആളുകൾ പതിയെ കുറഞ്ഞു.</p>
+<p>ഒടുവിൽ, ആ വലിയ വീടും പഴയ മുറ്റവും ഓരോ ഭാഗങ്ങളായി വിൽക്കപ്പെട്ടു. ഒരിക്കൽ ഞങ്ങളുടെ ബാല്യത്തിന്റെ ലോകമായിരുന്ന സ്ഥലം പതിയെ പലരുടേതായി മാറി.</p>
+<p>ഇന്ന് അവിടേക്ക് നോക്കുമ്പോൾ പഴയ തെക്കേ വീട് കാണാനില്ല. പക്ഷേ എന്റെ ഓർമയിൽ ആ വീട് ഇപ്പോഴും അതേപടി നിൽക്കുന്നു — ഐറിൻ ചേച്ചിയുടെ “കാഞ്ചീരെ… കാഞ്ചീരെ…”, സോണി ചേച്ചിയുടെ തയ്യൽ മെഷീൻ, വരാന്തയിലെ വില്ലി ചേട്ടന്റെ ബ്രഷ് പഞ്ച് മാർക്കുകൾ, മോളി ചേച്ചിയോടൊത്തുള്ള കളികൾ, പയസ് ചേട്ടനൊത്തുള്ള സൈക്കിൾ യാത്രകൾ, വിൽസന്റെ മീൻപിടുത്തവും തേങ്ങിൽ കയറ്റവും…</p>
+<p>വീട് പോയി. ആളുകൾ പല വഴികളിലായി. മുറ്റങ്ങൾ വേർപിരിഞ്ഞു.</p>
+<div class="q">പക്ഷേ ഓർമകൾക്ക് വിൽപ്പനയില്ല.</div>
+</section>
+</main>
+
+<section class="fin" id="fin" data-snd="chime">
+<p>ഇന്ന് തിരിഞ്ഞുനോക്കുമ്പോൾ ഒരു ചോദ്യം മാത്രം മനസ്സിൽ വരുന്നു.</p>
+<div class="q">എന്തിനായിരുന്നു അന്നത്തെ ദിവസങ്ങളിൽ ഇത്രയും കൂടിക്കാഴ്ചകൾ?</div>
+<p>അത് കുടുംബത്തെ കാണാനുള്ള ആവശ്യമുണ്ടായിരുന്നതുകൊണ്ടായിരുന്നോ?</p>
+<p>അതോ, അന്നത്തെ ജീവിതം തന്നെ അങ്ങനെയായിരുന്നോ?</p>
+<div class="lines"><p style="transition-delay:0.0s">വാതിലുകൾ തുറന്നുകിടന്നിരുന്ന ഒരു കാലം.</p><p style="transition-delay:0.6s">വേലികൾ അതിരുകൾ മാത്രമായിരുന്ന ഒരു കാലം.</p><p style="transition-delay:1.2s">വീടുകൾ തമ്മിൽ അകലമില്ലായിരുന്ന ഒരു കാലം.</p><p style="transition-delay:1.7999999999999998s">ആരെയും കാണാൻ പ്രത്യേക കാരണം വേണ്ടാതിരുന്ന ഒരു കാലം.</p></div>
+<p>ഇന്ന് ഒരു കൂടിക്കാഴ്ചയ്ക്ക് പോലും സമയം കണ്ടെത്തണം. ഫോൺ ചെയ്യണം. പ്ലാൻ ചെയ്യണം. തീയതി നോക്കണം.</p>
+<p>ഇന്ന് മുൻകൂട്ടി പറയാതെ ആരും ആരുടെയും വീട്ടിൽ ചെല്ലാറില്ല. “വരട്ടേ?” എന്നൊരു മെസ്സേജ് ഇടണം. “ഇപ്പോൾ സൗകര്യമാണോ?” എന്ന് ചോദിക്കണം. മറുപടി വരുന്നതുവരെ കാത്തിരിക്കണം. ഒരു ചായ കുടിക്കാൻ പോലും ഇന്ന് അപ്പോയിന്റ്മെന്റ് വേണം.</p>
+<p>സ്വന്തം വീടിനുള്ളിൽ പോലും നമ്മൾ അങ്ങനെയായി. ഓരോരുത്തരും ഓരോ മുറിയിൽ, വാതിൽ ചാരി, കയ്യിൽ ഫോണുമായി. തൊട്ടടുത്ത മുറിയിലേക്ക് ഒന്ന് കയറിച്ചെല്ലാൻ പോലും ഇന്ന് നമ്മൾ ശീലിച്ചിട്ടില്ല — ഒന്നുകിൽ വിളിച്ചു ചോദിക്കണം, അല്ലെങ്കിൽ വാതിലിൽ മുട്ടണം.</p>
+<p>എല്ലാ വീടുകൾക്കും ഇന്ന് ഇഷ്ടിക കെട്ടിയ ഉയരമുള്ള മതിലുണ്ട്. മതിലിന് നടുവിൽ സ്റ്റീൽ ഗേറ്റ് എപ്പോഴും അടഞ്ഞുകിടക്കും. ഗേറ്റിൽ ഒരു ബെല്ലും ഒരു ക്യാമറയും. തൊട്ടപ്പുറത്തെ വീട്ടിൽ ആരാണെന്ന് പോലും ചിലപ്പോൾ നമുക്കറിയില്ല.</p>
+<div class="wallgate anim" data-snd="clang" data-tap="clang"><div class="fenceL"></div><div class="brick"></div><div class="gate2"><i></i><i></i></div></div>
+<div class="lines"><p style="transition-delay:0.0s">വാതിലുകൾ അടഞ്ഞുകിടക്കുന്ന ഒരു കാലം.</p><p style="transition-delay:0.6s">വേലികൾ ഇഷ്ടിക മതിലുകളും സ്റ്റീൽ ഗേറ്റുകളുമായി മാറിയ ഒരു കാലം.</p><p style="transition-delay:1.2s">വീടുകൾ തമ്മിൽ ദൂരം കൂടിയ ഒരു കാലം.</p><p style="transition-delay:1.7999999999999998s">ഒരാളെ കാണാൻ കാരണവും മുൻകൂർ അനുമതിയും വേണ്ടിവരുന്ന ഒരു കാലം.</p></div>
+<p>അന്ന് ഒരു വേലിയുടെ വിടവിലൂടെ കടന്നാൽ മതിയായിരുന്നു. ഇന്ന് ഒരു ഗേറ്റിന്റെ ബെല്ലിനു മുന്നിൽ നമ്മൾ കാത്തുനിൽക്കുന്നു — തുറക്കുമോ എന്ന് ഉറപ്പില്ലാതെ.</p>
+<div class="q">അന്ന് വേലികൾ വീടുകളെ വേർതിരിച്ചില്ല; ഇന്ന് ഇഷ്ടികയും ഉരുക്കും മനുഷ്യരെ വേർതിരിക്കുന്നു.</div>
+<div class="q">അന്ന്?</div>
+<p>വേലിക്കപ്പുറത്തേക്ക് ഒന്ന് നടന്നാൽ മതി.</p>
+<p>ആർക്കെങ്കിലും വീട്ടിൽ കയറി ഇരിക്കാം. ചായ കിട്ടും. ഒരു തമാശ കേൾക്കാം. കുട്ടികൾ കളിക്കും. ആരെങ്കിലും സൈക്കിളുമായി വരും. ഒരു കല്യാണം ഉണ്ടാകും. സിനിമ കാണാൻ പോകും. വൈകുന്നേരം എപ്പോഴായെന്ന് പോലും അറിയില്ല.</p>
+<p>അന്ന് അതൊന്നും പ്രത്യേകമായി തോന്നിയിരുന്നില്ല.</p>
+<p>ഇന്ന് തിരിഞ്ഞുനോക്കുമ്പോഴാണ് മനസ്സിലാകുന്നത് — അതായിരുന്നു പ്രത്യേകത.</p>
+<p>കാലം വീടുകളെ മാറ്റി. മുറികൾ മാറി. പുതിയ വീടുകൾ വന്നു. പഴയ മരത്തടിയുടെ സ്ഥാനത്ത് ഇന്ന് എന്റെ മുറി നിൽക്കുന്നു.</p>
+<div class="q">പക്ഷേ ആ മരത്തടിയിൽ ഇരുന്ന കുട്ടി ഇന്നും അവിടെത്തന്നെയുണ്ട്.</div>
+<p>ഐറിൻ ചേച്ചിയുടെ “കാഞ്ചീരെ… കാഞ്ചീരെ…” കേൾക്കുമ്പോൾ, “I love you” എന്ന് പറഞ്ഞിരുന്ന ആ ശബ്ദം ഓർക്കുമ്പോൾ, പയസ് ചേട്ടനൊപ്പം സൈക്കിളിൽ പോകുമ്പോൾ, രണ്ട് രൂപയുടെ ഖുർബാനി ടിക്കറ്റ് ഓർക്കുമ്പോൾ, വിൽസൻ തേങ്ങിൽ കയറുന്നത് കാണുമ്പോൾ, മോളി ചേച്ചിയോടൊപ്പം മരപ്പൊടി ചേർത്ത് കഞ്ഞിക്കറി ഉണ്ടാക്കുമ്പോൾ — ആ കുട്ടി വീണ്ടും പുറത്തുവരുന്നു.</p>
+<div class="gate" data-tap="chime"><i></i><i></i></div>
+<p>തെക്കേ വീട് ഇന്ന് ഒരു വീടല്ല.</p>
+<div class="q">അത് എന്റെ ബാല്യത്തിലേക്കുള്ള ഒരു വാതിലാണ്.</div>
+<p>ആ വാതിൽ തുറന്ന് ഇപ്പോൾ അകത്തേക്ക് നടന്നുചെല്ലാൻ കഴിയില്ല.</p>
+<p>പക്ഷേ ഓർമയിൽ…</p>
+<div class="q">ആ വാതിൽ ഇന്നും തുറന്നുതന്നെയാണ്.</div>
+<div class="names" data-tap="pluck" style="justify-content:center"><span style="--c:var(--pink)">ഐറിൻ</span><span style="--c:var(--blue)">മോളി</span><span style="--c:var(--gold)">സോണി</span><span style="--c:var(--pink)">ബീന</span><span style="--c:var(--blue)">റെക്സി</span><span style="--c:var(--gold)">വില്ലി</span><span style="--c:var(--pink)">പയസ്</span><span style="--c:var(--blue)">ലിബോ</span><span style="--c:var(--gold)">വിൽസൺ</span></div>
+<p>ഇനി ഒരവസരം കിട്ടിയാൽ, അടുത്ത ആൾക്കാരുടെ പേരുമായി വീണ്ടും വരാം.</p>
+<p>കാരണം,</p>
+<div class="q">തെക്കേ വീട്ടിലെ ഓർമകൾക്ക് ഒരു കഥകൊണ്ട് തീരില്ല.</div>
+<p>അവിടെ എന്റെ ബാല്യത്തിന്റെ പല അധ്യായങ്ങളും ഇന്നും ബാക്കിയുണ്ട്.</p>
+</section>
+
+<script>
+// brush punch marks on verandah-green
+(function(){var c=document.getElementById('dots'),x=c.getContext('2d'),cols=['#c23b6e','#2d4a8c','#d9961a','#e8e1c8','#7a4c2c'];
+function d(){c.width=innerWidth;c.height=innerHeight;x.clearRect(0,0,c.width,c.height);var s=7;
+for(var i=0;i<46;i++){s=(s*9301+49297)%233280;var px=s/233280*c.width;s=(s*9301+49297)%233280;var py=s/233280*c.height;s=(s*9301+49297)%233280;var r=6+s/233280*12;
+x.globalAlpha=.28;x.fillStyle=cols[i%5];x.beginPath();x.ellipse(px,py,r,r*.7,i,0,6.3);x.fill();}}
+d();addEventListener('resize',d)})();
+
+var AC,on=false;
+function cx(){if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)();if(AC.state=='suspended')AC.resume();return AC}
+function tone(f,d,t,v,ty,f2){var a=cx(),o=a.createOscillator(),g=a.createGain(),s=a.currentTime+(t||0);o.type=ty||'sine';o.frequency.setValueAtTime(f,s);if(f2)o.frequency.exponentialRampToValueAtTime(f2,s+d);g.gain.setValueAtTime(.0001,s);g.gain.exponentialRampToValueAtTime(v||.12,s+.02);g.gain.exponentialRampToValueAtTime(.0001,s+d);o.connect(g);g.connect(a.destination);o.start(s);o.stop(s+d+.05)}
+function nz(d,t,v,fq,ty){var a=cx(),n=Math.floor(a.sampleRate*d),b=a.createBuffer(1,n,a.sampleRate),x=b.getChannelData(0);for(var i=0;i<n;i++)x[i]=Math.random()*2-1;var s=a.createBufferSource(),f=a.createBiquadFilter(),g=a.createGain(),st=a.currentTime+(t||0);s.buffer=b;f.type=ty||'bandpass';f.frequency.value=fq||1000;g.gain.setValueAtTime(v||.2,st);g.gain.exponentialRampToValueAtTime(.0001,st+d);s.connect(f);f.connect(g);g.connect(a.destination);s.start(st)}
+function rep(n,dt,fn){for(var i=0;i<n;i++)fn(i*dt)}
+var S={
+creak:function(){tone(110,.9,0,.1,'sawtooth',55);tone(90,.7,.5,.08,'sawtooth',150)},
+saw:function(){rep(5,.16,function(t){nz(.12,t,.18,2500)})},
+myna:function(){tone(1800,.1,0,.08,'sine',2600);tone(2200,.1,.15,.08,'sine',1500);tone(2000,.12,.3,.08,'sine',2800)},
+bell:function(){[880,1100,1320].forEach(function(f,i){tone(f,1.2,i*.18,.09)})},
+pluck:function(){tone(520,.5,0,.12,'triangle',470)},
+tractor:function(){rep(7,.11,function(t){tone(70,.08,t,.18,'square',50)})},
+ring:function(){rep(3,.2,function(t){tone(2400,.22,t,.07);tone(3100,.22,t,.04)})},
+crash:function(){nz(.5,0,.5,300,'lowpass');tone(110,.4,0,.2,'square',40)},
+splash:function(){nz(.6,0,.25,1200);nz(.4,.2,.15,2500)},
+soft:function(){[392,494,587].forEach(function(f,i){tone(f,1.1,i*.15,.07)})},
+chime:function(){[523,659,784,1047].forEach(function(f,i){tone(f,1.5,i*.25,.08)})},
+coin:function(){tone(1568,.15,0,.08,'square');tone(2093,.5,.1,.08,'square')},
+ticket:function(){nz(.08,0,.3,3000);nz(.08,.12,.3,3500)},
+wind:function(){nz(1.6,0,.2,600)},
+frog:function(){rep(3,.2,function(t){tone(130,.12,t,.18,'sawtooth',90)})},
+heli:function(){rep(14,.07,function(t){nz(.05,t,.4,200,'lowpass')})},
+clap:function(){nz(.12,0,.6,1800,'highpass')},
+proj:function(){rep(12,.08,function(t){nz(.03,t,.3,4000,'highpass')})},
+giggle:function(){[900,1200,1000,1350,1100].forEach(function(f,i){tone(f,.1,i*.09,.07,'triangle',f*1.2)})},
+toll:function(){tone(196,2.2,0,.12);tone(392,1.6,0,.05)},
+clang:function(){tone(300,.7,0,.1,'square',240);tone(920,.6,0,.05,'triangle');nz(.15,0,.3,2500,'highpass')},
+sing:function(){tone(660,.7,0,.09,'sine',880)}};
+function play(n){if(on&&S[n]){try{S[n]()}catch(e){}}}
+var btn=document.getElementById('snd');
+btn.onclick=function(){on=!on;btn.textContent=on?'🔊 ശബ്ദം ഓഫ്':'🔇 ശബ്ദം ഓൺ ചെയ്യൂ';if(on){cx();S.creak()}};
+document.addEventListener('click',function(e){var t=e.target.closest('[data-tap]');if(t)play(t.dataset.tap)});
+var io=new IntersectionObserver(function(e){e.forEach(function(t){if(t.isIntersecting){t.target.classList.add('in');if(!t.target._p){t.target._p=1;play(t.target.dataset.snd)}}})},{threshold:0,rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('.ch,.fin,.anim').forEach(function(n){io.observe(n)});
+</script>
+</body>
+</html>
