@@ -4268,19 +4268,23 @@ if(soundButton){
    HOME BUTTON
    ========================================================= */
 
-const homeButton =
-  document.getElementById(
-    "hm"
-  );
+#hm{
+  font:inherit;
+  font-size:.9rem;
+  padding:8px 14px;
+  border-radius:20px;
+  border:1px solid #fff;
+  background:rgba(0,0,0,.72);
+  color:#fff;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+}
 
-if(homeButton){
-
-  homeButton.addEventListener(
-    "click",
-    ()=>{
-      window.location.href="https://paradiseofross-dotcom.github.io/pages-of-my-life/";
-    }
-  );
+#hm:hover{
+  background:rgba(0,0,0,.88);
 }
 
 
