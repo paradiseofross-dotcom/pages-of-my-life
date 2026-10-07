@@ -28,11 +28,23 @@ p{font-size:clamp(1.05rem,3.2vw,1.3rem);line-height:1.95;margin:.2em 0}
 .q{font-weight:700;font-size:clamp(1.2rem,3.8vw,1.6rem);border-left:3px solid var(--accent);padding-left:14px;margin:1em 0}
 .hint{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;z-index:3;font-size:.9rem;color:#fff;text-shadow:0 1px 6px #000;animation:b 2s infinite;pointer-events:none}
 @keyframes b{50%{transform:translateY(6px)}}
-#nv{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:7;display:flex;gap:8px}#nv button{font:inherit;font-size:.9rem;padding:8px 14px;border-radius:20px;border:1px solid #fff;background:rgba(0,0,0,.72);color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:8px}#nv button:focus-visible{outline:3px solid #f2c744}#nv button:hover{background:rgba(0,0,0,.88)}
+#nv{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:7;display:flex;gap:8px}
+#nv button{font:inherit;font-size:.9rem;padding:8px 14px;border-radius:20px;border:1px solid #fff;background:rgba(0,0,0,.72);color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+#nv button:focus-visible{outline:3px solid #f2c744}
+#nv button:hover{background:rgba(0,0,0,.88)}
 @media (prefers-reduced-motion:reduce){.hint,h1{animation:none}.l{transition:none}}
 </style></head><body data-s="0">
+
 <canvas id="c"></canvas><div id="vg"></div><div id="pg"></div>
-<nav id="nv" aria-label="നാവിഗേഷൻ"><button id="snd" aria-pressed="false"><span id="si" aria-hidden="true">🔇</span><span id="sl">ശബ്ദം ഓൺ ചെയ്യൂ</span></button><button id="hm">മുഖ്യപേജ്</button></nav>
+
+<nav id="nv" aria-label="നാവിഗേഷൻ">
+<button id="snd" aria-pressed="false">
+<span id="si" aria-hidden="true">🔇</span>
+<span id="sl">ശബ്ദം ഓൺ ചെയ്യൂ</span>
+</button>
+<button id="hm">മുഖ്യപേജ്</button>
+</nav>
+
 <div class="hint" id="h">താഴേക്ക് സ്ക്രോൾ ചെയ്യൂ ↓</div>
 
 <section data-k="0" class="c" data-s="0"><div class="pn">
@@ -154,42 +166,958 @@ p{font-size:clamp(1.05rem,3.2vw,1.3rem);line-height:1.95;margin:.2em 0}
 <section data-k="4" data-s="0"><div class="pn">
 <h2 class="l">പെരുമ്പാമ്പ് — ഒരു മഴയാത്ര</h2>
 <p class="l">മനു പറഞ്ഞ കഥയുടെ അടിസ്ഥാനരേഖ വളരെ ലളിതമായിരുന്നു.</p>
-<p class="l">ഒരു പെരുമ്പാമ്പ്.</p>
-<p class="l">കനത്ത മഴ.</p>
-<p class="l">വെള്ളത്തിന്റെ ഒഴുക്കിൽപ്പെട്ട് അതിന്റെ സ്വാഭാവിക ആവാസവ്യവസ്ഥയിൽ നിന്ന് അകന്നുപോകുന്നു.</p>
-<p class="l">ഒടുവിൽ മനുഷ്യരുടെ ലോകത്ത് എത്തിപ്പെടുന്നു.</p>
-<p class="l">റെയിൽവേ സ്റ്റേഷൻ.</p>
-<p class="l">വലിയ വെളിച്ചങ്ങൾ.</p>
-<p class="l">മനുഷ്യരുടെ ശബ്ദം.</p>
-<p class="l">ഭക്ഷണം കിട്ടാത്ത അവസ്ഥ.</p>
-<p class="l">അവസാനം ആളുകൾ അതിനെ പിടിക്കുന്നു.</p>
-<p class="l">അത്രയായിരുന്നു മനു പറഞ്ഞത്.</p>
-<p class="l">പക്ഷേ ആ കഥ അന്ന് എന്റെ മനസ്സിൽ പതിഞ്ഞില്ല.</p>
-<p class="l">വർഷങ്ങൾക്കുശേഷം മനു വീണ്ടും അത് പറഞ്ഞപ്പോൾ മാത്രമാണ് ആ ദൃശ്യം എന്റെ മനസ്സിൽ ഒരു സിനിമ പോലെ ഓടിത്തുടങ്ങിയത്.</p>
+<p class="l">ഒരു മഴയുള്ള ദിവസം.</p>
+<p class="l">ഒരു യാത്ര.</p>
+<p class="l">വഴിയിൽ കണ്ട ഒരു പെരുമ്പാമ്പ്.</p>
+<p class="l">പക്ഷേ മനു പറയുമ്പോൾ അത് വെറും ഒരു സംഭവം മാത്രമായിരുന്നില്ല.</p>
+<p class="l">മഴയും വഴിയും ഇരുട്ടും ആളുകളും ഭയവും തമാശയും എല്ലാം ചേർന്ന് ഒരു സിനിമയിലെ രംഗം പോലെയായിരുന്നു.</p>
+<p class="l">അവൻ പറയുന്നത് കേൾക്കുമ്പോൾ എന്റെ മനസ്സിൽ ഓരോ രംഗങ്ങളും പതുക്കെ രൂപംകൊള്ളാൻ തുടങ്ങി.</p>
 </div></section>
 
-<!-- ഇവിടെ മുതൽ നിങ്ങളുടെ യഥാർത്ഥ ഫയലിലെ ശേഷിക്കുന്ന sections, text, animation, sound code എല്ലാം അതേപടി തുടരുന്നു -->
+<section data-k="5" data-s="1"><div class="pn">
+<h2 class="l">മഴ</h2>
+<p class="l">മഴ പെയ്യുകയായിരുന്നു.</p>
+<p class="l">വലിയ മഴ.</p>
+<p class="l">റോഡിന്റെ ഇരുവശവും വെള്ളം നിറഞ്ഞിരുന്നു.</p>
+<p class="l">മരങ്ങളിൽ നിന്ന് വെള്ളത്തുള്ളികൾ താഴേക്ക് വീണുകൊണ്ടിരുന്നു.</p>
+<p class="l">വഴിയിലൂടെ പോകുന്ന വാഹനങ്ങളുടെ വെളിച്ചം മഴയുടെ തിരശ്ശീലയിലൂടെ മങ്ങിക്കാണാമായിരുന്നു.</p>
+<p class="l">മനുവിന്റെ കഥയിൽ മഴയ്ക്ക് ഒരു കഥാപാത്രത്തിന്റെ സ്ഥാനമുണ്ടായിരുന്നു.</p>
+</div></section>
+
+<section data-k="6" data-s="2"><div class="pn">
+<h2 class="l">നഗരത്തിന്റെ ആദ്യ വെളിച്ചം</h2>
+<p class="l">രാത്രി പതുക്കെ മാറുകയായിരുന്നു.</p>
+<p class="l">ആകാശത്തിന്റെ ഇരുണ്ട നിറത്തിന് മുകളിൽ ചെറിയൊരു വെളിച്ചം പടരാൻ തുടങ്ങി.</p>
+<p class="l">നഗരം ഇനിയും പൂർണ്ണമായി ഉണർന്നിരുന്നില്ല.</p>
+<p class="l">ചില കടകൾ മാത്രം തുറക്കാൻ തുടങ്ങിയിരുന്നു.</p>
+<p class="l">റോഡിലൂടെ ഇടയ്ക്കിടെ വാഹനങ്ങൾ കടന്നുപോയി.</p>
+<p class="l">മഴയുടെ ശബ്ദം മാത്രം എല്ലായിടത്തും നിറഞ്ഞുനിന്നു.</p>
+</div></section>
+
+<section data-k="7" data-s="3"><div class="pn">
+<h2 class="l">റെയിൽവേ സ്റ്റേഷൻ</h2>
+<p class="l">സ്റ്റേഷനിലെത്തുമ്പോൾ രംഗം മാറിയിരുന്നു.</p>
+<p class="l">ആളുകളുടെ തിരക്ക്.</p>
+<p class="l">ചായക്കടകളിൽ നിന്നുള്ള ശബ്ദം.</p>
+<p class="l">ട്രെയിൻ വരുന്നതിന്റെ അറിയിപ്പ്.</p>
+<p class="l">പ്ലാറ്റ്ഫോമിലൂടെ ഓടുന്ന ആളുകൾ.</p>
+<p class="l">എല്ലാത്തിനുമിടയിൽ ആ പെരുമ്പാമ്പിന്റെ ഓർമ്മ വീണ്ടും മനസ്സിലേക്ക് വരുന്നു.</p>
+</div></section>
+
+<section data-k="8" data-s="4"><div class="pn">
+<h2 class="l">വളയം</h2>
+<p class="l">പെരുമ്പാമ്പ് ശരീരം വളച്ച് കിടക്കുകയായിരുന്നു.</p>
+<p class="l">മഴയിൽ നനഞ്ഞ ശരീരം വെളിച്ചത്തിൽ തിളങ്ങി.</p>
+<p class="l">ആ കാഴ്ചയ്ക്ക് ഒരു വിചിത്രമായ ഭംഗിയുണ്ടായിരുന്നു.</p>
+<p class="l">ഭയവും കൗതുകവും ഒരുമിച്ച് തോന്നുന്ന ഒരു കാഴ്ച.</p>
+</div></section>
+
+<section data-k="9" data-s="5"><div class="pn">
+<h2 class="l">ഒരു പെരുമ്പാമ്പിൽ നിന്ന് മനുവിലേക്ക്</h2>
+<p class="l">മനു ആ കഥ പറഞ്ഞുകൊണ്ടിരിക്കുമ്പോൾ ഞാൻ മറ്റൊന്നാണ് ചിന്തിച്ചുകൊണ്ടിരുന്നത്.</p>
+<p class="l">വർഷങ്ങൾക്ക് മുമ്പ് നടന്ന ഒരു ചെറിയ സംഭവത്തെ ഇത്രയും വ്യക്തമായി ഓർമ്മയിൽ സൂക്ഷിക്കാൻ മനുവിന് എങ്ങനെ കഴിഞ്ഞു?</p>
+<p class="l">ഒരുപക്ഷേ അതാണ് അവന്റെ പ്രത്യേകത.</p>
+<p class="l">മറ്റുള്ളവർക്ക് ഒരു ചെറിയ സംഭവം മാത്രം.</p>
+<p class="l">മനുവിന് അതിൽ ഒരു കഥ.</p>
+<p class="l">ഒരു രംഗം.</p>
+<p class="l">ഒരു കഥാപാത്രം.</p>
+<p class="l">ഒരു സിനിമ.</p>
+</div></section>
+
+<section data-k="10" data-s="5"><div class="pn">
+<h2 class="l">അവസാന ഫ്രെയിം</h2>
+<p class="l">ഫോൺ സംഭാഷണം അവസാനിച്ചപ്പോൾ പെരുമ്പാമ്പിന്റെ കഥ മാത്രമായിരുന്നില്ല എന്റെ മനസ്സിൽ ബാക്കിയുണ്ടായിരുന്നത്.</p>
+<p class="l">വർഷങ്ങൾക്കു ശേഷം വീണ്ടും ഒരു സുഹൃത്തിന്റെ ശബ്ദത്തിലൂടെ പഴയ കാലം എന്റെ മുന്നിൽ വന്നതുപോലെ തോന്നി.</p>
+<p class="l">ചില ഓർമ്മകൾ അങ്ങനെയാണ്.</p>
+<p class="l">അവ നമ്മൾ മറന്നുവെന്ന് കരുതിയിരിക്കും.</p>
+<p class="l">പക്ഷേ ആരെങ്കിലും അതിനെക്കുറിച്ച് ഒരു വാക്ക് പറഞ്ഞാൽ മതി.</p>
+<p class="l">മുഴുവൻ രംഗങ്ങളും വീണ്ടും തെളിയും.</p>
+<p class="l">ഒരു സിനിമയിലെ പഴയ ഫിലിം റീൽ പോലെ.</p>
+<p class="l">മനു പറഞ്ഞ ആ പെരുമ്പാമ്പിന്റെ കഥയും അങ്ങനെ തന്നെ.</p>
+<p class="l">ഒരു മഴയാത്രയായി തുടങ്ങിയ കഥ, അവസാനം ഒരു സൗഹൃദത്തിന്റെ ഓർമ്മയായി മാറി.</p>
+</div></section>
 
 <script>
-const cv=document.getElementById('c'),x=cv.getContext('2d');
-let W,H,t=0,S=0,K=0,flash=0,bolt=null,boltA=0,prog=0,sy=0;
+const c=document.getElementById('c'),x=c.getContext('2d');
+let W,H,DPR=1,t=0,S=0,prog=0,ax=0,ay=0,trail=[],flash=0,bolt=[],boltA=0;
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-const R=(a,b)=>a+Math.random()*(b-a),cl=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
-function rs(){const d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;x.setTransform(d,0,0,d,0,0)}
-addEventListener('resize',rs);rs();
-addEventListener('scroll',()=>{sy=scrollY;prog=cl(sy/Math.max(1,document.documentElement.scrollHeight-innerHeight));document.getElementById('pg').style.width=prog*100+'%'},{passive:true});
+const R=(a,b)=>a+Math.random()*(b-a);
+const cl=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+
+function resize(){
+DPR=Math.min(devicePixelRatio||1,2);
+W=innerWidth;
+H=innerHeight;
+c.width=Math.floor(W*DPR);
+c.height=Math.floor(H*DPR);
+x.setTransform(DPR,0,0,DPR,0,0);
+}
+
+addEventListener('resize',resize,{passive:true});
+resize();
+
 const secs=[...document.querySelectorAll('section')];
-secs.forEach(sc=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){S=+sc.dataset.s;document.body.dataset.s=S;const nk=+sc.dataset.k;if(nk!==K){K=nk;onK()}}}),{rootMargin:'-45% 0px -45% 0px'}).observe(sc));
-const io=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting){e.target.style.transitionDelay=(i*90)+'ms';e.target.classList.add('on');document.getElementById('h').style.display='none';io.unobserve(e.target)}}),{threshold:.25});
-document.querySelectorAll('.l').forEach(e=>io.observe(e));
+const els=[...document.querySelectorAll('.l')];
 
-/* നിങ്ങളുടെ യഥാർത്ഥ animation / sound JavaScript ഇവിടെ അതേപടി */
+const K={
+0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10
+};
 
-document.getElementById('snd').onclick=e=>{if(!AC)startAudio();on=!on;if(on){AC.resume();onK()}MG.gain.setTargetAtTime(on?.85:0,AC.currentTime,.1);document.getElementById('sl').textContent=on?'ശബ്ദം ഓഫ് ചെയ്യൂ':'ശബ്ദം ഓൺ ചെയ്യൂ';document.getElementById('si').textContent=on?'🔊':'🔇';e.currentTarget.setAttribute('aria-pressed',on)};
+let w=[1,0,0,0,0,0];
 
-/* ONLY CHANGE: മുഖ്യപേജ് → home page */
-document.getElementById('hm').onclick=()=>{window.location.href='../index.html';};
+function update(){
+const max=document.documentElement.scrollHeight-innerHeight;
+prog=max>0?cl(scrollY/max):0;
+const idx=Math.min(secs.length-1,Math.floor(prog*(secs.length)));
+S=K[idx]??0;
+document.body.dataset.s=S;
 
-ax=W*.72;ay=H*.35;frame();
+secs.forEach((s,i)=>{
+const r=s.getBoundingClientRect();
+const on=r.top<H*.72&&r.bottom>H*.2;
+s.querySelectorAll('.l').forEach((e,j)=>{
+if(on)e.classList.add('on');
+else if(r.top>H)e.classList.remove('on');
+});
+});
+
+document.getElementById('pg').style.width=(prog*100)+'%';
+
+const hint=document.getElementById('h');
+if(prog>.04)hint.style.opacity='0';
+else hint.style.opacity='1';
+
+const q=cl((prog-.92)/.08);
+if(q>0)trail.length=Math.max(1,Math.floor(trail.length*(1-q)));
+
+window.tk=cl((prog-.62)/.08);
+}
+
+addEventListener('scroll',update,{passive:true});
+update();
+
+const stars=Array.from({length:80},()=>({x:Math.random(),y:Math.random()*.65,r:R(.3,1.8),a:R(.2,1)}));
+const drops=Array.from({length:500},()=>({x:Math.random(),y:Math.random(),l:R(8,22),v:R(.4,1.2)}));
+const bld=Array.from({length:34},()=>({x:Math.random(),w:R(.015,.055),h:R(.08,.35),a:R(.3,.8)}));
+const ppl=Array.from({length:80},()=>({x:Math.random(),y:R(.6,.88),s:R(.5,1.4),v:R(-.0005,.0005)}));
+
+function sky(top,bottom){
+const g=x.createLinearGradient(0,0,0,H);
+g.addColorStop(0,top);
+g.addColorStop(1,bottom);
+x.fillStyle=g;
+x.fillRect(0,0,W,H);
+}
+
+function mts(col,base,amp){
+x.fillStyle=col;
+x.beginPath();
+x.moveTo(0,H*base);
+for(let i=0;i<=12;i++){
+const xx=W*i/12;
+const yy=H*(base-R(0,amp));
+x.lineTo(xx,yy+Math.sin(i*1.8+t*.08)*H*.025);
+}
+x.lineTo(W,H);
+x.lineTo(0,H);
+x.fill();
+}
+
+function glow(px,py,r,col){
+const g=x.createRadialGradient(px,py,0,px,py,r);
+g.addColorStop(0,col);
+g.addColorStop(1,'rgba(0,0,0,0)');
+x.fillStyle=g;
+x.fillRect(px-r,py-r,r*2,r*2);
+}
+
+function trees(col){
+x.fillStyle=col;
+for(let i=0;i<24;i++){
+const px=(i/24)*W+Math.sin(i*7.1)*20;
+const h=R(H*.08,H*.25);
+x.fillRect(px,H*.65-h*.25,Math.max(2,W*.004),h);
+x.beginPath();
+x.moveTo(px-W*.04,H*.65-h*.15);
+x.lineTo(px,H*.65-h);
+x.lineTo(px+W*.04,H*.65-h*.15);
+x.fill();
+}
+}
+
+function s0(a){
+sky('#06151d','#10242c');
+stars.forEach(s=>{
+x.fillStyle=`rgba(255,255,255,${s.a*a*.35})`;
+x.beginPath();x.arc(s.x*W,s.y*H,s.r,0,7);x.fill();
+});
+mts('#102b34',.72,.22);
+trees('#0b242c');
+}
+
+function s1(a){
+sky('#111b2a','#24303a');
+glow(W*.72,H*.18,180,`rgba(180,210,235,${.13*a})`);
+mts('#182938',.7,.2);
+mts('#101d27',.78,.13);
+trees('#0b171e');
+}
+
+function s2(a){
+sky('#181426','#463c52');
+for(let i=0;i<stars.length;i++){
+const s=stars[i];
+x.fillStyle=`rgba(255,224,170,${s.a*a*.4})`;
+x.beginPath();x.arc(s.x*W,s.y*H,s.r,0,7);x.fill();
+}
+mts('#292034',.72,.2);
+}
+
+function s3(a){
+sky('#d9d7c7','#8f8d83');
+x.fillStyle=`rgba(255,244,210,${.5*a})`;
+x.fillRect(0,H*.48,W,H*.52);
+
+for(let i=0;i<bld.length;i++){
+const b=bld[i];
+const bx=b.x*W;
+const by=H*(.58-b.h);
+x.fillStyle=`rgba(30,34,36,${b.a*a})`;
+x.fillRect(bx,by,b.w*W,b.h*H);
+}
+
+x.fillStyle=`rgba(250,230,150,${.25*a})`;
+for(let i=0;i<40;i++){
+const px=R(0,W),py=R(H*.5,H*.85);
+x.fillRect(px,py,2,2);
+}
+}
+
+function s4(a){
+sky('#151321','#392c42');
+glow(W*.5,H*.38,250,`rgba(220,170,90,${.08*a})`);
+mts('#251c30',.72,.18);
+mts('#171525',.8,.1);
+}
+
+function s5(a){
+sky('#dce8df','#91aa9d');
+x.fillStyle=`rgba(255,250,220,${.45*a})`;
+x.fillRect(0,0,W,H*.5);
+
+mts('#617b6b',.7,.14);
+mts('#415c4e',.79,.09);
+
+x.fillStyle=`rgba(255,255,255,${.12*a})`;
+for(let i=0;i<20;i++){
+const px=R(0,W),py=R(H*.25,H*.75);
+x.beginPath();
+x.arc(px,py,R(1,4),0,7);
+x.fill();
+}
+}
+
+function anchor(){
+if(S==0)return[W*.72,H*.35,24,12];
+if(S==1)return[W*.55,H*.72,32,16];
+if(S==2)return[W*.46,H*.58,20,10];
+if(S==3)return[W*.5,H*.64,18,8];
+if(S==4)return[W*.42,H*.58,35,18];
+if(S==5)return[W*.62,H*.62,28,14];
+return[W*.62,H*.58,0,0];
+}
+
+function snake(){
+const a=anchor();
+
+ax+=(a[0]-ax)*.03;
+ay+=(a[1]-ay)*.03;
+
+let hx=ax+Math.sin(t*1.1)*a[2],
+hy=ay+Math.sin(t*1.7)*a[3];
+
+if(S==4){
+hx=ax+Math.cos(t*1.4)*48;
+hy=ay+Math.sin(t*1.4)*30;
+}
+
+trail.unshift([hx,hy]);
+if(trail.length>130)trail.pop();
+
+const sa=S==5?1-cl((prog-.92)/.08):1;
+if(sa<=.01)return;
+
+x.globalAlpha=sa;
+
+const pts=trail.map((p,i)=>[
+p[0]+Math.sin(i*.25+t*3)*6,
+p[1]+Math.cos(i*.2)*3
+]);
+
+const n3=S==3,
+base=n3?'#6b5a1a':'#b8922a',
+dark=n3?'#3a300f':'#4a3610',
+lite=n3?'#8d7a2e':'#ecd37c';
+
+for(let i=pts.length-1;i>=0;i--){
+const r=Math.max(2,16-i*.105),
+p=pts[i],
+q=pts[i+1]||p,
+an=Math.atan2(p[1]-q[1],p[0]-q[0]);
+
+x.fillStyle=base;
+x.beginPath();
+x.arc(p[0],p[1],r,0,7);
+x.fill();
+
+if(i%12<6&&r>4){
+x.fillStyle=dark;
+x.beginPath();
+x.ellipse(p[0],p[1],r*.75,r*.5,an+1.57,0,7);
+x.fill();
+
+x.fillStyle=base;
+x.beginPath();
+x.ellipse(p[0],p[1],r*.3,r*.2,an+1.57,0,7);
+x.fill();
+}
+
+x.fillStyle=lite;
+x.globalAlpha=sa*.3;
+x.beginPath();
+x.arc(p[0]-r*.2,p[1]-r*.4,r*.45,0,7);
+x.fill();
+x.globalAlpha=sa;
+}
+
+{
+const p=pts[0],
+q=pts[5]||p,
+an=Math.atan2(p[1]-q[1],p[0]-q[0]);
+
+x.save();
+x.translate(p[0],p[1]);
+x.rotate(an);
+
+x.fillStyle=base;
+x.beginPath();
+x.ellipse(8,0,23,13,0,0,7);
+x.fill();
+
+x.fillStyle=dark;
+x.beginPath();
+x.moveTo(-8,0);
+x.lineTo(4,-6);
+x.lineTo(16,0);
+x.lineTo(4,6);
+x.fill();
+
+x.beginPath();
+x.arc(20,-4,1.6,0,7);
+x.arc(20,4,1.6,0,7);
+x.fill();
+
+[-7,7].forEach(y=>{
+x.fillStyle='#f0d060';
+x.beginPath();
+x.arc(10,y,4,0,7);
+x.fill();
+
+x.fillStyle='#000';
+x.beginPath();
+x.ellipse(10,y,1,3.2,0,0,7);
+x.fill();
+});
+
+const tl=Math.max(0,Math.sin(t*7))*(S==4?22:14);
+
+if(tl>2){
+x.strokeStyle='#c0243a';
+x.lineWidth=1.6;
+x.beginPath();
+x.moveTo(30,0);
+x.lineTo(30+tl,0);
+x.moveTo(30+tl,0);
+x.lineTo(34+tl,-4);
+x.moveTo(30+tl,0);
+x.lineTo(34+tl,4);
+x.stroke();
+}
+
+x.restore();
+}
+
+x.globalAlpha=1;
+}
+
+const RI=[.12,1,.3,.05,.03,0];
+
+function rain(){
+let ri=0;
+for(let i=0;i<6;i++)ri+=w[i]*RI[i];
+
+if(ri<.02)return;
+
+x.strokeStyle='#a8cddb';
+x.lineWidth=1;
+x.globalAlpha=.12+.4*ri;
+x.beginPath();
+
+const n=Math.floor(drops.length*Math.min(1,ri+.2));
+
+for(let i=0;i<n;i++){
+const d=drops[i],
+px=d.x*W,
+py=d.y*H;
+
+x.moveTo(px,py);
+x.lineTo(px-d.l*.25,py+d.l*(.6+ri));
+
+d.y+=d.v*.02*(.5+ri*1.5);
+d.x-=.0009*ri;
+
+if(d.y>1){
+d.y=-.05;
+d.x=Math.random();
+}
+
+if(d.x<0)d.x=1;
+}
+
+x.stroke();
+x.globalAlpha=1;
+}
+
+// ---------- main loop ----------
+const raf=window.requestAnimationFrame
+?window.requestAnimationFrame.bind(window)
+:(fn=>setTimeout(()=>fn(performance.now()),16));
+
+function frame(){
+if(!reduce)t+=.016;
+
+for(let i=0;i<6;i++)
+w[i]+=((S==i?1:0)-w[i])*.04;
+
+x.fillStyle='#06141a';
+x.fillRect(0,0,W,H);
+
+[s0,s1,s2,s3,s4,s5].forEach((f,i)=>{
+if(w[i]>.01)f(w[i]);
+});
+
+rain();
+
+if(S==1&&Math.random()<.004){
+flash=1;
+boltA=1;
+bolt=[[R(W*.2,W*.8),0]];
+
+while(bolt[bolt.length-1][1]<H*.62){
+const l=bolt[bolt.length-1];
+bolt.push([
+l[0]+R(-40,40),
+l[1]+R(30,70)
+]);
+}
+thunder();
+}
+
+if(flash>0){
+x.fillStyle='rgba(205,230,255,'+flash*.38+')';
+x.fillRect(0,0,W,H);
+flash-=.05;
+}
+
+snake();
+
+const fo=cl((prog-.97)/.03);
+
+if(fo>0){
+x.fillStyle='rgba(0,0,0,'+fo*.7+')';
+x.fillRect(0,0,W,H);
+}
+
+audioTick();
+raf(frame);
+}
+
+// ---------- SOUND: each page has its own score ----------
+let AC,MG,REV,on=false,B={},PD=[],PG,NX={hb:0,tr:false};
+
+function bed(type,f,q,lr,ld){
+const b=AC.createBuffer(1,AC.sampleRate*3,AC.sampleRate),
+d=b.getChannelData(0);
+
+for(let i=0;i<d.length;i++)
+d[i]=Math.random()*2-1;
+
+const s=AC.createBufferSource();
+s.buffer=b;
+s.loop=true;
+
+const fl=AC.createBiquadFilter();
+fl.type=type;
+fl.frequency.value=f;
+fl.Q.value=q;
+
+if(lr){
+const o=AC.createOscillator(),
+og=AC.createGain();
+o.frequency.value=lr;
+og.gain.value=ld;
+o.connect(og);
+og.connect(fl.frequency);
+o.start();
+}
+
+const g=AC.createGain();
+g.gain.value=0;
+
+s.connect(fl);
+fl.connect(g);
+g.connect(MG);
+s.start();
+
+return g;
+}
+
+function out(n,send){
+n.connect(MG);
+
+if(send){
+const g=AC.createGain();
+g.gain.value=send;
+n.connect(g);
+g.connect(REV);
+}
+}
+
+function env(src,pk,at,dur,send,pan,delay,st){
+const g=AC.createGain(),
+T=AC.currentTime+(delay||0);
+
+g.gain.setValueAtTime(.0001,T);
+g.gain.linearRampToValueAtTime(pk,T+at);
+g.gain.exponentialRampToValueAtTime(.0001,T+at+dur);
+
+let n=g;
+
+if(pan&&AC.createStereoPanner){
+const p=AC.createStereoPanner();
+
+if(Array.isArray(pan)){
+p.pan.setValueAtTime(pan[0],T);
+p.pan.linearRampToValueAtTime(pan[1],T+at+dur);
+}else{
+p.pan.value=pan;
+}
+
+g.connect(p);
+n=p;
+}
+
+src.connect(g);
+out(n,send);
+
+const s=st||src;
+s.start(T);
+s.stop(T+at+dur+.1);
+}
+
+function tone(type,f,pk,at,dur,send,pan,delay,f2){
+const o=AC.createOscillator();
+o.type=type;
+o.frequency.value=f;
+
+if(f2)
+o.frequency.exponentialRampToValueAtTime(
+f2,
+AC.currentTime+(delay||0)+at+dur
+);
+
+env(o,pk,at,dur,send,pan,delay);
+}
+
+function nz(type,f,pk,at,dur,send,pan,delay,f2){
+const n=Math.ceil(AC.sampleRate*(at+dur+.3)),
+b=AC.createBuffer(1,n,AC.sampleRate),
+d=b.getChannelData(0);
+
+for(let i=0;i<n;i++)
+d[i]=Math.random()*2-1;
+
+const s=AC.createBufferSource();
+s.buffer=b;
+
+const fl=AC.createBiquadFilter();
+fl.type=type;
+fl.frequency.value=f;
+
+if(f2)
+fl.frequency.exponentialRampToValueAtTime(
+f2,
+AC.currentTime+(delay||0)+at+dur
+);
+
+s.connect(fl);
+env(fl,pk,at,dur,send,pan,delay,s);
+}
+
+const pluck=(f,pk,pan)=>{
+tone('triangle',f,pk,.008,1.8,.5,pan);
+tone('sine',f*2,pk*.3,.005,.9,.5,pan);
+};
+
+const bell=(f,pk,d)=>{
+tone('sine',f,pk,.01,3.2,.7,0,d);
+tone('sine',f*2.76,pk*.35,.01,1.6,.7,0,d);
+tone('sine',f*5.4,pk*.12,.01,.8,.7,0,d);
+};
+
+const thunder=()=>{
+if(!on)return;
+nz('lowpass',220,.9,.05,3,.5,0,0,60);
+tone('sine',55,.5,.1,2.5,.3,0,0,30);
+};
+
+const ringPhone=()=>{
+for(let i=0;i<4;i++){
+tone('sine',440,.05,.02,.4,.1,0,i*.8);
+tone('sine',480,.05,.02,.4,.1,0,i*.8);
+}
+};
+
+const thump=()=>{
+tone('sine',90,.55,.01,.18,.1,0,0,40);
+tone('sine',80,.4,.01,.2,.1,0,.2,38);
+};
+
+const shutter=()=>{
+const p=R(-.7,.7);
+nz('highpass',3000,.14,.002,.04,.2,p);
+nz('highpass',2000,.1,.002,.03,.2,p,.06);
+};
+
+const bird=()=>{
+const f=R(2200,3600),
+p=R(-.8,.8),
+n=2+(Math.random()*3|0);
+
+for(let i=0;i<n;i++)
+tone('sine',f,.035,.01,.1,.5,p,i*.13,f*1.35);
+};
+
+const pick=a=>a[Math.random()*a.length|0];
+
+const CH=[
+[110,164.8,220,261.6],
+[110,164.8,220,261.6],
+[98,146.8,196,246.9],
+[130.8,196,196,261.6],
+[82.4,123.5,155.6,164.8],
+[73.4,110,116.5,146.8],
+[123.5,185,233.1,246.9],
+[196,293.7,415.3,587],
+[110,116.5,164.8,174.6],
+[130.8,196,261.6,329.6],
+[146.8,220,293.7,370]
+];
+
+const PGN=[
+.07,.07,.06,.015,.06,.05,.045,.04,.07,.09,.08
+];
+
+// rain1 rain2 river wind road crowd hiss
+const BG=[
+[0,0,0,.025,0,0,0],
+[0,0,0,.02,0,0,0],
+[0,0,0,.012,0,0,0],
+[0,0,0,.008,.02,0,0],
+[.03,.04,0,.07,0,0,0],
+[.12,.2,.18,.12,0,0,0],
+[.04,.05,0,.02,.3,0,0],
+[.015,.02,0,.015,.1,0,0],
+[.01,.01,0,.02,0,.16,.03],
+[0,0,0,.025,0,0,0],
+[0,.012,0,.04,0,0,0]
+];
+
+function startAudio(){
+AC=new (window.AudioContext||window.webkitAudioContext)();
+
+MG=AC.createGain();
+MG.gain.value=.85;
+
+const cp=AC.createDynamicsCompressor();
+MG.connect(cp);
+cp.connect(AC.destination);
+
+const L=AC.sampleRate*3,
+ir=AC.createBuffer(2,L,AC.sampleRate);
+
+for(let c=0;c<2;c++){
+const d=ir.getChannelData(c);
+
+for(let i=0;i<L;i++)
+d[i]=(Math.random()*2-1)*Math.pow(1-i/L,2.6);
+}
+
+REV=AC.createConvolver();
+REV.buffer=ir;
+
+const rg=AC.createGain();
+rg.gain.value=.45;
+REV.connect(rg);
+rg.connect(MG);
+
+B.r1=bed('highpass',5500,.5);
+B.r2=bed('bandpass',1800,.6);
+B.rv=bed('lowpass',500,.7,.15,200);
+B.wd=bed('bandpass',420,.8,.07,150);
+B.rd=bed('lowpass',220,.7);
+B.tr=bed('lowpass',110,1);
+B.cr1=bed('bandpass',350,1,3.1,70);
+B.cr2=bed('bandpass',1100,2,4.7,200);
+B.hs=bed('highpass',5500,.8);
+
+PG=AC.createGain();
+PG.gain.value=0;
+
+const lp=AC.createBiquadFilter();
+lp.type='lowpass';
+lp.frequency.value=1100;
+
+PG.connect(lp);
+out(lp,.6);
+
+const lf=AC.createOscillator(),
+lg=AC.createGain();
+
+lf.frequency.value=.18;
+lg.gain.value=.015;
+lf.connect(lg);
+lg.connect(PG.gain);
+lf.start();
+
+PD=[0,1,2,3].map(()=>{
+const o=AC.createOscillator();
+o.type='triangle';
+o.frequency.value=110;
+o.connect(PG);
+o.start();
+return o;
+});
+}
+
+function onK(){
+if(!on)return;
+
+const c=CH[K];
+
+PD.forEach((o,i)=>
+o.frequency.setTargetAtTime(c[i],AC.currentTime,1.5)
+);
+
+nz('bandpass',600,.06,.3,.7,.5,[-.5,.5]);
+NX.hb=0;
+
+if(K==3)ringPhone();
+
+if(K==7)
+[784,659,523].forEach((f,i)=>bell(f,.06,i*.55));
+
+if(K==9)bell(523.3,.07);
+
+if(K==10)bird();
+}
+
+function audioTick(){
+if(!on)return;
+
+const T=AC.currentTime,
+g=BG[K],
+s=(n,v)=>n.gain.setTargetAtTime(v,T,.7);
+
+s(B.r1,g[0]);
+s(B.r2,g[1]);
+s(B.rv,g[2]);
+s(B.wd,g[3]);
+s(B.rd,g[4]);
+s(B.cr1,g[5]);
+s(B.cr2,g[5]*.7);
+s(B.hs,g[6]*Math.max(0,Math.sin(t*7)));
+s(B.tr,K==7?(window.tk||0)*.8:0);
+s(PG,PGN[K]);
+
+const pp=cl((prog-.9)/.1);
+
+MG.gain.setTargetAtTime(
+.85*(1-pp*.95),
+T,
+.4
+);
+
+const r=Math.random();
+
+if(K<=1&&r<.14)
+tone('sine',4300,.008,.005,.03,.1,R(-.8,.8));
+
+if(K<=1&&r<.005)
+pluck(
+pick([440,523.3,587.3,659.3,784,880]),
+.05,
+R(-.5,.5)
+);
+
+if(K==2&&r<.004)
+pluck(
+pick([392,466,523,587,698]),
+.05,
+R(-.5,.5)
+);
+
+if(K==4&&r<.002)
+thunder();
+
+if(K==5){
+if(r<.4)
+tone('sine',R(2500,5000),.01,.002,.08,.6,R(-.8,.8));
+
+if(r<.003)
+tone(
+'triangle',
+pick([73.4,82.4,110]),
+.06,
+2.2,
+2.5,
+.6
+);
+}
+
+if(K==6){
+if(r<.006)
+nz(
+'bandpass',
+500,
+.25,
+1.2,
+1.2,
+.1,
+[-.9,.9],
+0,
+260
+);
+
+if(r<.004){
+const f=330+R(0,60);
+tone('square',f,.035,.03,.35,.2,R(-.6,.6));
+tone('square',f*1.25,.03,.03,.35,.2,R(-.6,.6));
+}
+}
+
+if(K==7){
+if(r<.001)
+[784,659,523].forEach((f,i)=>
+bell(f,.05,i*.55)
+);
+
+const k=window.tk||0;
+
+if(k>.05&&!NX.tr){
+NX.tr=true;
+tone('sawtooth',311,.045,.1,1.6,.4,0,0,290);
+tone('sawtooth',392,.045,.1,1.6,.4,0,0,366);
+}
+
+if(k<.01)
+NX.tr=false;
+}
+
+if(K==8){
+if(r<.08)
+shutter();
+
+if(T>NX.hb){
+thump();
+NX.hb=T+Math.max(.55,1.05-(t%40)*.012);
+}
+}
+
+if(K==9){
+if(r<.014)
+pluck(
+pick([523.3,587.3,659.3,784,880,1046.5]),
+.07,
+R(-.4,.4)
+);
+
+if(r<.003)
+bell(
+pick([523.3,659.3]),
+.05
+);
+}
+
+if(K==10){
+if(r<.012)bird();
+
+if(r<.006)
+bell(
+pick([587,740,880]),
+.04
+);
+
+if(r<.08)
+tone(
+'sine',
+R(2500,5000),
+.01,
+.002,
+.08,
+.6,
+R(-.8,.8)
+);
+}
+}
+
+document.getElementById('snd').onclick=e=>{
+if(!AC)startAudio();
+
+on=!on;
+
+if(on){
+AC.resume();
+onK();
+}
+
+MG.gain.setTargetAtTime(
+on?.85:0,
+AC.currentTime,
+.1
+);
+
+document.getElementById('sl').textContent=
+on?'ശബ്ദം ഓഫ് ചെയ്യൂ':'ശബ്ദം ഓൺ ചെയ്യൂ';
+
+document.getElementById('si').textContent=
+on?'🔊':'🔇';
+
+e.currentTarget.setAttribute(
+'aria-pressed',
+on
+);
+};
+
+/* മുഖ്യപേജ് button */
+document.getElementById('hm').onclick=()=>{
+window.location.href='../index.html';
+};
+
+ax=W*.72;
+ay=H*.35;
+
+frame();
 </script>
+
 </body></html>
