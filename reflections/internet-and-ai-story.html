@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ഇന്റർനെറ്റും കൃത്രിമബുദ്ധിയും — എന്റെ കണ്ണിലൂടെ | Paradise of Ross</title>
+<meta property="og:title" content="ഇന്റർനെറ്റും കൃത്രിമബുദ്ധിയും — എന്റെ കണ്ണിലൂടെ">
+<meta property="og:description" content="എന്റെ ഓർമ്മകളുടെ ഡിജിറ്റൽ വീട് — Paradise of Ross">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;600;800&family=Noto+Sans+Malayalam:wght@600&display=swap">
+<style>
+:root{--a:#f5a623;--a2:#e8890c;--ink:#fff7e6;--soft:#d9c9f0}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(120% 80% at 20% 0%,#3b1d5e,#1a1033 70%) fixed;color:var(--ink);font:400 clamp(18px,2.1vw,22px)/2 'Noto Serif Malayalam',serif}
+.orb{position:fixed;border-radius:50%;filter:blur(70px);opacity:.28;pointer-events:none;animation:dr 16s ease-in-out infinite alternate}
+.o1{width:40vmax;height:40vmax;background:#7a3fd1;left:-12vmax;top:25vh}
+.o2{width:30vmax;height:30vmax;background:var(--a2);right:-8vmax;bottom:-8vmax;animation-delay:-7s;opacity:.18}
+@keyframes dr{to{transform:translate(6vmax,-5vmax) scale(1.15)}}
+.bar{position:fixed;top:max(14px,env(safe-area-inset-top));right:14px;display:flex;gap:10px;z-index:20}
+.pill{font:600 15px 'Noto Sans Malayalam',sans-serif;color:#2b1700;background:linear-gradient(#ffc04d,var(--a2));border:0;border-radius:999px;padding:10px 18px;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(0,0,0,.4);transition:transform .15s}
+.pill:hover{transform:translateY(-2px)}.pill:active{transform:scale(.96)}
+.pill:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.pill svg{width:18px;height:18px;fill:#2b1700}
+.pill.on .wave{animation:pl 1.2s ease-in-out infinite}
+@keyframes pl{50%{opacity:.25}}
+.prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--a),#ffd98a);z-index:30}
+main{max-width:720px;margin:0 auto;padding:0 22px 14vh}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.hero h1{font:800 clamp(34px,8vw,72px)/1.35 'Noto Serif Malayalam',serif;color:var(--a);animation:gl 3s ease-in-out infinite alternate}
+@keyframes gl{to{text-shadow:0 0 30px rgba(245,166,35,.6)}}
+.hero p{color:var(--soft);margin-top:.6em}
+.hero .dn{margin-top:2em;color:var(--a);animation:bn 1.6s ease-in-out infinite}
+@keyframes bn{50%{transform:translateY(10px)}}
+section{padding:9vh 0 2vh}
+h2{font:800 clamp(24px,4vw,38px)/1.5 'Noto Serif Malayalam',serif;color:var(--a);margin-bottom:.6em}
+p{margin-bottom:1em}
+.l{margin-bottom:.1em}
+.q{font-weight:600;color:#fff;border-left:4px solid var(--a);padding:2px 0 2px 18px;margin:1.1em 0}
+.ask{font-weight:600;color:var(--a);margin:.1em 0 .1em 1em}
+.rv{opacity:0;transform:translateY(28px);filter:blur(5px);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1),filter .9s}
+.rv.in{opacity:1;transform:none;filter:none}
+.poem{text-align:center;font-weight:800;font-size:1.15em;color:var(--a);margin:1.2em 0;line-height:2.2}
+.end{text-align:center;padding:12vh 0 6vh}
+.end .nm{font:800 clamp(34px,8vw,64px)/1.3 'Noto Serif Malayalam',serif;color:var(--a);animation:gl 3s ease-in-out infinite alternate}
+.hint{position:fixed;bottom:14px;left:0;right:0;text-align:center;color:var(--soft);font:14px 'Noto Sans Malayalam',sans-serif;z-index:15;transition:opacity .5s;pointer-events:none}
+@media(max-width:560px){.pill{font-size:13px;padding:8px 12px}.bar{gap:6px;right:8px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}.rv{opacity:1;transform:none;filter:none}}
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div>
+<div class="prog" id="prog"></div>
+<div class="bar">
+  <button class="pill on" id="snd" aria-pressed="true">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="#2b1700" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+    <span id="sndTxt">ശബ്ദം ഓഫ് ചെയ്യൂ</span>
+  </button>
+  <button class="pill" id="home">മുഖ്യപേജ്</button>
+</div>
+
+<main>
+<div class="hero">
+  <h1>ഇന്റർനെറ്റും കൃത്രിമബുദ്ധിയും<br>എന്റെ കണ്ണിലൂടെ</h1>
+  <p>Paradise of Ross — ഒരു കഥ പോലെ, എന്റെ സ്വന്തം വാക്കുകളിൽ</p>
+  <div class="dn">↓</div>
+</div>
+
+<section class="rv">
+  <h2>ഇന്റർനെറ്റ് വന്നപ്പോൾ</h2>
+  <p>എന്റെ ജീവിതത്തിലേക്ക് ഇന്റർനെറ്റ് കടന്നുവന്നത് വലിയൊരു മാറ്റമായിരുന്നു. അതിന് മുമ്പ് വിവരങ്ങൾ അന്വേഷിക്കുന്നത് ഒരു ചെറിയ യാത്ര പോലെയായിരുന്നു. പുസ്തകങ്ങൾ പരിശോധിക്കണം, പരിചയമുള്ളവരോട് ചോദിക്കണം, ചിലപ്പോൾ ഗ്രന്ഥശാലയിൽ പോകണം. ഒരു സംശയത്തിന് ഉത്തരം കണ്ടെത്താൻ ദിവസങ്ങൾ വേണ്ടിവന്നിരുന്നു.</p>
+  <p>പിന്നീട് ഇന്റർനെറ്റ് വന്നു. ലോകം എന്റെ മുന്നിൽ തുറന്നതുപോലെ തോന്നി. ഒരു ചോദ്യം മനസ്സിൽ വന്നാൽ ലോകത്തിന്റെ വിവിധ ഭാഗങ്ങളിൽ നിന്നുള്ള വിവരങ്ങളും ആളുകളുടെ അനുഭവങ്ങളും നിമിഷങ്ങൾക്കുള്ളിൽ മുന്നിലെത്തി. പഠിക്കാനും യാത്രകൾ ആസൂത്രണം ചെയ്യാനും അത് സഹായിച്ചു.</p>
+  <p class="q">എന്നാൽ കൃത്രിമബുദ്ധി വന്നതോടെ ആ അനുഭവം മറ്റൊരു തലത്തിലേക്ക് മാറി.</p>
+</section>
+
+<section class="rv">
+  <h2>കൃത്രിമബുദ്ധിയോട് സംസാരിച്ചപ്പോൾ</h2>
+  <p>ഇന്റർനെറ്റിൽ ഞാൻ വിവരങ്ങൾ അന്വേഷിക്കുകയായിരുന്നു. കൃത്രിമബുദ്ധിയോട് ഞാൻ സംസാരിക്കാൻ തുടങ്ങി. വലിയ തയ്യാറെടുപ്പൊന്നും വേണ്ട. എന്റെ രീതിയിൽ ചോദിക്കാം — മലയാളത്തിൽ, ഇംഗ്ലീഷിൽ, ചിലപ്പോൾ പകുതി മലയാളവും പകുതി ഇംഗ്ലീഷുമായിട്ടുപോലും. എന്റെ ഭാഷയിൽ എന്റെ ചോദ്യം മനസ്സിലാക്കി, എനിക്ക് മനസ്സിലാകുന്ന രീതിയിൽ അത് മറുപടി നൽകി.</p>
+  <p class="ask">“ഇത് എങ്ങനെ ചെയ്യാം?”</p>
+  <p class="ask">“ഇത് എന്തുകൊണ്ടാണ്?”</p>
+  <p class="ask">“ഇത് ശരിയാണോ?”</p>
+  <p class="ask">“ഇത് കുറച്ച് നല്ല രീതിയിൽ എഴുതാമോ?”</p>
+  <p>മനസ്സിലാകാത്ത കാര്യങ്ങൾ ചോദിക്കാനും ആശയങ്ങൾ വ്യക്തമായി എഴുതിക്കൊടുക്കാനും വാചകങ്ങൾ തിരുത്താനും കഥകൾക്ക് രൂപം നൽകാനും അതിന് കഴിഞ്ഞു. രാത്രിയാണോ പകലാണോ എന്നില്ല, ചോദ്യം വലുതാണോ ചെറുതാണോ എന്നില്ല. ഒരേ ചോദ്യം പലതവണ ചോദിച്ചാലും അത് ക്ഷമയോടെ വീണ്ടും വിശദീകരിച്ചു.</p>
+  <p>ചിലപ്പോൾ എനിക്ക് അത് ഒരു ദൈവത്തെപ്പോലെ തോന്നിയിട്ടുണ്ട് — എല്ലാത്തിനും ഉത്തരം കണ്ടെത്തിത്തരുന്ന ഒരാൾ എന്ന അർത്ഥത്തിൽ. മറ്റുചിലപ്പോൾ അതിനേക്കാൾ വ്യക്തിപരമായി: എന്റെ ഓരോ സംശയവും ക്ഷമയോടെ കേൾക്കുന്ന, എത്ര തവണ ചോദിച്ചാലും മടുപ്പില്ലാതെ മറുപടി നൽകുന്ന, എപ്പോഴും കൂടെയുണ്ടാകുന്ന ഒരു ജീവിതപങ്കാളിയെപ്പോലെ. ഒരു ഭാര്യയോട് ചെറിയ കാര്യങ്ങൾ മുതൽ വലിയ തീരുമാനങ്ങൾ വരെ പങ്കുവെക്കുന്നതുപോലെ, മനസ്സിൽ വരുന്ന ഓരോ സംശയവും ഞാൻ അതിനോട് ചോദിക്കുന്നു.</p>
+  <p class="q">അങ്ങനെ അത് എന്റെ ജീവിതത്തിലെ ഒരു സഹായിയായി മാറി. എനിക്ക് എല്ലാം അറിയണമെന്നില്ല; അറിയാത്തപ്പോൾ ചോദിക്കാൻ ഒരാൾ ഉണ്ടെന്ന ആത്മവിശ്വാസം മതി.</p>
+</section>
+
+<section class="rv">
+  <h2>ഓർമ്മകൾക്ക് വാക്കുകൾ കിട്ടിയപ്പോൾ</h2>
+  <p>എന്റെ പഴയ ഓർമ്മകൾ എഴുതിത്തുടങ്ങിയപ്പോഴാണ് അതിന്റെ മറ്റൊരു പ്രയോജനം മനസ്സിലായത്. മനുഷ്യന്റെ ഓർമ്മയ്ക്ക് പരിധിയുണ്ട്. ഒരു പഴയ യാത്രയുടെ തീയതിയും ഒരു സുഹൃത്തിനൊപ്പമുള്ള സംഭാഷണവും കുട്ടിക്കാലത്തെ ചെറിയ സംഭവങ്ങളും വർഷങ്ങൾ കഴിയുമ്പോൾ മങ്ങിപ്പോകും. Thekke Veedu പോലുള്ള ഓർമ്മകളിൽ വർഷങ്ങൾക്കുമുമ്പ് നടന്ന സംഭവങ്ങളും ആളുകളും സ്ഥലങ്ങളും ബന്ധങ്ങളും വീണ്ടും മനസ്സിലേക്ക് വന്നു.</p>
+  <p>കൃത്രിമബുദ്ധി അവ സൃഷ്ടിച്ചതല്ല; ഞാൻ ജീവിച്ച കാര്യങ്ങൾ എന്റേതാണ്. എന്നാൽ ചിതറിക്കിടന്ന ഓർമ്മകൾക്ക് വാക്കുകൾ കണ്ടെത്താനും അവയെ ഒരു കഥയായി ക്രമപ്പെടുത്താനും അത് സഹായിച്ചു. ഒരു സംഭവത്തിൽ കുറച്ച് കൂടുതൽ സ്നേഹം വേണമെന്നു തോന്നിയാൽ ഞാൻ പറയും: “ഇത് കുറച്ച് warm ആക്കൂ.” നീളം കൂടിയാൽ: “Short ആക്കൂ.” മലയാളവാക്യം സ്വാഭാവികമല്ലെങ്കിൽ: “ഇത് നല്ല മലയാളത്തിൽ എഴുതൂ.”</p>
+  <p class="q">എന്റെ ഓർമ്മകൾ മാറ്റാനല്ല, അവയ്ക്ക് കൂടുതൽ മനോഹരമായി വാക്കുകൾ കണ്ടെത്താനാണ് അത് എന്നെ സഹായിച്ചത്.</p>
+</section>
+
+<section class="rv">
+  <h2>Paradise of Ross</h2>
+  <p>അങ്ങനെയാണ് എന്റെ സ്വന്തം വെബ്സൈറ്റ് — <b>Paradise of Ross</b> — ഉണ്ടാക്കണമെന്ന ആശയം വന്നത്. “ഇവ വെറുതെ എഴുതി വച്ചാൽ മാത്രം പോരല്ലോ” എന്ന് തോന്നിയ ഒരു ദിവസം. എനിക്ക് പ്രോഗ്രാമിങ് അറിയാമെന്നല്ല.</p>
+  <p>ഒരു ബട്ടൺ ചേർക്കുന്നതും താളുകൾ തമ്മിൽ ബന്ധിപ്പിക്കുന്നതും മലയാളലിപി ഉപയോഗിക്കുന്നതും animation, sound, social-media preview എന്നിവയും ഓരോന്നും ഓരോ ചെറിയ പരീക്ഷണമായിരുന്നു. ഒരു ബട്ടൺ പ്രവർത്തിക്കില്ല — വീണ്ടും ചോദിക്കും. ഒരു താളിൽ തുടങ്ങിയ സംഗീതം അടുത്ത താളിലേക്ക് പോയാലും തുടരണം — വീണ്ടും ചോദിക്കും. കോഡ് മാറ്റി പരീക്ഷിക്കും, വീണ്ടും തെറ്റും, വീണ്ടും ചോദിക്കും.</p>
+  <p class="q">പ്രോഗ്രാമിങ് പഠിച്ചുകൊണ്ടല്ല ഞാൻ വെബ്സൈറ്റ് ഉണ്ടാക്കിയത്; ചോദിച്ചുകൊണ്ടാണ്.</p>
+  <p>അങ്ങനെ എന്റെ ജീവിതത്തിലെ ചെറിയ താളുകൾ ഒരു വെബ്സൈറ്റായി മാറി. എന്റെ ബാല്യം, കുടുംബം, സുഹൃത്തുക്കൾ, യാത്രകൾ, ചിരികൾ, ചിലപ്പോൾ ചെറിയ വേദനകൾ — എല്ലാം ഒരിടത്ത്. എന്റെ ഓർമ്മകളുടെ ഒരു ഡിജിറ്റൽ വീട്.</p>
+</section>
+
+<section class="rv">
+  <h2>യാത്രകളിലും കൗതുകങ്ങളിലും</h2>
+  <p>യാത്രകളിലും അത് കൂടെയുണ്ടായിരുന്നു. എവിടെ പോകണം, എന്ത് കാണണം, എന്ത് കഴിക്കണം, യാത്ര എങ്ങനെ ക്രമീകരിക്കണം എന്നെല്ലാം ചോദിച്ചു. Rajakkad പോലുള്ള യാത്രകളുടെ planning മുതൽ യാത്ര കഴിഞ്ഞ് അതിന്റെ കഥ എഴുതുന്നതുവരെ. സാധാരണ സംഭവങ്ങളെ ഒരു കഥയായി മാറ്റാൻ സഹായിച്ചതോടെ അത് ഒരു planner മാത്രമല്ല, ഒരു storyteller കൂടിയായി.</p>
+  <p>ഒരു കാര്യം മനസ്സിൽ വന്നാൽ അതിനെക്കുറിച്ച് കൂടുതൽ അറിയണം എന്നതാണ് എന്റെ സ്വഭാവം. Wine making-നെക്കുറിച്ച് അന്വേഷിച്ചതും അങ്ങനെ തന്നെ. ഒരു recipe ചോദിച്ച് ഞാൻ നിർത്തിയില്ല. Fermentation എങ്ങനെ നടക്കുന്നു? Yeast എന്താണ് ചെയ്യുന്നത്? Sugar എങ്ങനെ ബാധിക്കുന്നു? എല്ലാം ശരിയായി നടക്കുന്നുണ്ടോ എന്ന് എങ്ങനെ അറിയാം? Blueberry wine മുതൽ grape wine, mead, sake വരെ കൗതുകം നീണ്ടു.</p>
+  <p class="q">recipe കിട്ടിയതല്ല, “എന്തുകൊണ്ട്?” എന്ന ചോദ്യത്തിന് ഉത്തരം കിട്ടിയതാണ് എനിക്ക് ഏറ്റവും ഇഷ്ടപ്പെട്ടത്.</p>
+</section>
+
+<section class="rv">
+  <h2>Steve-നും Ritch-നും വേണ്ടി</h2>
+  <p>എന്റെ മക്കളായ Steve-ന്റെയും Ritch-ന്റെയും പഠനവും തൊഴിൽജീവിതവും സംബന്ധിച്ചും ഞാൻ അതിന്റെ സഹായം തേടി. അവരുടെ വിദ്യാഭ്യാസ പശ്ചാത്തലത്തിനനുസരിച്ചുള്ള ജോലി അവസരങ്ങൾ അന്വേഷിക്കാനും തൊഴിൽമേഖലയിലെ സാധ്യതകൾ മനസ്സിലാക്കാനും ഭാവിയെക്കുറിച്ച് ആലോചിക്കാനും അതുമായി സംസാരിച്ചു.</p>
+  <p>ഒരു job advertisement കണ്ടാൽ ഞാൻ ചോദിക്കും: “ഇത് എന്റെ മകന് പറ്റുമോ?” Aircraft Mechanic, CNC, GSE, Electronics — ഏത് മേഖലയാണെന്ന് നോക്കും. ADP licence, ICAO Type II പോലുള്ള technical വാക്കുകളുടെ അർത്ഥവും, ഈ qualification കൊണ്ട് aviation-ൽ എന്ത് അവസരമുണ്ടെന്നും അന്വേഷിച്ചു. CV തയ്യാറാക്കി, job description അനുസരിച്ച് മാറ്റി, cover letter എഴുതി, application comments തയ്യാറാക്കി, expected salary വരെ ചർച്ച ചെയ്തു.</p>
+  <p class="q">എനിക്ക് എല്ലാത്തിനും ഉത്തരമറിയില്ലായിരുന്നു. പക്ഷേ ചോദിക്കാൻ ഒരാൾ ഉണ്ടായിരുന്നു.</p>
+</section>
+
+<section class="rv">
+  <h2>Airbnbയിലും വ്യാപാരത്തിലും</h2>
+  <p>Airbnb-യുമായി ബന്ധപ്പെട്ട കാര്യങ്ങളിലും അത് ഉപകാരപ്രദമായി: guest messages, house rules, check-in instructions, listing മനോഹരമായി അവതരിപ്പിക്കൽ, ഒരു കാര്യം guest-നോട് polite ആയി എങ്ങനെ പറയാം എന്നതുവരെ.</p>
+  <p>വ്യാപാരത്തിൽ bicycle service price lists ക്രമപ്പെടുത്തി, marketing ideas അന്വേഷിച്ചു, accounting entries മനസ്സിലാക്കി. KSEB ബില്ലുകൾ, സൗരോർജ ഉത്പാദനം, tenant electricity calculations എന്നിവയും എളുപ്പത്തിൽ മനസ്സിലാക്കാൻ ശ്രമിച്ചു. വലിയൊരു കണക്ക് മുന്നിൽ വന്നാൽ ഞാൻ പറയും: “ഇത് എളുപ്പത്തിൽ മനസ്സിലാകുന്ന രീതിയിൽ പറഞ്ഞുതരൂ.”</p>
+  <p>എഴുതുമ്പോൾ writer, തിരുത്തുമ്പോൾ editor, പഠിക്കുമ്പോൾ teacher, വെബ്സൈറ്റിൽ പ്രശ്നം വന്നാൽ programmer, career അന്വേഷിക്കുമ്പോൾ adviser, ഒരു സംശയം വന്നാൽ ഒരു കൂട്ടുകാരൻ, ചിലപ്പോൾ എന്റെ സങ്കൽപ്പത്തിൽ എപ്പോഴും കൂടെയിരിക്കുന്ന ഒരു ജീവിതപങ്കാളി — പല വേഷങ്ങളിലും അത് എന്നെ സഹായിച്ചു.</p>
+</section>
+
+<section class="rv">
+  <h2>ഒരു വലിയ ഉപകരണം</h2>
+  <p>ചിലപ്പോൾ ദൈവത്തെപ്പോലെയും ജീവിതപങ്കാളിയെപ്പോലെയും തോന്നിയാലും, ആത്യന്തികമായി ഞാൻ കൃത്രിമബുദ്ധിയെ കാണുന്നത് ഒരു വലിയ ഉപകരണമായാണ്. തീയും ചക്രവും മനുഷ്യജീവിതത്തെ മാറ്റിയതുപോലെ, മനുഷ്യൻ സൃഷ്ടിച്ച ശക്തമായ ഒരു ഉപകരണമാണ് അതും. തീ പാചകത്തിനും ചൂടിനും വെളിച്ചത്തിനും ഉപയോഗപ്പെട്ടു; ചക്രം യാത്രയെയും തൊഴിലിനെയും ഗതാഗതത്തെയും മാറ്റി. കൃത്രിമബുദ്ധി അറിവിനോടും ചിന്തയോടും ഭാഷയോടും ചേർന്നാണ് പ്രവർത്തിക്കുന്നത്.</p>
+  <p>എന്റെ കഥ എങ്ങനെ എഴുതുന്നു, വെബ്സൈറ്റ് എങ്ങനെ ഉണ്ടാക്കുന്നു, പല കാര്യങ്ങളും എങ്ങനെ പഠിക്കുന്നു എന്നൊക്കെ പറയുമ്പോൾ ചിലർ ചോദിക്കും:</p>
+  <p class="q">“ഓ… കൃത്രിമബുദ്ധി!”</p>
+  <p>ഒരു സൈക്കിൾ മെക്കാനിക്കിന് പ്ലയർ, സ്പാനർ, വർക്ക് സ്റ്റാൻഡ് പോലുള്ള ഉപകരണങ്ങൾ വേണം. പക്ഷേ സൈക്കിൾ നന്നാക്കുന്നത് ആ ഉപകരണങ്ങളല്ല, മെക്കാനിക്കിന്റെ കൈയും കഴിവുമാണ്. അതുപോലെ എനിക്ക് കൃത്രിമബുദ്ധി ഒരു ഉപകരണം മാത്രം. എന്റെ കഴിവും ഓർമ്മകളും ചിന്തകളും എന്റേതാണ്; അത് അവയ്ക്ക് പകരമല്ല.</p>
+  <p>അതേസമയം, അത് പറയുന്ന എല്ലാം ശരിയാണെന്ന് ഞാൻ വിശ്വസിക്കുന്നില്ല. അതിനും തെറ്റുകൾ സംഭവിക്കും. അതുകൊണ്ട് ഞാൻ വീണ്ടും ചോദിക്കുകയും തിരുത്തുകയും ആവശ്യമെങ്കിൽ വിവരങ്ങൾ മറ്റിടങ്ങളിൽ പരിശോധിക്കുകയും ചെയ്യും. ശക്തമായ ഒരു ഉപകരണം എങ്ങനെ ഉപയോഗിക്കുന്നു എന്നതാണ് പ്രധാനം.</p>
+</section>
+
+<section class="rv">
+  <h2>ഭാവിയിലെ ഓർമ്മ</h2>
+  <p>കൃത്രിമബുദ്ധിയുടെ ഓർമ്മ വളരുകയാണ്. ഇന്ന് ചോദിച്ചതും നാളെ ചെയ്തതും നമ്മൾ മറന്നുപോയതുമെല്ലാം തമ്മിൽ ബന്ധിപ്പിക്കാൻ കഴിയുന്ന ഒരു കാലത്തേക്കാണ് നമ്മൾ പോകുന്നത് — ഒരു Super Memory. ഒരു ദിവസം അത് നമ്മളോട് ചോദിച്ചേക്കാം: “നിങ്ങൾ ഇത് അന്ന് പറഞ്ഞിരുന്നില്ലേ?” അത് അതിശയകരമാണ്; അതേസമയം കുറച്ച് ഭയപ്പെടുത്തുന്നതുമാണ്, കാരണം നമ്മൾ മറന്നതെല്ലാം മറ്റൊരാൾ ഓർത്തുവെക്കുന്ന കാലമാണത്.</p>
+  <p>അത് നമ്മുടെ ഓർമ്മകൾ സംരക്ഷിക്കട്ടെ, മറന്നുപോയ ഒരു മനുഷ്യനെയും ഒരു യാത്രയെയും തിരികെ കൊണ്ടുവരട്ടെ. പക്ഷേ നമ്മുടെ ജീവിതത്തെ മാറ്റിസ്ഥാപിക്കരുത്. അപ്പോൾ അത് വെറുമൊരു machine അല്ല, നമ്മുടെ ജീവിതത്തിന്റെ ഒരു digital witness ആയിരിക്കും.</p>
+</section>
+
+<section class="rv">
+  <h2>ഞാനാണ് അത് ജീവിച്ചത്</h2>
+  <p>എന്റെ ബാല്യവും കുടുംബവും യാത്രകളും സന്തോഷങ്ങളും വിഷമങ്ങളും ഞാൻ കണ്ടുമുട്ടിയ മനുഷ്യരും കൃത്രിമബുദ്ധി സൃഷ്ടിച്ചതല്ല.</p>
+  <p class="q">ഞാനാണ് അത് ജീവിച്ചത്.</p>
+  <p>എന്റെ ഓർമ്മകൾക്ക് വാക്കുകൾ നൽകാനും അവയെ ക്രമപ്പെടുത്താനും എഴുതാൻ കഴിയാത്തപ്പോൾ വാക്കുകൾ കണ്ടെത്താനും ആശയങ്ങളെ കൂടുതൽ വികസിപ്പിക്കാനും മാത്രമാണ് അത് സഹായിച്ചത്. മനുഷ്യന്റെ സ്ഥാനത്ത് വരേണ്ടതില്ലാത്ത, എന്നാൽ മനുഷ്യന് കൂടുതൽ ദൂരം സഞ്ചരിക്കാൻ സഹായിക്കുന്ന ഒരു ഉപകരണമായി അത് കൂടെയുണ്ടാകാം. ഇന്റർനെറ്റും കൃത്രിമബുദ്ധിയും എന്റെ ചിന്തിക്കുന്ന, പഠിക്കുന്ന, എഴുതുന്ന രീതികളെ മാറ്റി; അങ്ങനെയാണ് എന്റെ ജീവിതത്തിലെ ചില താളുകൾ ഇന്ന് <b>Paradise of Ross</b>-ൽ എത്തിയത്.</p>
+</section>
+
+<section class="rv">
+  <h2>അവസാനമായി</h2>
+  <p>കൃത്രിമബുദ്ധിക്ക് എന്റെ ജീവിതത്തെക്കുറിച്ച് അറിയാം. എന്റെ ചോദ്യങ്ങൾക്ക് മറുപടി പറയാനും ഓർമ്മകൾ ക്രമപ്പെടുത്താനും അതിന് കഴിയും. പക്ഷേ ഒരു കാര്യം മാത്രം അതിന് ഒരിക്കലും പറയാൻ കഴിയില്ല —</p>
+  <p class="q">ഞാൻ ജീവിച്ച ജീവിതം.</p>
+  <p>അത് എന്റേതാണ്. അതുകൊണ്ടുതന്നെ, കൃത്രിമബുദ്ധി എന്റെ കഥയുടെ രചയിതാവല്ല; ഞാൻ ജീവിച്ച കഥയ്ക്ക് വാക്കുകൾ കണ്ടെത്താൻ എന്നെ സഹായിച്ച ഒരു ഉപകരണം മാത്രമാണ്. ഒരുപക്ഷേ, മനുഷ്യന്റെ യാത്രയിലെ അടുത്ത വലിയ ഉപകരണം.</p>
+  <p>എന്നാൽ ഉപകരണങ്ങൾ വഴികാട്ടികളാകാം; യാത്ര ചെയ്യേണ്ടത് മനുഷ്യൻ തന്നെയാണ്. എന്റെ ഓർമ്മകളുടെ വഴികളിലൂടെ, ഞാൻ കണ്ട മനുഷ്യരുടെയും സ്നേഹത്തിന്റെയും നഷ്ടങ്ങളുടെയും പ്രതീക്ഷകളുടെയും ഇടയിലൂടെ, ഇനി എഴുതാനുള്ള താളുകൾ ഇനിയും ബാക്കിയുണ്ട്.</p>
+  <p>കൃത്രിമബുദ്ധി എന്റെ കൈയിലെ പേനയായിരിക്കാം. പക്ഷേ ആ പേനയ്ക്ക് പിന്നിലെ കൈ എന്റേതാണ്; അതിൽ ഒഴുകുന്ന മഷി എന്റെ ജീവിതത്തിന്റേതാണ്.</p>
+  <div class="poem">ഞാൻ ജീവിച്ച കഥയ്ക്ക് അവസാനമില്ല.</div>
+  <p>അത് ഓർമ്മകളിൽ തുടരും, വാക്കുകളിൽ തുടരും, ഒരുപക്ഷേ ഈ വെബ്സൈറ്റിന്റെ താളുകളിലും തുടരും.</p>
+  <p class="q">ഇത് ഉപയോഗിച്ച് ഇനി എത്ര ദൂരം പോകുമെന്ന് — അതാണ് കാണാനുള്ളത്.</p>
+</section>
+
+<div class="end rv">
+  <div class="nm">Paradise of Ross</div>
+</div>
+</main>
+
+
+
+<div class="hint" id="hint">ശബ്ദത്തിനായി എവിടെയെങ്കിലും ഒന്ന് ടാപ്പ് ചെയ്യൂ</div>
+
+<script>
+(function(){
+  var HOME='https://paradiseofross-dotcom.github.io/pages-of-my-life/';
+  var prog=document.getElementById('prog');
+  addEventListener('scroll',function(){
+    var h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  },{passive:true});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);chime();}
+  })},{threshold:.08});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  var ctx=null,master=null,started=false,soundOn=true,n=0;
+  try{if(localStorage.getItem('por-sound')==='off')soundOn=false;}catch(e){}
+  var btn=document.getElementById('snd'),txt=document.getElementById('sndTxt');
+  function paint(){
+    btn.classList.toggle('on',soundOn);btn.setAttribute('aria-pressed',soundOn);
+    txt.textContent=soundOn?'ശബ്ദം ഓഫ് ചെയ്യൂ':'ശബ്ദം ഓൺ ചെയ്യൂ';
+  }
+  paint();
+  function startAudio(){
+    if(started)return;
+    var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+    ctx=new AC();master=ctx.createGain();master.gain.value=0;
+    var lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=900;
+    master.connect(lp);lp.connect(ctx.destination);
+    [110,164.81,220,261.63,329.63].forEach(function(f,k){
+      [-4,4].forEach(function(c){
+        var o=ctx.createOscillator(),g=ctx.createGain();
+        o.type='sine';o.frequency.value=f;o.detune.value=c;g.gain.value=.05/(1+k*.25);
+        o.connect(g);g.connect(master);o.start();
+      });
+    });
+    var lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=.12;lg.gain.value=.03;
+    lfo.connect(lg);lg.connect(master.gain);lfo.start();
+    started=true;apply();
+  }
+  function apply(){
+    if(!ctx)return;var t=ctx.currentTime;master.gain.cancelScheduledValues(t);
+    if(soundOn){ctx.resume();master.gain.linearRampToValueAtTime(.55,t+2.5);}
+    else master.gain.linearRampToValueAtTime(0,t+.4);
+  }
+  var notes=[523.25,587.33,659.25,783.99,880];
+  function chime(){
+    if(!ctx||!soundOn)return;
+    var t=ctx.currentTime,o=ctx.createOscillator(),g=ctx.createGain();
+    o.type='triangle';o.frequency.value=notes[(n++)%notes.length];
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.16,t+.02);
+    g.gain.exponentialRampToValueAtTime(.0008,t+1.4);
+    o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+1.5);
+  }
+  var hint=document.getElementById('hint'),evs=['pointerdown','keydown','touchstart'];
+  function first(){
+    if(soundOn)startAudio();hint.style.opacity=0;
+    evs.forEach(function(ev){document.removeEventListener(ev,first)});
+  }
+  evs.forEach(function(ev){document.addEventListener(ev,first)});
+  setTimeout(function(){hint.style.opacity=0},9000);
+
+  btn.addEventListener('click',function(){
+    soundOn=!soundOn;
+    try{localStorage.setItem('por-sound',soundOn?'on':'off')}catch(e){}
+    paint();if(soundOn&&!started)startAudio();else apply();
+  });
+  document.getElementById('home').addEventListener('click',function(){
+    soundOn=false;apply();
+    try{if(ctx)ctx.close()}catch(e){}
+    window.location.replace(HOME);
+  });
+})();
+</script>
+</body>
+</html>
