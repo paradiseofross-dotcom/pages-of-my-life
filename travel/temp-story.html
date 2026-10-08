@@ -117,7 +117,7 @@ b{color:#ffe7b0}.ph{margin:22px auto}.b{opacity:0}
 <body>
 <nav class="top">
   <button id="snd" aria-label="ശബ്ദം"><span class="ic">🔇</span><span>ശബ്ദം ഓൺ ചെയ്യൂ</span></button>
-  <a href="https://paradiseofross-dotcom.github.io/pages-of-my-life/" target="_blank" rel="noopener">മുഖ്യപേജ്</a>
+  <a href="https://paradiseofross-dotcom.github.io/pages-of-my-life/">മുഖ്യപേജ്</a>
 </nav>
 
 <section id="title" data-s="title"><div class="stage">
@@ -387,6 +387,13 @@ const S={
 function engine(ms,end){const lp=A.createBiquadFilter();lp.frequency.value=220;const g=A.createGain();g.gain.value=.16;lp.connect(g);g.connect(M);osc('sawtooth',48,1,lp);osc('sine',8,.06,g.gain);const n=ns('lowpass',150,1,1.6);later(ms,()=>{g.gain.setTargetAtTime(0,A.currentTime,.5);n.gain.setTargetAtTime(0,A.currentTime,.5);if(end)[0,.25,.55].forEach(t=>tone(55-t*20,t,.2,.15,'sawtooth'))})}
 const T={go(){engine(5000,1)},fuel(){tone(60,0,.4,.1,'sawtooth');engine(7000,0)},chat(){[600,1800,3000,4200,5400].forEach(ms=>setTimeout(()=>{if(on){tone(880,0,.15,.12);tone(1320,.09,.22,.1)}},ms))}};
 function leave(){fns.forEach(f=>f());fns=[]}
+
+window.addEventListener('pagehide',()=>{
+    on=false;
+    leave();
+    if(M) M.gain.setTargetAtTime(0,A.currentTime,.05);
+});
+
 function play(n){leave();if(on&&S[n])S[n]()}
 
 const btn=$('#snd');
