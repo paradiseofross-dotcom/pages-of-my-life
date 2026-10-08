@@ -754,8 +754,6 @@ h1{
                 chords[bar];
 
 
-            /* ARPEGGIO */
-
             playNote(
 
                 chord[
@@ -768,8 +766,6 @@ h1{
 
             );
 
-
-            /* BASS */
 
             if (
                 position === 0
@@ -787,8 +783,6 @@ h1{
 
             }
 
-
-            /* MELODY */
 
             if (
 
@@ -1024,12 +1018,6 @@ h1{
         );
 
 
-        /*
-         * GitHub Pages / Chrome can block automatic audio
-         * after navigation. The ON state is retained.
-         * The first click/tap resumes the exact same piano.
-         */
-
         var resumeMusic =
             function(){
 
@@ -1090,11 +1078,6 @@ h1{
         .addEventListener(
             "click",
             function(){
-
-                /*
-                 * Keep the same rossMusic state when returning
-                 * to the main page.
-                 */
 
                 setMusicState(
                     playing ? "on" : "off"
