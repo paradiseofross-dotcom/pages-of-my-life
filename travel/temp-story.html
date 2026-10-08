@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ഒരു യാത്രയ്ക്കായി തുടങ്ങിയ “Temp”</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:#14211c;color:#f5ecd9;font:400 18px/1.85 'Noto Serif Malayalam',serif;overflow-x:hidden}
+.top{position:fixed;top:12px;right:12px;left:auto;z-index:50;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:nowrap;width:auto}
+.top a,.top button{font:700 12px 'Noto Serif Malayalam',serif;color:#3a1d05;background:linear-gradient(#f2ac22,#d98c0c);border:0;border-radius:999px;padding:6px 10px;display:flex;gap:5px;align-items:center;justify-content:center;white-space:nowrap;text-decoration:none;cursor:pointer;box-shadow:0 3px 10px #0008;transition:.2s}
+.top a:hover,.top button:hover{transform:translateY(-2px) scale(1.04)}
+.top :focus-visible{outline:3px solid #fff}
+.ic{width:20px;height:20px;border:2px solid #3a1d05;border-radius:50%;font-size:10px;display:grid;place-items:center;line-height:1}
+section{position:relative;min-height:100vh;overflow:clip;display:flex;flex-direction:column;align-items:center}
+.card{position:relative;z-index:4;max-width:580px;width:100%;background:#0a1410b0;backdrop-filter:blur(6px);border:1px solid #ffffff1c;border-radius:22px;padding:22px 26px;text-align:center}
+h1,h2{font-family:'Noto Serif Malayalam',serif;line-height:1.4;color:#ffd27a}
+h1{font-size:clamp(30px,6vw,52px)}h2{font-size:clamp(24px,4.5vw,34px);margin-bottom:6px}
+p{margin:8px 0}q{color:#ffe7b0;font-weight:700}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease var(--d,0s),transform .9s ease var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.art{position:absolute;inset:0;z-index:1;pointer-events:none}
+.stars i,.ff i{position:absolute}
+.stars i{width:2px;height:2px;background:#fff;border-radius:50%;animation:tw 3s infinite}
+@keyframes tw{50%{opacity:.15}}
+@keyframes pop{0%{opacity:0;transform:scale(.3) rotate(-6deg)}60%{transform:scale(1.15)}100%{opacity:1;transform:none}}
+.dz{font:800 clamp(32px,8vw,60px)/1.3 'Noto Serif Malayalam',serif;color:#ff7b5a;text-shadow:0 0 24px #ff6b4a88;opacity:0}
+.dz.in{animation:pop .7s both}
+/* title */
+#title{background:radial-gradient(circle at 70% 20%,#1d3b34,#0b1511 70%);justify-content:center}
+.moon{position:absolute;right:12%;top:14%;width:90px;height:90px;border-radius:50%;background:#fff3cf;box-shadow:0 0 60px 20px #fff3cf55;animation:fl2 8s ease-in-out infinite alternate}
+@keyframes fl2{to{transform:translateY(18px)}}
+.hint{margin-top:18px;color:#ffd27a;animation:nudge 1.6s infinite}
+@keyframes nudge{50%{transform:translateY(8px)}}
+/* bus */
+#bus{background:linear-gradient(#050914,#101b3a 55%,#4a3a52 85%,#c9783f);padding-bottom:190px}
+.road{position:absolute;left:0;right:0;bottom:0;height:46px;background:#15151a;border-top:3px solid #333;z-index:1}
+.road::after{content:"";position:absolute;left:0;right:0;top:20px;height:4px;background:repeating-linear-gradient(90deg,#e9e2c8 0 36px,transparent 36px 72px)}
+.go .road::after{animation:roll .3s linear 17}.fuel .road::after{animation:roll .3s linear 24}
+@keyframes roll{to{background-position:-72px 0}}
+.bus{position:absolute;bottom:38px;left:-320px;width:240px;overflow:visible;z-index:2}
+.go .bus{animation:drive 5s cubic-bezier(.1,.6,.3,1) forwards,bob .15s ease-in-out 33 alternate}.fuel .bus{animation:away 7s ease-in forwards,bob .15s ease-in-out 46 alternate}@keyframes away{from{left:calc(50% - 120px)}to{left:110%}}
+@keyframes drive{to{left:calc(50% - 120px)}}
+@keyframes bob{to{transform:translateY(-2px)}}
+/* hills */
+#hills{background:linear-gradient(#1d2f56,#e8a35a 45%,#f7d58d 60%);min-height:130vh;padding-bottom:50%}
+.sun{position:absolute;left:50%;bottom:34%;width:120px;height:120px;margin-left:-60px;border-radius:50%;background:radial-gradient(#fff6c8,#ffc65a 60%,#ffb03a);box-shadow:0 0 90px 40px #ffc65a66;transform:translateY(200px);z-index:1}
+.active .sun{animation:rise 6s ease-out forwards}
+@keyframes rise{to{transform:translateY(-20px)}}
+.hl{top:auto;height:48%;width:100%;z-index:2}
+.fog{position:absolute;bottom:12%;left:0;width:200%;height:150px;background:radial-gradient(ellipse at 25% 50%,#ffffffaa,transparent 60%),radial-gradient(ellipse at 75% 50%,#ffffff88,transparent 60%);filter:blur(10px);animation:drift 26s linear infinite;z-index:3}
+@keyframes drift{to{transform:translateX(-50%)}}
+.pv{display:inline-block;color:#ff9a6b;font-weight:700}.rv.in .pv{animation:pop .6s .6s both}
+/* chat */
+#chat{background:radial-gradient(circle at 50% 0,#183a35,#0c1614)}
+.ph{width:min(92vw,400px);background:#0b141a;border:1px solid #ffffff22;border-radius:24px;overflow:hidden;z-index:4;position:relative}
+.ph header{background:#1f2c34;padding:10px 16px;display:flex;gap:12px;align-items:center;font-weight:700}
+.av{width:38px;height:38px;border-radius:50%;background:#128c7e;display:grid;place-items:center}
+.ph small{display:block;font-weight:400;opacity:.6;font-size:13px;line-height:1.2}
+.msgs{padding:10px 8px 14px;min-height:370px}
+.b{background:#202c33;color:#e9edef;border-radius:12px;padding:6px 12px;margin:9px 4px;max-width:86%;font-size:16px;line-height:1.55;opacity:0}
+.b.me{background:#005c4b;margin-left:auto}
+.b.sy{background:#182229;color:#ffd27a;margin:9px auto;text-align:center;font-size:14px}
+.b i{display:block;font-style:normal;font-size:12px;color:#53bdeb}
+.ph.in .b{animation:up .6s var(--d) both}
+@keyframes up{from{opacity:0;transform:translateY(16px) scale(.9)}to{opacity:1;transform:none}}
+.sc{position:relative;z-index:4;height:44px;width:100%;max-width:580px;margin-top:16px;overflow:hidden;border-bottom:2px dashed #ffffff44;text-align:center;font-size:14px}
+.sc b{position:absolute;font-size:30px;bottom:0;left:-40px;animation:scoot 6s linear infinite}
+@keyframes scoot{to{left:100%}}
+/* train */
+#train{background:linear-gradient(#030611,#0d1630 60%,#1b2442);padding-bottom:180px}
+.sil{position:absolute;left:0;right:0;bottom:70px;height:110px;background:#0a1020;clip-path:polygon(0 100%,0 60%,15% 30%,30% 65%,48% 20%,65% 60%,80% 35%,100% 70%,100% 100%)}
+.rail{position:absolute;left:0;right:0;bottom:0;height:34px;background:#0b0d12;border-top:3px solid #666;z-index:1}
+.rail::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#3b2f26 0 10px,transparent 10px 36px);animation:rollr .25s linear infinite}
+@keyframes rollr{to{background-position:36px 0}}
+.tr{position:absolute;bottom:32px;width:700px;left:100%;overflow:visible;z-index:2;animation:run 9s linear infinite}
+@keyframes run{to{left:-760px}}
+/* sea */
+#sea{background:linear-gradient(#1c2b55,#d96c5b 38%,#f8b765 56%);padding-bottom:42%}
+.sun2{position:absolute;left:62%;bottom:41%;width:90px;height:90px;border-radius:50%;background:radial-gradient(#fff2b8,#ffb347);box-shadow:0 0 70px 25px #ffb34788;z-index:1}
+.active .sun2{animation:sink 9s ease-in forwards}
+@keyframes sink{from{transform:translateY(-30px)}to{transform:translateY(80px)}}
+.water{position:absolute;bottom:0;left:0;right:0;height:42%;background:linear-gradient(#e69a5e,#1d3f63 35%,#0d2038);z-index:2}
+.wv{position:absolute;width:200%;left:0;height:70px;animation:drift 9s linear infinite}
+/* church */
+#church{background:linear-gradient(#2b2347,#c58a63 60%,#f3d08a);padding-bottom:260px}
+.rays{position:absolute;left:50%;bottom:-60%;width:200vmax;height:200vmax;margin-left:-100vmax;background:repeating-conic-gradient(#ffe9a844 0 8deg,transparent 8deg 20deg);-webkit-mask:radial-gradient(circle,#000 4%,transparent 42%);mask:radial-gradient(circle,#000 4%,transparent 42%);animation:spin 90s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ch{position:absolute;bottom:0;left:50%;width:250px;margin-left:-125px;z-index:2}
+.bell{transform-box:fill-box;transform-origin:50% 0;animation:sw 1.6s ease-in-out infinite alternate}
+@keyframes sw{from{transform:rotate(-18deg)}to{transform:rotate(18deg)}}
+/* end */
+#end{background:radial-gradient(circle at 50% 40%,#16322a,#070d0b);justify-content:center}
+.ff{position:absolute;inset:0;z-index:1}
+.ff i{width:6px;height:6px;border-radius:50%;background:#ffe27a;box-shadow:0 0 12px 4px #ffd27a99;animation:fly var(--t) ease-in-out infinite alternate}
+@keyframes fly{to{transform:translate(var(--x),var(--y));opacity:.2}}
+.temp{font:800 clamp(56px,16vw,110px)/1.2 'Noto Serif Malayalam',serif;color:#ffd27a;animation:glow 3s ease-in-out infinite alternate}
+@keyframes glow{from{text-shadow:0 0 10px #ffb52e66}to{text-shadow:0 0 40px #ffb52e}}
+.stk{position:relative;display:inline-block;color:#ff9a8a}
+.stk::after{content:"";position:absolute;left:-2px;top:55%;height:4px;width:0;background:#ff6b4a;transition:width .8s 2.6s}
+.rv.in .stk::after{width:100%}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
+section{padding:0!important;min-height:100vh!important}
+.stage{position:sticky;top:0;height:100vh;width:100%;margin:0 0 -100vh;overflow:hidden;background:inherit;z-index:0;flex:none}
+.card{background:#0a141099;backdrop-filter:blur(3px);text-align:left;margin:96px 0 120px;width:calc(100% - 36px)}
+.card p{margin:14px 0}.card h2{margin:6px 0 10px}
+b{color:#ffe7b0}.ph{margin:22px auto}.b{opacity:0}
+@media(min-width:960px){.card{align-self:flex-start;margin-left:6vw}}
+</style>
+</head>
+<body>
+<nav class="top">
+  <button id="snd" aria-label="ശബ്ദം"><span class="ic">🔇</span><span>ശബ്ദം ഓൺ ചെയ്യൂ</span></button>
+  <a href="https://paradiseofross-dotcom.github.io/pages-of-my-life/" target="_blank" rel="noopener">മുഖ്യപേജ്</a>
+</nav>
+
+<section id="title" data-s="title"><div class="stage">
+  <div class="stars art"></div><div class="moon"></div>
+  
+</div><div class="card" style="background:none;border:0;backdrop-filter:none;margin:0;text-align:center"><h1>ഒരു യാത്രയ്ക്കായി തുടങ്ങിയ “Temp”</h1><p class="hint">ശബ്ദം ഓൺ ചെയ്ത് താഴേക്ക് സ്ക്രോൾ ചെയ്യൂ ↓</p></div></section>
+
+<section id="bus" data-s="bus"><div class="stage">
+  <div class="stars art"></div>
+  
+  <div class="road"></div>
+  <svg class="bus" viewBox="0 0 240 90">
+    <defs><linearGradient id="bm"><stop offset="0" stop-color="#fff6c0" stop-opacity=".75"/><stop offset="1" stop-color="#fff6c0" stop-opacity="0"/></linearGradient>
+    <pattern id="bw" width="30" height="24" patternUnits="userSpaceOnUse" x="10" y="14"><rect x="3" y="0" width="22" height="18" rx="3" fill="#ffe9a8"/></pattern></defs>
+    <polygon points="228,60 380,36 380,92 228,72" fill="url(#bm)"/>
+    <rect x="4" y="8" width="224" height="62" rx="10" fill="#c0392b"/>
+    <rect x="4" y="46" width="224" height="8" fill="#f1e6c8"/>
+    <rect x="10" y="14" width="190" height="26" fill="url(#bw)"/>
+    <rect x="204" y="14" width="20" height="26" rx="3" fill="#bfe3f5"/>
+    <circle cx="222" cy="62" r="5" fill="#fff6c0"/>
+    <circle cx="52" cy="72" r="13" fill="#111"/><circle cx="52" cy="72" r="5" fill="#888"/>
+    <circle cx="180" cy="72" r="13" fill="#111"/><circle cx="180" cy="72" r="5" fill="#888"/>
+  </svg>
+</div><div class="card">
+<h2>ആ പഴയ മുന്നാർ യാത്ര</h2>
+<p>ചില യാത്രകൾ അങ്ങനെയാണ് — വർഷങ്ങൾ കഴിഞ്ഞാലും മനസ്സിൽ അതേ ചൂടോടെ കിടക്കും. യാത്ര ചെയ്ത വഴികളും കണ്ട കാഴ്ചകളും പതുക്കെ മറന്നുപോയാലും, കൂടെയുണ്ടായിരുന്ന ആളുകളും വഴിയിലുണ്ടായ ചെറിയ സംഭവങ്ങളും ചിരികളും മാത്രം ഓർമ്മയിൽ ബാക്കിയാകും.</p>
+<p>അത്തരത്തിൽ ഓർമ്മയിൽ നിൽക്കുന്ന ഒരു പഴയ മുന്നാർ യാത്രയുണ്ടായിരുന്നു.</p>
+<p>അന്ന് ആന്റി ചേട്ടനും ആ യാത്രയിൽ ഉണ്ടായിരുന്നു. യാത്രയുടെ ബസ് ബുക്ക് ചെയ്യുന്നതും മറ്റ് കാര്യങ്ങൾ ക്രമീകരിക്കുന്നതുമെല്ലാം ടൈറ്റസ് തന്നെയായിരുന്നു നോക്കിയത്.</p>
+<p>പുലർച്ചെ നാലുമണിക്കായിരുന്നു ബസ് പുറപ്പെടേണ്ടത്. അതുകൊണ്ട് തലേദിവസം രാത്രി തന്നെ ഞാനും സുപ്രിയയും, സ്റ്റീവും റിച്ചും — അന്ന് അവർ രണ്ടുപേരും ചെറിയ കുട്ടികളായിരുന്നു — റോയിയുടെ വീട്ടിൽ എത്തി. പുലർച്ചെ മൂന്ന് മണിക്ക് എഴുന്നേറ്റ് യാത്രയ്ക്കായി തയ്യാറായി.</p>
+<p data-t="go">നാലുമണിക്ക് ബസ് പുറപ്പെട്ടു.</p>
+<p>പക്ഷേ, ഏകദേശം അര കിലോമീറ്റർ പോയപ്പോഴേക്കും ബസ് നിന്നു.</p>
+<p>ഡ്രൈവർ പറഞ്ഞു:</p>
+<div class="dz">“ഡീസൽ ഇല്ല!”</div>
+<p>അത്രയും നേരത്തെ എല്ലാവരും പാതിയുറക്കത്തിൽ. ഇനി എന്ത് ചെയ്യും എന്ന ആശങ്ക.</p>
+<p>അപ്പോഴാണ് ലിനോജ് പീറ്റർ മുന്നിട്ടിറങ്ങിയത്. എങ്ങനെയോ ഒരു ബൈക്ക് സംഘടിപ്പിച്ച്, പുലർച്ചെയുടെ ഇരുട്ടിൽ പെട്രോൾ പമ്പ് അന്വേഷിച്ച് പോയി. ഒടുവിൽ ഒരു കന്നാസിൽ ഡീസൽ കൊണ്ടുവന്ന് ഡ്രൈവറെ ഏൽപ്പിച്ചു.</p>
+<p data-t="fuel">ഡീസൽ നിറച്ചതോടെ ബസ് വീണ്ടും സ്റ്റാർട്ട് ചെയ്തു. ഉറക്കത്തിന്റെ മയക്കത്തിൽ തുടങ്ങിയ യാത്രയ്ക്ക് അപ്പോഴാണ് ശരിക്കും തുടക്കമായത്.</p>
+</div></section>
+
+<section id="hills" data-s="hills"><div class="stage">
+  <div class="sun"></div>
+  <svg class="art hl" viewBox="0 0 800 300" preserveAspectRatio="none">
+    <path d="M0 120Q100 40 220 110T450 90T650 100T800 70V300H0Z" fill="#3f7a4b"/>
+    <path d="M0 180Q150 110 300 170T600 150T800 140V300H0Z" fill="#2c6340"/>
+    <path d="M0 240Q200 190 400 230T800 210V300H0Z" fill="#1d4a2e"/>
+  </svg>
+  <div class="fog"></div>
+  
+</div><div class="card">
+<p>മെഴ്‌സി ചേച്ചിക്ക് യാത്ര ചെയ്യുന്നത് അത്ര ഇഷ്ടമായിരുന്നില്ല. യാത്രാവിമ്മിഷ്ടം ഉണ്ടാകാറുള്ളതിനാൽ, “ഞാൻ വീട്ടിൽ തന്നെ നിന്നാൽ മതിയായിരുന്നു” എന്നായിരുന്നു ചേച്ചി പറഞ്ഞിരുന്നത്.</p>
+<p>പക്ഷേ, ഞങ്ങളെല്ലാവരും ചേർന്ന് നിർബന്ധിച്ചാണ് മെഴ്‌സി ചേച്ചിയെ യാത്രയ്ക്ക് കൊണ്ടുവന്നത്. പിന്നീട് പകൽ മുഴുവൻ യാത്രയ്ക്കിടയിൽ ചേച്ചിക്ക് യാത്രാവിമ്മിഷ്ടവും ഛർദ്ദിയും അനുഭവപ്പെട്ടു. അന്ന് പറഞ്ഞ “വീട്ടിൽ നിന്നാൽ മതിയായിരുന്നു” എന്ന വാക്ക് പിന്നീട് ഓർക്കുമ്പോഴെല്ലാം ഈ യാത്രയിലെ ഒരു രസകരമായ ഓർമ്മയായി മാറി.</p>
+<p>കോട്ടപ്പുറത്ത് എത്തിയപ്പോൾ സെബാസ്റ്റ്യൻ ചേട്ടനെയും കുടുംബത്തെയും കൂടി ബസിൽ കയറ്റി.</p>
+<p>സെബാസ്റ്റ്യൻ ചേട്ടൻ സുപ്രിയയുടെ രണ്ടാമത്തെ മൂത്ത സഹോദരി ഷേർലി ചേച്ചിയുടെ ഭർത്താവാണ്. അതുകൊണ്ടുതന്നെ അദ്ദേഹം സുപ്രിയയുടെ കുടുംബത്തിലെ രണ്ടാമത്തെ മൂത്ത ചേട്ടനുമാണ്.</p>
+<p>അദ്ദേഹത്തോടൊപ്പം മക്കളായ സാന്റിന, സുനിത, ക്ലെറിൻ, മകൻ എന്നിവരും സുനിതയുടെ ഭർത്താവ് തോമസും ഉണ്ടായിരുന്നു.</p>
+<p>സെബാസ്റ്റ്യൻ ചേട്ടൻ മുൻവശത്ത് ഇരുന്ന് യാത്രയുടെ നാവിഗേറ്ററായി.</p>
+<p>“ഇവിടെനിന്ന് ഇങ്ങനെ പോകണം… അവിടെ ഇടത്തോട്ട്… ഇനി നേരെ…”</p>
+<p>അദ്ദേഹത്തിന്റെ ഓരോ നിർദ്ദേശവും കൃത്യമായി കേൾക്കാം.</p>
+<p>സെബാസ്റ്റ്യൻ ചേട്ടൻ അറിയാതെ പിന്നിലിരുന്ന ഞങ്ങളെല്ലാവരും അദ്ദേഹത്തിന്റെ ഓരോ നിർദ്ദേശവും ശ്രദ്ധയോടെ നോക്കിക്കൊണ്ടിരുന്നു. കുറച്ചുകഴിഞ്ഞപ്പോൾ എല്ലാവർക്കും ഒരു ആശ്വാസമായി. ഈ വഴിയെക്കുറിച്ച് സെബാസ്റ്റ്യൻ ചേട്ടന് നല്ല പരിചയമുണ്ടെന്ന് എല്ലാവർക്കും ഉറപ്പായി.</p>
+<p>പക്ഷേ, കുറച്ചുകഴിഞ്ഞപ്പോഴാണ് ഒരു ചെറിയ സംശയം തോന്നിയത്.</p>
+<p><span class="pv">പറവൂർ രണ്ടുതവണ കടന്നിരിക്കുന്നു!</span></p>
+<p>നാവിഗേറ്ററുടെ ആത്മവിശ്വാസത്തിന് കുറവൊന്നുമില്ലായിരുന്നു; വഴി മാത്രം കുറച്ച് അധികമായിരുന്നു!</p>
+<p>മണിക്കൂറുകൾ നീണ്ട യാത്രയ്ക്കുശേഷം ഒടുവിൽ മുന്നാറിലെത്തി.</p>
+<p>മാട്ടുപ്പെട്ടിക്ക് സമീപമുള്ള ഒരു തുറസ്സായ സ്ഥലത്ത് ബസ് നിർത്തി.</p>
+<p>യാത്രയ്ക്കായി എല്ലാവർക്കുമായി ഭക്ഷണം കൊണ്ടുവന്നിരുന്നു. തണുത്ത കാലാവസ്ഥയിൽ എല്ലാവരും ഒരുമിച്ചിരുന്ന് ഭക്ഷണം കഴിച്ചു. കുറച്ചുനേരം അവിടെ ഇരുന്ന് വിശ്രമിക്കുകയും ചെയ്തു.</p>
+<p>വലിയൊരു sightseeing യാത്രയൊന്നും അന്ന് നടന്നില്ല.</p>
+<p>മുന്നാറിലെത്തി, ഭക്ഷണം കഴിച്ചു, കുറച്ചുനേരം അവിടെ നിന്നു, പിന്നെ തിരികെ പോന്നു.</p>
+<p>ഇന്നത്തെ ഭാഷയിൽ പറഞ്ഞാൽ അതൊരു <b>“ഓട്ടപ്പാച്ചിൽ മുന്നാർ യാത്ര”</b> ആയിരുന്നു.</p>
+<p>എങ്കിലും, വർഷങ്ങൾ കഴിഞ്ഞിട്ടും ആ യാത്ര ഓർമ്മയിൽ നിൽക്കുന്നത് മുന്നാറിലെ കാഴ്ചകൾ കൊണ്ടല്ല. ബസ് നിന്നതും, ഡീസൽ തേടി ലിനോജ് പീറ്റർ പോയതും, മെഴ്‌സി ചേച്ചിയുടെ യാത്രാവിമ്മിഷ്ടവും, സെബാസ്റ്റ്യൻ ചേട്ടന്റെ നാവിഗേഷനും, പറവൂർ രണ്ടുതവണ കടന്നതുമൊക്കെയാണ് ഇന്നും പറയുമ്പോൾ ചിരി വരുന്നത്.</p>
+</div></section>
+
+<section id="chat" data-s="chat"><div class="stage">
+  
+  
+  
+</div><div class="card">
+<h2>2022 — “Temp” എന്ന പേരിൽ തുടങ്ങിയ പുതിയ യാത്രാ സ്വപ്നം</h2>
+<p>വർഷങ്ങൾ കടന്നുപോയി.</p>
+<p>2022-ൽ ഒരു ദിവസം ഞാനും സുപ്രിയയും അവളുടെ വീട്ടിൽ വെറുതെ പോയതായിരുന്നു. പ്രത്യേകിച്ച് യാത്രയൊന്നും പ്ലാൻ ചെയ്തിരുന്നില്ല.</p>
+<p>അപ്പോഴാണ് ഡയാനയും ബിന്ദുവും ഒരു ദിവസത്തെ ടൂർ പോകണമെന്ന ആഗ്രഹം പറഞ്ഞത്. അതോടെ സംസാരങ്ങൾ പതുക്കെ യാത്രയിലേക്കായി.</p>
+<p>ഒരു ചെറിയ യാത്രാ ഗ്രൂപ്പ് തുടങ്ങാമെന്ന് തീരുമാനിച്ചു.</p>
+<p>അങ്ങനെ 2022 ഫെബ്രുവരി 21-ന് “Temp” എന്ന പേരിൽ ഒരു WhatsApp ഗ്രൂപ്പ് ഉണ്ടായി.</p>
+<p>ഗ്രൂപ്പിന് “Temp” എന്ന പേര് എങ്ങനെ വന്നു എന്നതിനെക്കുറിച്ച് പിന്നീട് ഡയാന ഒരു കാര്യം ഓർത്തുപറഞ്ഞിരുന്നു.</p>
+<p>അന്ന് മിധുൻ ആപേ വാഹനം ഉപയോഗിച്ചിരുന്ന കാലം. യാത്രയെക്കുറിച്ചുള്ള ചർച്ചകൾക്കിടയിൽ മിധുൻ തമാശയായി പറയുമായിരുന്നു:</p>
+<p>“എല്ലാവരെയും ആപേ വാഹനത്തിൽ കയറ്റി ഏത് സ്ഥലത്തേക്കും കൊണ്ടുപോകാം!”</p>
+<p>“Temp” എന്ന പേര് വന്നതും ഒരു തരത്തിൽ ഈ തമാശയോട് ഒത്തുപോയി. “Temp” എന്ന് കേൾക്കുമ്പോൾ തന്നെ “Tempo” എന്ന വാക്ക് ഓർമ്മ വരും — എല്ലാവരെയും കയറ്റി യാത്ര പോകുന്ന ഒരു ടെമ്പോ വാൻ പോലെ.</p>
+<p>അതുകൊണ്ടുതന്നെ, ചില കാരണങ്ങളാൽ ഗ്രൂപ്പിന്റെ പ്രൊഫൈൽ ചിത്രമായും മിധുന്റെ ആ ആപേ വാഹനം തന്നെയായിരുന്നു വെച്ചിരുന്നത്.</p>
+<p>അങ്ങനെ “Temp” എന്ന പേരും, മിധുന്റെ ആപേ വാഹനത്തെക്കുറിച്ചുള്ള തമാശയും, ഗ്രൂപ്പിന്റെ പ്രൊഫൈൽ ചിത്രവും കൂടി ആ ചെറിയ യാത്രാ ഗ്രൂപ്പിന്റെ തുടക്കത്തിലെ ഒരു രസകരമായ ഓർമ്മയായി മാറി.</p>
+<div class="ph"><header><div class="av">T</div><div>Temp<small>2022 ഫെബ്രുവരി 21</small></div></header>
+<div class="msgs">
+<div class="b sy" style="--d:.6s">“Temp” ഗ്രൂപ്പ് ഉണ്ടാക്കി 🗓️</div>
+<div class="b" style="--d:1.8s"><i>ഡയാന & ബിന്ദു</i>ഒരു ദിവസത്തെ ടൂർ പോകണം!</div>
+<div class="b me" style="--d:3s">Temp… Tempo! മിധുന്റെ ആപേ വണ്ടിയിൽ എല്ലാരെയും കയറ്റി എങ്ങോട്ടും പോകാം 🛺</div>
+<div class="b" style="--d:4.2s"><i>ഷിനോജ്</i>കുറഞ്ഞത് മാസത്തിൽ ഒരിക്കലെങ്കിലും എല്ലാവരും ഒത്തുകൂടണം.</div>
+<div class="b me" style="--d:5.4s">വേളാങ്കണ്ണിയിലേക്ക് ട്രെയിനിൽ പോകാം 🚆</div>
+</div></div>
+<p>പേര് പോലെ തന്നെ അത് താൽക്കാലികമായിരുന്നു.</p>
+<p>ഒരു യാത്രയ്ക്ക് വേണ്ടി മാത്രം തുടങ്ങിയ ഗ്രൂപ്പ്. യാത്ര കഴിഞ്ഞാൽ ഗ്രൂപ്പ് ഡിലീറ്റ് ചെയ്യാമെന്നായിരുന്നു അന്നത്തെ ധാരണ.</p>
+<p>പക്ഷേ, അന്ന് തുടങ്ങിയ ആ ചെറിയ “Temp” ഗ്രൂപ്പ് ഇന്നും തുടരുകയാണ്.</p>
+<p>ആദ്യകാലത്ത് യാത്ര എവിടേക്കാകണം, ഏത് ദിവസം പോകണം, ആരൊക്കെ വരും എന്നിങ്ങനെ ഒരുപാട് ചർച്ചകൾ നടന്നു. പക്ഷേ, റോയിക്കും ടൈറ്റസിനും ജോലിത്തിരക്കുകൾ കൂടുതലായിരുന്നതിനാൽ ഒരു തീയതിയിൽ എത്താൻ കഴിഞ്ഞില്ല.</p>
+<p>അതിനിടയിലാണ് മിന്നുവിന്റെ വിവാഹം വന്നത്.</p>
+<p>വിവാഹത്തിൽ എല്ലാവരും ഒരുമിച്ച് കണ്ടുമുട്ടി.</p>
+<p>അവിടെ വെച്ച് ഷിനോജ് ഒരു കാര്യം വളരെ ഗൗരവമായി പറഞ്ഞു:</p>
+<p>“കുറഞ്ഞത് മാസത്തിൽ ഒരിക്കലെങ്കിലും എല്ലാവരും ഒത്തുകൂടണം.”</p>
+<p>പുതിയ തലമുറയിലെ കുട്ടികളും മക്കളും കൂടി മുൻകൈയെടുത്ത് തീയതി തീരുമാനിച്ചാൽ നന്നായിരിക്കുമെന്നും ഷിനോജ് പറഞ്ഞു.</p>
+<p>പഴയകാലത്തെ ഒരുപാട് ഓർമ്മകളും കഥകളും അദ്ദേഹത്തിന്റെ കൈവശമുണ്ടായിരുന്നു. എല്ലാവരും ഒരുമിച്ചിരുന്ന് സംസാരിക്കുമ്പോൾ ആ കഥകൾ പുറത്തുവരും. ചിരിയും സന്തോഷവും നിറയുന്ന അത്തരം കൂടിക്കാഴ്ചകൾ വീണ്ടും വീണ്ടും ഉണ്ടാകണമെന്നായിരുന്നു ആഗ്രഹം.</p>
+<p>അങ്ങനെ ദിവസങ്ങൾ കടന്നുപോയി.</p>
+<p>ഒരു ഞായറാഴ്ച വൈകുന്നേരം ടൈറ്റസ് എന്നെ വിളിച്ചു.</p>
+<p>“എവിടെയാണ്?”</p>
+<p>ഞാൻ എവിടെയാണെന്ന് പറഞ്ഞപ്പോൾ, ടൈറ്റസ് ഫോൺ ഷിനോജിന് കൊടുത്തു.</p>
+<p>അപ്പോൾ ഇരുട്ട് വീണുതുടങ്ങിയിരുന്നു.</p>
+<p>ഷിനോജ് പറഞ്ഞു:</p>
+<p>“ഞങ്ങൾ ഞാറക്കലിലെ തറവാട്ടിലുണ്ട്. ഇങ്ങോട്ട് പോരേ.”</p>
+<p>കലൂരിൽ നിന്ന് ഞാറക്കലിലേക്ക് ഏകദേശം 17 കിലോമീറ്റർ.</p>
+<p>ഞാനും സുപ്രിയയും പിന്നെ ഒന്നും ആലോചിച്ചില്ല. സ്കൂട്ടറിൽ നേരെ ഞാറക്കലിലേക്ക് പോയി.</p>
+<div class="sc"><b>🛵</b></div>
+<p>അവിടെ എത്തിയപ്പോൾ എല്ലാവരും ഞങ്ങളെ കണ്ട് അത്ഭുതപ്പെട്ടു.</p>
+<p>പ്രതീക്ഷിക്കാതെയുള്ള ആ വരവ് തന്നെ ഒരു സന്തോഷമായി.</p>
+<p>വീണ്ടും എല്ലാവരും ഒരുമിച്ചിരുന്നപ്പോൾ പഴയ കഥകളും പുതിയ തമാശകളും തുടങ്ങി.</p>
+<p>അതിനിടയിലാണ് ഡയാനയും ബിന്ദുവും വീണ്ടും യാത്രയുടെ കാര്യം എടുത്തിട്ടത്.</p>
+<p>ഇത്തവണ വെറുതെ ഒരു ദിവസത്തെ ടൂർ അല്ല.</p>
+<p><b>വേളാങ്കണ്ണിയിലേക്ക് ട്രെയിനിൽ പോകാം.</b></p>
+<p>എല്ലാവർക്കും ആശയം ഇഷ്ടപ്പെട്ടു.</p>
+<p>“Temp” ഗ്രൂപ്പിൽ വീണ്ടും ചർച്ചകൾ സജീവമായി. ഏത് ദിവസം പോകണം, ഏത് ട്രെയിനിൽ പോകണം, ആരൊക്കെ വരും, എവിടെ നിന്ന് കയറണം, താമസം എങ്ങനെ ക്രമീകരിക്കണം, ഭക്ഷണം എന്തൊക്കെയാകണം — ചർച്ചകൾക്ക് ഒടുവില്ല.</p>
+<p>ഒടുവിൽ ഷിനോജ് എല്ലാവരുടെയും ട്രെയിൻ ടിക്കറ്റുകൾ ബുക്ക് ചെയ്തു.</p>
+</div></section>
+
+<section id="train" data-s="train"><div class="stage">
+  <div class="stars art"></div><div class="sil"></div>
+  
+  <div class="rail"></div>
+  <svg class="tr" viewBox="0 0 700 62">
+    <defs><linearGradient id="tb" gradientUnits="userSpaceOnUse" x1="0" x2="-220"><stop offset="0" stop-color="#fff6c0" stop-opacity=".7"/><stop offset="1" stop-color="#fff6c0" stop-opacity="0"/></linearGradient>
+    <pattern id="wn" width="24" height="50" patternUnits="userSpaceOnUse" x="118" y="10"><rect x="6" y="10" width="12" height="14" rx="2" fill="#ffd36b"/></pattern></defs>
+    <polygon points="0,30 -220,8 -220,56" fill="url(#tb)"/>
+    <path d="M0 60V22Q0 10 12 10H110V60Z" fill="#1f6f8b"/><circle cx="6" cy="30" r="5" fill="#fff6c0"/>
+    <g fill="#2e5a87"><rect x="118" y="10" width="140" height="50" rx="4"/><rect x="264" y="10" width="140" height="50" rx="4"/><rect x="410" y="10" width="140" height="50" rx="4"/><rect x="556" y="10" width="140" height="50" rx="4"/></g>
+    <rect x="118" y="10" width="578" height="50" fill="url(#wn)"/>
+  </svg>
+</div><div class="card">
+<h2>വേളാങ്കണ്ണിയിലേക്കുള്ള യാത്ര</h2>
+<p>കാത്തിരുന്ന ദിവസം ഒടുവിൽ എത്തി.</p>
+<p>രാത്രിയിലെ Tea Garden Express ആയിരുന്നു യാത്ര.</p>
+<p>റെയിൽവേ സ്റ്റേഷനിൽ ഒരാൾക്കു പിന്നാലെ മറ്റൊരാൾ എത്തിക്കൊണ്ടിരുന്നു. ഒടുവിൽ എല്ലാവരും ഒരുമിച്ചുകൂടിയപ്പോൾ മുഖങ്ങളിലെ സന്തോഷം തന്നെ ആ യാത്രയുടെ തുടക്കമായി.</p>
+<p>ട്രെയിനിൽ ഞങ്ങളുടെ സീറ്റുകൾ വാതിലിനടുത്തായിരുന്നു.</p>
+<p>സീറ്റുകൾ ക്രമീകരിക്കുന്ന കാര്യത്തിൽ ഷിനോജിന്റെ ഭാര്യ ജോബിക്ക് വലിയ പങ്കുണ്ടായിരുന്നു. ആരൊക്കെ എവിടെ ഇരിക്കണം എന്നതിൽ ജോബി നല്ലൊരു കോ-ഓർഡിനേറ്ററായിരുന്നു.</p>
+<p>പ്രത്യേകിച്ച് ഷിനോജിന്റെ മാതാപിതാക്കളായ പീറ്റർ ചേട്ടനും ചിന്ന ചേച്ചിക്കും യാത്ര സുഗമമാകുന്ന തരത്തിൽ സീറ്റുകൾ ക്രമീകരിക്കാൻ ജോബി പ്രത്യേകം ശ്രദ്ധിച്ചു.</p>
+<p>ജോബിയുടെ കാര്യനിർവഹണ മികവും, വിദ്യാ ബാലനോടുള്ള ഒരു സാമ്യവും കണ്ടപ്പോൾ ഞങ്ങൾ തമാശയായി “പാവങ്ങളുടെ വിദ്യാ ബാലൻ” എന്ന് വിളിച്ചു.</p>
+<p>ഷിനോജിനും അന്ന് ട്രെയിനിൽ ഒരു പ്രത്യേക സാമ്യം ഉണ്ടായിരുന്നു.</p>
+<p>അതോടെ അദ്ദേഹം “പാവങ്ങളുടെ ദുൽഖർ സൽമാൻ” ആയി!</p>
+<p>സീറ്റുകൾ എല്ലാം ഉറപ്പാക്കിയതോടെ ഞാനും റോയിയും ടൈറ്റസും ഷിനോജും ട്രെയിനിന്റെ വാതിലിനടുത്തുള്ള തുറന്ന ഭാഗത്തേക്ക് മാറി.</p>
+<p>കയ്യിൽ ഒരു Coca-Cola കുപ്പിയും ഉണ്ടായിരുന്നു.</p>
+<p>അതിന്റെ ഉള്ളിലെ Coca-Cola എന്താണെന്ന് മാത്രം പറയേണ്ടതില്ല!</p>
+<p>രാത്രിയുടെ ഇരുട്ടിലൂടെ ട്രെയിൻ പാഞ്ഞുകൊണ്ടിരിക്കുമ്പോൾ ടൈറ്റസിന്റെ മനസ്സിൽ സിനിമയും തുടങ്ങി.</p>
+<p>ട്രെയിനിന്റെ എഞ്ചിൻ ബോഗികളിൽ നിന്ന് വേർപെട്ടുപോയാൽ എന്തായിരിക്കും എന്നൊരു സിനിമാ സീൻ അദ്ദേഹം മനസ്സിൽ കണ്ടു. അത് എങ്ങനെ ചിത്രീകരിക്കാമെന്ന് വരെ ആലോചിച്ചു.</p>
+<p>ടൈറ്റസ് പറഞ്ഞു, ഒരിക്കൽ താൻ ഒരു സിനിമയുടെ കഥയും തിരക്കഥയും എഴുതിയിട്ടുണ്ടെന്ന്. അത് ഇപ്പോഴും ഒരു പെട്ടിയിൽ സുരക്ഷിതമായി സൂക്ഷിച്ചിട്ടുണ്ടത്രേ.</p>
+<p>ട്രെയിനിന്റെ മറുവശത്ത് തമിഴ് സംസാരിക്കുന്ന കുറച്ച് ആളുകളുണ്ടായിരുന്നു. അവർ മത്സ്യത്തൊഴിലാളികളാണെന്ന് പിന്നീട് മനസ്സിലായി.</p>
+<p>അവർ കുറച്ച് ഉച്ചത്തിൽ സംസാരിക്കുകയും ശബ്ദമുണ്ടാക്കുകയും ചെയ്യുന്നുണ്ടായിരുന്നു.</p>
+<p>തമിഴ് സംസാരിക്കുമ്പോൾ ചിലപ്പോൾ അത് വഴക്കാണോ സാധാരണ സംസാരമാണോ എന്ന് മനസ്സിലാക്കാൻ തന്നെ ബുദ്ധിമുട്ടാണ്!</p>
+<p>അർധരാത്രിയോടെ അവരിൽ ഒരാൾ ഞങ്ങളുടെ അടുത്തുകൂടി കടന്നുപോയി.</p>
+<p>പരിചയപ്പെട്ടു.</p>
+<p>ഞങ്ങൾ എവിടെ നിന്നാണെന്ന് ചോദിച്ചു.</p>
+<p>ഞാൻ തമാശയ്ക്ക് പറഞ്ഞു:</p>
+<p>“CBI.”</p>
+<p>അയാൾ ചിരിച്ചു.</p>
+<p>പിന്നെ ടൈറ്റസിനെ നോക്കി.</p>
+<p>ടൈറ്റസിന്റെ കുടവയറിലേക്ക് നോക്കിയ ശേഷം അയാൾ പറഞ്ഞത്:</p>
+<div class="dz">“കുടവയറുള്ള CBI!”</div>
+<p>അത് കേട്ട് ഞങ്ങൾ എല്ലാവരും പൊട്ടിച്ചിരിച്ചു.</p>
+<p>അങ്ങനെ സംസാരിച്ചും തമാശ പറഞ്ഞും സമയം പോയി. ഒടുവിൽ പുലർച്ചെ മൂന്ന് മണിയോടെയാണ് എല്ലാവരും ഉറങ്ങാൻ പോയത്.</p>
+</div></section>
+
+<section id="sea" data-s="sea"><div class="stage">
+  <div class="stars art"></div><div class="sun2"></div>
+  <div class="water">
+    <svg class="wv" style="top:-34px;opacity:.55" viewBox="0 0 800 70" preserveAspectRatio="none"><path d="M0 35q50-30 100 0t100 0 100 0 100 0 100 0 100 0 100 0 100 0V70H0Z" fill="#2e5f86"/></svg>
+    <svg class="wv" style="top:-10px;animation-duration:6s;animation-direction:reverse" viewBox="0 0 800 70" preserveAspectRatio="none"><path d="M0 35q50-30 100 0t100 0 100 0 100 0 100 0 100 0 100 0 100 0V70H0Z" fill="#1d4468"/></svg>
+    <svg class="wv" style="top:24px;animation-duration:4.5s;opacity:.9" viewBox="0 0 800 70" preserveAspectRatio="none"><path d="M0 35q50-30 100 0t100 0 100 0 100 0 100 0 100 0 100 0 100 0V70H0Z" fill="#102a46"/></svg>
+  </div>
+  
+</div><div class="card">
+<p>രാവിലെ വേളാങ്കണ്ണിയിലെത്തി.</p>
+<p>സ്റ്റേഷനിൽ നിന്ന് ഓട്ടോ പിടിച്ച് ഹോട്ടലിലേക്ക് പോയി.</p>
+<p>ഓട്ടോ ഡ്രൈവർ വഴിയിൽ പറഞ്ഞത് പോണ്ടിച്ചേരി അടുത്താണെന്നാണ്.</p>
+<p>അപ്പോൾ തന്നെ എല്ലാവരും തീരുമാനിച്ചു — “അടുത്ത തവണ പോണ്ടിച്ചേരിയിലേക്ക് വരാം.”</p>
+<p>ആ “അടുത്ത തവണ” മാത്രം ഇന്നും വന്നിട്ടില്ല!</p>
+<p>ഹോട്ടൽ Sea View ആയിരുന്നു.</p>
+<p>സ്വിമ്മിംഗ് പൂളുമുണ്ടായിരുന്നു.</p>
+<p>ചൂടുള്ള കാലാവസ്ഥയും യാത്രയുടെ ക്ഷീണവും ഉണ്ടായിരുന്നെങ്കിലും എല്ലാവരും പൂളിൽ ഇറങ്ങി.</p>
+<p>അവിടെ മറ്റൊരു കുടുംബവും ഉണ്ടായിരുന്നു.</p>
+<p>അവരിൽ ഒരു പെൺകുട്ടി ഞങ്ങളുടെ ശ്രദ്ധയിൽപ്പെട്ടു.</p>
+<p>നല്ല ശരീരഘടനയുണ്ടായിരുന്ന അവളെ ടൈറ്റസ് തമാശയായി “കുതിര” എന്ന് വിളിച്ചു.</p>
+<p>പിന്നീട് ഞങ്ങൾ തമ്മിൽ നോക്കിയും ചിരിച്ചും അവളെക്കുറിച്ച് തമാശ പറഞ്ഞും നിന്നു.</p>
+<p>ഒടുവിൽ എവിടെ നിന്നാണെന്ന് ചോദിച്ചു.</p>
+<p>“കൊല്ലം.”</p>
+<p>അത്രയും പറഞ്ഞതോടെ അവളുടെ അമ്മ അവളെ ഞങ്ങളുടെ ഭാഗത്തുനിന്ന് കുറച്ച് അകലേക്ക് മാറ്റി.</p>
+<p>ആ സംഭവവും പിന്നീട് ഞങ്ങളുടെ യാത്രയിലെ സ്ഥിരം തമാശകളിലൊന്നായി മാറി.</p>
+<p>വൈകുന്നേരം ഷിനോജ് അടുക്കള ഏറ്റെടുത്തു.</p>
+<p>വേളാങ്കണ്ണിയിലെ തെരുവുകളിൽ നിന്ന് ആവശ്യമായ സാധനങ്ങൾ വാങ്ങി ചിക്കൻ ബിരിയാണി ഉണ്ടാക്കി.</p>
+<p>പക്ഷേ, അതിന് മുമ്പ് ഒരു പ്രധാന സാധനം കൂടി ഉറപ്പാക്കിയിരുന്നു.</p>
+<p>TASMAC-ൽ നിന്ന് ഒരു കുപ്പി!</p>
+<p>കേരളത്തിൽ നിന്നെത്തിയവരാണെന്ന് മനസ്സിലായപ്പോൾ അവിടെയുള്ളവർ വില കുറച്ച് “സ്നേഹം” കാണിച്ചില്ല. വില ഇരട്ടിയാക്കിയതുപോലെയായിരുന്നു!</p>
+<p>വൈകുന്നേരം എല്ലാവരും കടൽത്തീരത്തേക്ക് പോയി.</p>
+<p>കടലിന്റെ ശബ്ദവും രാത്രിയുടെ കാറ്റും, പകൽ മുഴുവൻ ഉണ്ടായിരുന്ന തമാശകളും ചിരികളും — ആ ദിവസം പതുക്കെ അവസാനിച്ചു.</p>
+<p>അന്ന് രാത്രി എല്ലാവരും നന്നായി ഉറങ്ങി.</p>
+</div></section>
+
+<section id="church" data-s="church"><div class="stage">
+  <div class="rays"></div>
+  
+  <svg class="ch" viewBox="0 -30 200 210">
+    <rect x="30" y="90" width="140" height="90" fill="#3a2c47"/><polygon points="20,92 100,40 180,92" fill="#2a1f35"/>
+    <rect x="82" y="10" width="36" height="62" fill="#3a2c47"/><polygon points="78,14 100,-6 122,14" fill="#2a1f35"/>
+    <path d="M100-6V-24M93-17H107" stroke="#ffd27a" stroke-width="3"/>
+    <g class="bell"><path d="M92 44q0-16 8-16t8 16z" fill="#ffc65a"/></g>
+    <path d="M84 180V135q16-24 32 0V180Z" fill="#ffd27a"/>
+    <rect x="45" y="112" width="16" height="26" rx="8" fill="#ffd27a"/><rect x="139" y="112" width="16" height="26" rx="8" fill="#ffd27a"/>
+  </svg>
+</div><div class="card">
+<p>അടുത്ത ദിവസം രാവിലെ പള്ളിയിലേക്ക് പോയി.</p>
+<p>മലയാളത്തിലുള്ള വിശുദ്ധ കുർബാനയിൽ പങ്കെടുത്തു.</p>
+<p>അങ്ങനെ വേളാങ്കണ്ണി യാത്രയും മനോഹരമായ ഒരുപാട് ചെറിയ സംഭവങ്ങളുമായി അവസാനിച്ചു.</p>
+</div></section>
+
+<section id="end" data-s="end"><div class="stage">
+  <div class="ff"></div>
+  
+</div><div class="card">
+<h2>“Temp” — പേരിൽ മാത്രം താൽക്കാലികം</h2>
+<p>ഈ യാത്രകളൊന്നും അന്ന് ഒരു ഓർമ്മക്കുറിപ്പായി എഴുതിവെച്ചതായിരുന്നില്ല. അതുകൊണ്ടുതന്നെ ഇന്ന് ഓർക്കുമ്പോൾ, ചില സംഭവങ്ങൾ വ്യക്തമായി മനസ്സിൽ തെളിയും; ചിലത് വീണ്ടും പറഞ്ഞുപറഞ്ഞാണ് ഓർമ്മയിൽ വരുന്നത്.</p>
+<p>മുന്നാറിലെ ആ യാത്രയും വർഷങ്ങൾക്കുശേഷം നടന്ന വേളാങ്കണ്ണി യാത്രയും രണ്ടും വ്യത്യസ്ത കാലങ്ങളിലെ യാത്രകളായിരുന്നു. പക്ഷേ, രണ്ടിലും ഒരുമിച്ചുണ്ടായിരുന്ന ആളുകളും, വഴിയിലുണ്ടായ ചെറിയ സംഭവങ്ങളും, പിന്നീട് വീണ്ടും പറഞ്ഞുപറഞ്ഞ് ചിരിക്കാൻ കഴിഞ്ഞ കഥകളുമാണ് അവയെ പ്രത്യേകമാക്കിയത്.</p>
+<p>2022 ഫെബ്രുവരി 21-ന് ഒരു യാത്ര കഴിഞ്ഞാൽ അവസാനിക്കാനായി തുടങ്ങിയ WhatsApp ഗ്രൂപ്പിന്റെ പേര് “Temp” എന്നായിരുന്നു.</p>
+<p>പക്ഷേ, യാത്ര കഴിഞ്ഞിട്ടും ഗ്രൂപ്പ് അവസാനിച്ചില്ല.</p>
+<div class="temp rv"><span class="stk">Temp</span></div>
+<p>ഇന്ന് തിരിഞ്ഞുനോക്കുമ്പോൾ അതിലെ ഏറ്റവും മനോഹരമായ വിരോധാഭാസം അതുതന്നെയാണ്.</p>
+<p><b>“Temp” ആയിരുന്നത് ഗ്രൂപ്പ് മാത്രം.<br>യാത്രകൾ അവസാനിച്ചെങ്കിലും, അവ സമ്മാനിച്ച ഓർമ്മകൾക്ക് കാലാവധി ഉണ്ടായില്ല.</b></p>
+<p>അന്ന് നടന്ന യാത്രകൾ ഇന്ന് ഓർമ്മയിൽ വരുമ്പോൾ വീണ്ടും ചിരിക്കാൻ കഴിയുന്നുണ്ടെങ്കിൽ, അതാണ് ആ യാത്രകളുടെ യഥാർത്ഥ യാത്ര — <b>അവ കഴിഞ്ഞുപോയിട്ടും മനസ്സിൽ തുടരുന്ന യാത്ര.</b></p>
+</div></section>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],R=Math.random;
+$$('.stars').forEach(e=>{for(let i=0;i<55;i++){const s=document.createElement('i');s.style.cssText=`left:${R()*100}%;top:${R()*70}%;animation-delay:${R()*3}s`;e.append(s)}});
+$$('.ff').forEach(e=>{for(let i=0;i<30;i++){const s=document.createElement('i');s.style.cssText=`left:${R()*100}%;top:${R()*100}%;--t:${3+R()*4}s;--x:${R()*80-40}px;--y:${R()*80-40}px`;e.append(s)}});
+
+let A,M,W,on=false,cur,fns=[];
+const later=(ms,f)=>{const t=setTimeout(f,ms);fns.push(()=>clearTimeout(t))};
+const every=(ms,f)=>{const t=setInterval(f,ms);fns.push(()=>clearInterval(t))};
+function init(){
+  A=new(window.AudioContext||window.webkitAudioContext)();M=A.createGain();M.gain.value=0;M.connect(A.destination);
+  W=A.createBuffer(1,A.sampleRate*2,A.sampleRate);const d=W.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=R()*2-1;
+  [220,261.6,329.6,392].forEach((f,i)=>{const o=A.createOscillator(),g=A.createGain();o.frequency.value=f;o.detune.value=i*3;g.gain.value=.028;o.connect(g).connect(M);o.start()});
+}
+function ns(ft,f,q,v){const s=A.createBufferSource();s.buffer=W;s.loop=true;const l=A.createBiquadFilter();l.type=ft;l.frequency.value=f;l.Q.value=q;const g=A.createGain();g.gain.value=0;s.connect(l).connect(g).connect(M);s.start();g.gain.setTargetAtTime(v,A.currentTime,.6);fns.push(()=>{g.gain.setTargetAtTime(0,A.currentTime,.25);setTimeout(()=>s.stop(),1200)});return g}
+function osc(t,f,v,dst){const o=A.createOscillator(),g=A.createGain();o.type=t;o.frequency.value=f;g.gain.value=v;o.connect(g);g.connect(dst||M);o.start();fns.push(()=>setTimeout(()=>o.stop(),800));return g}
+function tone(f,t,d,v,ty){const T=A.currentTime+t,o=A.createOscillator(),g=A.createGain();o.type=ty||'sine';o.frequency.value=f;g.gain.setValueAtTime(0,T);g.gain.linearRampToValueAtTime(v,T+.01);g.gain.exponentialRampToValueAtTime(.0001,T+d);o.connect(g).connect(M);o.start(T);o.stop(T+d+.05)}
+function click(f,t){const T=A.currentTime+t,s=A.createBufferSource(),l=A.createBiquadFilter(),g=A.createGain();s.buffer=W;l.type='bandpass';l.frequency.value=f;g.gain.setValueAtTime(.8,T);g.gain.exponentialRampToValueAtTime(.001,T+.09);s.connect(l).connect(g).connect(M);s.start(T,R());s.stop(T+.1)}
+function chirp(f,t){const T=A.currentTime+t,o=A.createOscillator(),g=A.createGain();o.frequency.setValueAtTime(f,T);o.frequency.exponentialRampToValueAtTime(f*1.4,T+.07);g.gain.setValueAtTime(.05,T);g.gain.exponentialRampToValueAtTime(.001,T+.09);o.connect(g).connect(M);o.start(T);o.stop(T+.1)}
+
+const P=[440,523.25,659.25,587.33,523.25,440,392,440,523.25,587.33,659.25,783.99,659.25,587.33,523.25,440];let mel;
+function bn(f){[[1,.16],[2.01,.07],[2.76,.04],[5.4,.02]].forEach(([r,v],k)=>tone(f*r,0,3.2/(k+1),v))}
+function melody(){if(mel)return;let i=0;bn(P[i++]);mel=setInterval(()=>bn(P[i++%P.length]),1100)}
+function stopMel(){clearInterval(mel);mel=null}
+function bell(f){const b=()=>[1,2.01,2.76,5.4].forEach((r,i)=>tone(f*r,0,4/(i+1),.12/(i+1)));b();every(4500,b)}
+const S={
+ title(){},
+ bus(){},
+ hills(){every(1700,()=>{for(let i=0;i<3;i++)chirp(2400+R()*1200,i*.11)})},
+ chat(){},
+ train(){ns('lowpass',120,1,2.4);tone(233,0,1.3,.06,'sawtooth');tone(293,0,1.3,.06,'sawtooth');every(660,()=>{click(1500,0);click(1200,.15)});later(5000,()=>{tone(233,0,1.3,.06,'sawtooth');tone(293,0,1.3,.06,'sawtooth')})},
+ sea(){},
+ church(){},
+ end(){}
+};
+function engine(ms,end){const lp=A.createBiquadFilter();lp.frequency.value=220;const g=A.createGain();g.gain.value=.16;lp.connect(g);g.connect(M);osc('sawtooth',48,1,lp);osc('sine',8,.06,g.gain);const n=ns('lowpass',150,1,1.6);later(ms,()=>{g.gain.setTargetAtTime(0,A.currentTime,.5);n.gain.setTargetAtTime(0,A.currentTime,.5);if(end)[0,.25,.55].forEach(t=>tone(55-t*20,t,.2,.15,'sawtooth'))})}
+const T={go(){engine(5000,1)},fuel(){tone(60,0,.4,.1,'sawtooth');engine(7000,0)},chat(){[600,1800,3000,4200,5400].forEach(ms=>setTimeout(()=>{if(on){tone(880,0,.15,.12);tone(1320,.09,.22,.1)}},ms))}};
+function leave(){fns.forEach(f=>f());fns=[]}
+window.addEventListener('pagehide',()=>{on=false;leave();stopMel();if(M)M.gain.setTargetAtTime(0,A.currentTime,.05)});
+function play(n){leave();if(on&&S[n])S[n]()}
+
+const btn=$('#snd');
+btn.onclick=async()=>{
+  if(!A)init();
+  if(on){on=false;leave();stopMel();M.gain.setTargetAtTime(0,A.currentTime,.15)}
+  else{await A.resume();on=true;M.gain.setTargetAtTime(.85,A.currentTime,.4);melody();play(cur)}
+  btn.querySelector('.ic').textContent=on?'🔊':'🔇';
+  btn.lastElementChild.textContent=on?'ശബ്ദം ഓഫ് ചെയ്യൂ':'ശബ്ദം ഓൺ ചെയ്യൂ';
+};
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  e.target.classList.toggle('active',e.isIntersecting);
+  if(e.isIntersecting){cur=e.target.dataset.s;play(cur)}
+}),{rootMargin:'-45% 0px -45% 0px'});
+$$('section').forEach(s=>io.observe(s));
+$$('.card p,.card h1,.card h2').forEach(e=>e.classList.add('rv'));
+const io2=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add('in');io2.unobserve(el);const t=el.dataset.t;if(t){el.closest('section').classList.add(t);if(on&&T[t])T[t]()}if(el.classList.contains('ph')&&on)T.chat()}),{rootMargin:'0px 0px -12% 0px'});
+$$('.rv,.dz,.ph').forEach(e=>io2.observe(e));
+</script>
+</body>
+</html>
